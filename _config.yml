@@ -4,7 +4,7 @@ title: "HOEH"
 description: "나의 체육관에 온 걸 환영해~"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
-#baseurl : "/baseurl"
+#baseurl : "/blog"
 google_analytics: 'UA-46278016-1'
 disqus: 'demowebsite'
 mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
@@ -12,15 +12,7 @@ include: ["_pages"]
 
 # Authors
 authors:
-  sal:
-    name: Sal
-    display_name: Sal
-    gravatar: e56154546cf4be74e393c62d1ae9f9d4
-    email: wowthemesnet@gmail.com
-    web: https://www.wowthemes.net
-    twitter: https://twitter.com/wowthemesnet
-    description: "Author of Mediumish, a Bootstrap Medium styled template available for WordPress, HTML, Ghost and Jekyll. You are currently previewing Jekyll template demo."
-  hoeeeeeh:
+  hoeh:
     name: HOEH
     display_name: HOEH  
     avatar: 'assets/images/avatar.png'
@@ -28,7 +20,7 @@ authors:
     email: hoeeeeeh@gmail.com
     web: hoeeeeeh.github.io
     instagram: https://instagram/hoeeeeeh
-    description: "HOEH!"
+    description: "나 지금 니가 짠 블로그에 제대로 걸려든거지?"
 
 
 # Plugins
