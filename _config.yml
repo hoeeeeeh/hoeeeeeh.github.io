@@ -4,12 +4,11 @@ title: "HOEH"
 description: "나의 체육관에 온 걸 환영해~"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
-baseurl: /mediumish-theme-jekyll
+#baseurl : "/baseurl"
 google_analytics: 'UA-46278016-1'
 disqus: 'demowebsite'
 mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 include: ["_pages"]
-permalink: /:title/
 
 # Authors
 authors:
@@ -28,7 +27,7 @@ authors:
     gravatar: b1cc14991db7a456fcd761680bbc8f81
     email: hoeeeeeh@gmail.com
     web: hoeeeeeh.github.io
-    hoeeeeeh: https://instagram/hoeeeeeh
+    instagram: https://instagram/hoeeeeeh
     description: "HOEH!"
 
 
