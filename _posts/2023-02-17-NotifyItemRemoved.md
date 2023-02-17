@@ -3,7 +3,7 @@ layout: post
 title:  "[Kotlin] NotifyItemRemoved 의 Position"
 author: hoeh
 categories: [ Kotlin ]
-image: assets/images/17.jpg
+image: assets/images/kotlin.svg
 featured: true
 ---
 

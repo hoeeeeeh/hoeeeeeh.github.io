@@ -3,7 +3,7 @@ layout: post
 title:  "첫 글"
 author: hoeh
 categories: [ Blog ]
-image: assets/images/17.jpg
+image: assets/images/blog.png
 featured: true
 ---
 신기하다. 잘 짜여져있던 테마를 가져와서 내 입맛대로 바꿔보는것도 재밌다.  
