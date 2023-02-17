@@ -2,7 +2,7 @@
 layout: post
 title:  "첫 글"
 author: hoeh
-categories: [ Blog, 잡담 ]
+categories: [ Blog ]
 image: assets/images/17.jpg
 featured: true
 ---
