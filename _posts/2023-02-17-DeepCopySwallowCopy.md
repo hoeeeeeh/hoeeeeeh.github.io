@@ -14,23 +14,19 @@ image: assets/images/javascript.png
 이때 방패와 벽과 같은 방해물과의 다른 점이 있었는데, 방패는 캐릭터가 움직이면 같이 움직이는 방해물이고 벽은 움직이지 않는 방해물이었다.  
 (후에 움직이는 벽을 만들거지만, 일단은 지금은 맵을 감싸는 벽이기 때문) 
 
-~~~javascript
-
+```javascript
   if( monsterObstacle.getStuck(monster.coordinates) )
     continue;
   monster.move();
-  
-~~~
+```
 
 코드를 간략하게 설명하면 이런 식으로, 몬스터의 좌표를 인자르 넘겨 확인해서 방해물에 걸리지 않는다면 움직이도록 구현되었는데
 
-~~~javascript
-
+```javascript
 monsterObstacle = {
  this.arr = [Wall, Shield];
 }
-
-~~~
+```
 
 몬스터의 방해물에는 현재까지 움직이지 않는 벽과 움직이는 방패가 있다.  
 여기서 Wall과 Shield의 좌표값이 주어지는데, 방패의 좌표값은 캐릭터가 움직일 때 마다 바뀌어야하는 것이 문제였다.  
@@ -39,16 +35,14 @@ monsterObstacle = {
 자바스크립트에서 객체를 변수에 할당하면, 해당 객체의 참조값이 할당되는   
 얕은복사(자바스크립트에서는 얕은복사와 깊은복사라는 말을 잘 쓰지 않는다고 들었지만)를 선택하는 것이 더 좋은 판단이라고 생각했고  
 
-~~~javascript
-
+```javascript
 class Shield{
   this.#coordinates = {
     x : 0,
     y : 0,
   }
 }
-
-~~~
+```
 
 이런식으로 방패 객체를 만들어서 Monster Obstacle의 프로퍼티로 넣어주었더니, 캐릭터의 움직임에 따라 방해물인 방패도 움직이는 코드를 짤 수 있었다.
 
