@@ -21,6 +21,10 @@ var documents = [{% for page in site.pages %}{% if page.url contains '.xml' or p
     "body": "{{ page.date | date: "%Y/%m/%d" }} - {{ page.content | markdownify | replace: '.', '. ' | replace: '</h2>', ': ' | replace: '</h3>', ': ' | replace: '</h4>', ': ' | replace: '</p>', ' ' | strip_html | strip_newlines | replace: '  ', ' ' | replace: '"', ' ' }}"{% assign counter = counter | plus: 1 %}
     }{% if forloop.last %}{% else %}, {% endif %}{% endfor %}];
 
+    
+
+    
+
 var idx = lunr(function () {
     this.ref('id')
     this.field('title')
@@ -62,6 +66,7 @@ function lunr_search(term) {
     if(term) {
         document.getElementById('modtit').innerHTML = "<h5 class='modal-title'>Search results for '" + term + "'</h5>" + document.getElementById('modtit').innerHTML;
         //put results on the screen.
+        console.log(idx);
         var results = idx.search(term);
         if(results.length>0){
             //console.log(idx.search(term));

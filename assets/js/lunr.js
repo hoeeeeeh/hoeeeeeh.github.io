@@ -161,6 +161,12 @@ lunr.Token = function (str, metadata) {
   this.metadata = metadata || {}
 }
 
+function trimmerEnKo(token) {
+  return token
+      .replace(/^[^\w가-힣]+/, '')
+      .replace(/[^\w가-힣]+$/, '');
+};    
+
 /**
  * Returns the token string that is being wrapped by this object.
  *
@@ -811,6 +817,8 @@ lunr.stemmer = (function(){
   var re_5_1 = /ll$/;
   var re3_5 = new RegExp("^" + C + v + "[^aeiouwxy]$");
 
+
+
   var porterStemmer = function porterStemmer(w) {
     var stem,
       suffix,
@@ -1128,9 +1136,18 @@ lunr.Pipeline.registerFunction(lunr.stopWordFilter, 'stopWordFilter')
  * @returns {lunr.Token}
  * @see lunr.Pipeline
  */
+
+
+/*
+        .replace(/^[^\w가-힣]+/, '')
+        .replace(/[^\w가-힣]+$/, '');
+
+*/
 lunr.trimmer = function (token) {
   return token.update(function (s) {
-    return s.replace(/^\W+/, '').replace(/\W+$/, '')
+    return s
+    .replace(/^[^\w가-힣]+/, '')
+    .replace(/[^\w가-힣]+$/, '');
   })
 }
 
