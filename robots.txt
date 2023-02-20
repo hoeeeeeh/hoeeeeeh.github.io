@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hoeeeeeh.github.io/sitemap.xml
