@@ -2,7 +2,7 @@
 layout: post
 title:  "[Javascript] Deep Copy, Swallow Copy"
 author: hoeh
-categories: [ Javascript ]
+categories: [ javascript ]
 image: assets/images/javascript.png
 ---
 

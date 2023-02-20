@@ -2,7 +2,7 @@
 layout: post
 title:  "[Swift] Undefined symbol: _OBJC_CLASS_$_ [ ]"
 author: hoeh
-categories: [ Swift ]
+categories: [ swift ]
 image: assets/images/swift.png
 ---
 

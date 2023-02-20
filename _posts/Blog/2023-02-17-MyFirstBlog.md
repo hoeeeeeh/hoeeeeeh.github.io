@@ -2,7 +2,7 @@
 layout: post
 title:  "첫 글"
 author: hoeh
-categories: [ Blog ]
+categories: [ blog ]
 image: assets/images/blog.png
 featured: true
 ---
