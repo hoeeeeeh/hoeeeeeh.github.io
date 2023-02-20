@@ -6,7 +6,7 @@ categories: [ flutter ]
 image: assets/images/flutter.png
 ---
 
-# [Flutter] 자바스크립트에서 Full Screen 진입
+# [Flutter] VerifyReleaseResources Error
 
 Flutter 를 활용한 채팅(상담) 어플을 만들고 있었는데, APK 빌드를 하려고 하니까 아래와 같은 오류가 발생했다.  
 ($ flutter build apk --release)
