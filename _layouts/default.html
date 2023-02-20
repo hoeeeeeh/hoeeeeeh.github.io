@@ -110,7 +110,16 @@ ga('send', 'pageview');
     {{ content }}
 </div>
 
-
+{% if site.mailchimp-list %}
+<!-- Bottom Alert Bar
+================================================== -->
+<div class="alertbar">
+	<div class="container text-center">
+		<span><img id="alertbar-img" src="{{ site.baseurl }}/{{ site.logo }}" alt="{{site.title}}"> &nbsp; 내용이 유익하셨다면 <b>즐겨찾기</b> 하시고 다음 포스트도 만나보세요!</span>
+        <button>즐겨찾기</button>
+	</div>
+</div>
+{% endif %}
     
 </div>
 
