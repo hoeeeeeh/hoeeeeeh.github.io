@@ -17,7 +17,7 @@ analytics:
   provider               : "google-gtag" 
                           # false (default), "google", "google-universal", "google-gtag", "custom"
   google:
-    tracking_id          : "G-X6J384HXD3"
+    tracking_id          : "G-G9Z64HV3NB"
     anonymize_ip         : # true, false (default)
 
 # Authors
