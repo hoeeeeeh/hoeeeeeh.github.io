@@ -24,7 +24,7 @@ pod cache clean NMapsMap
 ```
 
 여기서 git-lfs install 커맨드를 통해 git-lfs 를 초기화 시켜주어야 정상적으로 설치를 할 수 있다고 한다.
-앞서, 이것저것 설치해보면서 깔렸을 NMapsMap 도 Pods 폴더를 삭제함고 더불어 pod cache clean 으로 없애주자.
+앞서, 이것저것 설치해보면서 깔렸을 NMapsMap 이랑 Pods 폴더를 pod cache clean 으로 없애주자.
 
 
 
