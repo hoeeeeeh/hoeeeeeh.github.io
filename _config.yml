@@ -11,6 +11,15 @@ disqus: 'hoeeeeeh-github-io'
 mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 include: ["_pages"]
 
+
+#Google Analytics
+analytics:
+  provider               : "google-gtag" 
+                          # false (default), "google", "google-universal", "google-gtag", "custom"
+  google:
+    tracking_id          : "G-X6J384HXD3"
+    anonymize_ip         : # true, false (default)
+
 # Authors
 authors:
   hoeh:
