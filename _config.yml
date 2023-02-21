@@ -6,7 +6,8 @@ logo: 'assets/images/transparent_logo.png'
 favicon: 'assets/images/logo.png'
 # baseurl : "/hoeh"
 url : 'https://hoeeeeeh.github.io'
-google_analytics: 'G-G9Z64HV3NB'
+google_analytics: 
+  id: 'G-G9Z64HV3NB'
 disqus: 'hoeeeeeh-github-io'
 mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 include: ["_pages"]
