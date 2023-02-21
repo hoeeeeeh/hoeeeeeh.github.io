@@ -6,19 +6,11 @@ logo: 'assets/images/transparent_logo.png'
 favicon: 'assets/images/logo.png'
 # baseurl : "/hoeh"
 url : 'https://hoeeeeeh.github.io'
-google_analytics: 'UA-46278016-1'
+google_analytics: 'G-G9Z64HV3NB'
 disqus: 'hoeeeeeh-github-io'
 mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 include: ["_pages"]
 
-
-#Google Analytics
-analytics:
-  provider               : "google-gtag" 
-                          # false (default), "google", "google-universal", "google-gtag", "custom"
-  google:
-    tracking_id          : "G-G9Z64HV3NB"
-    anonymize_ip         : # true, false (default)
 
 # Authors
 authors:
