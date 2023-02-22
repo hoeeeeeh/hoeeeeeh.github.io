@@ -79,6 +79,9 @@ jQuery(document).ready(function($){
       });
 
       function smoothScrollTo(target) {
+        // navgation bar interrupt main content, so need to be hidden
+        $('.alertbar').fadeOut();
+        navdown();
         target = target.length ? target : $('[name=' + decodeURI(this.hash).slice(1) +']');
 
         if (target.length) {
@@ -117,19 +120,26 @@ jQuery(document).ready(function($){
         // If they scrolled down and are past the navbar, add class .nav-up.
         // This is necessary so you never see what is "behind" the navbar.
         if (st > lastScrollTop && st > navbarHeight){
-            // Scroll Down            
-            $('nav').removeClass('nav-down').addClass('nav-up'); 
-            $('.nav-up').css('top', - $('nav').outerHeight() + 'px');
-           
+          navup()
         } else {
-            // Scroll Up
-            if(st + $(window).height() < $(document).height()) {               
-                $('nav').removeClass('nav-up').addClass('nav-down');
-                $('.nav-up, .nav-down').css('top', '0px');             
-            }
+          navdown()
         }
 
         lastScrollTop = st;
+    }
+
+    function navup(){
+            // Scroll Down            
+            $('nav').removeClass('nav-down').addClass('nav-up'); 
+            $('.nav-up').css('top', - $('nav').outerHeight() + 'px');
+    }
+
+    function navdown(){
+            // Scroll Up
+            if(st + $(window).height() < $(document).height()) {               
+              $('nav').removeClass('nav-up').addClass('nav-down');
+              $('.nav-up, .nav-down').css('top', '0px');             
+          }
     }
         
     $('.site-content').css('margin-top', $('header').outerHeight() + 'px');  
