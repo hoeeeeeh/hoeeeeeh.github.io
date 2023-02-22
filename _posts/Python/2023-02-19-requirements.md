@@ -4,6 +4,7 @@ title:  "[Python] Requirements"
 author: hoeh
 categories: [ python ]
 image: assets/images/python.png
+toc: true
 ---
 
 # Requirements
