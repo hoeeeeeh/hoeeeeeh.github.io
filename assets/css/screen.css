@@ -222,6 +222,13 @@ section.recent-posts {
     list-style: none;
     font-weight: 400;
 }
+.toc-header .toc-active{
+    color: #c14848;
+}
+
+.toc-header .toc-non-active{
+    color:  #666;
+}
 
 .toc-header{
     text-overflow: ellipsis;

@@ -20,6 +20,34 @@ jQuery(document).ready(function($){
       });
     }
 
+    // track now toc
+    $(document).scroll(function(){
+        const trackedElements = document.querySelectorAll('.toc-title');
+
+        const scrollPosition = window.scrollY;
+
+        // Iterate through each tracked element
+        for (let i = trackedElements.length - 1; i > -1; i--) {
+          const element_original = trackedElements[i];
+
+          const element = document.querySelector(element_original.getAttribute("href"));
+          // Get the top and bottom positions of the element
+          const elementTop = element.offsetTop;          
+          // const elementBottom = element.offsetTop + element.offsetHeight;
+
+          // Check if the scroll position is within the element's boundaries
+          if (scrollPosition >= elementTop){ // && scrollPosition < elementBottom) {
+              for (let j = 0; j < trackedElements.length; j++){
+                trackedElements[j].classList.remove('toc-active');
+                trackedElements[j].classList.add('toc-non-active');
+              }
+              element_original.classList.remove('toc-non-active');
+              element_original.classList.add('toc-active');
+              break;
+          }
+        }
+    });
+
     // alertbar later
     $(document).scroll(function () {
         var y = $(this).scrollTop();
@@ -110,6 +138,10 @@ jQuery(document).ready(function($){
      $(document).on('click', '.spoiler', function() {
         $(this).removeClass('spoiler');
      });
+
+         $(window).scroll(function(event){
+        didScroll = true;
+    });
     
  });   
 

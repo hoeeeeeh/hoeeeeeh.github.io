@@ -8,6 +8,8 @@ toc: true
 ---
 
 # [Javascript] Lexical Scope
+
+## 문제의 발단
 자바스크립트로 아이작과 비슷한 게임을 만들던 도중 화살표함수에서 $(this) 사용이 이상하다고 느꼈는데, 아래와 같은 코드를 짜고 실행시켰더니
 
 ```javascript
@@ -26,17 +28,19 @@ $(`#character`).fadeOut(2000, "swing", ()=>{
 
 화살표 함수에 대해 알아보기전에, Lexical Scope 를 먼저 알아야 할 것 같아서 화살표 함수는 이 뒤에 다루기로 하고, 먼저 렉시컬 스코프 (또는 Static Scope)에 대해 먼저 알아보자.  
 
+### 결론부터 미리!
 미리 얘기해두자면, 자바스크립트는 기본적으로 Lexical Scope 를 따른다.
-<hr>  
 
+## Lexical Scope 정의
 >  Lexical Scope(혹은 Static Scope) : 함수를 어디서 선언하였는지에 따라 상위 스코프를 결정한다
 
-<hr>  
 
->  Scope : 참조 대상 식별자(변수,함수의 이름과 같이 어떤 대상을 다른 대상과 구분하여 식별할 수 있는 유일한 이름)를 찾아내는 규칙. **함수가 선언될 때 Scope가 생긴다!**
+## Scope 정의
+>  Scope : 참조 대상 식별자(변수,함수의 이름과 같이 어떤 대상을 다른 대상과 구분하여 식별할 수 있는 유일한 이름)를 찾아내는 규칙. 
+>  **함수가 선언될 때 Scope가 생긴다!**
 
-<hr> 
 
+## Sample Code
 ```javascript
 var str = '1';
 var text = 'global';
@@ -61,6 +65,7 @@ function upperScope(){
 upperScope();
 ```
 
+### 코드 설명
 위의 코드를 설명해보자면, 전역변수 str 은 '1' 로 선언되어 있다. str을 출력하는 함수는 consoleLog1과 consoleLog2가 있는데, consoleLog2 함수는 upperScope 라는 함수 안에 있다.  
 두 번째 전역변수 text를 보면, upperScope 함수 안에 있는 consoleLog2 에서 출력하게 되어 있다.
 
@@ -80,6 +85,8 @@ consoleLog2에서 text를 출력하려고 보니, 바로 상위스코프인 uppe
 
 text 함수는 전역변수로 선언되어 있기 때문에 upperScope 에서는 찾지 못했어도 전역스코프에서는 찾을 수 있다. 따라서 'global' 이란 텍스트를 출력할 것이다.
 
+
+## Scope Chain
 > 이렇게 꼬리를 물며 위 스코프를 탐색하는 방법을 '스코프 체인' 이라고 한다.
 
 이제 다음 문서에 lexical this 를 설명해보려고 한다.
