@@ -22,6 +22,7 @@ jQuery(document).ready(function($){
 
     // track now toc
     $(document).scroll(function(){
+      var st = window.pageYOffset || document.documentElement.scrollTop;
         const trackedElements = document.querySelectorAll('.toc-title');
 
         const scrollPosition = window.scrollY;
@@ -32,7 +33,7 @@ jQuery(document).ready(function($){
 
           const element = document.querySelector(element_original.getAttribute("href"));
           // Get the top and bottom positions of the element
-          const elementTop = element.offsetTop;          
+          const elementTop = st < lastScrollTop ? element.getBoundingClientRect().top + document.documentElement.scrollTop - navbarHeight - 1 : element.getBoundingClientRect().top + document.documentElement.scrollTop - 1;
           // const elementBottom = element.offsetTop + element.offsetHeight;
 
           // Check if the scroll position is within the element's boundaries
@@ -80,13 +81,13 @@ jQuery(document).ready(function($){
 
       function smoothScrollTo(target) {
         // navgation bar interrupt main content, so need to be hidden
-        $('.alertbar').fadeOut();
-        navdown();
         target = target.length ? target : $('[name=' + decodeURI(this.hash).slice(1) +']');
-
         if (target.length) {
+
+          console.log(target.offset().top, window.scrollY);
+
           $('html,body').animate({
-            scrollTop: target.offset().top
+            scrollTop: target.offset().top > window.scrollY ? target.offset().top : target.offset().top - navbarHeight,
           }, 1000);
         }
       }
@@ -100,7 +101,7 @@ jQuery(document).ready(function($){
     var navbarHeight = $('nav').outerHeight();
 
     $(window).scroll(function(event){
-        didScroll = true;
+      didScroll = true;
     });
 
     setInterval(function() {
@@ -120,26 +121,26 @@ jQuery(document).ready(function($){
         // If they scrolled down and are past the navbar, add class .nav-up.
         // This is necessary so you never see what is "behind" the navbar.
         if (st > lastScrollTop && st > navbarHeight){
-          navup()
-        } else {
           navdown()
+        } else {
+          navup(st)
         }
 
         lastScrollTop = st;
     }
 
-    function navup(){
-            // Scroll Down            
-            $('nav').removeClass('nav-down').addClass('nav-up'); 
-            $('.nav-up').css('top', - $('nav').outerHeight() + 'px');
+    function navup(st){
+            // Scroll Up
+            if(st + $(window).height() < $(document).height()) {               
+                $('nav').removeClass('nav-up').addClass('nav-down');
+                $('.nav-up, .nav-down').css('top', '0px');           
+            }       
     }
 
     function navdown(){
-            // Scroll Up
-            if(st + $(window).height() < $(document).height()) {               
-              $('nav').removeClass('nav-up').addClass('nav-down');
-              $('.nav-up, .nav-down').css('top', '0px');             
-          }
+            // Scroll Down            
+            $('nav').removeClass('nav-down').addClass('nav-up'); 
+            $('.nav-up').css('top', - $('nav').outerHeight() + 'px');
     }
         
     $('.site-content').css('margin-top', $('header').outerHeight() + 'px');  
