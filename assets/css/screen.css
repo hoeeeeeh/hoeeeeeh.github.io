@@ -228,27 +228,27 @@ section.recent-posts {
 }
 
 .toc-header-1{
-    font-size: 1rem;
-}
-
-.toc-header-2{
-    font-size: 0.9rem;
-}
-
-.toc-header-3{
-    font-size: 0.8rem;
-}
-
-.toc-header-4{
-    font-size: 0.7rem;
-}
-
-.toc-header-5{
     font-size: 0.6rem;
 }
 
-.toc-header-6{
+.toc-header-2{
     font-size: 0.5rem;
+}
+
+.toc-header-3{
+    font-size: 0.4rem;
+}
+
+.toc-header-4{
+    font-size: 0.3rem;
+}
+
+.toc-header-5{
+    font-size: 0.2rem;
+}
+
+.toc-header-6{
+    font-size: 0.1rem;
 }
 
 .toc-header a {
