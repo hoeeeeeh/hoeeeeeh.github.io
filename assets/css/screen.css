@@ -217,6 +217,23 @@ section.recent-posts {
     font-size: 0.95rem;
 }
 
+h1 {
+    font-size : 2.5rem;
+}
+
+h2 {
+    font-size : 2.0rem;
+}
+
+h3 {
+    font-size : 1.6rem;
+}
+
+h4, h5, h6 {
+    font-size : 1.2rem;
+}
+
+
 .toc ul {
     padding-left: 1.2em;
     list-style: none;
