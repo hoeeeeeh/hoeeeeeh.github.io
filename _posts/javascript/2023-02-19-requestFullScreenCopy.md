@@ -4,6 +4,7 @@ title:  "[Javascript] 자바스크립트에서 Full Screen 진입"
 author: hoeh
 categories: [ javascript ]
 image: assets/images/javascript.png
+toc: true
 ---
 
 # [Javascript] 자바스크립트에서 Full Screen 진입

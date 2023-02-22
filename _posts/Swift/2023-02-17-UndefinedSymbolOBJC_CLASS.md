@@ -4,6 +4,7 @@ title:  "[Swift] Undefined symbol: _OBJC_CLASS_$_ [ ]"
 author: hoeh
 categories: [ swift ]
 image: assets/images/swift.png
+toc: true
 ---
 
 # Undefined symbol: _OBJC_CLASS_$_ [ ]

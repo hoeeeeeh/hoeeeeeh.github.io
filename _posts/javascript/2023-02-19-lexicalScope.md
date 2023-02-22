@@ -4,6 +4,7 @@ title:  "[Javascript] Lexical Scope"
 author: hoeh
 categories: [ javascript ]
 image: assets/images/javascript.png
+toc: true
 ---
 
 # [Javascript] Lexical Scope

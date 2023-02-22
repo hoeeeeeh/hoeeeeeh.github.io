@@ -4,6 +4,7 @@ title:  "[Swift] Pod Install Error"
 author: hoeh
 categories: [ swift ]
 image: assets/images/swift.png
+toc: true
 ---
 
 # cocoapod 에서 pod install 을 하려고 하니 에러가 발생한다.

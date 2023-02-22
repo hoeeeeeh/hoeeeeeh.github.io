@@ -4,6 +4,7 @@ title:  "[Flutter] VerifyReleaseResources Error"
 author: hoeh
 categories: [ flutter ]
 image: assets/images/flutter.png
+toc: true
 ---
 
 # [Flutter] VerifyReleaseResources Error

@@ -4,6 +4,7 @@ title:  "[Javascript] Deep Copy, Swallow Copy"
 author: hoeh
 categories: [ javascript ]
 image: assets/images/javascript.png
+toc: true
 ---
 
 # [Javascript] Deep Copy, Swallow Copy

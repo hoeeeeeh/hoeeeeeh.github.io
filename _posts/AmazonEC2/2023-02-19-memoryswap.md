@@ -4,6 +4,7 @@ title:  "[EC2] Memory Swap"
 author: hoeh
 categories: [ ec2 ]
 image: assets/images/amazon_ec2.png
+toc: true
 ---
 
 # Swap Memory

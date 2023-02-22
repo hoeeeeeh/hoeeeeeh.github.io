@@ -5,6 +5,7 @@ author: hoeh
 categories: [ blog ]
 image: assets/images/blog.png
 featured: true
+toc: true
 ---
 신기하다. 잘 짜여져있던 테마를 가져와서 내 입맛대로 바꿔보는것도 재밌다.  
 프론트엔드를 하는 사람들은 이러한 재미에 흠뻑 빠진 사람들이지 않을까?  

@@ -5,6 +5,7 @@ author: hoeh
 categories: [ blog ]
 image: assets/images/blog.png
 featured: true
+toc: true
 ---
 
 # 코딩 교육 봉사

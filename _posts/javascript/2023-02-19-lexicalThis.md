@@ -4,6 +4,7 @@ title:  "[Javascript] Lexical This"
 author: hoeh
 categories: [ javascript ]
 image: assets/images/javascript.png
+toc: true
 ---
 
 # [Javascript] Lexical This

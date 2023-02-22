@@ -4,6 +4,7 @@ title:  "[Swift] @AppStorage"
 author: hoeh
 categories: [ swift ]
 image: assets/images/swift.png
+toc: true
 ---
 
 # @AppStorage

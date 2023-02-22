@@ -4,6 +4,7 @@ title:  "[Kotlin] NotifyItemRemoved 의 Position"
 author: hoeh
 categories: [ kotlin ]
 image: assets/images/kotlin.svg
+toc: true
 ---
 
 # notifyItemRemoved(position)
