@@ -511,6 +511,9 @@ blockquote {
         margin-top: 0px;
         margin-bottom: 0px;
     }
+    .toc-wrapper {
+        visibility: visible;
+    }
 }
 
 @media (max-width:1024px) {
@@ -520,6 +523,9 @@ blockquote {
 }
 
 @media (max-width:767px) {
+    .toc-wrapper {
+        visibility: hidden;
+    }
     .post-top-meta.authorpage {
         text-align: center;
     }
