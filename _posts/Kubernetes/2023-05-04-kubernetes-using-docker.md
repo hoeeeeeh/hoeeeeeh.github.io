@@ -13,6 +13,7 @@ toc: true
 ## 도커, 쿠버네티스
 도커에는 자체적으로 쿠버네티스를 지원한다. 아래 사진 처럼 도커에서  
 > Setting -> Kubernetes -> Enable Kubernetes 를 활성화해주자.  
+
 ![k8s_in_docker]({{ site.url }}{{ site.baseurl }}/assets/images/kubernetes-using-docker/k8s_in_docker.png)
   
   
@@ -31,8 +32,7 @@ kubectl get nodes
 
 처럼 현재 실행중인 노드를 확인할 수 있는데, 여기서 기존에 GKE 나 Minikube 를 사용한 적이 있다면 Context 가 Docker 가 아니라, GKE 나 Minikube 로 잡혀있을 수도 있다.  
 
-만약 kubectl get nodes 명령어가 정상적으로 실행되지 않는다면, 우선은 kubectl version 으로 kubectl 이 설치되어 있는지 확인해보고  
-잘 깔려있다면 
+만약 kubectl get nodes 명령어가 정상적으로 실행되지 않는다면, 우선은 kubectl version 으로 kubectl 이 설치되어 있는지 확인해보고 잘 깔려있다면 
 
 ```
 kubectl config get-contexts
@@ -46,7 +46,7 @@ kubectl config get-contexts
 kubectl config use-context { NAME }
 ```
 
-kubectl config use-context docker-for-desktop 으로 context 를 변경하고, kubectl config get-contexts 를 다시 입력해보면 정상적으로 node 가 출력될 것이다.
+"kubectl config use-context docker-for-desktop" 으로 context 를 변경하고, "kubectl get nodes" 를 다시 입력해보면 정상적으로 node 가 출력될 것이다.
 
 
 ### deployment
