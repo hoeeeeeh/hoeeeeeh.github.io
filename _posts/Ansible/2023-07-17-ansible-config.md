@@ -20,7 +20,7 @@ ansible.cfg 파일을 수정하여 여러가지 설정을 하려고 할 때, pip
 아무래도 ansible 2.4 이후로는 ansible-config 커맨드 라인을 통해 설정을 하는 것 같다.  
 2023년 7월달 기준으로 ansible 이 8.1 버전인걸 보아하니, 아마도 한참 전에 바뀌었나보다.  
 
-Ansible 은 아래와 같은 순서대로 cfg 파일을 찾는다고 하는데, 우선 간단히 홈 디렉토리에 간단한 sample cfg 파일을 생성하기로 했다.
+Ansible 은 아래와 같은 순서대로 cfg 파일을 찾는다고 하는데, 우선 /etc/ansible 에 간단한 sample cfg 파일을 생성하기로 했다.
 
 1. `ANSIBLE_CONFIG` (env 변수가 설정되어 있을 경우)
 2. `ansible.cfg` (현재 디렉토리에서)
@@ -38,7 +38,7 @@ $ ansible-config init --disabled -t all > ansible.cfg
 명령어 둘 중에 하나를 선택하면 되는데, 둘 다 주석으로 자세히 설명해둔 sample config 파일을 만들어준다고 하고 아래의 명령어가  
 현재 존재하는 plugin 까지 포함하는 방법이라고 한다.
 
-꽤나 많은 옵션이 존재해서, 필요할 때마다 수정해야겠다.
+꽤나 많은 옵션이 존재해서, 필요할 때마다 수정해야겠다.  
 [공식 문서 옵션 설명](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#ansible-configuration-settings)  
 
 <details>
@@ -80,7 +80,7 @@ efaults]
 ;become_password_file=
 
 # (pathspec) Colon separated paths in which Ansible will search for Become Plugins.
-;become_plugins={{ ANSIBLE_HOME ~ "/plugins/become:/usr/share/ansible/plugins/become" }}
+;become_plugins={% raw %}{ ANSIBLE_HOME ~ "/plugins/become:/usr/share/ansible/plugins/become" } {% endraw %}
 
 # (string) Chooses which cache plugin to use, the default 'memory' is ephemeral.
 ;fact_caching=memory
@@ -100,9 +100,9 @@ efaults]
 # (string) When a collection is loaded that does not support the running Ansible version (with the collection metadata key `requires_ansible`).
 ;collections_on_ansible_version_mismatch=warning
 
-# (pathspec) Colon separated paths in which Ansible will search for collections content. Collections must be in nested *subdirectories*, not directly in these directories. For example, if ``COLLECTIONS_PATHS`` includes ``'{{ ANSIBLE_HOME ~ "/collections" }}'``, and you want to add ``my.collection`` to that directory, it must be saved as ``'{{ ANSIBLE_HOME} ~ "/collections/ansible_collections/my/collection" }}'``.
+# (pathspec) Colon separated paths in which Ansible will search for collections content. Collections must be in nested *subdirectories*, not directly in these directories. For example, if ``COLLECTIONS_PATHS`` includes ``'{% raw %}{ ANSIBLE_HOME ~ "/collections" }{% endraw %}'``, and you want to add ``my.collection`` to that directory, it must be saved as ``'{% raw %}{ ANSIBLE_HOME} ~ "/collections/ansible_collections/my/collection" }{% endraw %}'``.
 
-;collections_path={{ ANSIBLE_HOME ~ "/collections:/usr/share/ansible/collections" }}
+;collections_path={% raw %}{ ANSIBLE_HOME ~ "/collections:/usr/share/ansible/collections" }{% endraw %}
 
 # (boolean) A boolean to enable or disable scanning the sys.path for installed collections
 ;collections_scan_sys_path=True
@@ -111,6 +111,6 @@ efaults]
 ;connection_password_file=
 
 # (pathspec) Colon separated paths in which Ansible will search for Action Plugins.
-;action_plugins={{ ANSIBLE_HOME ~ "/plugins/action:/usr/share/ansible/plugins/action" }}
+;action_plugins={% raw %}{ ANSIBLE_HOME ~ "/plugins/action:/usr/share/ansible/plugins/action" }{% endraw %}
 </pre></code>
 </details>
