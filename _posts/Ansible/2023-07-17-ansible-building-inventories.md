@@ -20,7 +20,7 @@ toc: true
 
 우선 `hosts.ini` 를 작성해보자
 
-``` zsh
+``` ini
 [Worker Nodes]
 192.168.0.11
 192.168.0.12
@@ -29,7 +29,8 @@ toc: true
 현재 Kluster 에서 사용중인 Worker Nodes 2개의 고정 ip 값을 적어 주었다.  
 이렇게 적는 방법 외에도, 마치 python 의 index slicing 처럼 적는 방법이 있다고 한다.
 
-```zsh
+``` ini
+[Worker Nodes]
 192.168.0.[11:50]
 ```
 
