@@ -47,5 +47,7 @@ $ sudo ssh-keygen
 ```
 $ ssh-copy-id -p {port} ansible@{ip_address}
 ```
+
+ssh-copy-id -p 6001 ansible@192.168.0.11
 Managed Node 에서 ssh 포트를 바꾸었기 때문에 -p 옵션을 사용했다.
 
