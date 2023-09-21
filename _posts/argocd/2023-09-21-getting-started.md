@@ -36,8 +36,9 @@ pod/argocd-server-5db7487c98-ljqhr                      1/1     Running   0     
 ...
 
 NAME                                              TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
-service/argocd-server                             ClusterIP   10.96.132.227    <none>        80/TCP,443/TCP               4m57s
+service/argocd-server                             ClusterIP   10.96.132.227    none        80/TCP,443/TCP               4m57s
 ...
+
 </pre>
 </code>
 </details>
