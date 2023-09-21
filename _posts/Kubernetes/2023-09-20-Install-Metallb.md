@@ -45,5 +45,9 @@ data:
       - ${IP 대역폭}
 ```
 
+```zsh
+kubectl apply -f metallb_config.yaml 
+```
+
 이제 service 의 type 을 LoadBalancer 로 만들었을 때, external-ip 가 설정했던 대역폭으로 잘 설정된다면,  
 Metallb 설치가 정상적으로 완료된 것이다.
