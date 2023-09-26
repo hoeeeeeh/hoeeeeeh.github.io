@@ -23,3 +23,8 @@ Path 에 / 를 입력하면 발생하는 에러이다. 절대경로로 설정하
 없는 레포나, private 레포일 경우 발생한다.  
 private 레포의 경우 따로 credential 이 필요하다.
 
+### Failed to unmarshal jsconfig.json:
+k8s 와 관련 없는 manifest 들을 읽으려고 할 때 발생하는 문제이다.
+SOURCE 의 repo 와 path 를 잘 지정해서, k8s 에 필요한 yaml 파일들만 읽도록 하면 된다.
+즉, k8s 에서 필요한 pod, deploy, svc.. 등등의 yaml 을 한 폴더에 넣어두고, 해당 폴더의 경로를 Path 에 지정해주면 된다.
+
