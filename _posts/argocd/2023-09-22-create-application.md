@@ -19,6 +19,13 @@ Path 에 / 를 입력하면 발생하는 에러이다. 절대경로로 설정하
 현재 사용중인 account 에 권한이 없을 때 나타나는 에러이다.  
 [argocd RBAC 권한]("ArgocdRBAC.html") 을 참조해서 권한 설정을 하자
 
+--2023-09-26 추가  
+Application 을 생성할 때 Project Name 을 선택하게 되는데, 정말 IDE 열어서 프로젝트 이름 짓는거 마냥 지어버리면 Permission Denied 가 뜬다...!!  
+Argocd 에 Project 라는 항목이 존재 하는데, 이 항목을 고르는거라서 존재하지 않는 Project Name 을 써버리면 Permission Denied 로 튕겨내버린다..  
+RBAC로 아무리 권한을 부여해도 뜬다.  
+에러를 조금만 더 친절하게 써줬으면 좋지 않았을까? 하루종일 RBAC 문제인 줄 알았다.
+
+
 ### Repo URL error
 없는 레포나, private 레포일 경우 발생한다.  
 private 레포의 경우 따로 credential 이 필요하다.
