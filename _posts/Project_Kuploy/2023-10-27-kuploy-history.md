@@ -43,7 +43,8 @@ Storage Class 에는 `provisioner`, `parameters`, `reclaimPolicy` 를 정의할 
 Storage Class 에 대한 자세한 설명은 [여기](추후 작성 예정)를 참고하면 된다.  
 
 Kuploy는 로컬에 저장할 수 있으면서 동시에 동적 프로비저닝을 할 수 있어야 한다.  
-이러한 조건을 만족시켜주는 Storage Class 가 [Rancher/local-path-provisioner](https://github.com/rancher/local-path-provisioner) 였다.
+이러한 조건을 만족시켜주는 Storage Class 가 [Rancher/local-path-provisioner](https://github.com/rancher/local-path-provisioner) 였다.  
+현재는 다른 storage class를 사용할 필요가 없기 때문에 default storage class 이다. (따로 storage class 가 지정되지 않으면 자동으로 default storage class 로 지정)
 
 ## Docker
 
