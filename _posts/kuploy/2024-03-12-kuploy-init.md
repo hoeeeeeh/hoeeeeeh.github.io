@@ -89,12 +89,18 @@ $ sudo ufw allow {port}
 설치 이전에 epel, net-tools 를 설치한다.
 
 <details>
-<summary>EPEL 은 뭘까?</summary>
+<summary>EPEL, net tools 는 뭘까?</summary>
 <code>
 <pre>
 
-EPEL == Extra Packages for Enterprise Linux
-말 그대로 엔터프라이즈 리눅스를 위한 추가 패키지이다.
+`EPEL` == Extra Packages for Enterprise Linux
+말 그대로 엔터프라이즈 리눅스를 위한 추가 패키지이다. 기본 레포에 없는 오픈 소스들을 사용할 수 있다.  
+
+`net-tools` 는 리눅스의 네트워킹 관련 커맨드라인 도구 모음이다.
+> A collection of programs that form the base set of the NET-3 networking distribution for the Linux operating system.
+> Includes: arp, hostname, ifconfig, netstat, rarp, route, plipconfig, slattach, mii-tool and iptunnel and ipmaddr.
+> A mirror of the sourcecode is available on https://github.com/ecki/net-tools
+
 
 </pre></code>
 </details>
@@ -146,6 +152,24 @@ sleep 3
 
 ## Master Node 설정
 
+### kubeadm init
 ``` bash
 $ sudo kubeadm init --apiserver-advertise-address=[마스터 노드 IP] --pod-network-cidr=[CNI 네트워크 라우팅 대역]  
 ```
+마스터노드에서 kubeadm 을 init 하면서 network-cidr 을 입력해야하는데, cidr 이 무엇일까?
+
+### CNI(Container Network Interface)  
+[쿠버네티스의 공식 문서]("https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/")를 참조해서 CNI 가 무엇인지, 어떠한 역할을 하는지 알아보자. 참고로 한국어로 번역된 페이지도 생각보다 많으니 공식 문서에서 한국어가 지원되는 페이지인지 확인해보는 것도 좋다.  
+
+[CNI Github]("https://github.com/containernetworking/cni")  
+CNI 공식 깃허브 문서에 따르면, `CNI(Container Network Interface)는 리눅스 컨테이너에서 네트워크 인터페이스를 구성하기 위한 플러그인을 작성하는 사양(specification)과 라이브러리로 구성된 프로젝트이다. CNI는 오직 컨테이너간 네트워크 연결과 컨테이너가 삭제될 때, 할당된 리소스들을 지우는 것에만 관여한다. 이러한 점들 때문에, CNI는 넓은 범위의 지원을 받으며 구현하기 간단한 사양을 가지고 있다.`  
+
+무슨 말인가 하면, 컨테이너의 네트워킹을 설정하고 관리하기 위한 `표준` 이다. 컨테이너의 네트워킹 설정은 어떻게 구현하느냐에 따라 천차 만별인데, 이렇게 균일하지 않은 설정을 하나의 일관된 네트워킹 방식을 제공한다는 것이다. 이렇게 되면 컨테이너 네트워킹을 어떻게 구현할지는 고려하지 않아도 되고, 같은 방식으로 플러그인도 제작되기 때문에 더 많은 플러그인을 사용할 수 있을 것이다.  또한 말 그대로 '표준' 을 제공하는 것이지, 이것을 구현해놓은 것이 아니다. 이 표준을 지키며 구현된 수 많은 라이브러리들이 있다. 그 중에서 쿠버네티스를 위한 대표적인 라이브러리들이 `Calico, Flannel, ...` 등이 있다. 더 자세한 내용은 [쿠버네티스 네트워킹 애드온]("https://kubernetes.io/ko/docs/concepts/cluster-administration/addons/#network-and-networking-policy") 을 참고하자.  
+
+
+
+
+
+
+
+
