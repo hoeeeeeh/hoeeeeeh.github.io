@@ -159,9 +159,13 @@ $ sudo kubeadm init --apiserver-advertise-address=[마스터 노드 IP] --pod-ne
 마스터노드에서 kubeadm 을 init 하면서 network-cidr 을 입력해야하는데, cidr 이 무엇일까? 우선 cidr 전에 CNI에 관해서 알아보고 가자.
 
 ### CNI(Container Network Interface)  
-CNI에 대한 자세한 내용은 따로 작성해둔 Kubernetes-CNI 문서를 참조하자.  
-우리는 CNI 로 calico 를 선택했다.  
+CNI에 대한 자세한 내용은 따로 작성해둔 [Kubernetes-CNI]({{ site.url }}{{ site.baseurl }}/kubernetes/2024/03/21/kubernetes-CNI.html) 문서를 참조하자.  
+우리는 CNI 로 calico 를 선택했다. 사실 이렇게 소규모 프로젝트에서 어떤 CNI를 쓰든 큰 차이가 나지는 않을 것이다. 가장 대중적으로 사용하는 Calico, Flannel, Weave Net 정도의 차이점만 알아보았는데 대규모 트래픽 연산(성능) 측면에서는 L3를 활용하는, 즉 모든 Container 마다 ip를 부여해서 통신하는 Calico의 성능이 제일 좋았고, 간편성만 따졌을 때는 Flannel 이 제일 좋았다. WeaveNet은 Mesh 네트워크 구조라서 성능이 나머지 두 플러그인에 비해 조금 떨어진다.  
 
+대규모 트래픽 연산에 성능이 좋은 Calico와, 소규모 프로젝트에 어울리는 Flannel 중에서 선택을 고민했고 Calico 가 조금 더 대중적인 이유를 고려해서 Calico를 선택했다.
+
+### CIDR(Classless Inter-Domain Routing)
+Calico
 
 
 
