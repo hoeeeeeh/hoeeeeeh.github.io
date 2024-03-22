@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "[Argocd] create application"
+title:  "[ArgoCD] create application"
 author: hoeh
-categories: [ Argocd ]
+categories: [ argocd ]
 image: assets/images/argocd.png
 toc: true
 ---

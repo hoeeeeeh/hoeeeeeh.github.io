@@ -2,7 +2,7 @@
 layout: post
 title:  "[Linux] Ubuntu unexpected operator"
 author: hoeh
-categories: [ Linux ]
+categories: [ linux ]
 image: assets/images/linux.png
 toc: true
 ---

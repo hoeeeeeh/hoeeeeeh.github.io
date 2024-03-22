@@ -2,7 +2,7 @@
 layout: post
 title:  "[Kuploy] Kuploy history"
 author: hoeh
-categories: [ Kuploy ]
+categories: [ kuploy ]
 image: assets/images/kuploy.png
 toc: true
 ---

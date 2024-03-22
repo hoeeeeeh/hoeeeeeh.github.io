@@ -2,7 +2,7 @@
 layout: post
 title:  "[Svelte] Deploy Sveltekit"
 author: hoeh
-categories: [ Svelte ]
+categories: [ svelte ]
 image: assets/images/svelte.jpeg
 toc: true
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "[Argocd] Argocd RBAC"
+title:  "[ArgoCD] Argocd RBAC"
 author: hoeh
-categories: [ Argocd ]
+categories: [ argocd ]
 image: assets/images/argocd.png
 toc: true
 ---

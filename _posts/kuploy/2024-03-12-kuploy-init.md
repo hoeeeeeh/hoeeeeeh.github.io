@@ -2,7 +2,7 @@
 layout: post
 title:  "[Kuploy] Kuploy 프로젝트 초기 세팅"
 author: hoeh
-categories: [ Kuploy ]
+categories: [ kuploy ]
 image: assets/images/kuploy.png
 toc: true
 ---
@@ -175,7 +175,7 @@ CNI에 대한 자세한 내용은 따로 작성해둔 [Kubernetes-CNI]({{ site.u
 대규모 트래픽 연산에 성능이 좋은 Calico와, 소규모 프로젝트에 어울리는 Flannel 중에서 선택을 고민했고 Calico 가 조금 더 대중적인 이유를 고려해서 Calico를 선택했다.
 
 ### CIDR(Classless Inter-Domain Routing)
-Calico
+Calico 에서 CIDR 은 192.168.0.0/16 를 입력해 주면 되는데, cidr 에 관해서는 [Gateway,사설망,CIDR]({{ site.url }}{{ site.baseurl }}/network/2024/03/22/cidr.html) 을 참조하자!
 
 
 

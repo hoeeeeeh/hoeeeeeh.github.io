@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "[Argocd] Getting Started"
+title:  "[ArgoCD] Getting Started"
 author: hoeh
-categories: [ Argocd ]
+categories: [ argocd ]
 image: assets/images/argocd.png
 toc: true
 ---
