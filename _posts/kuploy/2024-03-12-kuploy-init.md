@@ -166,7 +166,23 @@ sleep 3
 ``` bash
 $ sudo kubeadm init --apiserver-advertise-address=[마스터 노드 IP] --pod-network-cidr=[CNI 네트워크 라우팅 대역]  
 ```
-마스터노드에서 kubeadm 을 init 하면서 network-cidr 을 입력해야하는데, 우선 cidr 전에 CNI에 대해서 고민해봐야 한다.
+마스터노드에서 kubeadm 을 init 하면서 `네트워크 라우팅 대역` 을 입력해야하는데, Calico 를 사용한다면 192.168.0.0/16 를 입력해 주면 된다.  
+cidr 에 관해서는 [Gateway,사설망,CIDR]({{ site.url }}{{ site.baseurl }}/network/2024/03/22/cidr.html) 을 참조하자!  
+
+해당 커맨드를 입력하면 아래와 같은 결과값이 반환되는데 이를 어딘가에 적어두거나 기억해두자. 추후 Worker Node 설정에 필요하다.
+```bash
+# 딱히 건들지 않았다면 api-server 의 포트가 6443 으로 설정되어 있을 것이라서 마스터 노드의 6443 포트를 입력한다.
+sudo kubeadm join {마스터 노드 IP}:6443 --token {토큰값~}
+```
+
+이후에 config 에 권한을 부여해줘야 한다.
+```bash
+sudo mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+systemctl restart kubelet 
+systemctl restart docker 
+```
 
 #### CNI(Container Network Interface)  
 CNI에 대한 자세한 내용은 따로 작성해둔 [Kubernetes-CNI]({{ site.url }}{{ site.baseurl }}/kubernetes/2024/03/21/kubernetes-CNI.html) 문서를 참조하자.  
@@ -174,9 +190,29 @@ CNI에 대한 자세한 내용은 따로 작성해둔 [Kubernetes-CNI]({{ site.u
 
 대규모 트래픽 연산에 성능이 좋은 Calico와, 소규모 프로젝트에 어울리는 Flannel 중에서 선택을 고민했고 Calico 가 조금 더 대중적인 이유를 고려해서 Calico를 선택했다.
 
-#### CIDR(Classless Inter-Domain Routing)
-Calico 에서 CIDR 은 192.168.0.0/16 를 입력해 주면 되는데, cidr 에 관해서는 [Gateway,사설망,CIDR]({{ site.url }}{{ site.baseurl }}/network/2024/03/22/cidr.html) 을 참조하자!
 
+### Calico 설치  
+```bash
+# 2024-03-22 기준!
+$ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/tigera-operator.yaml
+$ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/custom-resources.yaml
+```
+더 자세한 것은[Calico 공식 홈페이지]("https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart") 참조하자!  
+calico 가 예전의 프로젝트에서 분리되어 나온건지 예전과 달라진 적이 있으므로 공식 홈페이지에서 안내해주는대로 설치하는 것을 권장한다.  
 
+```bash
+$ watch kubectl get pods -n calico-system
+```
 
+이후에 위의 커맨드로 모든 calico pod 들의 Status 가 Running 으로 바뀌는지 확인한다. 대략 5~6분 정도 소요되는 것 같다.
 
+### Helm 설치
+Helm 은 쿠버네티스의 Package managing tool 이다.
+
+## Worker Node 설정  
+Master Node 에서 kubeadm init 하면서 얻었던 join 커맨드를 입력해주자.
+```bash
+# 딱히 건들지 않았다면 api-server 의 포트가 6443 으로 설정되어 있을 것이라서 마스터 노드의 6443 포트를 입력한다.
+sudo kubeadm join {마스터 노드 IP}:6443 --token {토큰값~}
+```  
+join 이 정상적으로 되었다면 master node 에서 `kubectl get nodes` 를 입력 했을 때, worker node 들의 상태가 NotReady 가 아닌 Ready 상태여야 한다.
