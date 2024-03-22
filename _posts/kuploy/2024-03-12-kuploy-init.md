@@ -197,7 +197,7 @@ CNI에 대한 자세한 내용은 따로 작성해둔 [Kubernetes-CNI]({{ site.u
 $ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/tigera-operator.yaml
 $ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/custom-resources.yaml
 ```
-더 자세한 것은[Calico 공식 홈페이지]("https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart") 참조하자!  
+더 자세한 것은 [Calico 공식 홈페이지]("https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart") 를 참조하자!  
 calico 가 예전의 프로젝트에서 분리되어 나온건지 예전과 달라진 적이 있으므로 공식 홈페이지에서 안내해주는대로 설치하는 것을 권장한다.  
 
 ```bash
@@ -207,7 +207,13 @@ $ watch kubectl get pods -n calico-system
 이후에 위의 커맨드로 모든 calico pod 들의 Status 가 Running 으로 바뀌는지 확인한다. 대략 5~6분 정도 소요되는 것 같다.
 
 ### Helm 설치
-Helm 은 쿠버네티스의 Package managing tool 이다.
+Helm 은 쿠버네티스의 Package managing tool 이다. Linux 의 APT 나 YUM, 맥에서는 homebrew 와 비슷하다고 보면 된다.  
+```bash
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod +x get_helm.sh
+
+helm version
+```
 
 ## Worker Node 설정  
 Master Node 에서 kubeadm init 하면서 얻었던 join 커맨드를 입력해주자.
