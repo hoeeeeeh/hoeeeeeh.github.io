@@ -9,7 +9,7 @@ toc: true
 
 # [Javascript] Lexical This
 
-이전 문서 [Lexical_Scope AND Scope Chain](lexicalScope.html) 에서 렉시컬 스코프와 스코프 체인에 대해 알아보았다.  
+이전 문서 [Lexical_Scope AND Scope Chain](lexical_scope.html) 에서 렉시컬 스코프와 스코프 체인에 대해 알아보았다.  
 
 이번엔 내가 겪었던 문제로 돌아가서 이를 해결해보자.
 
