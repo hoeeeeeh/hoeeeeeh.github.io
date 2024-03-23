@@ -19,7 +19,7 @@ toc: true
 
 ## Lens 설치
 Lens 설치는 크게 어려울 것이 없다. 아래의 링크에서 운영체제에 맞게 다운로드 받으면 끝이다.  
-[Lens 공식 홈페이지]("https://k8slens.dev/")  
+[Lens 공식 홈페이지](https://k8slens.dev/)  
 
 ## Lens 에 Add Cluster
 
@@ -76,7 +76,7 @@ kubeadm init phase upload-config kubelet --config /{your_diretory}/kubeadm-conf.
 ### LENS 에서 cluster 추가  
 ![add_cluster]({{ site.url }}{{ site.baseurl }}/assets/images/add_cluster.png)  
 공식 홈페이지에서 다운받은 뒤에, 사진처럼 `Add Cluster` 를 눌러주면 되는데, 단순히 ~/.kube/config 파일을 불러오는게 아니다.  
-["Add_Cluster]("https://docs.k8slens.dev/getting-started/add-cluster/") 이 문서를 참조하라고 하는데, 확인해보면 아래의 커맨드로 현재의 config 를 불러오면 된다.
+["Add_Cluster](https://docs.k8slens.dev/getting-started/add-cluster/) 이 문서를 참조하라고 하는데, 확인해보면 아래의 커맨드로 현재의 config 를 불러오면 된다.
 ```
 kubectl config view --minify --raw
 ```

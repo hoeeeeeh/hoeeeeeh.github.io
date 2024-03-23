@@ -197,7 +197,7 @@ CNI에 대한 자세한 내용은 따로 작성해둔 [Kubernetes-CNI]({{ site.u
 $ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/tigera-operator.yaml
 $ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/custom-resources.yaml
 ```
-더 자세한 것은 [Calico 공식 홈페이지]("https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart") 를 참조하자!  
+더 자세한 것은 [Calico 공식 홈페이지](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart) 를 참조하자!  
 calico 가 예전의 프로젝트에서 분리되어 나온건지 예전과 달라진 적이 있으므로 공식 홈페이지에서 안내해주는대로 설치하는 것을 권장한다.  
 
 ```bash

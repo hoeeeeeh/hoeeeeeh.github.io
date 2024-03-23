@@ -17,7 +17,7 @@ Path 에 / 를 입력하면 발생하는 에러이다. 절대경로로 설정하
 
 ### Permission Denied
 현재 사용중인 account 에 권한이 없을 때 나타나는 에러이다.  
-[argocd RBAC 권한]("ArgocdRBAC.html") 을 참조해서 권한 설정을 하자
+[argocd RBAC 권한](ArgocdRBAC.html) 을 참조해서 권한 설정을 하자
 
 --2023-09-26 추가  
 Application 을 생성할 때 Project Name 을 선택하게 되는데, 정말 IDE 열어서 프로젝트 이름 짓는거 마냥 지어버리면 Permission Denied 가 뜬다...!!  
