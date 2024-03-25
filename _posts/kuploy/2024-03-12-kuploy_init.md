@@ -4,6 +4,7 @@ title:  "[Kuploy] Kuploy 프로젝트 초기 세팅"
 author: hoeh
 categories: [ kuploy ]
 image: assets/images/kuploy.png
+featured: true
 toc: true
 ---
 
