@@ -7,7 +7,6 @@ favicon: 'assets/images/logo.png'
 # baseurl : "/hoeh"
 url : 'https://hoeeeeeh.github.io'
 google_analytics: 'G-G9Z64HV3NB'
-image_path: site.url + site.baseurl + "/assets/images"
 disqus: 'hoeeeeeh-github-io'
 mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 include: ["_pages"]
@@ -66,3 +65,5 @@ lazyimages: "disabled"
 
 exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock]
 
+# Image Path
+img: "/assets/images"
