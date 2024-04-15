@@ -87,3 +87,5 @@ sleep 1
 쿠버네티스 1.29 버전에 상응하는 containerd 버전을 찾아야 하는데, [containerd-version-release](https://containerd.io/releases/) 에서 확인해볼 수 있다.  
 
 ![containerd-k8s-version]({{ site.url }}{{ site.baseurl }}/assets/images/containerd-k8s-version.png)
+
+아무래도 버전이 낮은게 더 안정성이 높지 않을까? 라는 생각에 쿠버네티스 1.29 버전에 맞는 containerd 버전 중에서 1.6.30 버전을 선택했다. 설치 방법은 containerd 의 공식 홈페이지를 참조했다. [Getting started with containerd](https://github.com/containerd/containerd/blob/main/docs/getting-started.md)

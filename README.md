@@ -12,3 +12,5 @@
 
 
 {{ site.url }}{{ site.baseurl }}/assets/images/
+
+[Gateway,사설망,CIDR]({{ site.url }}{{ site.baseurl }}/network/2024/03/22/cidr.html
