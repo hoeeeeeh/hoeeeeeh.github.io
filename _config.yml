@@ -66,4 +66,4 @@ lazyimages: "disabled"
 exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock]
 
 # Image Path
-image_path: "{{ site.url }}{{ site.baseurl }}/assets/images"
+image_path: "/assets/images"
