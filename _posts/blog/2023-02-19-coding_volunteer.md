@@ -71,7 +71,7 @@ toc: true
 
 저 귀여운 친구들의 마음이 변하지 않기를 바라면서도 내 자신을 돌아보게 하는 순간이였다.
 
-![코딩교육봉사]({{ site.url }}{{ site.baseurl }}/assets/images/codingvolunteer.jpeg)
+![코딩교육봉사]({{ site.img }}/codingvolunteer.jpeg)
 
 더 많은 사진 : [시립서울청소년센터](http://www.youthc.or.kr/community/photo.asp?searchGub=T&searchKey=%B0%C7%B4%EB%B6%FB+%C4%DA%B5%F9%C7%D2%B0%C7%B4%EB%3F%5D+3%C2%F7&_signaturetoken=A29azNWfV82Y68M%2B7c3gk190%2BEoJzZHFgCeq2JwIIN8%3D)
 

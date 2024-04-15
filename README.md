@@ -11,6 +11,6 @@
 </details>
 
 
-{{ site.url }}{{ site.baseurl }}/assets/images/
+{{ site.img }}/
 
-[Gateway,사설망,CIDR]({{ site.url }}{{ site.baseurl }}/network/2024/03/22/cidr.html
+[Gateway,사설망,CIDR]({{ site.url }}/network/2024/03/22/cidr.html

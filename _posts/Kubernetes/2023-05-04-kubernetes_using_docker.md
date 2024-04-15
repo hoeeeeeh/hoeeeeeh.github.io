@@ -14,7 +14,7 @@ toc: true
 도커에는 자체적으로 쿠버네티스를 지원한다. 아래 사진 처럼 도커에서  
 > Setting -> Kubernetes -> Enable Kubernetes 를 활성화해주자.  
 
-![k8s_in_docker]({{ site.url }}{{ site.baseurl }}/assets/images/2023-05-04-kubernetes-using-docker/k8s_in_docker.png)
+![k8s_in_docker]({{ site.img }}/2023-05-04-kubernetes-using-docker/k8s_in_docker.png)
   
   
   
@@ -28,7 +28,7 @@ kubectl get nodes
 
 를 입력해보면
 
-![kubectl_get_nodes]({{ site.url }}{{ site.baseurl }}/assets/images/2023-05-04-kubernetes-using-docker/kubectl_get_nodes.png)
+![kubectl_get_nodes]({{ site.img }}/2023-05-04-kubernetes-using-docker/kubectl_get_nodes.png)
 
 처럼 현재 실행중인 노드를 확인할 수 있는데, 여기서 기존에 GKE 나 Minikube 를 사용한 적이 있다면 Context 가 Docker 가 아니라, GKE 나 Minikube 로 잡혀있을 수도 있다.  
 
@@ -64,6 +64,6 @@ kubectl get services
 
 ### deployment result
 를 입력해보면, 아까 배포한 hellok8s 의 포트가 8080:3{XXXX} 로 되어 있을텐데, localhost:3XXXX 로 접속해보면  
-![expose_result]({{ site.url }}{{ site.baseurl }}/assets/images/2023-05-04-kubernetes-using-docker/expose_result.png)  
+![expose_result]({{ site.img }}/2023-05-04-kubernetes-using-docker/expose_result.png)  
 와 같은 결과를 얻을 수 있다.
  

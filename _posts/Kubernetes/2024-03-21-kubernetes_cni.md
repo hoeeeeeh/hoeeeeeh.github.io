@@ -55,4 +55,4 @@ Calico CNI는 containers, Kubernetes clusters, virtual machines, and native host
 
 > 컨트롤 플레인 : 네트워크 경로를 결정하고, 정책을 설정하는 등의 네트워크 운영을 총괄하는 플레인. 네트워킹 장비에게 어떤 경로로 데이터 패킷을 전달해야 하는지 라우팅을 생성하고 관리하는 기능을 담당하는 플레인 (손,발)
 
-![Calico-Architecture]({{ site.url }}{{ site.baseurl }}/assets/images/calico-architecture.png)
+![Calico-Architecture]({{ site.img }}/calico-architecture.png)
