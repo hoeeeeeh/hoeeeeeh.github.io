@@ -201,6 +201,17 @@ lsmod | grep overlay
 sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
 ```
 
+### cgroup
+리눅스는 cgroup가 프로세스의 리소스를 제한하는 역할을 한다.   
+kubelet과 containerd 도 pod의 리소스를 제한하는데 cgroup driver 를 사용해야 하는데, 반드시 kubelet 과 containerd 는 같은 구성의, 같은 cgroup driver 를 사용해야 한다는 것이다.  
+cgroup driver 에는 `cgroupfs` 와 `systemd` 가 존재하는데 만약 init 프로세스가 systemd 인 경우에는 kubelet 과 containerd 의 cgroup driver 또한 `systemd` 를 사용하도록 권장하고 있다. 이유는 systemd 가 cgroup 관리자는 하나라고 인식하기 때문이다.   
+> 추가로 cgroup v2 를 사용할 경우에도 systemd 를 사용하라고 한다. [cgroup v2](https://kubernetes.io/docs/concepts/architecture/cgroups/) 가 무엇인지 문서를 읽어보니 cgroup 의 업그레이드 버젼인듯 하다.
+
+#### kubelet 의 cgroup driver 를 systemd 로 수정하기
+[kubelet-config-file](https://kubernetes.io/ko/docs/tasks/administer-cluster/kubelet-config-file/)  
+![Alt text](image_path/kubelet-config.png)
+
+
 ## Master Node 설정
 
 ### kubeadm init
