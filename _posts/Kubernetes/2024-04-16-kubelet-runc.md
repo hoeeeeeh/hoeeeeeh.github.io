@@ -12,7 +12,7 @@ toc: true
 ![kubelet_is_not_running]({{ site.img }}/kubelet_is_not_running.png)  
 
 원인을 알아보려고 우선 `systemctl status kubelet` 과 `journalctl -xeu kubelet` 을 실행해봤는데,  
-![systemctl_status_kubelet]({{ site.img}}/systemctl_status_kubelet.png)  
+![systemctl_status_kubelet]({{ site.img }}/systemctl_status_kubelet.png)  
 
 아무래도 runc 의 문제인 것 같았다.
 
