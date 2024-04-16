@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Kubernetes] Kubernetes & Docker & Containerd"
+title:  "[Kubernetes] Kubelet is not running"
 author: hoeh
 categories: [ kubernetes ]
 image: assets/images/kubernetes.png
