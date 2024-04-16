@@ -168,6 +168,27 @@ sleep 3
 
 쿠버네티스 버전을 1.24 이상 버전을 사용하면서, docker 에서 containerd 로 옮겨가게 되었다. 쿠버네티스와 containerd 의 설치 방법은 [k8s-docker-containerd]({{ site.url }}/kubernetes/2024/04/06/kubernetes_containerd.html) 에 적어두었다.
 
+### containerd 설정
+``` bash
+sudo mkdir -p /etc/containerd
+containerd config default | sudo tee /etc/containerd/config.toml
+```
+
+#### systemd 를 cgroup driver 로 설정하기
+`/etc/containerd/config.toml` 에 아래 항목 추가
+``` bash
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+  ...
+  [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+    SystemdCgroup = true
+```
+
+``` bash
+sudo systemctl restart containerd
+```
+
+containerd 재시작.
+
 ### IPv4 포워딩, bridge iptable 규칙 수정
 [Container Runtime](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd) 쿠버네티스 공식 문서를 참조해서 진행했다.
 ``` bash
@@ -247,8 +268,8 @@ CNI에 대한 자세한 내용은 따로 작성해둔 [Kubernetes-CNI]({{ site.u
 ### Calico 설치  
 ```bash
 # 2024-03-22 기준!
-$ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/tigera-operator.yaml
-$ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/custom-resources.yaml
+$ kubectl create -f kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.3/manifests/tigera-operator.yaml
+$ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.3/manifests/custom-resources.yaml
 ```
 더 자세한 것은 [Calico 공식 홈페이지](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart) 를 참조하자!  
 calico 가 예전의 프로젝트에서 분리되어 나온건지 예전과 달라진 적이 있으므로 공식 홈페이지에서 안내해주는대로 설치하는 것을 권장한다.  
@@ -258,6 +279,13 @@ $ watch kubectl get pods -n calico-system
 ```
 
 이후에 위의 커맨드로 모든 calico pod 들의 Status 가 Running 으로 바뀌는지 확인한다. 대략 5~6분 정도 소요되는 것 같다.
+
+```bash
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+kubectl taint nodes --all node-role.kubernetes.io/master-
+```
+
+마지막으로 control plane 의 taint 를 제거함으로써 pod 스케쥴링을 할 수 있도록 바꿔준다.
 
 ### Helm 설치
 Helm 은 쿠버네티스의 Package managing tool 이다. Linux 의 APT 나 YUM, 맥에서는 homebrew 와 비슷하다고 보면 된다.  
