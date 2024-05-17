@@ -35,7 +35,7 @@ def simple_binary_search(target: int, arr: list):
             return mid
 
     # target 을 찾지 못함
-    return -1
+    return -
 
 ```
 이분 탐색은 말 그대로, 이등분하여 탐색하는 알고리즘이다. 로직을 자세히 보아도 이해하는데 크게 어려움은 없다.  
@@ -58,7 +58,7 @@ def lower_bound_bisect(target: int, arr: list):
     arr.sort()
 
     start = 0
-    end = len(arr) - 1
+    end = len(arr)
 
     while start < end:
         mid = (start + end) // 2
@@ -94,7 +94,7 @@ def upper_bound_bisect(target: int, arr: list):
     arr.sort()
 
     start = 0
-    end = len(arr) - 1
+    end = len(arr)
 
     while start < end:
         mid = (start + end) // 2
@@ -119,3 +119,5 @@ def upper_bound_bisect(target: int, arr: list):
 `while start <= end` 와 `while start < end` 이 있는데, Lower/Upper 탐색은 1캰씩 움직이며 찾아나가는데 start <= end 로 하게 되면 소수점 버림으로 인해서 무한 루프에 빠질 수 있다.  
 
 또한 Lower/Upper 의 return 은 mid 가 아니라 `start` 인데, 이는 당연하게도 Lower 과 Upper 이 각각 크거나 같은 것 중에 최소값, 큰 것 중에 최소값을 return 해야하기 때문이다.
+
+Lower/Upper 의 end 초기값도 조금 다른데, len(arr) - 1 이 아니라, `len(arr)` 이다. 이는 조건을 만족하는 곳이 없으면 무조건 len(arr) 의 위치에 넣으면 되기 때문이다.
