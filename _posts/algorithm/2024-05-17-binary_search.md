@@ -2,7 +2,7 @@
 layout: post
 title:  "[Algorithm] Binary Search"
 author: hoeh
-categories: [ ec2 ]
+categories: [ algorithm ]
 image: assets/images/algorithm.png
 toc: true
 ---
