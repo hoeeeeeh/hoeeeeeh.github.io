@@ -14,7 +14,7 @@ toc: true
 ## 이분 탐색(Target과 동일한게 있을 때)
 이분 탐색의 가장 기초적인 형태로, 찾고 싶은 Target 이 몇 번째 인덱스에 존재하는지 찾는 방법이다.  
 
-``` Python
+``` python
 def simple_binary_search(target: int, arr: list):
     # 오름차순이라고 가정, 만약 arr 의 정렬이 보장되어 있지 않다면 정렬을 해야한다.
     arr.sort()
