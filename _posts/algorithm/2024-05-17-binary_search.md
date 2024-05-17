@@ -116,6 +116,6 @@ def upper_bound_bisect(target: int, arr: list):
 
 ## 차이점
 단순 이분 탐색과 lower / upper bound 의 while 종료 조건 차이점을 살펴보자.  
-`while start <= end` 와 `while start < end` 이 있는데, Lower/Upper 탐색은 1캰씩 움직이며 챶아나가는데 start <= end 로 하게 되면 소수점 버림으로 인해서 무한 루프에 빠질 수 있다.  
+`while start <= end` 와 `while start < end` 이 있는데, Lower/Upper 탐색은 1캰씩 움직이며 찾아나가는데 start <= end 로 하게 되면 소수점 버림으로 인해서 무한 루프에 빠질 수 있다.  
 
 또한 Lower/Upper 의 return 은 mid 가 아니라 `start` 인데, 이는 당연하게도 Lower 과 Upper 이 각각 크거나 같은 것 중에 최소값, 큰 것 중에 최소값을 return 해야하기 때문이다.
