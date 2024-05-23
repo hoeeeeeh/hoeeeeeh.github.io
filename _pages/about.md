@@ -7,7 +7,7 @@ comments: true
 
 <div class="row justify-content-between">
     <div id="left-side" class="col-md-8 pr-5">
-        <p>건국대학교!</p>
+        # about test
         <p class="mb-5"><img class="shadow-lg" src="{{site.baseurl}}/assets/images/whoami.jpeg" alt="Who am I" /></p>
     </div>
     <div id="right-side" class="col-md-4">
