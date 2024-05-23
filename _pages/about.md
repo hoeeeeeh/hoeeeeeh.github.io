@@ -1,14 +1,14 @@
 ---
 layout: page
-title: Hoeeeeeh
+title: 설계는 섬세하게, 코드는 명확하게
 permalink: /about
-comments: true
+# comments: true
 ---
 
 <div class="row justify-content-between">
     <div id="left-side" class="col-md-8 pr-5">
-        # about test
-        <p class="mb-5"><img class="shadow-lg" src="{{site.baseurl}}/assets/images/whoami.jpeg" alt="Who am I" /></p>
+        <p> 설계는 섬세하게, 코드는 명확하게</p>
+        <!-- <p class="mb-5"><img class="shadow-lg" src="{{site.baseurl}}/assets/images/whoami.jpeg" alt="Who am I" /></p> -->
     </div>
     <div id="right-side" class="col-md-4">
         <div class="sticky-top sticky-top-80">
