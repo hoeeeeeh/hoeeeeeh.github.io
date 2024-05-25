@@ -4,10 +4,10 @@ title: 설계는 섬세하게, 코드는 명확하게
 permalink: /about
 # comments: true
 ---
-
 <div class="row justify-content-between">
     <div id="left-side" class="col-md-8 pr-5">
-        <iframe src="https://pickled-lobster-1af.notion.site/75c995c89f38464fb0574d62e2dc7f2c" title="RESUME"></iframe>
+        <iframe src="{{site.baseurl}}/assets/html/resume.html"></iframe>
+        <!-- <p class="mb-5"><img class="shadow-lg" src="{{site.baseurl}}/assets/html/resume.html" alt="Who am I" /></p> -->
     </div>
     <div id="right-side" class="col-md-4">
         <div class="sticky-top sticky-top-80">
