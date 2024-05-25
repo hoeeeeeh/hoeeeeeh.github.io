@@ -6,7 +6,7 @@ permalink: /about
 ---
 <div class="row justify-content-between">
     <div id="left-side" class="col-md-8 pr-5">
-        <iframe src="{{site.baseurl}}/assets/html/resume.html"></iframe>
+        <iframe class="resume" src="{{site.baseurl}}/assets/html/resume.html" style="border:none"></iframe>
         <!-- <p class="mb-5"><img class="shadow-lg" src="{{site.baseurl}}/assets/html/resume.html" alt="Who am I" /></p> -->
     </div>
     <div id="right-side" class="col-md-4">

@@ -469,6 +469,11 @@ blockquote {
     vertical-align: middle;
 }
 
+.resume {
+    width: auto;
+    height: auto;
+}
+
 .sticky-top-offset {
     top: 100px;
 }
