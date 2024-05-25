@@ -7,8 +7,7 @@ permalink: /about
 
 <div class="row justify-content-between">
     <div id="left-side" class="col-md-8 pr-5">
-        <p> 설계는 섬세하게, 코드는 명확하게</p>
-        <!-- <p class="mb-5"><img class="shadow-lg" src="{{site.baseurl}}/assets/images/whoami.jpeg" alt="Who am I" /></p> -->
+        <iframe src="https://pickled-lobster-1af.notion.site/75c995c89f38464fb0574d62e2dc7f2c" title="RESUME"></iframe>
     </div>
     <div id="right-side" class="col-md-4">
         <div class="sticky-top sticky-top-80">
