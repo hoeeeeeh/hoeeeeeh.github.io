@@ -73,7 +73,7 @@ def lower_bound_bisect(target: int, arr: list):
         만약 target 보다 작다면, start 를 mid + 1 로 바꿔서 이분한 배열의 오른쪽만 다시 확인하게 하고
         만약 target 보다 크거나 같다면, mid 를 포함한 채로, 배열의 왼쪽을 다시 살펴본다.
 
-        왜 mid - 1 이 아니라, mid 일까? -> 찾고 싶은 것이 `target 보다 크거나 같은 것` 이므로, target <= arr[mid] 를 만족하는 순간  
+        왜 mid - 1 이 아니라, mid 일까? -> 찾고 싶은 것이 `target 보다 크거나 같은 것` 이므로, target >= arr[mid] 를 만족하는 순간  
         우리가 찾고자 하는 것이다. 그렇기 때문에 정답 범주에 넣어두어야 한다.
         """
     return start
@@ -108,7 +108,7 @@ def upper_bound_bisect(target: int, arr: list):
         만약 target 보다 작거나 같다면, start 를 mid + 1 로 바꿔서 이분한 배열의 오른쪽만 다시 살펴보게 하고
         만약 target 보다 크다면, mid 를 포함한 채로 왼쪽을 다시 살펴보게 한다.
 
-        왜 mid - 1 이 아니라, mid 일까? -> 찾고 싶은 것이 `target 보다 큰 것` 이므로, target <= arr[mid] 를 만족하는 순간  
+        왜 mid - 1 이 아니라, mid 일까? -> 찾고 싶은 것이 `target 보다 큰 것` 이므로, target > arr[mid] 를 만족하는 순간  
         우리가 찾고자 하는 것이다. 그렇기 때문에 정답 범주에 넣어두어야 한다.
         """
     return start
