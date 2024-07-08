@@ -25,4 +25,4 @@ navigator.mediaSession.setActionHandler("play", playOrPause);
 navigator.mediaSession.setActionHandler("pause", playOrPause);
 ```
 
-출처(https://www.reddit.com/r/Udemy/comments/17utgsh/keyboard_buttons_do_not_play_pause_and_forward_5s/)
+[출처](https://www.reddit.com/r/Udemy/comments/17utgsh/keyboard_buttons_do_not_play_pause_and_forward_5s/)
