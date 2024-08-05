@@ -240,10 +240,6 @@ h4, h5, h6 {
     font-size : 1.2rem;
 }
 
-.toc {
-    margin-right: 1.5rem;
-}
-
 .toc ul {
     padding-left: 1.2em;
     list-style: none;
@@ -439,6 +435,7 @@ blockquote {
 .toc-wrapper {
     flex: 0 0 20%;
     max-width: 20%;
+    margin-right: 1.5rem;
 }
 .share {
     text-align: left;
