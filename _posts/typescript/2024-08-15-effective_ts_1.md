@@ -5,7 +5,6 @@ author: hoeh
 categories: [typescript]
 image: assets/images/typescript_logo.svg
 toc: true
-featured: true
 ---
 
 > [이펙티브 타입스크립트 책](https://product.kyobobook.co.kr/detail/S000001033114)과
