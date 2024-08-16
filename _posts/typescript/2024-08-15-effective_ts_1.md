@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Typescript] Effective Typescript 1"
+title: "[Typescript] Effective Typescript 정리 1"
 author: hoeh
 categories: [typescript]
 image: assets/images/typescript_logo.svg
@@ -8,7 +8,7 @@ toc: true
 ---
 
 > [이펙티브 타입스크립트 책](https://product.kyobobook.co.kr/detail/S000001033114)과
-> [이펙티브 타입스크립트 스터디](https://www.youtube.com/watch?v=O4-8lQOZ2Tg) 스터디 영상을 공부하며 정리한 내용입니다.
+> [이펙티브 타입스크립트 스터디](https://www.youtube.com/watch?v=O4-8lQOZ2Tg) 영상을 공부하며 정리한 내용입니다.
 
 # TS, JS
 
@@ -34,8 +34,8 @@ console.log(sample.uppercase());
 
 ```typescript
 interface person {
-  name: String;
-  age: Number;
+  name: string;
+  age: number;
 }
 
 const people: Person[] = [
@@ -68,8 +68,8 @@ console.log(a[2]); // 컴파일은 정상, 런타임에서 오류
 
 tsconfig.json 파일에서 여러 옵션으로 셋팅을 줄 수 있다. 타입스크립트를 어떻게 사용할 지 동료들에게 알려줄 수 있다.  
 예를 들어, `noImplicitAny` 옵션은 타입 선언이 없으면 암시적으로 any 타입으로 선언하는 옵션인데, false 와 true 로 옵션을 켜고 끌 수 있다.  
-`strictNullChecks` 는 모든 타입에 null과 undefined 를 할당할 수 있는지에 대한 옵션이다.  
-null을 명시적으로 허용하려면, `const x : number | null = null;` 처럼 사용하는 것이 좋다. 만약 이렇게 되면 Null check를 위한 assertion(단언문) 이 필요하다.
+`strictNullChecks` 는 모든 타입에 null 과 undefined 를 할당할 수 있는지에 대한 옵션이다.  
+null 을 명시적으로 허용하려면, `const x : number | null = null;` 처럼 사용하는 것이 좋다. 만약 이렇게 되면 Null check 를 위한 assertion(단언문) 이 필요하다.
 
 ```ts
 if (x.abc) {
