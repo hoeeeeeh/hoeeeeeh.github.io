@@ -3,7 +3,7 @@ layout: post
 title: "[Javascript] 2주차 회고"
 author: hoeh
 categories: [javascript]
-image: assets/images/javascript.png
+image: assets/images/nbc_challenge.png
 toc: true
 ---
 

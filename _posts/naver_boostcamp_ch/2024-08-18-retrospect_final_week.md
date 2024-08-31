@@ -3,7 +3,7 @@ layout: post
 title: "[Javascript] 네이버 부스트캠프 챌린지 회고"
 author: hoeh
 categories: [javascript]
-image: assets/images/javascript.png
+image: assets/images/nbc_challenge.png
 toc: true
 ---
 베이직부터 시작해서 벌써 챌린지까지 마무리가 되었다.  

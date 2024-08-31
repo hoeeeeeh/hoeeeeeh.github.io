@@ -3,7 +3,7 @@ layout: post
 title: "[네이버 부스트캠프 멤버쉽] 프로젝트 셋팅"
 author: hoeh
 categories: [javascript]
-image: assets/images/javascript.png
+image: assets/images/nbc_membership.png
 toc: true
 ---
 
