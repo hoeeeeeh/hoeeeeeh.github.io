@@ -72,8 +72,7 @@ export class DogsModule {}
 
 ```
 위의 예시처럼 NestJS 모듈 별로 프로바이더, 서비스, 컨트롤러 등등을 주입받는데 모듈별로 injector 가 생성되고 해당 인젝터가 의존성 객체들을 캐싱하고 있다.  
-
-따라서 같은 클래스를 기반으로 한 싱글톤 의존성 객체라고 하더라도 다른 모듈이라면 같은 객체가 아니다.
+또한 CatsModule 에 주입된 CatsService 를 export 함으로써 DogsModule 에서 CatsModule 의 프로바이더를 가져와서 사용할 수 있게 된다.  
 
 ## @Injectable : 의존성 주입 가능
 
