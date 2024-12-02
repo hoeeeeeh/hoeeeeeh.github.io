@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Green Developers] Liboo 프로젝트 후기 작성"
+title: "[Green Developers] Liboo 프로젝트 후기"
 author: hoeh
 categories: [javascript]
 image: assets/images/nbc_membership.png
