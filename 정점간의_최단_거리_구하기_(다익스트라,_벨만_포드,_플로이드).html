@@ -489,7 +489,7 @@ Graph:
 
 <p>정점의 갯수를 E, 간선의 갯수를 V 라고 할 때,</p>
 
-<p>각 정점마다 인접한 간선들을 모두 검사하는 작업은 정확히 모든 간선을 1번씩 검사하기 때문에 <code class="language-plaintext highlighter-rouge">O(|E|)</code> 의 시간이 걸리게 된다.</p>
+<p>각 정점마다 인접한 간선들을 모두 검사하는 작업은 정확히 모든 간선을 1번씩 검사하기 때문에 <code class="language-plaintext highlighter-rouge">O(E)</code> 의 시간이 걸리게 된다.</p>
 
 <h3 id="우선순위-큐에-원소를-넣고-삭제">우선순위 큐에 원소를 넣고 삭제</h3>
 
@@ -512,34 +512,14 @@ Graph:
       <td>E</td>
       <td>)의 시간이 걸리고 이를 O(</td>
       <td>E</td>
-      <td>) 개의 원소에 대해 작업을 해야하므로 <code class="language-plaintext highlighter-rouge">O(|E|log|E|)</code> 가 된다.</td>
+      <td>) 개의 원소에 대해 작업을 해야하므로 <code class="language-plaintext highlighter-rouge">O(ElogE)</code> 가 된다.</td>
     </tr>
   </tbody>
 </table>
 
 <h3 id="일반적인-시간-복잡도">일반적인 시간 복잡도</h3>
 
-<table>
-  <tbody>
-    <tr>
-      <td>위의 두 과정을 더하게 되면 O(</td>
-      <td>E</td>
-      <td>+</td>
-      <td>E</td>
-      <td>log</td>
-      <td>E</td>
-      <td>) = O(</td>
-      <td>E</td>
-      <td>log</td>
-      <td>E</td>
-      <td>) 가 되는데, 보통 그래프에서 간선의 개수 E 는 V^2 보다 작기 때문에 O(log</td>
-      <td>E</td>
-      <td>) = O(log</td>
-      <td>V</td>
-      <td>) 라고 볼 수 있다. 따라서 O(ElogV) 라고 할 수 있다.</td>
-    </tr>
-  </tbody>
-</table>
+<p>위의 두 과정을 더하게 되면 O(E + ElogE) = O(ElogE) 가 되는데, 보통 그래프에서 간선의 개수 E 는 V^2 보다 작기 때문에 O(logE) = O(logV) 라고 볼 수 있다. 따라서 O(ElogV) 라고 할 수 있다.</p>
 
 <h2 id="경로-추적">경로 추적</h2>
 
