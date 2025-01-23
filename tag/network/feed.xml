@@ -1,0 +1,1133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="https://hoeeeeeh.github.io/tag/network/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" />
+  <updated>2025-01-23T06:48:01+00:00</updated>
+  <id>https://hoeeeeeh.github.io/tag/network/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">hoeeeeeh | </title>
+  
+
+  
+    <subtitle>HOEH 개발 블로그</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">네트워크 CS 지식</title>
+      <link href="https://hoeeeeeh.github.io/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_CS_%EC%A7%80%EC%8B%9D" rel="alternate" type="text/html" title="네트워크 CS 지식" />
+      <published>2025-01-15T12:26:00+00:00</published>
+      <updated>2025-01-15T12:26:00+00:00</updated>
+      <id>https://hoeeeeeh.github.io/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_CS_%EC%A7%80%EC%8B%9D</id>
+      <content type="html" xml:base="https://hoeeeeeh.github.io/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_CS_%EC%A7%80%EC%8B%9D">&lt;p&gt;네트워크 CS 지식 정리&lt;/p&gt;
+
+&lt;h1 id=&quot;전이중화-통신&quot;&gt;전이중화 통신&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Full Duplex : 양쪽 장치가 동시에 송수신할 수 있는 방식&lt;/li&gt;
+  &lt;li&gt;회선이 두 개(송신로, 수신로)가 있어서 같은 시간에 데이터를 주고 받을 수 있는 것이 전이중화 통신&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;반 이중화 통신은 회선 하나로 보내기 때문에 양방향으로 보내기 전에 먼저 상대방이 보냈는지 확인하는 기술 CSMA-CD&lt;/p&gt;
+
+&lt;p&gt;충돌이 발생하면 잠깐 기다렸다가 다시 보내기&lt;/p&gt;
+
+&lt;h1 id=&quot;무선랜&quot;&gt;무선랜&lt;/h1&gt;
+
+&lt;p&gt;무선랜은 반이중화 통신을 사용&lt;/p&gt;
+
+&lt;p&gt;half duplex (반이중화 통신)은 양쪽 장치가 서로 통신은 할 수 있지만 동시에는 못한다. 즉 한 번에 한 방향만 가능&lt;/p&gt;
+
+&lt;p&gt;CSMA/CA&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;사용하지 않는 채널 발견&lt;/li&gt;
+  &lt;li&gt;IFS 시간만큼 기다림&lt;/li&gt;
+  &lt;li&gt;프레임 보내고, 다음 프레임 보내기 전까지 IFS 만큼 기다림&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;대표적인 예시) 와이파이, 블루투스, 지그비&lt;/p&gt;
+
+&lt;p&gt;2.4Ghz : 장애물에 강함, 속도가 느리다, 호환성이 좋다&lt;/p&gt;
+
+&lt;p&gt;5Ghz : 장애물에 약함, 속도가 빠르다, 호환성이 비교적 나쁘다&lt;/p&gt;
+
+&lt;h1 id=&quot;대규모-트래픽으로-인한-서버-과부하-해결-방법&quot;&gt;대규모 트래픽으로 인한 서버 과부하 해결 방법&lt;/h1&gt;
+
+&lt;p&gt;서버 과부하 : 서버가 리소스를 소진하여 들어오는 요청을 처리하지 못할 때. (응답없음)&lt;/p&gt;
+
+&lt;p&gt;자원의 한계점 도달&lt;/p&gt;
+
+&lt;p&gt;→ 자원을 빠르게 증가시켜주기 (오토 스케일링) 클라우드 와치가 모니터링한다.&lt;/p&gt;
+
+&lt;p&gt;→ 무료 모니터링 (netData) 도 있다.&lt;/p&gt;
+
+&lt;p&gt;→ 쓰레스 홀드(임계치)를 정해놓고 이상으로 넘어가면 알림을 준다.&lt;/p&gt;
+
+&lt;h2 id=&quot;모니터링을-하는-이유&quot;&gt;모니터링을 하는 이유&lt;/h2&gt;
+
+&lt;p&gt;모니터링을 통해 어떤 서비스에 트래픽이 몰리는지, 어떤 이유로 몰리는지 분석이 가능하다.&lt;/p&gt;
+
+&lt;p&gt;또한 페이지를 나누어 트래픽을 나눌 수도 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;로드밸런서&quot;&gt;로드밸런서&lt;/h2&gt;
+
+&lt;p&gt;로드밸런서를 통해서 트래픽을 분산&lt;/p&gt;
+
+&lt;p&gt;오토 스케일링을 하는 동안 시간이 조금 걸리기 때문에, 로드 밸런스를 앞 단에 두고 트래픽을 분산 시킨다.&lt;/p&gt;
+
+&lt;p&gt;로드 밸런서에다가도 오토 스케일링을 걸기도 한다. (트래픽이 많은 기업)&lt;/p&gt;
+
+&lt;h2 id=&quot;블랙스완-프로토콜&quot;&gt;블랙스완 프로토콜&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;예측할 수 없는 사고가 일어난 것&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;엄청나게 많은 대비를 해도 서버가 죽을 수도 있다. 서버가 예기치 못한 사태로 죽고나서 분석은 가능하지만 미리 예측하기는 쉽지 않다.&lt;/p&gt;
+
+&lt;p&gt;블랙스완을 대비한 규칙이 있으면 좋다.&lt;/p&gt;
+
+&lt;p&gt;구글의 경우에는,&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;영향을 받은 시스템과 각 시스템의 상대적 위험 수준을 확인&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;→ 체계적으로 데이터를 수집하고 원인에 대한 가설을 수립한 후 이를 테스팅&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;잠재적으로 영향을 받을 수 있는 내부의 모든 팀에 연락&lt;/li&gt;
+  &lt;li&gt;최대한 빨리 취약점에 영향을 받는 모든 시스템을 업데이트&lt;/li&gt;
+  &lt;li&gt;복원계획을 포함한 우리의 대응 과정을 파트너와 고객 등 외부에 전달&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;서킷-브레이커&quot;&gt;서킷 브레이커&lt;/h2&gt;
+
+&lt;p&gt;서비스 장애를 감지하고 연쇄적으로 생기는 에러를 방지하는 기법&lt;/p&gt;
+
+&lt;p&gt;서비스와 서비스 사이에 서킷브레이커 계층을 두고, 미리 설정해놓은 타임아웃 임계값을 넘어가면 서킷브레이커가 그 이후의 추가 호출에 무조건 에러를 반환하게 한다.&lt;/p&gt;
+
+&lt;p&gt;다운된 서비스에 무한정 대기하면서 스레드 혹은 리소스를 잡아먹게 되면서 다른 스레드가 차단되는 현상이 발생할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;기다린다&lt;/code&gt;는 것은 사용자 입장에서 썩 좋은 경험은 아니다.&lt;/p&gt;
+
+&lt;p&gt;기다리는것보다 차라리 오류가 생겼다고 말해주는 것이 더 좋은 경험이다.&lt;/p&gt;
+
+&lt;p&gt;따라서 빠르게 알려줄 수 있는 서킷 브레이커가 더 좋을 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;서킷-브레이커의-상태&quot;&gt;서킷 브레이커의 상태&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;closed (정상) : 네트워크 요청의 실패율이 임계치보다 낮음
+    &lt;ul&gt;
+      &lt;li&gt;어느정도는 실패할 수 있다. 100퍼센트가 아니라 90퍼이상 성공하면 괜찮다같이 정할 수 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;open (에러) : 에러가 임계치 이상의 상태일 때.
+    &lt;ul&gt;
+      &lt;li&gt;요청을 서비스로 전송하지 않고 에러를 반환. 이를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fail test&lt;/code&gt; 라고 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;half open (확인 중) : 오픈 상태에서 일정 타임 아웃으로 설정된 시간이 지나면 장애가 해결되었는지 확인하기 위한 상태. 장애가 풀리면 closed 상태로, 실패하면 다시 open 상태로 전환&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/0.png&quot; alt=&quot;0&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;서킷-브레이커의-장점&quot;&gt;서킷 브레이커의 장점&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;연쇄적인 에러 발생을 막아준다&lt;/li&gt;
+  &lt;li&gt;일부 서비스가 다운되더라도 다른 서비스를 정상적으로 돌아가게 도와준다.&lt;/li&gt;
+  &lt;li&gt;사용자 경험을 높여준다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Netfilix 의 Hystrix&lt;/p&gt;
+
+&lt;h2 id=&quot;컨텐츠-관리&quot;&gt;컨텐츠 관리&lt;/h2&gt;
+
+&lt;p&gt;어떻게 하면 서버의 부하를 덜 수 있을까&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;불필요한 컨텐츠 제거
+    &lt;ul&gt;
+      &lt;li&gt;인프런에서 할인 이벤트를 열었는데 장애가 발생.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://tech.inflab.com/202201-event-postmortem/&quot;&gt;https://tech.inflab.com/202201-event-postmortem/&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;강의 본문을 조회하는 쿼리가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;select *&lt;/code&gt; 로 되어 있어서 사용 여부와 관계 없이 모든 컬럼을 조회&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;CDN 을 통한 컨텐츠 제공
+    &lt;ul&gt;
+      &lt;li&gt;정적 자원들은 메인 서버가 주는게 아니라, CDN 을 통해서 주면 부하가 분산된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;컨텐츠 캐싱
+    &lt;ul&gt;
+      &lt;li&gt;요청 자체를 줄일 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;컨텐츠 압축
+    &lt;ul&gt;
+      &lt;li&gt;텍스트 기반 리소스는 gzip / brotli 등을 통해 압축 (70퍼정도로 압축됨)&lt;/li&gt;
+      &lt;li&gt;압축 푸는 서버의 자원도 필요&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;컨텐츠의 우아한 저하 (미리 준비된 응답)
+    &lt;ul&gt;
+      &lt;li&gt;시스템의 과도한 부하를 줄이기 위해 제공하는 컨텐츠 및 기능을 일시적으로 줄이는 전략
+  예를 들어 정적 텍스트 페이지를 제공하거나, 검색을 비활성화하거나 더 적은 수의 검색 결과를 반환하거나, 필수적이지 않은 기능을 비활성화&lt;/li&gt;
+      &lt;li&gt;이미지나 썸네일 등을 빼버리고 텍스트 기반으로 축소 서빙 (중요한 텍스트만 남기고 제거)&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://youtu.be/xEu1bZqudE8?t=1070&quot;&gt;video&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;rest-api-란-무엇인가요&quot;&gt;REST API 란 무엇인가요?&lt;/h1&gt;
+
+&lt;p&gt;→ Restful 한 API&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Uniform-Interface
+    &lt;ol&gt;
+      &lt;li&gt;API에서 자원들은 각각의 독립적인 인터페이스를 가지며, 각각의 자원들이 url 자원식별, 표현을 통한 자원조작, Self-descriptive message, HATEOAS 구조를 가지는 것을 말합니다.&lt;/li&gt;
+      &lt;li&gt;독립적인 인터페이스라는 것은 서로 종속적이지 않은 인터페이스를 말합니다.
+ 예를 들어, 웹페이지를 변경했다고 웹 브라우저를 업데이트 하는 일은 없어야 하고, HTTP 명세나 HTML 명세가 변경되어도 웹페이지는 잘 작동해야 합니다.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;url-자원-식별&quot;&gt;URL 자원 식별&lt;/h3&gt;
+
+&lt;p&gt;→ identification of resources, 자원은 url 로 식별되어야 합니다.&lt;/p&gt;
+
+&lt;p&gt;/product/${id} 로 요청을 하면, 여기에 해당하는 product 를 줘야한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;표현을-통한-자원-조작&quot;&gt;표현을 통한 자원 조작&lt;/h3&gt;
+
+&lt;p&gt;Manipulation of resources through representations, URL 과 GET, DELETE 등 HTTP 표준 메서드 등을 통해 자원을 조회, 삭제 등 작업을 설명할 수 있는 정보가 담겨야 한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;getProduct 가 아니라, GET 메소드를 쓰고 /product
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;self-descriptive-messages&quot;&gt;Self-descriptive Messages&lt;/h3&gt;
+
+&lt;p&gt;HTTP Header 에 타입을 명시하고 각 메세지들은 MIME types 에 맞춰 표현되어야 합니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 .json 을 반환한다면 application/json 으로 명시하기&lt;/p&gt;
+
+&lt;h3 id=&quot;hateoas-hypermedia-as-the-engine-of-application-state&quot;&gt;HATEOAS (Hypermedia As The Engine Of Application State)&lt;/h3&gt;
+
+&lt;p&gt;강의 내용에서 설명이 좀 부족한 것 같다.&lt;/p&gt;
+
+&lt;p&gt;하이퍼링크에 따라 다른 페이지를 보여줘야 하며, 데이터마다 어떤 URL에서 왔는지 명시해주어야 한다.&lt;/p&gt;
+
+&lt;p&gt;보통은 href, links, link, url 속성 중 하나에 해당 데이터의 URL 을 담아서 표기해야 합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;동적 상호작용 제공 : 클라이언트는 고정된 URL 경로를 하드코딩하지 않고, 서버가 제공하는 하이퍼링크를 따라가며 필요한 리소스나 작업을 탐색&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;자체 설명적 메시지&lt;/strong&gt;: 서버가 응답 메시지에 포함된 링크를 통해 클라이언트가 다음 작업을 수행할 수 있는 정보를 제공합니다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;애플리케이션 상태 전환&lt;/strong&gt;: 링크를 통해 리소스 상태를 바꾸거나, 새로운 리소스를 요청하거나, 작업을 수행할 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;HATEOAS 미적용&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;json
+{
+  &quot;id&quot;: 123,
+  &quot;name&quot;: &quot;John Doe&quot;,
+  &quot;email&quot;: &quot;johndoe@example.com&quot;
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;HATEOAS 를 적용한 응답&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;json
+{
+  &quot;id&quot;: 123,
+  &quot;name&quot;: &quot;John Doe&quot;,
+  &quot;email&quot;: &quot;johndoe@example.com&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;https://api.example.com/users/123&quot;
+    },
+    &quot;update&quot;: {
+      &quot;href&quot;: &quot;https://api.example.com/users/123&quot;,
+      &quot;method&quot;: &quot;PUT&quot;
+    },
+    &quot;delete&quot;: {
+      &quot;href&quot;: &quot;https://api.example.com/users/123&quot;,
+      &quot;method&quot;: &quot;DELETE&quot;
+    },
+    &quot;orders&quot;: {
+      &quot;href&quot;: &quot;https://api.example.com/users/123/orders&quot;
+    }
+  }
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이 응답에서는 클라이언트가 self, update, delete, orders와 같은 작업을 수행할 수 있도록 하이퍼링크를 제공합니다.
+•	클라이언트는 이 링크를 활용해 데이터를 업데이트하거나 삭제하며,
+•	해당 사용자가 주문한 orders 데이터를 조회할 수도 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HATEOAS의 장점&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;API 유연성 증가&lt;/strong&gt;: 클라이언트는 URL을 하드코딩할 필요 없이 동적으로 링크를 탐색하며 API와 상호작용할 수 있습니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;버전 관리 간소화&lt;/strong&gt;: API 구조가 변경되더라도 클라이언트는 링크를 따라가기만 하면 되므로 API 변경의 영향을 덜 받습니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;문서 의존성 감소&lt;/strong&gt;: API 응답 자체가 필요한 작업에 대한 정보를 포함하므로, 별도의 문서 없이도 클라이언트가 API를 사용할 수 있습니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;HATEOAS의 단점&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;구현 복잡성&lt;/strong&gt;: 서버는 각 리소스에 적절한 하이퍼링크와 메타데이터를 제공해야 하므로 구현 난이도가 증가합니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;성능 부담&lt;/strong&gt;: 추가적인 링크 정보를 포함하기 때문에 응답 크기가 커질 수 있고, 처리 시간이 늘어날 수 있습니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;지원 부족&lt;/strong&gt;: 일부 클라이언트 라이브러리나 개발 환경에서 HATEOAS를 직접 활용하기 어려울 수 있습니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;HATEOAS를 사용해야 할 때&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;•	API 사용자가 특정 리소스에서 어떤 작업을 수행할 수 있을지 동적으로 안내가 필요한 경우.&lt;/p&gt;
+
+&lt;p&gt;•	대규모 애플리케이션에서 URL 구조가 자주 변경될 가능성이 높은 경우.&lt;/p&gt;
+
+&lt;p&gt;•	클라이언트와 서버 간의 긴밀한 결합을 줄이고 독립성을 높이고자 할 때.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HATEOAS와 RESTful API의 관계&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;HATEOAS는 REST의 핵심 원칙 중 하나이지만, 모든 RESTful API가 반드시 HATEOAS를 구현해야 하는 것은 아닙니다. RESTful API 설계에서 HATEOAS의 채택 여부는 시스템의 요구 사항과 복잡성에 따라 달라질 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;stateless&quot;&gt;Stateless&lt;/h2&gt;
+
+&lt;p&gt;REST API 를 제공하는 서버는 세션을 해당 서버 쪽에 유지하지 않는다는 의미&lt;/p&gt;
+
+&lt;p&gt;유저의 상태가 서버에 저장되기 때문에, 세션 방식은 RESTFUL 하지 않다.&lt;/p&gt;
+
+&lt;h2 id=&quot;cacheable&quot;&gt;Cacheable&lt;/h2&gt;
+
+&lt;p&gt;HTTP 에선 기본값으로 캐싱이 된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;client---server-구조&quot;&gt;Client - Server 구조&lt;/h2&gt;
+
+&lt;p&gt;클라이언트와 서버가 서로 독립적인 구조를 가져야 합니다. 물론 이는 HTTP 를 통해 가능한 구조입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;layered-system&quot;&gt;Layered System&lt;/h2&gt;
+
+&lt;p&gt;계층 구조로 나누어져 있는 아키텍처.&lt;/p&gt;
+
+&lt;h2 id=&quot;rest-api-의-uri-규칙&quot;&gt;REST API 의 URI 규칙&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;동작은 HTTP 메소드로만 해야하고, url 에 해당 내용이 들어가면 안된다.
+수정은 PUT, 삭제는 DELETE, 추가는 POST, 조회는 GET&lt;/li&gt;
+  &lt;li&gt;확장자는 표시하면 안된다.&lt;/li&gt;
+  &lt;li&gt;동사가 아닌 명사로만 표기&lt;/li&gt;
+  &lt;li&gt;계층적인 내용을 담고 있어야 한다. /집/아파트/전세 처럼 내려가는 구조&lt;/li&gt;
+  &lt;li&gt;대문자가 아닌 소문자만 쓰고, 너무 길 경우에는 언더바가 아닌 대시(-) 를 사용&lt;/li&gt;
+  &lt;li&gt;HTTP 응답 상태코드를 활용. 성공 200, 생성 201, 리다이렉트 301 …&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;그 외, api 업그레이드를 위해 Version 을 표기 (/wp/v2/posts?page=2)&lt;/p&gt;
+
+&lt;h1 id=&quot;브라우저-렌더링-과정&quot;&gt;브라우저 렌더링 과정&lt;/h1&gt;
+
+&lt;p&gt;아래의 과정이 동시에 일어난다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;DOM, CSSOM Tree 생성&lt;/p&gt;
+
+    &lt;p&gt;DOM Tree : 각각의 태그 노드&lt;/p&gt;
+
+    &lt;p&gt;CSSOM Tree : CSS 파서에 의해 정해진 스타일 규칙 적용&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/1.png&quot; alt=&quot;1&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;DOM 트리와 CSSOM 트리가 합쳐져 렌더 객체가 생성된다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/2.png&quot; alt=&quot;2&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;이때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;display: none&lt;/code&gt; 이 포함된 노드는 지워지고, font-size 등 상속적인 스타일은 부모노드에만 위치하도록 설계하는 등의 최적화를 거쳐 렌더 레이어가 완성 된다.&lt;/p&gt;
+
+&lt;p&gt;display: none 은 렌더트리에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;삭제&lt;/code&gt; 되지만, visibility: hidden 은 요소를 보이지 않게 할 뿐 여전히 레이아웃에서 공간을 차지한다.&lt;/p&gt;
+
+&lt;p&gt;또한 렌더 레이어가 완성될 때, GPU 에서 처리되는 부분이 있으면 이 요소들은 강제적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;그래픽 레이어&lt;/code&gt;로 분리된다.&lt;/p&gt;
+
+&lt;p&gt;그래픽 레이어는 리플로우와 리페인트를 유발하지 않는다.&lt;/p&gt;
+
+&lt;h1 id=&quot;gpt&quot;&gt;GPT&lt;/h1&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;맞습니다. **그래픽 레이어**는 리플로우(reflow)와 리페인트(repaint)를 유발하지 않습니다. 대신 그래픽 레이어는 브라우저의 렌더링 성능 최적화와 관련이 있으며, GPU를 활용한 컴포지팅 단계에서 동작합니다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;text
+	# **그래픽 레이어는 리플로우와 리페인트를 유발하지 않는다**
+	
+	그래픽 레이어는 브라우저의 렌더링 최적화와 관련이 있으며, GPU를 활용한 **컴포지팅(compositing)** 단계에서 동작합니다. 따라서 리플로우(Reflow)나 리페인트(Repaint)를 유발하지 않습니다.
+	
+	---
+	
+	## **리플로우와 리페인트 개념**
+	
+	1. **리플로우(Reflow)**  
+	   - DOM의 구조나 레이아웃이 변경될 때 발생.  
+	   - 예: 요소의 크기, 위치, 폰트 크기 변경 등.  
+	   - **비용이 크며** 다른 요소들에게도 영향을 미칠 수 있음.
+	
+	2. **리페인트(Repaint)**  
+	   - 레이아웃은 변경되지 않지만 요소의 스타일(예: 색상, 그림자)이 변경될 때 발생.  
+	   - 리플로우보다 비용이 적지만 여전히 성능에 영향을 줄 수 있음.
+	
+	---
+	
+	## **그래픽 레이어(Graphics Layer)란?**
+	
+	그래픽 레이어는 브라우저가 특정 요소를 **별도의 GPU 가속 레이어로 분리**하여 관리하는 것을 의미합니다.  
+	이를 통해 레이아웃 계산이나 스타일 재계산 없이 GPU에서 직접 작업(컴포지팅)을 수행합니다.
+	
+	### **그래픽 레이어의 특징**
+	- **리플로우와 리페인트를 유발하지 않음.**
+	- GPU에서 병렬로 작업을 처리하여 성능을 향상시킴.
+	- 독립적인 레이어로 분리되어 다른 레이어와 병렬로 처리 가능.
+	
+	---
+	
+	## **그래픽 레이어가 생성되는 상황**
+	
+	1. **CSS 속성**:
+	   - `transform` (예: `translate`, `scale`, `rotate` 등)
+	   - `opacity`
+	   - `will-change` (예: `will-change: transform, opacity;`)
+	   - `filter`
+	
+	2. **CSS 애니메이션 또는 트랜지션**:
+	   - GPU 가속이 필요한 속성(`transform`, `opacity` 등)에 대한 애니메이션.
+	
+	3. **하드웨어 가속 사용**:
+	   - 예: `translate3d` 또는 `translateZ` 사용 시.
+	
+	---
+	
+	## **그래픽 레이어의 장점**
+	
+	1. **성능 최적화**:
+	   - 레이아웃 계산과 페인트 작업의 부하를 줄임.
+	   - GPU에서 병렬적으로 작업을 처리해 성능을 크게 개선.
+	
+	2. **애니메이션 부드러움**:
+	   - GPU 가속을 활용해 애니메이션을 부드럽게 렌더링.
+	   - 리플로우와 리페인트를 유발하지 않음.
+	
+	---
+	
+	## **예시**
+	
+	### **리플로우/리페인트를 유발하는 경우**
+	css
+	.element {
+	  width: 100px;
+	  height: 100px;
+	  background-color: red;
+	  transition: width 1s;
+	}
+	
+		•	width 속성은 레이아웃을 변경하므로 리플로우가 발생.
+	
+	그래픽 레이어를 활용한 경우
+	.element {
+	  width: 100px;
+	  height: 100px;
+	  background-color: red;
+	  transform: translateX(0);
+	  transition: transform 1s;
+	}
+		•	transform 속성은 레이아웃을 변경하지 않으므로 리플로우나 리페인트를 유발하지 않음.
+		•	GPU에서 작업이 처리되어 성능이 더 부드럽고 빠름.
+		
+		그래픽 레이어는 GPU 가속을 활용한 컴포지팅 단계에서 처리되므로 리플로우와 리페인트를 유발하지 않습니다.
+	성능 최적화가 필요한 애니메이션이나 트랜지션에서는 그래픽 레이어를 적극적으로 활용하는 것이 좋습니다.
+	
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;레이아웃 잡기 (Layout)&lt;/li&gt;
+  &lt;li&gt;렌더레이어를 대상으로 칠하기 (Paint)&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;레이어 합치기 (Composite Layer) 및 표기&lt;/p&gt;
+
+    &lt;p&gt;각각의 레이어로부터 비트맵이 생성되고, GPU에 텍스쳐로 업로드 됩니다. 그 다음 텍스쳐들은 서로 합쳐져 하나의 이미지로 렌더링되며 화면으로 출력됩니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;💡 렌더트리와 DOM 트리는 1:1 대응일까요?&lt;br /&gt;
+아닙니다. DOM 트리 &amp;gt; 렌더 객체 &amp;gt; 렌더 트리가 되는 과정에서 display: none 으로 사라지는 렌더 객체들이 있을 수 있기 때문.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;아닙니다. DOM 트리 &amp;gt; 렌더 객체 &amp;gt; 렌더 트리가 되는 과정에서 display: none 으로 사라지는 렌더 객체들이 있을 수 있기 때문.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;wwwnavercom-을-주소창에-입력했을-때-생기는-과정-그리고-dns-까지-설명해주세요&quot;&gt;&lt;a href=&quot;http://www.naver.com/&quot;&gt;www.naver.com&lt;/a&gt; 을 주소창에 입력했을 때 생기는 과정, 그리고 DNS 까지 설명해주세요&lt;/h1&gt;
+
+&lt;details&gt;
+&lt;summary&gt;강의 답변&lt;/summary&gt;
+
+리다이렉트, 캐싱, DNS, IP 라우팅, TCP 연결 구축을 거쳐
+
+
+요청, 응답이 일어나는 TTFB(TIme TO First Byte) 가 시작되고
+
+
+이후 컨텐츠를 다운받게 되고,
+
+
+브라우저 렌더링 과정을 거쳐 네이버라는 화면이 나타나게 됩니다.
+
+
+&lt;/details&gt;
+
+&lt;h2 id=&quot;리다이렉트&quot;&gt;리다이렉트&lt;/h2&gt;
+
+&lt;p&gt;리다이렉트가 있다면 리다이렉트를 진행하고, 없다면 그대로 해당 요청에 대한 과정이 진행&lt;/p&gt;
+
+&lt;h2 id=&quot;캐싱&quot;&gt;캐싱&lt;/h2&gt;
+
+&lt;p&gt;해당 요청이 캐싱이 가능한지, 가능하지 않은지를 파악합니다. 캐싱이 이미 된 요청이라면 캐싱된 값을 반환하며, 캐싱이 되지 않은 새로운 요청이라면 그 다음 단계로 넘어갑니다.&lt;/p&gt;
+
+&lt;p&gt;캐싱은 요청된 값의 결과값을 저장하고 그 값을 다시 요청하면 다시 제공하는 기술입니다.&lt;/p&gt;
+
+&lt;p&gt;브라우저 캐시와, 공유 캐시로 나뉘어집니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;브라우저-캐시&quot;&gt;브라우저 캐시&lt;/h3&gt;
+
+&lt;p&gt;쿠키, 로컬스토리지 등을 포함한 캐시 (개인, private 캐시)&lt;/p&gt;
+
+&lt;h3 id=&quot;공유-캐시&quot;&gt;공유 캐시&lt;/h3&gt;
+
+&lt;p&gt;클라이언트와 서버 사이에 있으며, 사용자간에 공유할 수 있는 응답을 저장할 수 있다. 예를 들어, 요청한 서버 앞 단에 프록시 서버가 캐싱을 하고 있는 것. 이를 리버스 프록시를 둬서 내부 서버로 포워드한다고도 말합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;dns&quot;&gt;DNS&lt;/h2&gt;
+
+&lt;p&gt;Domain Name System 은 계층적인 도메인 구조와 분산된 데이터베이스를 이용한 시스템으로,&lt;/p&gt;
+
+&lt;p&gt;FQDN 을 인터넷 프로토콜인 IP 로 바꿔주는 시스템입니다.&lt;/p&gt;
+
+&lt;p&gt;이는 DNS 관련 요청을 네임서버로 전달하고, 해당 응답값을 클라이언트에게 전달하는 Resolver,&lt;/p&gt;
+
+&lt;p&gt;도메인을 IP 로 변환하는 네임서버 등으로 이루어져있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;fqdn&quot;&gt;FQDN&lt;/h3&gt;
+
+&lt;p&gt;FQDN (Fully Qualified Domain Name) 은 호스트와 도메인이 합쳐진 완전한 도메인 이름을 말합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.naver.com/&quot;&gt;www.naver.com&lt;/a&gt; 에서 www 등은 호스트 부분 혹은 서브 도메인, naver.com 은 도메인이라고 합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;dns-캐싱&quot;&gt;DNS 캐싱&lt;/h3&gt;
+
+&lt;p&gt;미리 해당 도메인 이름을 요청한 적이 있다면, 로컬 PC 에 자동적으로 저장됩니다.&lt;/p&gt;
+
+&lt;p&gt;브라우저 캐싱과, OS 캐싱이 있습니다.&lt;/p&gt;
+
+&lt;details&gt;
+&lt;summary&gt;gpt&lt;/summary&gt;
+
+
+```
+text
+# **DNS 캐싱**
+
+DNS 캐싱은 도메인 이름을 요청할 때 발생하는 네트워크 트래픽을 줄이고, 더 빠른 응답 속도를 제공하기 위해 이전에 조회한 도메인 이름과 IP 주소를 **로컬에 저장**하는 기술입니다.  
+- 즉, 이미 요청한 도메인 이름이 있다면, DNS 서버에 다시 요청하지 않고 **캐싱된 데이터**를 사용합니다.
+
+---
+
+## **DNS 캐싱의 종류**
+
+DNS 캐시는 **다양한 계층**에서 발생할 수 있습니다. 주요 캐싱 계층은 다음과 같습니다:
+
+### 1. **브라우저 캐싱**
+- **웹 브라우저**는 자체적으로 DNS 캐시를 관리합니다.
+- 동일한 도메인 이름을 여러 번 요청하는 경우, 브라우저 캐시에서 IP 주소를 가져와 빠르게 처리합니다.
+- 브라우저별로 DNS 캐싱 시간(TTL, Time to Live)이 다를 수 있습니다.
+  - 예: Chrome, Firefox 등에서 TTL 설정에 따라 캐시가 유지됩니다.
+
+#### **브라우저 DNS 캐시 확인 및 삭제**
+- Chrome: `chrome://net-internals/#dns`로 접속하여 캐시를 확인하거나 삭제할 수 있음.
+
+---
+
+### 2. **OS 캐싱**
+- 운영체제(Windows, macOS, Linux)는 **DNS Resolver Cache**라는 이름으로 자체적인 DNS 캐시를 관리합니다.
+- 애플리케이션(예: 브라우저)에서 DNS 조회 요청이 들어오면, DNS 서버에 요청하기 전에 **운영체제의 캐시**를 먼저 확인합니다.
+
+#### **OS DNS 캐시 확인 및 삭제 방법**
+- **Windows**: 
+  - 확인: 명령 프롬프트에서 `ipconfig /displaydns`
+  - 삭제: 명령 프롬프트에서 `ipconfig /flushdns`
+- **macOS**: 
+  - 삭제: `sudo dscacheutil -flushcache &amp;amp;&amp;amp; sudo killall -HUP mDNSResponder`
+- **Linux**: 
+  - 삭제: `sudo systemd-resolve --flush-caches` (시스템에 따라 명령어가 다를 수 있음)
+
+---
+
+## **DNS 캐싱의 장점**
+
+1. **빠른 응답 속도**:
+   - 캐시된 데이터를 사용하여 DNS 서버와의 통신 시간을 줄임.
+2. **네트워크 트래픽 감소**:
+   - DNS 요청이 줄어들어 네트워크 대역폭을 절약.
+3. **서버 부하 감소**:
+   - DNS 서버로의 요청 수가 줄어들어 서버 부하를 완화.
+
+---
+
+## **DNS 캐싱의 단점**
+
+1. **오래된 정보**:
+   - TTL(Time to Live)이 만료되지 않은 경우, IP 주소가 변경되었더라도 **오래된 캐시 데이터를 사용할 수 있음**.
+   - 이로 인해 사용자가 변경된 서버에 접속하지 못하거나 오류가 발생할 수 있음.
+2. **캐시 초기화 필요**:
+   - DNS 관련 문제를 해결하려면 브라우저, OS, 네트워크 장치의 캐시를 수동으로 초기화해야 할 때가 있음.
+
+---
+
+## **TTL(Time to Live)**
+- DNS 캐시는 **TTL(Time to Live)** 값을 기반으로 유지됩니다.
+- TTL은 DNS 응답에 포함된 값으로, 특정 도메인-IP 매핑이 캐시에서 얼마나 오래 유지될지를 정의합니다.
+- TTL이 만료되면, 캐시된 데이터는 삭제되고 새 데이터를 DNS 서버에서 요청하게 됩니다.
+
+---
+
+## **정리**
+
+DNS 캐싱은 **브라우저 캐싱**과 **OS 캐싱**의 두 가지 주요 계층에서 이루어지며, 인터넷 속도를 향상시키고 서버 부하를 줄이는 데 큰 역할을 합니다.  
+문제가 발생했을 때는 캐시를 수동으로 초기화하거나 TTL 설정을 확인해 문제를 해결할 수 있습니다.
+
+```
+
+
+
+&lt;/details&gt;
+
+&lt;h2 id=&quot;ip-라우팅&quot;&gt;IP 라우팅&lt;/h2&gt;
+
+&lt;p&gt;해당 IP 를 기반으로 라우팅, ARP 과정을 거쳐 실제 서버를 찾습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;tcp-연결-구축-http--20&quot;&gt;TCP 연결 구축 (HTTP  ~2.0)&lt;/h2&gt;
+
+&lt;p&gt;브라우저가 TCP 3Way handshake 및 SSL 연결 등을 통해 연결을 설정합니다.&lt;/p&gt;
+
+&lt;p&gt;이후에 요청을 보냄으로써 서버로부터 응답을 받습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;quic-연결-http-30&quot;&gt;QUIC 연결 (HTTP 3.0)&lt;/h2&gt;
+
+&lt;h2 id=&quot;컨텐츠-다운로드&quot;&gt;컨텐츠 다운로드&lt;/h2&gt;
+
+&lt;p&gt;요청한 컨텐츠를 서버로부터 다운 받습니다.&lt;/p&gt;
+
+&lt;p&gt;처음 다운로드를 시작할 때, TTFB (Time To First Byte) 라고 합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;브라우저-렌더링&quot;&gt;브라우저 렌더링&lt;/h2&gt;
+
+&lt;p&gt;받은 데이터를 바탕으로 브라우저 엔진이 브라우저 렌더링 과정을 거쳐 화면을 만듭니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;이더넷-프레임은-무엇이며-구조가-어떻게-되나요&quot;&gt;이더넷 프레임은 무엇이며, 구조가 어떻게 되나요?&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/3.png&quot; alt=&quot;3&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;이더넷프레임이란 데이터 링크계층의 데이터 단위이며 이더넷 프레임을 기반으로 데이터가 전달 되며 다음과 같은 필드로 구성되어있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;**Preamble**&lt;/u&gt; : [7바이트]
+이더넷 프레임이 시작임을 알려준다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;**SFD**&lt;/u&gt; : [1바이트]
+Start frame delimiter, 다음 필드부터 주소필드가 시작됨을 알려줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;**Address**&lt;/u&gt; : [6, 6바이트]
+목적지 주소, 시작지 주소입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;**EtherType**&lt;/u&gt; : [2바이트]
+데이터링크계층 위의 IP 프로토콜을 정의합니다. (IPv4, Ipv6)&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;**Payload**&lt;/u&gt; : [가변바이트]
+데이터 또는 페이로드라고 합니다. 가변길이 필드입니다. 해당 필드는 이진데이터(0과1로 이루어진 데이터)로 구성됩니다. IEEE 표준은 최대 페이로드를 1500 바이 트로 지정하고 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;**FCS**&lt;/u&gt; : [4바이트]
+frame check sequence이며 수신측의 에러검출을 위해 삽입하는 필드입니 다. CRC 에러검출 기법에 의해 생성된 비트배열이 여기에 담깁니다. 비트배열을 기반으로 수신된 데이터가 손상되었는지를 확인하고, 에러 확인 시에는 해당 프레임을 폐기하고 송신측에 재전송을 요구하기 위한 필드입니다.
+CRC 알고리즘에 의해 만들어진 비트 배열이 담기는 필드&lt;/p&gt;
+
+&lt;h1 id=&quot;cors란-무엇인가요&quot;&gt;CORS란 무엇인가요?&lt;/h1&gt;
+
+&lt;h2 id=&quot;origin&quot;&gt;Origin&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/4.png&quot; alt=&quot;4&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;오리진&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프로토콜 + 호스트네임 + 포트&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;예를 들어, &lt;a href=&quot;https://shopping.naver.com/home&quot;&gt;https://shopping.naver.com/home&lt;/a&gt; 에서&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https&lt;/code&gt; , &lt;a href=&quot;http://shopping.naver.com/&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shopping.naver.com&lt;/code&gt;&lt;/a&gt; , &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8080&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sop-same-origin-policy&quot;&gt;SOP (Same Origin Policy)&lt;/h2&gt;
+
+&lt;p&gt;브라우저 상에서 오로지 같은 오리진끼리만 요청을 허가하는 보안 정책.&lt;/p&gt;
+
+&lt;p&gt;브라우저 상에서 다른 오리진끼리는 통신이 불가능하다.&lt;/p&gt;
+
+&lt;p&gt;다른 오리진에서 요청을 하는 공격에 방지하기 위함&lt;/p&gt;
+
+&lt;h2 id=&quot;cors-cross-origin-resource-sharing&quot;&gt;CORS (Cross Origin Resource Sharing)&lt;/h2&gt;
+
+&lt;p&gt;다른 오리진과 통신을 해야하는 일이 있을 수 있기 때문에, SOP 보다 조금 느슨한 규칙&lt;/p&gt;
+
+&lt;p&gt;포트번호만 달라도 오리진이 다르기 때문에 개발 과정에서 백/프 끼리도 보통 오리진이 다르다&lt;/p&gt;
+
+&lt;p&gt;HTTP 헤더를 기반으로 브라우저가 다른 오리진에 대한 리소스(image, css, js, video 등) 로드를 허용할지 말지에 대한 규칙&lt;/p&gt;
+
+&lt;h2 id=&quot;preflight-request-simple-request&quot;&gt;Preflight Request, Simple Request&lt;/h2&gt;
+
+&lt;p&gt;CORS는 브라우저가 다른 출처(origin)의 리소스에 접근할 때 안전을 보장하기 위해 사용하는 메커니즘입니다. 요청은 크게 두 가지로 나뉩니다&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;1-simple-request-단순-요청&quot;&gt;1. &lt;strong&gt;Simple Request (단순 요청)&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;정의&quot;&gt;정의&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;브라우저가 사전 확인(preflight)을 생략하고 &lt;strong&gt;직접 요청&lt;/strong&gt;을 서버에 보내는 요청입니다.&lt;/li&gt;
+  &lt;li&gt;CORS 규칙에서 &lt;strong&gt;Simple Request&lt;/strong&gt;는 특정 조건을 만족해야 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;simple-request의-조건&quot;&gt;Simple Request의 조건&lt;/h3&gt;
+
+&lt;p&gt;Simple Request가 되기 위해서는 아래 조건을 모두 충족해야 합니다:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;HTTP 메서드&lt;/strong&gt;가 다음 중 하나여야 합니다:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POST&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;헤더(Header)&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;요청에 사용된 헤더가 CORS에서 허용된 &lt;strong&gt;간단한 헤더(Simple Headers)&lt;/strong&gt;만 포함해야 합니다.&lt;/li&gt;
+      &lt;li&gt;허용된 간단한 헤더:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Accept&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Accept-Language&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Content-Language&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Content-Type&lt;/code&gt; (단, 값이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application/x-www-form-urlencoded&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;multipart/form-data&lt;/code&gt;, 또는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text/plain&lt;/code&gt;일 경우만 허용)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Content-Type&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;요청 본문(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Body&lt;/code&gt;)의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Content-Type&lt;/code&gt; 값이 아래 중 하나여야 합니다:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application/x-www-form-urlencoded&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;multipart/form-data&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text/plain&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Credentials&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;요청에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Authorization&lt;/code&gt; 헤더나 쿠키와 같은 자격 증명(크리덴셜)이 포함되지 않아야 함 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;withCredentials&lt;/code&gt;가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;동작-방식&quot;&gt;동작 방식&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;브라우저는 요청을 바로 서버에 보냅니다.&lt;/li&gt;
+  &lt;li&gt;서버는 요청의 출처(origin)와 헤더를 보고 허용 여부를 판단합니다.&lt;/li&gt;
+  &lt;li&gt;서버가 허용하면 브라우저는 응답을 처리합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;2-preflight-request-사전-요청&quot;&gt;2. &lt;strong&gt;Preflight Request (사전 요청)&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;정의-1&quot;&gt;정의&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;요청이 Simple Request 조건을 충족하지 않으면 브라우저는 &lt;strong&gt;Preflight Request&lt;/strong&gt;를 먼저 보냅니다.&lt;/li&gt;
+  &lt;li&gt;Preflight Request는 실제 요청 전에 서버가 해당 요청을 허용할지 여부를 확인하는 &lt;strong&gt;안전성 검사&lt;/strong&gt;입니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;preflight-request의-동작&quot;&gt;Preflight Request의 동작&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;브라우저는 &lt;strong&gt;HTTP OPTIONS&lt;/strong&gt; 메서드로 사전 요청을 보냅니다.&lt;/li&gt;
+  &lt;li&gt;Preflight Request에는 아래와 같은 정보를 포함합니다:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Origin&lt;/code&gt;: 요청의 출처.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Access-Control-Request-Method&lt;/code&gt;: 실제 요청에 사용될 HTTP 메서드.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Access-Control-Request-Headers&lt;/code&gt;: 실제 요청에서 사용될 커스텀 헤더(있을 경우).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;서버는 Preflight Request에 대해 응답합니다:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Access-Control-Allow-Origin&lt;/code&gt;: 허용된 출처.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Access-Control-Allow-Methods&lt;/code&gt;: 허용된 HTTP 메서드.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Access-Control-Allow-Headers&lt;/code&gt;: 허용된 커스텀 헤더.&lt;/li&gt;
+      &lt;li&gt;응답 상태 코드가 200이면 브라우저는 실제 요청을 보냅니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;preflight가-필요한-조건&quot;&gt;Preflight가 필요한 조건&lt;/h3&gt;
+
+&lt;p&gt;Preflight Request는 다음 중 하나 이상에 해당할 때 발생합니다:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;요청 메서드가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POST&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;가 아닌 경우 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PUT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATCH&lt;/code&gt; 등).&lt;/li&gt;
+  &lt;li&gt;요청 헤더가 &lt;strong&gt;간단한 헤더&lt;/strong&gt; 외의 커스텀 헤더를 포함하는 경우.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Content-Type&lt;/code&gt;이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application/x-www-form-urlencoded&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;multipart/form-data&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text/plain&lt;/code&gt;이 아닌 경우 (예: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application/json&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;요청에 자격 증명(크리덴셜, 예: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Authorization&lt;/code&gt; 헤더나 쿠키)이 포함된 경우.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;네이글-알고리즘이란-무엇인가요&quot;&gt;네이글 알고리즘이란 무엇인가요?&lt;/h1&gt;
+
+&lt;p&gt;네이글 알고리즘은 네트워크의 효율성을 높이기 위해 네트워크를 통해 전송되어야 하는 패킷의 수를 줄이고 적은 양의 데이터를 자주 보내면 발생되는 대역폭 낭비를 막아주는 방법입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/5.png&quot; alt=&quot;5&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;기존 방법과 다르게 패킷을 보낼 때 고정 크기의 버퍼에 모아두고 버퍼에 어느정도 차면 그 때 보내고, 다시 ACK 가 오면 버퍼에 찬 데이터를 보내는 방법&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/6.png&quot; alt=&quot;6&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;네이글-알고리즘의-장점&quot;&gt;네이글 알고리즘의 장점&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;전송하는 패킷의 수가 줄어들기 때문에 네트워크의 혼잡도를 줄이고 패킷 손실률을 줄일 수 있다.&lt;/li&gt;
+  &lt;li&gt;작은 패킷들을 많이 전송할 때, 각 패킷에 포함된 헤더의 크기가 커져서 대역폭 소모가 많이 발생할 수 있다. 패킷의 수를 줄임으로써 이러한 오버헤드를 줄일 수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;네이글-알고리즘의-단점&quot;&gt;네이글 알고리즘의 단점&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;작은 패킷의 수를 줄이기 위해 데이터를 버퍼링하고, 충분한 양의 데이터가 모일 때 까지 패킷 전송을 지연시킨다.&lt;/li&gt;
+  &lt;li&gt;ACK를 받기 전까지 데이터를 전송하지 않기 때문에 지연시간이 발생할 수 있다.
+(실시간이 중요하다면 사용하기 힘들다)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/7.png&quot; alt=&quot;7&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;http-의-멱등성에-대해-설명해주세요&quot;&gt;HTTP 의 멱등성에 대해 설명해주세요&lt;/h1&gt;
+
+&lt;p&gt;HTTP 멱등성(idempotent)이란 하나의 요청이 아닌 여러번 동일한 요청을 보냈을 때 서버가 같은 상태를 가지는 것을 멱등성이라고 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.tosspayments.com/blog/what-is-idempotency&quot;&gt;https://docs.tosspayments.com/blog/what-is-idempotency&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;멱등성을-가지는-메소드&quot;&gt;멱등성을 가지는 메소드&lt;/h2&gt;
+
+&lt;h3 id=&quot;get-안전한-메소드&quot;&gt;GET (안전한 메소드)&lt;/h3&gt;
+
+&lt;p&gt;서버에서 정보를 가져오는 것을 여러 번 해도, 동일한 정보를 가져온다.&lt;/p&gt;
+
+&lt;h3 id=&quot;head-안전한-메소드&quot;&gt;HEAD (안전한 메소드)&lt;/h3&gt;
+
+&lt;p&gt;헤드는 GET 요청이 생성하는 응답의 헤더를 검색하는데 사용됩니다.&lt;/p&gt;
+
+&lt;p&gt;따라서 서버의 상태를 변경하지 않습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;options-안전한-메소드&quot;&gt;OPTIONS (안전한 메소드)&lt;/h3&gt;
+
+&lt;p&gt;대상 리소스의 통신 옵션 ( 서버에서 지원하는 HTTP 메서드 등)을 가져올 때 사용&lt;/p&gt;
+
+&lt;h3 id=&quot;put-안전한-메소드는-아님&quot;&gt;PUT (안전한 메소드는 아님)&lt;/h3&gt;
+
+&lt;p&gt;서버에 있는 데이터를 아예 교체하기 때문에 여러 번 보내도 똑같은 데이터로 교체될 것입니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;delete-안전한-메소드는-아님&quot;&gt;DELETE (안전한 메소드는 아님)&lt;/h3&gt;
+
+&lt;p&gt;삭제 작업을 반복해도 시스템 상태가 더 이상 변경되지 않습니다.&lt;/p&gt;
+
+&lt;p&gt;그런데 흠..&lt;/p&gt;
+
+&lt;p&gt;예를 들어 DELETE /post/lastest 라고 해보자. 가장 최신 포스트를 지우게 된다고 하면 서버의 상태가 바뀌지 않나?&lt;/p&gt;
+
+&lt;p&gt;또한 만약 DELETE /post/abc 인 상황에서 abc 라는 리소스가 여러 개라면? DELETE 는 abc 리소스를 하나만 지우는 상황이라면 어떻게 될까?&lt;/p&gt;
+
+&lt;p&gt;이러면 또 멱등성을 보장할 수 없는게 아닌가?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE&lt;/code&gt;&lt;/strong&gt;&lt;strong&gt;는 멱등성&lt;/strong&gt;을 보장하는 메서드이지만, &lt;strong&gt;대상 리소스를 정확히 지정해야&lt;/strong&gt; 합니다. 예를 들어, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE /posts/123&lt;/code&gt;와 같이 &lt;strong&gt;구체적인 리소스&lt;/strong&gt;를 명시해야 합니다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE /posts/last&lt;/code&gt;와 같이 마지막 게시글을 삭제하는 요청은 &lt;strong&gt;상태 변화가 계속 일어나므로 멱등성을 가지지 않&lt;/strong&gt;습니다.&lt;/li&gt;
+  &lt;li&gt;이런 경우에는 &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POST&lt;/code&gt;&lt;/strong&gt;&lt;strong&gt;를 사용하는 것이 더 적절&lt;/strong&gt;합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;요약&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE&lt;/code&gt;는 멱등성을 보장하므로 &lt;strong&gt;상태 변화가 없을 때&lt;/strong&gt; 사용해야 합니다. 상태가 계속 바뀌는 경우에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POST&lt;/code&gt;를 사용하는 것이 HTTP 스펙상 더 맞습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;post&quot;&gt;POST&lt;/h3&gt;
+
+&lt;p&gt;서버에 동일한 요청을 여러 번 보내면, 보낸 만큼 생성 될 것이기 때문에 서버의 상태가 바뀌게 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;patch&quot;&gt;PATCH&lt;/h3&gt;
+
+&lt;p&gt;리소스를 부분적으로 업데이트 하게 되는데, 멱등성의 여부는 PATCH 를 실행하는 방법에 따라 달라진다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 특정 부분을 새롭게 교체하는거라면 멱등성을 가지지만, 하나씩 증가하거나 빼기, 배열에 요소 추가 등의 방식은 멱등성을 가지지 않는다.&lt;/p&gt;
+
+&lt;p&gt;함수형 프로그래밍이 생각나네&lt;/p&gt;
+
+&lt;h2 id=&quot;http-멱등성을-고려한-api-설계&quot;&gt;HTTP 멱등성을 고려한 API 설계&lt;/h2&gt;
+
+&lt;p&gt;POST 메서드의 경우 idempotency Key를 보내서 동일한 요청인지를 식별하게 합니다.
+이를 통해 동일한 작업의 재시도를 인식하고 한 번만 처리되도록 합니다. 이는 중복 트랜잭션을 피해야 하는 결제 처리 API에서 자주 사용됩니다.&lt;/p&gt;
+
+&lt;details&gt;
+&lt;summary&gt;Idempotency Key&lt;/summary&gt;
+
+
+```
+text
+
+Idempotency Key는 중복 요청을 방지하고 멱등성을 보장하는 데 중요한 역할을 하는 기법입니다. 특히 POST 메서드에서는 요청을 여러 번 보내면 여러 번 처리가 발생하는 경우가 많기 때문에, 이를 방지하기 위해 Idempotency Key를 사용합니다.
+
+1. Idempotency Key의 개념
+Idempotency Key는 클라이언트가 서버에 보내는 고유한 값으로, 동일한 작업을 여러 번 요청하더라도 서버에서 해당 작업을 한 번만 처리하도록 보장하는 키입니다. 이는 멱등성을 보장하기 위한 기술로, 중복 트랜잭션이나 중복 작업이 발생하지 않도록 합니다.
+
+Idempotency Key는 클라이언트가 POST 요청을 보낼 때마다 함께 전송합니다.
+이 키는 요청이 중복되었는지 여부를 서버가 인식할 수 있게 해줍니다.
+2. POST 메서드와 멱등성
+일반적으로 POST 메서드는 리소스를 생성하거나 데이터를 변경하는 요청에 사용됩니다. 이런 요청은 여러 번 실행될 경우 여러 번 처리되거나 중복된 리소스가 생성될 수 있습니다. 예를 들어:
+
+사용자가 결제를 시도하는 경우, 결제 요청을 여러 번 보내면 여러 번 결제가 처리될 위험이 있습니다.
+서버가 POST 요청을 여러 번 받아들여 중복된 리소스를 생성하거나 트랜잭션을 두 번 처리할 수 있습니다.
+3. Idempotency Key의 역할
+Idempotency Key는 이러한 중복 처리를 피하기 위한 방법으로 사용됩니다. 서버는 동일한 Idempotency Key를 가진 요청이 들어오면, 이미 처리한 작업을 다시 처리하지 않고 응답을 재사용합니다.
+
+예시: 결제 처리 API
+결제 처리 API에서 Idempotency Key가 어떻게 동작하는지 살펴봅시다:
+
+클라이언트가 결제 요청을 보냄:
+
+클라이언트는 결제 요청과 함께 고유한 Idempotency Key를 생성하고 보냅니다.
+예: POST /payment 요청과 함께 { &quot;idempotencyKey&quot;: &quot;12345&quot; }를 보냄.
+서버는 Idempotency Key를 확인:
+
+서버는 요청을 처리하기 전에 이 Idempotency Key가 이전에 처리된 적이 있는지 확인합니다.
+만약 이 키가 이미 처리된 적이 있다면, 서버는 새로운 결제를 생성하지 않고, 이전 응답을 그대로 재사용합니다.
+만약 이 키가 처리되지 않은 키라면, 서버는 결제를 처리하고 새로운 결제 결과와 함께 Idempotency Key를 저장합니다.
+동일한 요청이 여러 번 들어오면:
+
+두 번째 요청에서 동일한 Idempotency Key가 포함되면, 서버는 이미 처리된 요청으로 인식하고, 같은 결과를 반환합니다.
+이로써 중복 결제나 트랜잭션이 발생하지 않게 됩니다.
+4. Idempotency Key가 필요한 이유
+네트워크 불안정성:
+
+클라이언트가 네트워크 문제로 요청이 실패했다고 생각하고 요청을 다시 보낼 수 있습니다. 그러나 실제로 첫 번째 요청은 서버에서 성공적으로 처리되었을 수 있습니다.
+Idempotency Key는 서버가 이 중복 요청을 인식하고, 두 번째 요청에서 이전의 결과를 반환함으로써 중복 처리를 방지합니다.
+중복 트랜잭션 방지:
+
+결제나 주문 처리 등과 같은 중요한 작업에서는 동일한 트랜잭션이 두 번 이상 처리되면 큰 문제가 될 수 있습니다.
+Idempotency Key는 이러한 중복 트랜잭션을 피하기 위해 사용됩니다.
+시스템의 안정성 증가:
+
+여러 번 요청을 보내더라도 시스템은 항상 동일한 결과를 반환하고, 불필요한 리소스 소모나 상태 변경을 피할 수 있습니다.
+5. 실제 예시
+결제 처리 API 예시:
+json
+코드 복사
+POST /payments
+{
+  &quot;amount&quot;: 100,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;idempotencyKey&quot;: &quot;12345&quot;
+}
+첫 번째 요청: 서버는 idempotencyKey: &quot;12345&quot;를 인식하고 결제를 처리한 후, 결제 정보를 반환합니다.
+두 번째 요청 (같은 Idempotency Key): 서버는 이미 idempotencyKey: &quot;12345&quot;에 대한 요청을 처리했음을 인식하고, 결제를 중복 처리하지 않고 이전 응답을 그대로 반환합니다.
+6. Idempotency Key 관리 방법
+서버에서 Key를 저장: 서버는 각 Idempotency Key와 관련된 요청을 처리하고, 그 결과를 저장합니다. 일정 기간 동안 같은 idempotencyKey가 사용되면 서버는 그 결과를 반환하고, 이후에는 해당 키를 삭제하거나 만료시킬 수 있습니다.
+
+유효 기간 설정: idempotencyKey는 보통 일정 기간 동안만 유효하며, 이를 통해 서버의 메모리나 저장소에 과도한 부하를 줄일 수 있습니다.
+
+7. 결론
+Idempotency Key는 멱등성을 보장하는 중요한 도구입니다. POST 메서드에서 중복 요청으로 인한 트랜잭션 문제를 방지하고, 동일한 작업을 여러 번 요청해도 한 번만 처리되도록 보장합니다. 결제 처리, 주문 생성, 리소스 생성 등 중복된 작업을 방지해야 하는 중요한 작업에서 널리 사용됩니다.
+
+```
+
+
+
+&lt;/details&gt;
+
+&lt;h2 id=&quot;멱등성이-중요한-이유&quot;&gt;멱등성이 중요한 이유&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;일관성 : 보통 반복되는 요청이 단일 요청과 동일한 효과를 갖도록 보장하는 것은 시스템 전반에 걸쳐 일관된 상태를 유지하는 데 도움이 됩니다.&lt;/li&gt;
+  &lt;li&gt;유지보수성 : 멱등성을 가진 HTTP메서드로 AP로 통신하는 부분에 있어서는 재시도를 처리할 때의 사이드이펙트를 고려한 복잡한 로직을 구현할 필요가 없기 때문에 이 부분을 잘 고려해서 설계한다면 유지보수성이 증가 됩니다.&lt;/li&gt;
+&lt;/ol&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>[&quot;hoeeeeeh&quot;]</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Network" />
+      
+        <category term="개념 정리" />
+      
+
+      
+        <summary type="html">네트워크 CS 지식 정리</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Gateway, 사설망, CIDR</title>
+      <link href="https://hoeeeeeh.github.io/Gateway,_%EC%82%AC%EC%84%A4%EB%A7%9D,_CIDR" rel="alternate" type="text/html" title="Gateway, 사설망, CIDR" />
+      <published>2025-01-14T02:40:00+00:00</published>
+      <updated>2025-01-14T02:40:00+00:00</updated>
+      <id>https://hoeeeeeh.github.io/Gateway,_%EC%82%AC%EC%84%A4%EB%A7%9D,_CIDR</id>
+      <content type="html" xml:base="https://hoeeeeeh.github.io/Gateway,_%EC%82%AC%EC%84%A4%EB%A7%9D,_CIDR">&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=kYiQGpPVnyI&quot;&gt;IP 주소를 묶는 방법, CIDR란?&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;network-gateway-사설망-cidr&quot;&gt;[Network] Gateway, 사설망, CIDR&lt;/h1&gt;
+
+&lt;h2 id=&quot;ipv4&quot;&gt;IPv4&lt;/h2&gt;
+
+&lt;p&gt;우선 IPv4 는 총 32 비트의 숫자로 구성 되어 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;XXX.XXX.XXX.XXX 각각 8비트씩 -&amp;gt; 2^32개!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이 중에서 일부 ip가 특수한 목적으로 선점되어 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;사설 ip, 루프백 ip, 멀티캐스트 ip, 0.0.0.0(현 주소), 브로드캐스트 ip…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;실제로 사용할 수 있는 ip 는 2^32 보다 적다
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;예전에는 모든 기기에 하나씩 ip 를 할당해도 여유로웠겠지만, 기기들이 늘어난 요새는 매우 힘들다.&lt;/p&gt;
+
+&lt;p&gt;따라서 사설망(private network)이 필요로 해졌다.&lt;/p&gt;
+
+&lt;h2 id=&quot;사설망private-network&quot;&gt;사설망(private network)&lt;/h2&gt;
+
+&lt;p&gt;여러대의 기기를 하나의 사설망으로 묶고, 중복되지 않도록 사설 ip를 할당해준다.&lt;/p&gt;
+
+&lt;p&gt;이때 외부와 통신하기 위해서는 public ip 를 가지고 있는 장비가 필요한데, 이것이 Gateway 이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;gateway&quot;&gt;Gateway&lt;/h2&gt;
+
+&lt;p&gt;게이트웨이는 다른 대역으로 라우팅을 해줄 수 있는, 주로 L3 스위치급 이상의 장비이다.&lt;/p&gt;
+
+&lt;p&gt;가장 많이 보이는 것은 역시 어느 집에서나 볼 수 있는 공유기다. 사설망에 있는 장비들이 외부와 통신하려고 할 때, Gateway 를 거쳐서 통신하게 되는데 Gateway 는 public ip 를 하나 할당받고, NAT(Network Address Translation) 기능을 사용하여 내부 네트워크에서 오는 여러 요청을 public IP 주소를 사용하여 외부로 전송하고, 외부에서 돌아오는 응답을 올바른 내부 장치로 전달한다. 만약 사설망의 여러 장비가 같은 목적지의 같은 포트로 통신을 하려고 한다면 게이트웨이는 NAT 테이블을 활용하여 각각의 내부 소스 IP 주소와 포트 번호를 기반으로 이 요청들을 기억하고 구분한다. 외부로 나갈 때는 일반적으로 변형된 소스 포트를 사용하여, 응답이 돌아올 때 원래의 내부 IP 주소와 포트로 정확히 매핑한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;예를 들어 A 컴퓨터(192.168.0.2)가 (168.126.63.1, 443포트)에, B 컴퓨터(192.168.0.3)가 다음(168.126.63.1, 80포트)에 동시에 접근한다고 하자.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;A와 B의 목적지 ip는 동일하지만 포트가 다르기 때문에 443포트와 80포트로 A/B 의 요청을 구분할 수 있다.
+
+
+하지만 만약 A와 B 모두 443포트와 통신하려고 한다면 어떻게 될까?
+
+
+443포트에서 오는 응답을 A에게 전달해야할지, B에게 전달해야할지 구분해야 하기 때문에 Gateway는 A가 보낸 요청을 4430, B가 보낸 요청을 4431 포트로 변경해서 NAT 테이블에 저장한다. 이제 게이트웨이는 4430 포트로 응답이 돌아오는지, 4431 포트로 응답이 돌아오는지에 따라 A,B 컴퓨터에 알맞게 응답을 돌려줄 수 있다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;cidrclassless-inter-domain-routing&quot;&gt;CIDR(Classless Inter Domain Routing)&lt;/h2&gt;
+
+&lt;p&gt;CIDR는 여러 개의 사설망을 구축하기 위해 망을 나누는 방법이다. 여기서 왜 Classless 라는 단어가 사용되었냐 하면, 옛날에는 A/B/C/D 클래스를 이용해서 망을 나눴기 때문이다. CIDR 을 쓰면 ABCD 클래스를 포함해서 더 다양하게 망을 나눌 수 있기 때문에 굳이 클래스라는 단어로 표기하기 않아도 되기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;CIDR의 기본적인 표기법은 192.168.0.0/24 처럼, A.B.C.D/E 와 형식이다. 그렇다면 이런 형식은 어떻게 해석할 수 있을까?&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;192.168.0.0/24&lt;/code&gt; 라는 예시로 살펴보면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/24&lt;/code&gt; 의 뜻은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;앞에서부터 24비트 이후에 오는 비트들을 사용할 수 있다&lt;/code&gt; 라는 뜻이다. 조금 더 풀어서 설명하자면&lt;/p&gt;
+
+&lt;p&gt;우선 A.B.C.D 를 각각 옥텟(=8비트, 1바이트)이라고 부르며 192.168.0.0을 8비트로 변환해서 써보면,&lt;/p&gt;
+
+&lt;p&gt;11000000.10101000.00000000.00000000 일것이다. 맨 왼쪽부터 24비트 이후에 오는 비트들을 사용할 수 있다 라는 의미는, 3번째 옥텟 이후 4번째 옥텟부터 전부 사용할 수 있다는 의미이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;1번옥텟(8비트).2번옥텟(8비트).3번옥텟(8비트) «여기서부터 24비트 이후!» .4번옥텟(8비트)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;즉 4번째 옥텟을 전부 이용하면 2^8을 전부 다 사용할 수 있다는 의미고 0~255 까지 전부 사용할 수 있다.
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;192.168.0.0/24 =&amp;gt; 192.168.0.0 ~ 192.168.0.255&lt;/code&gt; 까지를 나타낸 것이다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>[&quot;hoeeeeeh&quot;]</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Network" />
+      
+
+      
+        <summary type="html">IP 주소를 묶는 방법, CIDR란?</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

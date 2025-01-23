@@ -1,0 +1,2267 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="https://hoeeeeeh.github.io/tag/-/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" />
+  <updated>2025-01-23T06:48:01+00:00</updated>
+  <id>https://hoeeeeeh.github.io/tag/-/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">hoeeeeeh | </title>
+  
+
+  
+    <subtitle>HOEH 개발 블로그</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">네트워크 CS 지식</title>
+      <link href="https://hoeeeeeh.github.io/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_CS_%EC%A7%80%EC%8B%9D" rel="alternate" type="text/html" title="네트워크 CS 지식" />
+      <published>2025-01-15T12:26:00+00:00</published>
+      <updated>2025-01-15T12:26:00+00:00</updated>
+      <id>https://hoeeeeeh.github.io/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_CS_%EC%A7%80%EC%8B%9D</id>
+      <content type="html" xml:base="https://hoeeeeeh.github.io/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_CS_%EC%A7%80%EC%8B%9D">&lt;p&gt;네트워크 CS 지식 정리&lt;/p&gt;
+
+&lt;h1 id=&quot;전이중화-통신&quot;&gt;전이중화 통신&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Full Duplex : 양쪽 장치가 동시에 송수신할 수 있는 방식&lt;/li&gt;
+  &lt;li&gt;회선이 두 개(송신로, 수신로)가 있어서 같은 시간에 데이터를 주고 받을 수 있는 것이 전이중화 통신&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;반 이중화 통신은 회선 하나로 보내기 때문에 양방향으로 보내기 전에 먼저 상대방이 보냈는지 확인하는 기술 CSMA-CD&lt;/p&gt;
+
+&lt;p&gt;충돌이 발생하면 잠깐 기다렸다가 다시 보내기&lt;/p&gt;
+
+&lt;h1 id=&quot;무선랜&quot;&gt;무선랜&lt;/h1&gt;
+
+&lt;p&gt;무선랜은 반이중화 통신을 사용&lt;/p&gt;
+
+&lt;p&gt;half duplex (반이중화 통신)은 양쪽 장치가 서로 통신은 할 수 있지만 동시에는 못한다. 즉 한 번에 한 방향만 가능&lt;/p&gt;
+
+&lt;p&gt;CSMA/CA&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;사용하지 않는 채널 발견&lt;/li&gt;
+  &lt;li&gt;IFS 시간만큼 기다림&lt;/li&gt;
+  &lt;li&gt;프레임 보내고, 다음 프레임 보내기 전까지 IFS 만큼 기다림&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;대표적인 예시) 와이파이, 블루투스, 지그비&lt;/p&gt;
+
+&lt;p&gt;2.4Ghz : 장애물에 강함, 속도가 느리다, 호환성이 좋다&lt;/p&gt;
+
+&lt;p&gt;5Ghz : 장애물에 약함, 속도가 빠르다, 호환성이 비교적 나쁘다&lt;/p&gt;
+
+&lt;h1 id=&quot;대규모-트래픽으로-인한-서버-과부하-해결-방법&quot;&gt;대규모 트래픽으로 인한 서버 과부하 해결 방법&lt;/h1&gt;
+
+&lt;p&gt;서버 과부하 : 서버가 리소스를 소진하여 들어오는 요청을 처리하지 못할 때. (응답없음)&lt;/p&gt;
+
+&lt;p&gt;자원의 한계점 도달&lt;/p&gt;
+
+&lt;p&gt;→ 자원을 빠르게 증가시켜주기 (오토 스케일링) 클라우드 와치가 모니터링한다.&lt;/p&gt;
+
+&lt;p&gt;→ 무료 모니터링 (netData) 도 있다.&lt;/p&gt;
+
+&lt;p&gt;→ 쓰레스 홀드(임계치)를 정해놓고 이상으로 넘어가면 알림을 준다.&lt;/p&gt;
+
+&lt;h2 id=&quot;모니터링을-하는-이유&quot;&gt;모니터링을 하는 이유&lt;/h2&gt;
+
+&lt;p&gt;모니터링을 통해 어떤 서비스에 트래픽이 몰리는지, 어떤 이유로 몰리는지 분석이 가능하다.&lt;/p&gt;
+
+&lt;p&gt;또한 페이지를 나누어 트래픽을 나눌 수도 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;로드밸런서&quot;&gt;로드밸런서&lt;/h2&gt;
+
+&lt;p&gt;로드밸런서를 통해서 트래픽을 분산&lt;/p&gt;
+
+&lt;p&gt;오토 스케일링을 하는 동안 시간이 조금 걸리기 때문에, 로드 밸런스를 앞 단에 두고 트래픽을 분산 시킨다.&lt;/p&gt;
+
+&lt;p&gt;로드 밸런서에다가도 오토 스케일링을 걸기도 한다. (트래픽이 많은 기업)&lt;/p&gt;
+
+&lt;h2 id=&quot;블랙스완-프로토콜&quot;&gt;블랙스완 프로토콜&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;예측할 수 없는 사고가 일어난 것&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;엄청나게 많은 대비를 해도 서버가 죽을 수도 있다. 서버가 예기치 못한 사태로 죽고나서 분석은 가능하지만 미리 예측하기는 쉽지 않다.&lt;/p&gt;
+
+&lt;p&gt;블랙스완을 대비한 규칙이 있으면 좋다.&lt;/p&gt;
+
+&lt;p&gt;구글의 경우에는,&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;영향을 받은 시스템과 각 시스템의 상대적 위험 수준을 확인&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;→ 체계적으로 데이터를 수집하고 원인에 대한 가설을 수립한 후 이를 테스팅&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;잠재적으로 영향을 받을 수 있는 내부의 모든 팀에 연락&lt;/li&gt;
+  &lt;li&gt;최대한 빨리 취약점에 영향을 받는 모든 시스템을 업데이트&lt;/li&gt;
+  &lt;li&gt;복원계획을 포함한 우리의 대응 과정을 파트너와 고객 등 외부에 전달&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;서킷-브레이커&quot;&gt;서킷 브레이커&lt;/h2&gt;
+
+&lt;p&gt;서비스 장애를 감지하고 연쇄적으로 생기는 에러를 방지하는 기법&lt;/p&gt;
+
+&lt;p&gt;서비스와 서비스 사이에 서킷브레이커 계층을 두고, 미리 설정해놓은 타임아웃 임계값을 넘어가면 서킷브레이커가 그 이후의 추가 호출에 무조건 에러를 반환하게 한다.&lt;/p&gt;
+
+&lt;p&gt;다운된 서비스에 무한정 대기하면서 스레드 혹은 리소스를 잡아먹게 되면서 다른 스레드가 차단되는 현상이 발생할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;기다린다&lt;/code&gt;는 것은 사용자 입장에서 썩 좋은 경험은 아니다.&lt;/p&gt;
+
+&lt;p&gt;기다리는것보다 차라리 오류가 생겼다고 말해주는 것이 더 좋은 경험이다.&lt;/p&gt;
+
+&lt;p&gt;따라서 빠르게 알려줄 수 있는 서킷 브레이커가 더 좋을 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;서킷-브레이커의-상태&quot;&gt;서킷 브레이커의 상태&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;closed (정상) : 네트워크 요청의 실패율이 임계치보다 낮음
+    &lt;ul&gt;
+      &lt;li&gt;어느정도는 실패할 수 있다. 100퍼센트가 아니라 90퍼이상 성공하면 괜찮다같이 정할 수 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;open (에러) : 에러가 임계치 이상의 상태일 때.
+    &lt;ul&gt;
+      &lt;li&gt;요청을 서비스로 전송하지 않고 에러를 반환. 이를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fail test&lt;/code&gt; 라고 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;half open (확인 중) : 오픈 상태에서 일정 타임 아웃으로 설정된 시간이 지나면 장애가 해결되었는지 확인하기 위한 상태. 장애가 풀리면 closed 상태로, 실패하면 다시 open 상태로 전환&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/0.png&quot; alt=&quot;0&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;서킷-브레이커의-장점&quot;&gt;서킷 브레이커의 장점&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;연쇄적인 에러 발생을 막아준다&lt;/li&gt;
+  &lt;li&gt;일부 서비스가 다운되더라도 다른 서비스를 정상적으로 돌아가게 도와준다.&lt;/li&gt;
+  &lt;li&gt;사용자 경험을 높여준다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Netfilix 의 Hystrix&lt;/p&gt;
+
+&lt;h2 id=&quot;컨텐츠-관리&quot;&gt;컨텐츠 관리&lt;/h2&gt;
+
+&lt;p&gt;어떻게 하면 서버의 부하를 덜 수 있을까&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;불필요한 컨텐츠 제거
+    &lt;ul&gt;
+      &lt;li&gt;인프런에서 할인 이벤트를 열었는데 장애가 발생.&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://tech.inflab.com/202201-event-postmortem/&quot;&gt;https://tech.inflab.com/202201-event-postmortem/&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;강의 본문을 조회하는 쿼리가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;select *&lt;/code&gt; 로 되어 있어서 사용 여부와 관계 없이 모든 컬럼을 조회&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;CDN 을 통한 컨텐츠 제공
+    &lt;ul&gt;
+      &lt;li&gt;정적 자원들은 메인 서버가 주는게 아니라, CDN 을 통해서 주면 부하가 분산된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;컨텐츠 캐싱
+    &lt;ul&gt;
+      &lt;li&gt;요청 자체를 줄일 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;컨텐츠 압축
+    &lt;ul&gt;
+      &lt;li&gt;텍스트 기반 리소스는 gzip / brotli 등을 통해 압축 (70퍼정도로 압축됨)&lt;/li&gt;
+      &lt;li&gt;압축 푸는 서버의 자원도 필요&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;컨텐츠의 우아한 저하 (미리 준비된 응답)
+    &lt;ul&gt;
+      &lt;li&gt;시스템의 과도한 부하를 줄이기 위해 제공하는 컨텐츠 및 기능을 일시적으로 줄이는 전략
+  예를 들어 정적 텍스트 페이지를 제공하거나, 검색을 비활성화하거나 더 적은 수의 검색 결과를 반환하거나, 필수적이지 않은 기능을 비활성화&lt;/li&gt;
+      &lt;li&gt;이미지나 썸네일 등을 빼버리고 텍스트 기반으로 축소 서빙 (중요한 텍스트만 남기고 제거)&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;a href=&quot;https://youtu.be/xEu1bZqudE8?t=1070&quot;&gt;video&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;rest-api-란-무엇인가요&quot;&gt;REST API 란 무엇인가요?&lt;/h1&gt;
+
+&lt;p&gt;→ Restful 한 API&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Uniform-Interface
+    &lt;ol&gt;
+      &lt;li&gt;API에서 자원들은 각각의 독립적인 인터페이스를 가지며, 각각의 자원들이 url 자원식별, 표현을 통한 자원조작, Self-descriptive message, HATEOAS 구조를 가지는 것을 말합니다.&lt;/li&gt;
+      &lt;li&gt;독립적인 인터페이스라는 것은 서로 종속적이지 않은 인터페이스를 말합니다.
+ 예를 들어, 웹페이지를 변경했다고 웹 브라우저를 업데이트 하는 일은 없어야 하고, HTTP 명세나 HTML 명세가 변경되어도 웹페이지는 잘 작동해야 합니다.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;url-자원-식별&quot;&gt;URL 자원 식별&lt;/h3&gt;
+
+&lt;p&gt;→ identification of resources, 자원은 url 로 식별되어야 합니다.&lt;/p&gt;
+
+&lt;p&gt;/product/${id} 로 요청을 하면, 여기에 해당하는 product 를 줘야한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;표현을-통한-자원-조작&quot;&gt;표현을 통한 자원 조작&lt;/h3&gt;
+
+&lt;p&gt;Manipulation of resources through representations, URL 과 GET, DELETE 등 HTTP 표준 메서드 등을 통해 자원을 조회, 삭제 등 작업을 설명할 수 있는 정보가 담겨야 한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;getProduct 가 아니라, GET 메소드를 쓰고 /product
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;self-descriptive-messages&quot;&gt;Self-descriptive Messages&lt;/h3&gt;
+
+&lt;p&gt;HTTP Header 에 타입을 명시하고 각 메세지들은 MIME types 에 맞춰 표현되어야 합니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 .json 을 반환한다면 application/json 으로 명시하기&lt;/p&gt;
+
+&lt;h3 id=&quot;hateoas-hypermedia-as-the-engine-of-application-state&quot;&gt;HATEOAS (Hypermedia As The Engine Of Application State)&lt;/h3&gt;
+
+&lt;p&gt;강의 내용에서 설명이 좀 부족한 것 같다.&lt;/p&gt;
+
+&lt;p&gt;하이퍼링크에 따라 다른 페이지를 보여줘야 하며, 데이터마다 어떤 URL에서 왔는지 명시해주어야 한다.&lt;/p&gt;
+
+&lt;p&gt;보통은 href, links, link, url 속성 중 하나에 해당 데이터의 URL 을 담아서 표기해야 합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;동적 상호작용 제공 : 클라이언트는 고정된 URL 경로를 하드코딩하지 않고, 서버가 제공하는 하이퍼링크를 따라가며 필요한 리소스나 작업을 탐색&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;자체 설명적 메시지&lt;/strong&gt;: 서버가 응답 메시지에 포함된 링크를 통해 클라이언트가 다음 작업을 수행할 수 있는 정보를 제공합니다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;애플리케이션 상태 전환&lt;/strong&gt;: 링크를 통해 리소스 상태를 바꾸거나, 새로운 리소스를 요청하거나, 작업을 수행할 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;HATEOAS 미적용&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;json
+{
+  &quot;id&quot;: 123,
+  &quot;name&quot;: &quot;John Doe&quot;,
+  &quot;email&quot;: &quot;johndoe@example.com&quot;
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;HATEOAS 를 적용한 응답&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;json
+{
+  &quot;id&quot;: 123,
+  &quot;name&quot;: &quot;John Doe&quot;,
+  &quot;email&quot;: &quot;johndoe@example.com&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;https://api.example.com/users/123&quot;
+    },
+    &quot;update&quot;: {
+      &quot;href&quot;: &quot;https://api.example.com/users/123&quot;,
+      &quot;method&quot;: &quot;PUT&quot;
+    },
+    &quot;delete&quot;: {
+      &quot;href&quot;: &quot;https://api.example.com/users/123&quot;,
+      &quot;method&quot;: &quot;DELETE&quot;
+    },
+    &quot;orders&quot;: {
+      &quot;href&quot;: &quot;https://api.example.com/users/123/orders&quot;
+    }
+  }
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이 응답에서는 클라이언트가 self, update, delete, orders와 같은 작업을 수행할 수 있도록 하이퍼링크를 제공합니다.
+•	클라이언트는 이 링크를 활용해 데이터를 업데이트하거나 삭제하며,
+•	해당 사용자가 주문한 orders 데이터를 조회할 수도 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HATEOAS의 장점&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;API 유연성 증가&lt;/strong&gt;: 클라이언트는 URL을 하드코딩할 필요 없이 동적으로 링크를 탐색하며 API와 상호작용할 수 있습니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;버전 관리 간소화&lt;/strong&gt;: API 구조가 변경되더라도 클라이언트는 링크를 따라가기만 하면 되므로 API 변경의 영향을 덜 받습니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;문서 의존성 감소&lt;/strong&gt;: API 응답 자체가 필요한 작업에 대한 정보를 포함하므로, 별도의 문서 없이도 클라이언트가 API를 사용할 수 있습니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;HATEOAS의 단점&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;구현 복잡성&lt;/strong&gt;: 서버는 각 리소스에 적절한 하이퍼링크와 메타데이터를 제공해야 하므로 구현 난이도가 증가합니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;성능 부담&lt;/strong&gt;: 추가적인 링크 정보를 포함하기 때문에 응답 크기가 커질 수 있고, 처리 시간이 늘어날 수 있습니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;지원 부족&lt;/strong&gt;: 일부 클라이언트 라이브러리나 개발 환경에서 HATEOAS를 직접 활용하기 어려울 수 있습니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;HATEOAS를 사용해야 할 때&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;•	API 사용자가 특정 리소스에서 어떤 작업을 수행할 수 있을지 동적으로 안내가 필요한 경우.&lt;/p&gt;
+
+&lt;p&gt;•	대규모 애플리케이션에서 URL 구조가 자주 변경될 가능성이 높은 경우.&lt;/p&gt;
+
+&lt;p&gt;•	클라이언트와 서버 간의 긴밀한 결합을 줄이고 독립성을 높이고자 할 때.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HATEOAS와 RESTful API의 관계&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;HATEOAS는 REST의 핵심 원칙 중 하나이지만, 모든 RESTful API가 반드시 HATEOAS를 구현해야 하는 것은 아닙니다. RESTful API 설계에서 HATEOAS의 채택 여부는 시스템의 요구 사항과 복잡성에 따라 달라질 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;stateless&quot;&gt;Stateless&lt;/h2&gt;
+
+&lt;p&gt;REST API 를 제공하는 서버는 세션을 해당 서버 쪽에 유지하지 않는다는 의미&lt;/p&gt;
+
+&lt;p&gt;유저의 상태가 서버에 저장되기 때문에, 세션 방식은 RESTFUL 하지 않다.&lt;/p&gt;
+
+&lt;h2 id=&quot;cacheable&quot;&gt;Cacheable&lt;/h2&gt;
+
+&lt;p&gt;HTTP 에선 기본값으로 캐싱이 된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;client---server-구조&quot;&gt;Client - Server 구조&lt;/h2&gt;
+
+&lt;p&gt;클라이언트와 서버가 서로 독립적인 구조를 가져야 합니다. 물론 이는 HTTP 를 통해 가능한 구조입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;layered-system&quot;&gt;Layered System&lt;/h2&gt;
+
+&lt;p&gt;계층 구조로 나누어져 있는 아키텍처.&lt;/p&gt;
+
+&lt;h2 id=&quot;rest-api-의-uri-규칙&quot;&gt;REST API 의 URI 규칙&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;동작은 HTTP 메소드로만 해야하고, url 에 해당 내용이 들어가면 안된다.
+수정은 PUT, 삭제는 DELETE, 추가는 POST, 조회는 GET&lt;/li&gt;
+  &lt;li&gt;확장자는 표시하면 안된다.&lt;/li&gt;
+  &lt;li&gt;동사가 아닌 명사로만 표기&lt;/li&gt;
+  &lt;li&gt;계층적인 내용을 담고 있어야 한다. /집/아파트/전세 처럼 내려가는 구조&lt;/li&gt;
+  &lt;li&gt;대문자가 아닌 소문자만 쓰고, 너무 길 경우에는 언더바가 아닌 대시(-) 를 사용&lt;/li&gt;
+  &lt;li&gt;HTTP 응답 상태코드를 활용. 성공 200, 생성 201, 리다이렉트 301 …&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;그 외, api 업그레이드를 위해 Version 을 표기 (/wp/v2/posts?page=2)&lt;/p&gt;
+
+&lt;h1 id=&quot;브라우저-렌더링-과정&quot;&gt;브라우저 렌더링 과정&lt;/h1&gt;
+
+&lt;p&gt;아래의 과정이 동시에 일어난다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;DOM, CSSOM Tree 생성&lt;/p&gt;
+
+    &lt;p&gt;DOM Tree : 각각의 태그 노드&lt;/p&gt;
+
+    &lt;p&gt;CSSOM Tree : CSS 파서에 의해 정해진 스타일 규칙 적용&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/1.png&quot; alt=&quot;1&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;DOM 트리와 CSSOM 트리가 합쳐져 렌더 객체가 생성된다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/2.png&quot; alt=&quot;2&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;이때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;display: none&lt;/code&gt; 이 포함된 노드는 지워지고, font-size 등 상속적인 스타일은 부모노드에만 위치하도록 설계하는 등의 최적화를 거쳐 렌더 레이어가 완성 된다.&lt;/p&gt;
+
+&lt;p&gt;display: none 은 렌더트리에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;삭제&lt;/code&gt; 되지만, visibility: hidden 은 요소를 보이지 않게 할 뿐 여전히 레이아웃에서 공간을 차지한다.&lt;/p&gt;
+
+&lt;p&gt;또한 렌더 레이어가 완성될 때, GPU 에서 처리되는 부분이 있으면 이 요소들은 강제적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;그래픽 레이어&lt;/code&gt;로 분리된다.&lt;/p&gt;
+
+&lt;p&gt;그래픽 레이어는 리플로우와 리페인트를 유발하지 않는다.&lt;/p&gt;
+
+&lt;h1 id=&quot;gpt&quot;&gt;GPT&lt;/h1&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;맞습니다. **그래픽 레이어**는 리플로우(reflow)와 리페인트(repaint)를 유발하지 않습니다. 대신 그래픽 레이어는 브라우저의 렌더링 성능 최적화와 관련이 있으며, GPU를 활용한 컴포지팅 단계에서 동작합니다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;text
+	# **그래픽 레이어는 리플로우와 리페인트를 유발하지 않는다**
+	
+	그래픽 레이어는 브라우저의 렌더링 최적화와 관련이 있으며, GPU를 활용한 **컴포지팅(compositing)** 단계에서 동작합니다. 따라서 리플로우(Reflow)나 리페인트(Repaint)를 유발하지 않습니다.
+	
+	---
+	
+	## **리플로우와 리페인트 개념**
+	
+	1. **리플로우(Reflow)**  
+	   - DOM의 구조나 레이아웃이 변경될 때 발생.  
+	   - 예: 요소의 크기, 위치, 폰트 크기 변경 등.  
+	   - **비용이 크며** 다른 요소들에게도 영향을 미칠 수 있음.
+	
+	2. **리페인트(Repaint)**  
+	   - 레이아웃은 변경되지 않지만 요소의 스타일(예: 색상, 그림자)이 변경될 때 발생.  
+	   - 리플로우보다 비용이 적지만 여전히 성능에 영향을 줄 수 있음.
+	
+	---
+	
+	## **그래픽 레이어(Graphics Layer)란?**
+	
+	그래픽 레이어는 브라우저가 특정 요소를 **별도의 GPU 가속 레이어로 분리**하여 관리하는 것을 의미합니다.  
+	이를 통해 레이아웃 계산이나 스타일 재계산 없이 GPU에서 직접 작업(컴포지팅)을 수행합니다.
+	
+	### **그래픽 레이어의 특징**
+	- **리플로우와 리페인트를 유발하지 않음.**
+	- GPU에서 병렬로 작업을 처리하여 성능을 향상시킴.
+	- 독립적인 레이어로 분리되어 다른 레이어와 병렬로 처리 가능.
+	
+	---
+	
+	## **그래픽 레이어가 생성되는 상황**
+	
+	1. **CSS 속성**:
+	   - `transform` (예: `translate`, `scale`, `rotate` 등)
+	   - `opacity`
+	   - `will-change` (예: `will-change: transform, opacity;`)
+	   - `filter`
+	
+	2. **CSS 애니메이션 또는 트랜지션**:
+	   - GPU 가속이 필요한 속성(`transform`, `opacity` 등)에 대한 애니메이션.
+	
+	3. **하드웨어 가속 사용**:
+	   - 예: `translate3d` 또는 `translateZ` 사용 시.
+	
+	---
+	
+	## **그래픽 레이어의 장점**
+	
+	1. **성능 최적화**:
+	   - 레이아웃 계산과 페인트 작업의 부하를 줄임.
+	   - GPU에서 병렬적으로 작업을 처리해 성능을 크게 개선.
+	
+	2. **애니메이션 부드러움**:
+	   - GPU 가속을 활용해 애니메이션을 부드럽게 렌더링.
+	   - 리플로우와 리페인트를 유발하지 않음.
+	
+	---
+	
+	## **예시**
+	
+	### **리플로우/리페인트를 유발하는 경우**
+	css
+	.element {
+	  width: 100px;
+	  height: 100px;
+	  background-color: red;
+	  transition: width 1s;
+	}
+	
+		•	width 속성은 레이아웃을 변경하므로 리플로우가 발생.
+	
+	그래픽 레이어를 활용한 경우
+	.element {
+	  width: 100px;
+	  height: 100px;
+	  background-color: red;
+	  transform: translateX(0);
+	  transition: transform 1s;
+	}
+		•	transform 속성은 레이아웃을 변경하지 않으므로 리플로우나 리페인트를 유발하지 않음.
+		•	GPU에서 작업이 처리되어 성능이 더 부드럽고 빠름.
+		
+		그래픽 레이어는 GPU 가속을 활용한 컴포지팅 단계에서 처리되므로 리플로우와 리페인트를 유발하지 않습니다.
+	성능 최적화가 필요한 애니메이션이나 트랜지션에서는 그래픽 레이어를 적극적으로 활용하는 것이 좋습니다.
+	
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;레이아웃 잡기 (Layout)&lt;/li&gt;
+  &lt;li&gt;렌더레이어를 대상으로 칠하기 (Paint)&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;레이어 합치기 (Composite Layer) 및 표기&lt;/p&gt;
+
+    &lt;p&gt;각각의 레이어로부터 비트맵이 생성되고, GPU에 텍스쳐로 업로드 됩니다. 그 다음 텍스쳐들은 서로 합쳐져 하나의 이미지로 렌더링되며 화면으로 출력됩니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;💡 렌더트리와 DOM 트리는 1:1 대응일까요?&lt;br /&gt;
+아닙니다. DOM 트리 &amp;gt; 렌더 객체 &amp;gt; 렌더 트리가 되는 과정에서 display: none 으로 사라지는 렌더 객체들이 있을 수 있기 때문.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;아닙니다. DOM 트리 &amp;gt; 렌더 객체 &amp;gt; 렌더 트리가 되는 과정에서 display: none 으로 사라지는 렌더 객체들이 있을 수 있기 때문.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;wwwnavercom-을-주소창에-입력했을-때-생기는-과정-그리고-dns-까지-설명해주세요&quot;&gt;&lt;a href=&quot;http://www.naver.com/&quot;&gt;www.naver.com&lt;/a&gt; 을 주소창에 입력했을 때 생기는 과정, 그리고 DNS 까지 설명해주세요&lt;/h1&gt;
+
+&lt;details&gt;
+&lt;summary&gt;강의 답변&lt;/summary&gt;
+
+리다이렉트, 캐싱, DNS, IP 라우팅, TCP 연결 구축을 거쳐
+
+
+요청, 응답이 일어나는 TTFB(TIme TO First Byte) 가 시작되고
+
+
+이후 컨텐츠를 다운받게 되고,
+
+
+브라우저 렌더링 과정을 거쳐 네이버라는 화면이 나타나게 됩니다.
+
+
+&lt;/details&gt;
+
+&lt;h2 id=&quot;리다이렉트&quot;&gt;리다이렉트&lt;/h2&gt;
+
+&lt;p&gt;리다이렉트가 있다면 리다이렉트를 진행하고, 없다면 그대로 해당 요청에 대한 과정이 진행&lt;/p&gt;
+
+&lt;h2 id=&quot;캐싱&quot;&gt;캐싱&lt;/h2&gt;
+
+&lt;p&gt;해당 요청이 캐싱이 가능한지, 가능하지 않은지를 파악합니다. 캐싱이 이미 된 요청이라면 캐싱된 값을 반환하며, 캐싱이 되지 않은 새로운 요청이라면 그 다음 단계로 넘어갑니다.&lt;/p&gt;
+
+&lt;p&gt;캐싱은 요청된 값의 결과값을 저장하고 그 값을 다시 요청하면 다시 제공하는 기술입니다.&lt;/p&gt;
+
+&lt;p&gt;브라우저 캐시와, 공유 캐시로 나뉘어집니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;브라우저-캐시&quot;&gt;브라우저 캐시&lt;/h3&gt;
+
+&lt;p&gt;쿠키, 로컬스토리지 등을 포함한 캐시 (개인, private 캐시)&lt;/p&gt;
+
+&lt;h3 id=&quot;공유-캐시&quot;&gt;공유 캐시&lt;/h3&gt;
+
+&lt;p&gt;클라이언트와 서버 사이에 있으며, 사용자간에 공유할 수 있는 응답을 저장할 수 있다. 예를 들어, 요청한 서버 앞 단에 프록시 서버가 캐싱을 하고 있는 것. 이를 리버스 프록시를 둬서 내부 서버로 포워드한다고도 말합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;dns&quot;&gt;DNS&lt;/h2&gt;
+
+&lt;p&gt;Domain Name System 은 계층적인 도메인 구조와 분산된 데이터베이스를 이용한 시스템으로,&lt;/p&gt;
+
+&lt;p&gt;FQDN 을 인터넷 프로토콜인 IP 로 바꿔주는 시스템입니다.&lt;/p&gt;
+
+&lt;p&gt;이는 DNS 관련 요청을 네임서버로 전달하고, 해당 응답값을 클라이언트에게 전달하는 Resolver,&lt;/p&gt;
+
+&lt;p&gt;도메인을 IP 로 변환하는 네임서버 등으로 이루어져있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;fqdn&quot;&gt;FQDN&lt;/h3&gt;
+
+&lt;p&gt;FQDN (Fully Qualified Domain Name) 은 호스트와 도메인이 합쳐진 완전한 도메인 이름을 말합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.naver.com/&quot;&gt;www.naver.com&lt;/a&gt; 에서 www 등은 호스트 부분 혹은 서브 도메인, naver.com 은 도메인이라고 합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;dns-캐싱&quot;&gt;DNS 캐싱&lt;/h3&gt;
+
+&lt;p&gt;미리 해당 도메인 이름을 요청한 적이 있다면, 로컬 PC 에 자동적으로 저장됩니다.&lt;/p&gt;
+
+&lt;p&gt;브라우저 캐싱과, OS 캐싱이 있습니다.&lt;/p&gt;
+
+&lt;details&gt;
+&lt;summary&gt;gpt&lt;/summary&gt;
+
+
+```
+text
+# **DNS 캐싱**
+
+DNS 캐싱은 도메인 이름을 요청할 때 발생하는 네트워크 트래픽을 줄이고, 더 빠른 응답 속도를 제공하기 위해 이전에 조회한 도메인 이름과 IP 주소를 **로컬에 저장**하는 기술입니다.  
+- 즉, 이미 요청한 도메인 이름이 있다면, DNS 서버에 다시 요청하지 않고 **캐싱된 데이터**를 사용합니다.
+
+---
+
+## **DNS 캐싱의 종류**
+
+DNS 캐시는 **다양한 계층**에서 발생할 수 있습니다. 주요 캐싱 계층은 다음과 같습니다:
+
+### 1. **브라우저 캐싱**
+- **웹 브라우저**는 자체적으로 DNS 캐시를 관리합니다.
+- 동일한 도메인 이름을 여러 번 요청하는 경우, 브라우저 캐시에서 IP 주소를 가져와 빠르게 처리합니다.
+- 브라우저별로 DNS 캐싱 시간(TTL, Time to Live)이 다를 수 있습니다.
+  - 예: Chrome, Firefox 등에서 TTL 설정에 따라 캐시가 유지됩니다.
+
+#### **브라우저 DNS 캐시 확인 및 삭제**
+- Chrome: `chrome://net-internals/#dns`로 접속하여 캐시를 확인하거나 삭제할 수 있음.
+
+---
+
+### 2. **OS 캐싱**
+- 운영체제(Windows, macOS, Linux)는 **DNS Resolver Cache**라는 이름으로 자체적인 DNS 캐시를 관리합니다.
+- 애플리케이션(예: 브라우저)에서 DNS 조회 요청이 들어오면, DNS 서버에 요청하기 전에 **운영체제의 캐시**를 먼저 확인합니다.
+
+#### **OS DNS 캐시 확인 및 삭제 방법**
+- **Windows**: 
+  - 확인: 명령 프롬프트에서 `ipconfig /displaydns`
+  - 삭제: 명령 프롬프트에서 `ipconfig /flushdns`
+- **macOS**: 
+  - 삭제: `sudo dscacheutil -flushcache &amp;amp;&amp;amp; sudo killall -HUP mDNSResponder`
+- **Linux**: 
+  - 삭제: `sudo systemd-resolve --flush-caches` (시스템에 따라 명령어가 다를 수 있음)
+
+---
+
+## **DNS 캐싱의 장점**
+
+1. **빠른 응답 속도**:
+   - 캐시된 데이터를 사용하여 DNS 서버와의 통신 시간을 줄임.
+2. **네트워크 트래픽 감소**:
+   - DNS 요청이 줄어들어 네트워크 대역폭을 절약.
+3. **서버 부하 감소**:
+   - DNS 서버로의 요청 수가 줄어들어 서버 부하를 완화.
+
+---
+
+## **DNS 캐싱의 단점**
+
+1. **오래된 정보**:
+   - TTL(Time to Live)이 만료되지 않은 경우, IP 주소가 변경되었더라도 **오래된 캐시 데이터를 사용할 수 있음**.
+   - 이로 인해 사용자가 변경된 서버에 접속하지 못하거나 오류가 발생할 수 있음.
+2. **캐시 초기화 필요**:
+   - DNS 관련 문제를 해결하려면 브라우저, OS, 네트워크 장치의 캐시를 수동으로 초기화해야 할 때가 있음.
+
+---
+
+## **TTL(Time to Live)**
+- DNS 캐시는 **TTL(Time to Live)** 값을 기반으로 유지됩니다.
+- TTL은 DNS 응답에 포함된 값으로, 특정 도메인-IP 매핑이 캐시에서 얼마나 오래 유지될지를 정의합니다.
+- TTL이 만료되면, 캐시된 데이터는 삭제되고 새 데이터를 DNS 서버에서 요청하게 됩니다.
+
+---
+
+## **정리**
+
+DNS 캐싱은 **브라우저 캐싱**과 **OS 캐싱**의 두 가지 주요 계층에서 이루어지며, 인터넷 속도를 향상시키고 서버 부하를 줄이는 데 큰 역할을 합니다.  
+문제가 발생했을 때는 캐시를 수동으로 초기화하거나 TTL 설정을 확인해 문제를 해결할 수 있습니다.
+
+```
+
+
+
+&lt;/details&gt;
+
+&lt;h2 id=&quot;ip-라우팅&quot;&gt;IP 라우팅&lt;/h2&gt;
+
+&lt;p&gt;해당 IP 를 기반으로 라우팅, ARP 과정을 거쳐 실제 서버를 찾습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;tcp-연결-구축-http--20&quot;&gt;TCP 연결 구축 (HTTP  ~2.0)&lt;/h2&gt;
+
+&lt;p&gt;브라우저가 TCP 3Way handshake 및 SSL 연결 등을 통해 연결을 설정합니다.&lt;/p&gt;
+
+&lt;p&gt;이후에 요청을 보냄으로써 서버로부터 응답을 받습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;quic-연결-http-30&quot;&gt;QUIC 연결 (HTTP 3.0)&lt;/h2&gt;
+
+&lt;h2 id=&quot;컨텐츠-다운로드&quot;&gt;컨텐츠 다운로드&lt;/h2&gt;
+
+&lt;p&gt;요청한 컨텐츠를 서버로부터 다운 받습니다.&lt;/p&gt;
+
+&lt;p&gt;처음 다운로드를 시작할 때, TTFB (Time To First Byte) 라고 합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;브라우저-렌더링&quot;&gt;브라우저 렌더링&lt;/h2&gt;
+
+&lt;p&gt;받은 데이터를 바탕으로 브라우저 엔진이 브라우저 렌더링 과정을 거쳐 화면을 만듭니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;이더넷-프레임은-무엇이며-구조가-어떻게-되나요&quot;&gt;이더넷 프레임은 무엇이며, 구조가 어떻게 되나요?&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/3.png&quot; alt=&quot;3&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;이더넷프레임이란 데이터 링크계층의 데이터 단위이며 이더넷 프레임을 기반으로 데이터가 전달 되며 다음과 같은 필드로 구성되어있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;**Preamble**&lt;/u&gt; : [7바이트]
+이더넷 프레임이 시작임을 알려준다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;**SFD**&lt;/u&gt; : [1바이트]
+Start frame delimiter, 다음 필드부터 주소필드가 시작됨을 알려줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;**Address**&lt;/u&gt; : [6, 6바이트]
+목적지 주소, 시작지 주소입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;**EtherType**&lt;/u&gt; : [2바이트]
+데이터링크계층 위의 IP 프로토콜을 정의합니다. (IPv4, Ipv6)&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;**Payload**&lt;/u&gt; : [가변바이트]
+데이터 또는 페이로드라고 합니다. 가변길이 필드입니다. 해당 필드는 이진데이터(0과1로 이루어진 데이터)로 구성됩니다. IEEE 표준은 최대 페이로드를 1500 바이 트로 지정하고 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;u&gt;**FCS**&lt;/u&gt; : [4바이트]
+frame check sequence이며 수신측의 에러검출을 위해 삽입하는 필드입니 다. CRC 에러검출 기법에 의해 생성된 비트배열이 여기에 담깁니다. 비트배열을 기반으로 수신된 데이터가 손상되었는지를 확인하고, 에러 확인 시에는 해당 프레임을 폐기하고 송신측에 재전송을 요구하기 위한 필드입니다.
+CRC 알고리즘에 의해 만들어진 비트 배열이 담기는 필드&lt;/p&gt;
+
+&lt;h1 id=&quot;cors란-무엇인가요&quot;&gt;CORS란 무엇인가요?&lt;/h1&gt;
+
+&lt;h2 id=&quot;origin&quot;&gt;Origin&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/4.png&quot; alt=&quot;4&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;오리진&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프로토콜 + 호스트네임 + 포트&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;예를 들어, &lt;a href=&quot;https://shopping.naver.com/home&quot;&gt;https://shopping.naver.com/home&lt;/a&gt; 에서&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https&lt;/code&gt; , &lt;a href=&quot;http://shopping.naver.com/&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shopping.naver.com&lt;/code&gt;&lt;/a&gt; , &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8080&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sop-same-origin-policy&quot;&gt;SOP (Same Origin Policy)&lt;/h2&gt;
+
+&lt;p&gt;브라우저 상에서 오로지 같은 오리진끼리만 요청을 허가하는 보안 정책.&lt;/p&gt;
+
+&lt;p&gt;브라우저 상에서 다른 오리진끼리는 통신이 불가능하다.&lt;/p&gt;
+
+&lt;p&gt;다른 오리진에서 요청을 하는 공격에 방지하기 위함&lt;/p&gt;
+
+&lt;h2 id=&quot;cors-cross-origin-resource-sharing&quot;&gt;CORS (Cross Origin Resource Sharing)&lt;/h2&gt;
+
+&lt;p&gt;다른 오리진과 통신을 해야하는 일이 있을 수 있기 때문에, SOP 보다 조금 느슨한 규칙&lt;/p&gt;
+
+&lt;p&gt;포트번호만 달라도 오리진이 다르기 때문에 개발 과정에서 백/프 끼리도 보통 오리진이 다르다&lt;/p&gt;
+
+&lt;p&gt;HTTP 헤더를 기반으로 브라우저가 다른 오리진에 대한 리소스(image, css, js, video 등) 로드를 허용할지 말지에 대한 규칙&lt;/p&gt;
+
+&lt;h2 id=&quot;preflight-request-simple-request&quot;&gt;Preflight Request, Simple Request&lt;/h2&gt;
+
+&lt;p&gt;CORS는 브라우저가 다른 출처(origin)의 리소스에 접근할 때 안전을 보장하기 위해 사용하는 메커니즘입니다. 요청은 크게 두 가지로 나뉩니다&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;1-simple-request-단순-요청&quot;&gt;1. &lt;strong&gt;Simple Request (단순 요청)&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;정의&quot;&gt;정의&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;브라우저가 사전 확인(preflight)을 생략하고 &lt;strong&gt;직접 요청&lt;/strong&gt;을 서버에 보내는 요청입니다.&lt;/li&gt;
+  &lt;li&gt;CORS 규칙에서 &lt;strong&gt;Simple Request&lt;/strong&gt;는 특정 조건을 만족해야 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;simple-request의-조건&quot;&gt;Simple Request의 조건&lt;/h3&gt;
+
+&lt;p&gt;Simple Request가 되기 위해서는 아래 조건을 모두 충족해야 합니다:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;HTTP 메서드&lt;/strong&gt;가 다음 중 하나여야 합니다:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POST&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;헤더(Header)&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;요청에 사용된 헤더가 CORS에서 허용된 &lt;strong&gt;간단한 헤더(Simple Headers)&lt;/strong&gt;만 포함해야 합니다.&lt;/li&gt;
+      &lt;li&gt;허용된 간단한 헤더:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Accept&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Accept-Language&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Content-Language&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Content-Type&lt;/code&gt; (단, 값이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application/x-www-form-urlencoded&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;multipart/form-data&lt;/code&gt;, 또는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text/plain&lt;/code&gt;일 경우만 허용)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Content-Type&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;요청 본문(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Body&lt;/code&gt;)의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Content-Type&lt;/code&gt; 값이 아래 중 하나여야 합니다:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application/x-www-form-urlencoded&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;multipart/form-data&lt;/code&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text/plain&lt;/code&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Credentials&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;요청에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Authorization&lt;/code&gt; 헤더나 쿠키와 같은 자격 증명(크리덴셜)이 포함되지 않아야 함 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;withCredentials&lt;/code&gt;가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;동작-방식&quot;&gt;동작 방식&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;브라우저는 요청을 바로 서버에 보냅니다.&lt;/li&gt;
+  &lt;li&gt;서버는 요청의 출처(origin)와 헤더를 보고 허용 여부를 판단합니다.&lt;/li&gt;
+  &lt;li&gt;서버가 허용하면 브라우저는 응답을 처리합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;2-preflight-request-사전-요청&quot;&gt;2. &lt;strong&gt;Preflight Request (사전 요청)&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;정의-1&quot;&gt;정의&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;요청이 Simple Request 조건을 충족하지 않으면 브라우저는 &lt;strong&gt;Preflight Request&lt;/strong&gt;를 먼저 보냅니다.&lt;/li&gt;
+  &lt;li&gt;Preflight Request는 실제 요청 전에 서버가 해당 요청을 허용할지 여부를 확인하는 &lt;strong&gt;안전성 검사&lt;/strong&gt;입니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;preflight-request의-동작&quot;&gt;Preflight Request의 동작&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;브라우저는 &lt;strong&gt;HTTP OPTIONS&lt;/strong&gt; 메서드로 사전 요청을 보냅니다.&lt;/li&gt;
+  &lt;li&gt;Preflight Request에는 아래와 같은 정보를 포함합니다:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Origin&lt;/code&gt;: 요청의 출처.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Access-Control-Request-Method&lt;/code&gt;: 실제 요청에 사용될 HTTP 메서드.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Access-Control-Request-Headers&lt;/code&gt;: 실제 요청에서 사용될 커스텀 헤더(있을 경우).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;서버는 Preflight Request에 대해 응답합니다:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Access-Control-Allow-Origin&lt;/code&gt;: 허용된 출처.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Access-Control-Allow-Methods&lt;/code&gt;: 허용된 HTTP 메서드.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Access-Control-Allow-Headers&lt;/code&gt;: 허용된 커스텀 헤더.&lt;/li&gt;
+      &lt;li&gt;응답 상태 코드가 200이면 브라우저는 실제 요청을 보냅니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;preflight가-필요한-조건&quot;&gt;Preflight가 필요한 조건&lt;/h3&gt;
+
+&lt;p&gt;Preflight Request는 다음 중 하나 이상에 해당할 때 발생합니다:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;요청 메서드가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POST&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HEAD&lt;/code&gt;가 아닌 경우 (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PUT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PATCH&lt;/code&gt; 등).&lt;/li&gt;
+  &lt;li&gt;요청 헤더가 &lt;strong&gt;간단한 헤더&lt;/strong&gt; 외의 커스텀 헤더를 포함하는 경우.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Content-Type&lt;/code&gt;이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application/x-www-form-urlencoded&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;multipart/form-data&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text/plain&lt;/code&gt;이 아닌 경우 (예: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application/json&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;요청에 자격 증명(크리덴셜, 예: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Authorization&lt;/code&gt; 헤더나 쿠키)이 포함된 경우.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;네이글-알고리즘이란-무엇인가요&quot;&gt;네이글 알고리즘이란 무엇인가요?&lt;/h1&gt;
+
+&lt;p&gt;네이글 알고리즘은 네트워크의 효율성을 높이기 위해 네트워크를 통해 전송되어야 하는 패킷의 수를 줄이고 적은 양의 데이터를 자주 보내면 발생되는 대역폭 낭비를 막아주는 방법입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/5.png&quot; alt=&quot;5&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;기존 방법과 다르게 패킷을 보낼 때 고정 크기의 버퍼에 모아두고 버퍼에 어느정도 차면 그 때 보내고, 다시 ACK 가 오면 버퍼에 찬 데이터를 보내는 방법&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/6.png&quot; alt=&quot;6&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;네이글-알고리즘의-장점&quot;&gt;네이글 알고리즘의 장점&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;전송하는 패킷의 수가 줄어들기 때문에 네트워크의 혼잡도를 줄이고 패킷 손실률을 줄일 수 있다.&lt;/li&gt;
+  &lt;li&gt;작은 패킷들을 많이 전송할 때, 각 패킷에 포함된 헤더의 크기가 커져서 대역폭 소모가 많이 발생할 수 있다. 패킷의 수를 줄임으로써 이러한 오버헤드를 줄일 수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;네이글-알고리즘의-단점&quot;&gt;네이글 알고리즘의 단점&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;작은 패킷의 수를 줄이기 위해 데이터를 버퍼링하고, 충분한 양의 데이터가 모일 때 까지 패킷 전송을 지연시킨다.&lt;/li&gt;
+  &lt;li&gt;ACK를 받기 전까지 데이터를 전송하지 않기 때문에 지연시간이 발생할 수 있다.
+(실시간이 중요하다면 사용하기 힘들다)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-15-네트워크_CS_지식.md/7.png&quot; alt=&quot;7&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;http-의-멱등성에-대해-설명해주세요&quot;&gt;HTTP 의 멱등성에 대해 설명해주세요&lt;/h1&gt;
+
+&lt;p&gt;HTTP 멱등성(idempotent)이란 하나의 요청이 아닌 여러번 동일한 요청을 보냈을 때 서버가 같은 상태를 가지는 것을 멱등성이라고 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.tosspayments.com/blog/what-is-idempotency&quot;&gt;https://docs.tosspayments.com/blog/what-is-idempotency&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;멱등성을-가지는-메소드&quot;&gt;멱등성을 가지는 메소드&lt;/h2&gt;
+
+&lt;h3 id=&quot;get-안전한-메소드&quot;&gt;GET (안전한 메소드)&lt;/h3&gt;
+
+&lt;p&gt;서버에서 정보를 가져오는 것을 여러 번 해도, 동일한 정보를 가져온다.&lt;/p&gt;
+
+&lt;h3 id=&quot;head-안전한-메소드&quot;&gt;HEAD (안전한 메소드)&lt;/h3&gt;
+
+&lt;p&gt;헤드는 GET 요청이 생성하는 응답의 헤더를 검색하는데 사용됩니다.&lt;/p&gt;
+
+&lt;p&gt;따라서 서버의 상태를 변경하지 않습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;options-안전한-메소드&quot;&gt;OPTIONS (안전한 메소드)&lt;/h3&gt;
+
+&lt;p&gt;대상 리소스의 통신 옵션 ( 서버에서 지원하는 HTTP 메서드 등)을 가져올 때 사용&lt;/p&gt;
+
+&lt;h3 id=&quot;put-안전한-메소드는-아님&quot;&gt;PUT (안전한 메소드는 아님)&lt;/h3&gt;
+
+&lt;p&gt;서버에 있는 데이터를 아예 교체하기 때문에 여러 번 보내도 똑같은 데이터로 교체될 것입니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;delete-안전한-메소드는-아님&quot;&gt;DELETE (안전한 메소드는 아님)&lt;/h3&gt;
+
+&lt;p&gt;삭제 작업을 반복해도 시스템 상태가 더 이상 변경되지 않습니다.&lt;/p&gt;
+
+&lt;p&gt;그런데 흠..&lt;/p&gt;
+
+&lt;p&gt;예를 들어 DELETE /post/lastest 라고 해보자. 가장 최신 포스트를 지우게 된다고 하면 서버의 상태가 바뀌지 않나?&lt;/p&gt;
+
+&lt;p&gt;또한 만약 DELETE /post/abc 인 상황에서 abc 라는 리소스가 여러 개라면? DELETE 는 abc 리소스를 하나만 지우는 상황이라면 어떻게 될까?&lt;/p&gt;
+
+&lt;p&gt;이러면 또 멱등성을 보장할 수 없는게 아닌가?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE&lt;/code&gt;&lt;/strong&gt;&lt;strong&gt;는 멱등성&lt;/strong&gt;을 보장하는 메서드이지만, &lt;strong&gt;대상 리소스를 정확히 지정해야&lt;/strong&gt; 합니다. 예를 들어, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE /posts/123&lt;/code&gt;와 같이 &lt;strong&gt;구체적인 리소스&lt;/strong&gt;를 명시해야 합니다.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE /posts/last&lt;/code&gt;와 같이 마지막 게시글을 삭제하는 요청은 &lt;strong&gt;상태 변화가 계속 일어나므로 멱등성을 가지지 않&lt;/strong&gt;습니다.&lt;/li&gt;
+  &lt;li&gt;이런 경우에는 &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POST&lt;/code&gt;&lt;/strong&gt;&lt;strong&gt;를 사용하는 것이 더 적절&lt;/strong&gt;합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;요약&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE&lt;/code&gt;는 멱등성을 보장하므로 &lt;strong&gt;상태 변화가 없을 때&lt;/strong&gt; 사용해야 합니다. 상태가 계속 바뀌는 경우에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POST&lt;/code&gt;를 사용하는 것이 HTTP 스펙상 더 맞습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;post&quot;&gt;POST&lt;/h3&gt;
+
+&lt;p&gt;서버에 동일한 요청을 여러 번 보내면, 보낸 만큼 생성 될 것이기 때문에 서버의 상태가 바뀌게 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;patch&quot;&gt;PATCH&lt;/h3&gt;
+
+&lt;p&gt;리소스를 부분적으로 업데이트 하게 되는데, 멱등성의 여부는 PATCH 를 실행하는 방법에 따라 달라진다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 특정 부분을 새롭게 교체하는거라면 멱등성을 가지지만, 하나씩 증가하거나 빼기, 배열에 요소 추가 등의 방식은 멱등성을 가지지 않는다.&lt;/p&gt;
+
+&lt;p&gt;함수형 프로그래밍이 생각나네&lt;/p&gt;
+
+&lt;h2 id=&quot;http-멱등성을-고려한-api-설계&quot;&gt;HTTP 멱등성을 고려한 API 설계&lt;/h2&gt;
+
+&lt;p&gt;POST 메서드의 경우 idempotency Key를 보내서 동일한 요청인지를 식별하게 합니다.
+이를 통해 동일한 작업의 재시도를 인식하고 한 번만 처리되도록 합니다. 이는 중복 트랜잭션을 피해야 하는 결제 처리 API에서 자주 사용됩니다.&lt;/p&gt;
+
+&lt;details&gt;
+&lt;summary&gt;Idempotency Key&lt;/summary&gt;
+
+
+```
+text
+
+Idempotency Key는 중복 요청을 방지하고 멱등성을 보장하는 데 중요한 역할을 하는 기법입니다. 특히 POST 메서드에서는 요청을 여러 번 보내면 여러 번 처리가 발생하는 경우가 많기 때문에, 이를 방지하기 위해 Idempotency Key를 사용합니다.
+
+1. Idempotency Key의 개념
+Idempotency Key는 클라이언트가 서버에 보내는 고유한 값으로, 동일한 작업을 여러 번 요청하더라도 서버에서 해당 작업을 한 번만 처리하도록 보장하는 키입니다. 이는 멱등성을 보장하기 위한 기술로, 중복 트랜잭션이나 중복 작업이 발생하지 않도록 합니다.
+
+Idempotency Key는 클라이언트가 POST 요청을 보낼 때마다 함께 전송합니다.
+이 키는 요청이 중복되었는지 여부를 서버가 인식할 수 있게 해줍니다.
+2. POST 메서드와 멱등성
+일반적으로 POST 메서드는 리소스를 생성하거나 데이터를 변경하는 요청에 사용됩니다. 이런 요청은 여러 번 실행될 경우 여러 번 처리되거나 중복된 리소스가 생성될 수 있습니다. 예를 들어:
+
+사용자가 결제를 시도하는 경우, 결제 요청을 여러 번 보내면 여러 번 결제가 처리될 위험이 있습니다.
+서버가 POST 요청을 여러 번 받아들여 중복된 리소스를 생성하거나 트랜잭션을 두 번 처리할 수 있습니다.
+3. Idempotency Key의 역할
+Idempotency Key는 이러한 중복 처리를 피하기 위한 방법으로 사용됩니다. 서버는 동일한 Idempotency Key를 가진 요청이 들어오면, 이미 처리한 작업을 다시 처리하지 않고 응답을 재사용합니다.
+
+예시: 결제 처리 API
+결제 처리 API에서 Idempotency Key가 어떻게 동작하는지 살펴봅시다:
+
+클라이언트가 결제 요청을 보냄:
+
+클라이언트는 결제 요청과 함께 고유한 Idempotency Key를 생성하고 보냅니다.
+예: POST /payment 요청과 함께 { &quot;idempotencyKey&quot;: &quot;12345&quot; }를 보냄.
+서버는 Idempotency Key를 확인:
+
+서버는 요청을 처리하기 전에 이 Idempotency Key가 이전에 처리된 적이 있는지 확인합니다.
+만약 이 키가 이미 처리된 적이 있다면, 서버는 새로운 결제를 생성하지 않고, 이전 응답을 그대로 재사용합니다.
+만약 이 키가 처리되지 않은 키라면, 서버는 결제를 처리하고 새로운 결제 결과와 함께 Idempotency Key를 저장합니다.
+동일한 요청이 여러 번 들어오면:
+
+두 번째 요청에서 동일한 Idempotency Key가 포함되면, 서버는 이미 처리된 요청으로 인식하고, 같은 결과를 반환합니다.
+이로써 중복 결제나 트랜잭션이 발생하지 않게 됩니다.
+4. Idempotency Key가 필요한 이유
+네트워크 불안정성:
+
+클라이언트가 네트워크 문제로 요청이 실패했다고 생각하고 요청을 다시 보낼 수 있습니다. 그러나 실제로 첫 번째 요청은 서버에서 성공적으로 처리되었을 수 있습니다.
+Idempotency Key는 서버가 이 중복 요청을 인식하고, 두 번째 요청에서 이전의 결과를 반환함으로써 중복 처리를 방지합니다.
+중복 트랜잭션 방지:
+
+결제나 주문 처리 등과 같은 중요한 작업에서는 동일한 트랜잭션이 두 번 이상 처리되면 큰 문제가 될 수 있습니다.
+Idempotency Key는 이러한 중복 트랜잭션을 피하기 위해 사용됩니다.
+시스템의 안정성 증가:
+
+여러 번 요청을 보내더라도 시스템은 항상 동일한 결과를 반환하고, 불필요한 리소스 소모나 상태 변경을 피할 수 있습니다.
+5. 실제 예시
+결제 처리 API 예시:
+json
+코드 복사
+POST /payments
+{
+  &quot;amount&quot;: 100,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;idempotencyKey&quot;: &quot;12345&quot;
+}
+첫 번째 요청: 서버는 idempotencyKey: &quot;12345&quot;를 인식하고 결제를 처리한 후, 결제 정보를 반환합니다.
+두 번째 요청 (같은 Idempotency Key): 서버는 이미 idempotencyKey: &quot;12345&quot;에 대한 요청을 처리했음을 인식하고, 결제를 중복 처리하지 않고 이전 응답을 그대로 반환합니다.
+6. Idempotency Key 관리 방법
+서버에서 Key를 저장: 서버는 각 Idempotency Key와 관련된 요청을 처리하고, 그 결과를 저장합니다. 일정 기간 동안 같은 idempotencyKey가 사용되면 서버는 그 결과를 반환하고, 이후에는 해당 키를 삭제하거나 만료시킬 수 있습니다.
+
+유효 기간 설정: idempotencyKey는 보통 일정 기간 동안만 유효하며, 이를 통해 서버의 메모리나 저장소에 과도한 부하를 줄일 수 있습니다.
+
+7. 결론
+Idempotency Key는 멱등성을 보장하는 중요한 도구입니다. POST 메서드에서 중복 요청으로 인한 트랜잭션 문제를 방지하고, 동일한 작업을 여러 번 요청해도 한 번만 처리되도록 보장합니다. 결제 처리, 주문 생성, 리소스 생성 등 중복된 작업을 방지해야 하는 중요한 작업에서 널리 사용됩니다.
+
+```
+
+
+
+&lt;/details&gt;
+
+&lt;h2 id=&quot;멱등성이-중요한-이유&quot;&gt;멱등성이 중요한 이유&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;일관성 : 보통 반복되는 요청이 단일 요청과 동일한 효과를 갖도록 보장하는 것은 시스템 전반에 걸쳐 일관된 상태를 유지하는 데 도움이 됩니다.&lt;/li&gt;
+  &lt;li&gt;유지보수성 : 멱등성을 가진 HTTP메서드로 AP로 통신하는 부분에 있어서는 재시도를 처리할 때의 사이드이펙트를 고려한 복잡한 로직을 구현할 필요가 없기 때문에 이 부분을 잘 고려해서 설계한다면 유지보수성이 증가 됩니다.&lt;/li&gt;
+&lt;/ol&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>[&quot;hoeeeeeh&quot;]</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Network" />
+      
+        <category term="개념 정리" />
+      
+
+      
+        <summary type="html">네트워크 CS 지식 정리</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">[네부캠 멤버십 스프린트] 1주차 ~ 7주차 정리</title>
+      <link href="https://hoeeeeeh.github.io/%EB%84%A4%EB%B6%80%EC%BA%A0_%EB%A9%A4%EB%B2%84%EC%8B%AD_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8-_1%EC%A3%BC%EC%B0%A8_~_7%EC%A3%BC%EC%B0%A8_%EC%A0%95%EB%A6%AC" rel="alternate" type="text/html" title="[네부캠 멤버십 스프린트] 1주차 ~ 7주차 정리" />
+      <published>2025-01-14T02:40:00+00:00</published>
+      <updated>2025-01-14T02:40:00+00:00</updated>
+      <id>https://hoeeeeeh.github.io/%5B%EB%84%A4%EB%B6%80%EC%BA%A0_%EB%A9%A4%EB%B2%84%EC%8B%AD_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8%5D_1%EC%A3%BC%EC%B0%A8_~_7%EC%A3%BC%EC%B0%A8_%EC%A0%95%EB%A6%AC</id>
+      <content type="html" xml:base="https://hoeeeeeh.github.io/%EB%84%A4%EB%B6%80%EC%BA%A0_%EB%A9%A4%EB%B2%84%EC%8B%AD_%EC%8A%A4%ED%94%84%EB%A6%B0%ED%8A%B8-_1%EC%A3%BC%EC%B0%A8_~_7%EC%A3%BC%EC%B0%A8_%EC%A0%95%EB%A6%AC">&lt;h1 id=&quot;스프린트-1주차-학습정리&quot;&gt;스프린트 1주차 학습정리&lt;/h1&gt;
+
+&lt;p&gt;(DOM, SPA, Flex, css…)&lt;/p&gt;
+
+&lt;h2 id=&quot;html5-layout-tag&quot;&gt;HTML5 Layout Tag&lt;/h2&gt;
+
+&lt;p&gt;Html5 레이아웃 태그에는 6가지 정도가 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;header&lt;/code&gt; : 페이지 상단의 머릿말을 정의&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nav&lt;/code&gt; : 네비게이션(메뉴), 사이트 내의 다른 페이지로 이동&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;aside&lt;/code&gt; : 카테고리, 현재 페이지 외의 컨텐츠&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; : 가장 중요한 핵심 컨텐츠를 감싸는 태그, 한 페이지에 하나 사용, 강조의 느낌&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;section&lt;/code&gt; : 페이지의 주요 컨텐츠를 구분하는 태그&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;article&lt;/code&gt; : 독립적인 하나의 컨텐츠, 예시) 이름처럼 블로그 글이나 뉴스 기사&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;footer&lt;/code&gt; : 페이지 최하단의 부가 정보, 예시) 저작권, 연락처, 사이트맵 등등&lt;/p&gt;
+
+&lt;h2 id=&quot;domdocument-object-model&quot;&gt;DOM(Document Object Model)&lt;/h2&gt;
+
+&lt;h3 id=&quot;dom-의-개념&quot;&gt;DOM 의 개념&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/Introduction&quot;&gt;DOM MDN&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;DOM 은 HTML, XML 문서의 프로그래밍 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;interface&lt;/code&gt; 이다. 각 브라우저마다 이 인터페이스를 구현해서 저마다의 DOM 을 가지고 있다.&lt;/p&gt;
+
+&lt;p&gt;웹 페이지는 일종의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;문서(document)&lt;/code&gt; 이다. DOM 은 이 문서를 트리 구조로 만들어서(구조화) 제공하며 이렇게 구조화된 정보를 바탕으로
+프로그래밍 언어가 동적으로 문서의 구조, 스타일, 내용 등을 변경할 수 있게 돕는다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;DOM 은 nodes 와 objects 로 문서를 표현한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DOM tree 에서 모든 요소는 전부 `node` 로 표현된다. HTML 태그, 텍스트, 속성(attribute) 등은 전부 하나의 노드이다.
+
+
+=&amp;gt; `node` 는 문서를 구조적으로 표현하는 단위이다.
+
+
+`object` 는 노드에 대한 실제 프로그래밍 인터페이스이다.
+객체는 노드를 조작할 수 있는 인터페이스를 제공함으로써 프로그래밍 언어가 문서와 문서의 요소에 접근할 수 있도록 한다.
+
+
+=&amp;gt; `object` 는 노드에 대한 접근을 제공한다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;만약 DOM 이 없다면 프로그래밍 언어(js 등)은 문서(웹 페이지 or XML 페이지)
+및 페이지의 요소들과 관련된 모델이나 개념들에 대한 정보를 얻을 수 없다. (문서에 접근할 수 없다)&lt;/p&gt;
+
+&lt;p&gt;초기에는 자바스크립트와 DOM 이 밀접하게 연결되어 있었으나 이제는 프로그래밍 언어와 독립적으로 디자인되었다.
+따라서 어떠한 언어에서도 DOM 을 구현할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;dom-의-핵심-인터페이스&quot;&gt;DOM 의 핵심 인터페이스&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;document.getElementById(id)&lt;/li&gt;
+  &lt;li&gt;document.getElementsByTagName(name)&lt;/li&gt;
+  &lt;li&gt;document.createElement(name)&lt;/li&gt;
+  &lt;li&gt;parentNode.appendChild(node)&lt;/li&gt;
+  &lt;li&gt;element.innerHTML&lt;/li&gt;
+  &lt;li&gt;element.style.left&lt;/li&gt;
+  &lt;li&gt;element.setAttribute&lt;/li&gt;
+  &lt;li&gt;element.getAttribute&lt;/li&gt;
+  &lt;li&gt;element.addEventListener&lt;/li&gt;
+  &lt;li&gt;window.content&lt;/li&gt;
+  &lt;li&gt;window.onload&lt;/li&gt;
+  &lt;li&gt;window.dump&lt;/li&gt;
+  &lt;li&gt;window.scrollTo&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dom-의-렌더링-과정&quot;&gt;DOM 의 렌더링 과정&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=6rDBqVHSbgM&quot;&gt;Virtual DOM&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 영상을 참고해서 작성했습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/0.png&quot; alt=&quot;0&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;HTML 을 파싱해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOM node 트리&lt;/code&gt;를 생성&lt;/li&gt;
+  &lt;li&gt;스타일 정보를 추가하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Render tree&lt;/code&gt; 생성&lt;/li&gt;
+  &lt;li&gt;각 노드들의 배치할 위치를 결정(Layout)&lt;/li&gt;
+  &lt;li&gt;각 요소에 색상을 입히기(Painting)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;dom-조작&quot;&gt;DOM 조작&lt;/h3&gt;
+
+&lt;p&gt;DOM을 조작할 때는 위에서 말한 렌더링 과정 전체를 다시 수행한다.&lt;/p&gt;
+
+&lt;p&gt;이때문에 아주 작은 변경이 있더라도 전제를 렌더링하기 때문에 상당히 비효율적이다.&lt;/p&gt;
+
+&lt;p&gt;렌더링 과정은 상당히 값비싼 과정이기 때문에, 매번 이 과정을 수행하는것은 변경 사항에 비해 너무 무거울 수 있다.&lt;/p&gt;
+
+&lt;p&gt;정적인 페이지는 DOM 에 대한 조작이 별로 없기 때문에 이런 DOM 조작 방식이 괜찮을 수 있다.&lt;/p&gt;
+
+&lt;p&gt;하지만 하나의 페이지로 필요한 데이터들을 바꿔가며 화면에 띄워주는 SPA(Single Page Application) 에는 이런 DOM 방식은 너무나도 비효율적일 것이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;spasingle-page-applcation&quot;&gt;SPA(Single Page Applcation)&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/1.png&quot; alt=&quot;1&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;렌더링을 Client , Server 중 어디서 하는지에 따라 우리는 CSR(Client Side Rendering), SSR(Server Side Rendering) 이라고 부른다.&lt;/p&gt;
+
+&lt;p&gt;SSR 에서는 서버가 페이지의 모든 부분을 렌더링해서 html를 클라이언트에게 넘겨주기 때문에, 클라이언트는 받은 html 을 reload 해서 렌더링한다.&lt;/p&gt;
+
+&lt;p&gt;반면 CSR 에서는 클라이언트가 직접 필요로 하는 부분의 데이터만 ajax 방식으로 서버에 요청해서, 받은 데이터 부분만 다시 렌더링하는 방식이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;flexbox&quot;&gt;Flexbox&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox&quot;&gt;Flexbox 의 기본 개념&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;flexbox-의-개념&quot;&gt;Flexbox 의 개념&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;flexbox 는 아이템간 공간 배분과 강력한 정렬 기능을 제공하기 위한 1차원 레이아웃 모델&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1차원&lt;/code&gt;이라 칭하는 이유는, 레이아웃을 다룰 때 한 번에 하나의 차원만 다룬다는 뜻이다.&lt;/p&gt;
+
+&lt;p&gt;이는 행만 다루거나, 열만 다룬다는 의미다.&lt;/p&gt;
+
+&lt;p&gt;이후에 공부해야 할 Grid 레이아웃은 2차원 모델이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;주축과-교차축&quot;&gt;주축과 교차축&lt;/h3&gt;
+
+&lt;p&gt;flexbox 에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flex-direction&lt;/code&gt; 속성을 사용하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;주축&lt;/code&gt; 을 설정하고, 주축에 수직인 축이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;교차축&lt;/code&gt; 으로 설정된다.&lt;/p&gt;
+
+&lt;p&gt;flex 되는 아이템들은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;주축을 기준으로 배치&lt;/code&gt; 되고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;교차축을 기준으로 정렬&lt;/code&gt; 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;주축&quot;&gt;주축&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;row (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;가로&lt;/code&gt;, 아이템이 왼쪽에서 오른쪽으로 배치)&lt;/li&gt;
+  &lt;li&gt;row-reverse (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;가로&lt;/code&gt;, 아이템이 오른쪽에서 왼쪽으로 배치)&lt;/li&gt;
+  &lt;li&gt;column (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;세로&lt;/code&gt;, 아이템이 위에서 아래로 배치)&lt;/li&gt;
+  &lt;li&gt;column-reverse (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;세로&lt;/code&gt;, 아이템이 아래에서 위로 배치)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;교차축&quot;&gt;교차축&lt;/h3&gt;
+
+&lt;p&gt;교차축은 주축에 수직이다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;따라서 주축이 가로(row&lt;/td&gt;
+      &lt;td&gt;row-reverse) 라면 교차축은 세로이고,&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;주축이 세로(column&lt;/td&gt;
+      &lt;td&gt;column-reverse) 라면 교차축은 가로이다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;flex-컨테이너&quot;&gt;Flex 컨테이너&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문서의 영역 중에서 flexbox가 놓여있는 영역을 flex 컨테이너라고 부릅니다.&lt;br /&gt;
+flex 컨테이너를 생성하려면 영역 내의 컨테이너 요소의 display 값을 flex 혹은 inline-flex로 지정합니다.&lt;br /&gt;
+이 값이 지정된 컨테이너의 일차 자식(direct children) 요소가 flex 항목이 됩니다&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;여기서 일차 자식이란 부모의 바로 밑 자식을 의미한다. 할머니에게 있어서 손자는 일차 자식이 아닌 이차 자식이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;flex-wrap&quot;&gt;flex-wrap&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;flex-box 는 1차원 모델이지만 flex 항목이 여러 행/열에 나열되도록 할 수 있습니다&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;flex-box 에 있는 flex 항목은 가로 혹은 세로로만 배치되는 1차원 모델이다. 다만 다음 가로줄 혹은 다음 세로줄에 배치되도록 해주는 속성이
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flex-wrap&lt;/code&gt; 이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;css
+.box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/2.png&quot; alt=&quot;2&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;아이템이 하나의 행에 들어가지 않을 정도로 크다면, 다음 행에 배치되는 모습을 볼 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;css
+.box {
+  width: 500px;
+  height: 550px;
+  display: flex;
+  overflow: scroll;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+div {
+  width: 50px;
+  height: 150px;
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/3.png&quot; alt=&quot;3&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;아이템이 하나의 열에 들어가지 않을 정도로 크다면, 다음 열에 배치되는 모습을 볼 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;참고&quot;&gt;참고&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://inpa.tistory.com/entry/PUG-%F0%9F%93%9A-%EA%B8%B0%EB%B3%B8-%ED%83%9C%EA%B7%B8-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC&quot;&gt;PUG 문법&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;궁금증&quot;&gt;궁금증&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;html
+&amp;lt;div id=&quot;header&quot; role=&quot;banner&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;div id=&quot;container&quot; role=&quot;main&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;div id=&quot;footer&quot; role=&quot;contentinfo&quot;&amp;gt;&amp;lt;/div&amp;gt;
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;네이버 메인 화면의 layout 영역인데, 직접 &amp;lt;header&amp;gt; 를 쓰지않고 div 로 만들었다.&lt;/p&gt;
+
+&lt;p&gt;이건 무슨 차이가 있을까?&lt;/p&gt;
+
+&lt;p&gt;=&amp;gt; HTML5 이전의 접근성 개선을 위함&lt;/p&gt;
+
+&lt;p&gt;자바스크립트가 빠른 이유 : 바이트코드 + JIT 컹파일러
+넷스케이프의 스파이더몽키는 자바스크립트를 바로 인터프리터로 해석하기 때문에 속도가 느리다.&lt;/p&gt;
+
+&lt;p&gt;빨라져서 브라우저 바깥으로 탈출할 수 있게 되었다.&lt;/p&gt;
+
+&lt;p&gt;nginx – 비동기
+스프링/아파치 -&amp;gt; 100명을 위해 멀티프로세스 혹은 멀티스레드로 처리 -&amp;gt; 메모리를 엄청 잡아 먹는다&lt;/p&gt;
+
+&lt;p&gt;nginx: 이벤트 중심 접근 방식, 하나 스레드로 여러 요청 처리
+apache: 프로세스 기반 접근 방식, 매 요청마다 스레드 생성 및 할당&lt;/p&gt;
+
+&lt;p&gt;nodejs 가 I/O 가 빨라지는건 아니다. 커널이 처리하는거라 빨라지는건 아니고 작업의 효율성이 증가하는 것 뿐이다.&lt;/p&gt;
+
+&lt;p&gt;노드 JS 공식문서 읽어보기 반드시&lt;/p&gt;
+
+&lt;p&gt;쉘 스크립트
+echo “hello”; echo “hell”
+echo “hello” &amp;amp;&amp;amp; echo “hell” -&amp;gt; 앞에 리턴값이 0(성공)이면 뒤에 실행
+|| 는 0이 아닐때 (실패) 뒤에 실행&lt;/p&gt;
+
+&lt;p&gt;echo $?
+-&amp;gt; 0&lt;/p&gt;
+
+&lt;p&gt;top -&amp;gt; htop -&amp;gt; bpytop&lt;/p&gt;
+
+&lt;p&gt;동기/블로킹과 비동기/논블로킹 공부&lt;/p&gt;
+
+&lt;p&gt;이그니션(인터프리터) -&amp;gt; 바이트코드 생성
+터보팬(컴파일러) -&amp;gt; 최적화된 기계어 코드 생성&lt;/p&gt;
+
+&lt;p&gt;최적화? optimizer 때문에 내가 원하는대로 작성한대로 코드가 돌아가지 않을 수 있음.&lt;/p&gt;
+
+&lt;p&gt;JIT 컴파일러 -&amp;gt; 자바에서 hotspot vm, 크롬 v8 에서 사용중
+언제 나왔을까? 70년대에 나온 기술, oop의 원조는 smalltalk (GUI 프로그래밍을 하려고 제록스 연구소에 만들었다)
+스몰톡도 인터프리터 언어인데, 성능을 높이려고 자주 사용하는 결과를 해싱해 놓으면 빠를 것 같아서 인터프리터 한 결과를 재사용&lt;/p&gt;
+
+&lt;p&gt;왜 바이트코드와 기계어 코드로 나눠지는 이유는 뭘까?&lt;/p&gt;
+
+&lt;p&gt;즉시 실행할때, 는 한 줄 읽고 해석하는 인터프리터가 더 빠르다&lt;/p&gt;
+
+&lt;p&gt;자주 사용되는, 재사용되는 코드가 있을 때 터보팬(컴파일) 사용&lt;/p&gt;
+
+&lt;p&gt;LibUV 가 node js 의 핵심
+epoll, kqueue, etc -&amp;gt; 운영체제에서 i/o 비동기 처리를 위해서 커널에서 제공해주는 기능&lt;/p&gt;
+
+&lt;p&gt;윈도우는 iocp , 리눅스는 epoll, bsd 계열(mac) kqueue
+이런것을 I/o 멀티 플렉싱을 제공해준다고 한다.&lt;/p&gt;
+
+&lt;p&gt;스레드의 아이오를 담당하는 객체, 소켓을 연다&lt;/p&gt;
+
+&lt;p&gt;리슨 소켓말고 실제로 처리하는 소켓을 만든다. -&amp;gt; 결국 쓰레드가 생기는거라 비효율적
+여러 아이오를 하나의 쓰레드에서 처리할 수 있게 하는게 I/O 멀티플렉싱&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://oliveyoung.tech/blog/2023-10-02/c10-problem/&quot;&gt;https://oliveyoung.tech/blog/2023-10-02/c10-problem/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;busy waiting -&amp;gt; 이벤트가 발생할때까지 무한루프 돌면서 계속 체크 (epoll 이 나오기 전, Select 방식) -&amp;gt; 비효율적
+비동기를 위해서 cpu 자원을 사용&lt;/p&gt;
+
+&lt;p&gt;epoll 는 리눅스에서만 써서 윤영체제 비 표준이다.&lt;/p&gt;
+
+&lt;p&gt;이벤트루프가 운영체제의 도움을 받는데, 운영체제마다 다르게 동작하게 된다. (윈도우는 iocp , 리눅스는 epoll, bsd 계열(mac) kqueue )&lt;/p&gt;
+
+&lt;p&gt;디버깅 툴 잘 써야한다.&lt;/p&gt;
+
+&lt;p&gt;디버거 써야한다 개발10 디버깅90&lt;/p&gt;
+
+&lt;p&gt;브레이크포인트 걸고, 컨디션 잡고 …&lt;/p&gt;
+
+&lt;p&gt;백엔드 개발자는 개발하는 입장에서, 죽지 않는 서버가 가장 중요하다.&lt;/p&gt;
+
+&lt;p&gt;그리고 빨리 살리는것, 예외상황 처리 잘 하는 것
+-&amp;gt; 탄탄한 cs 지식이 필요
+운영체제, 데이터베이스, 네트워크&lt;/p&gt;
+
+&lt;p&gt;worker_threads를 통해 thread를 만들 때는 Thread마다 별도의 메모리 공간이 부여되는데 thread pool에서 꺼내올 때도 Worker thread마다 별도의 메모리 공간이 있나요??
+보통의 워커 쓰레드는 대부분 POSIX 쓰레드를 쓸건데, 별도의 메모리(커널의 지원을 통해) 를 가질 수 밖에 없다.&lt;/p&gt;
+
+&lt;p&gt;자바 쓰레드는 네이티브 쓰레드일까? 유저레벨 쓰레드일까?
+자바는 커널 레벨 쓰레드이다. 자바에서 쓰레드를 하나 만들어내면 운영체제에서 쓰레드를 만들어서 매핑한다.m:n 은 다 거짓말이다.&lt;/p&gt;
+
+&lt;p&gt;webflux 의 쓰레드는 컨텍스트 스위칭이 일어나서 성능이 별로 안좋았음.&lt;/p&gt;
+
+&lt;p&gt;커널 쓰레드의 오버헤드를 개선하고 싶은데? 유저 레벨 쓰레드를 만들자 -&amp;gt; 자바에 버츄얼 쓰레드가 생김
+문법은 똑같은데, 버츄얼 유저레벨 쓰레드가 생성되어서 성능이 대폭 향상된다.&lt;/p&gt;
+
+&lt;p&gt;mysql 은 X.1.10 부터 써라&lt;/p&gt;
+
+&lt;h2 id=&quot;project-setting&quot;&gt;Project Setting&lt;/h2&gt;
+
+&lt;h3 id=&quot;global&quot;&gt;Global&lt;/h3&gt;
+
+&lt;p&gt;global 옵션은&lt;/p&gt;
+
+&lt;h3 id=&quot;devdependencies&quot;&gt;devDependencies&lt;/h3&gt;
+
+&lt;p&gt;devDependencies 는 개발할 때만 필요하고 실제 런타임에서는 필요 없는 dependency 를 의미한다.
+(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;개발용&lt;/code&gt;)&lt;/p&gt;
+
+&lt;h3 id=&quot;ts-eslint-prettier&quot;&gt;TS, ESLint, Prettier&lt;/h3&gt;
+
+&lt;p&gt;코드 품질과 괸련된 것들을 확인하는 도구를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;린터(Linter)&lt;/code&gt; 라고 부르는데, 자바스크립트에서 사용하는 대표적인 린터가 ESLint 이다.&lt;/p&gt;
+
+&lt;p&gt;문법 오류를 감지하거나, 코드 품질 향상, 일관성 유지 등을 위해 적용하는데 나만의 컨벤션을 정립하기 전까지는 airbnb 스타일을 따라가보려고 한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;shell
+npm install -D eslint typescript
+
+## airbnb 종속 패키지 설치하기
+## 이렇게 종속 패키지를 한 번에 설치하면 react 관련 eslint 패키지도 설치가 되는데,
+## react 를 안쓴다면 아래의 명령어로 설치하자.
+npx install-peerdeps --dev eslint-config-airbnb
+
+
+## React 관련 패키지 없음
+npm install -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-config-airbnb-base eslint-plugin-import eslint-plugin-node
+
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이후에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.eslintrc.json&lt;/code&gt; 파일로 셋팅을 하자.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;json
+{
+  &quot;parser&quot;: &quot;@typescript-eslint/parser&quot;,
+  &quot;extends&quot;: [&quot;airbnb-base&quot;, &quot;plugin:@typescript-eslint/recommended&quot;, &quot;plugin:node/recommended&quot;],
+  &quot;plugins&quot;: [&quot;@typescript-eslint&quot;, &quot;node&quot;],
+  &quot;parserOptions&quot;: {
+    &quot;ecmaVersion&quot;: 6,
+    &quot;sourceType&quot;: &quot;module&quot;
+  },
+  &quot;rules&quot;: {
+    &quot;node/no-unsupported-features/es-syntax&quot;: [&quot;error&quot;, { &quot;ignores&quot;: [&quot;modules&quot;] }],
+    &quot;node/no-missing-import&quot;: &quot;off&quot;,
+    &quot;node/no-unpublished-import&quot;: &quot;off&quot;,
+    &quot;import/no-unresolved&quot;: &quot;off&quot;,
+    &quot;import/extensions&quot;: [
+      &quot;error&quot;,
+      &quot;ignorePackages&quot;,
+      {
+        &quot;js&quot;: &quot;never&quot;,
+        &quot;jsx&quot;: &quot;never&quot;,
+        &quot;ts&quot;: &quot;never&quot;,
+        &quot;tsx&quot;: &quot;never&quot;
+      }
+    ]
+  },
+  &quot;settings&quot;: {
+    &quot;import/resolver&quot;: {
+      &quot;node&quot;: {
+        &quot;extensions&quot;: [&quot;.js&quot;, &quot;.jsx&quot;, &quot;.ts&quot;, &quot;.tsx&quot;]
+      }
+    }
+  }
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;shell
+npm install -D @types/express
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;prettier&quot;&gt;Prettier&lt;/h3&gt;
+
+&lt;p&gt;Prettier 는 코드 형식을 자동으로 정리해주는 Formatter 의 역할을 한다.
+prettier 셋팅에 맞게 자동으로 정리해주기 때문에 코드의 가독성과 일관성을 챙길 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;text
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;ts-node&quot;&gt;ts-node&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;shell
+npm install -D ts-node
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;스프린트-2주차-학습정리mysql-flux&quot;&gt;스프린트 2주차 학습정리(MySQL, Flux)&lt;/h1&gt;
+
+&lt;h2 id=&quot;mysql&quot;&gt;MYSQL&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;참고자료
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=8PRkLItDwXQ&quot;&gt;MYSQL 아키텍처&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;MYSQL 서버는 크게 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MYSQL 엔진&lt;/code&gt; 과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스토리지 엔진&lt;/code&gt; 으로 나뉘게 된다.&lt;/p&gt;
+
+&lt;p&gt;스토리지 엔진은 과거에는 여러가지 있었으나 Mysql 8.0 버전 이후로는 InnoDB 가 기본값이 되었다고 한다.&lt;/p&gt;
+
+&lt;p&gt;사용자가 mysql 서버에 연결 요청을 보내면, 연결 핸들러가 이를 처리하고 세션이 생성된다.&lt;/p&gt;
+
+&lt;p&gt;이후에 sql 쿼리를 날리면, 크게 아래의 5단계 과정을 거쳐 정보를 가져온다.&lt;/p&gt;
+
+&lt;h3 id=&quot;mysql-엔진&quot;&gt;MySQL 엔진&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;쿼리 파서
+    &lt;ul&gt;
+      &lt;li&gt;쿼리를 토큰으로 잘게 쪼개어 트리의 형태로 파싱하는데, 쿼리에 문법적 오류가 있는지 검사를 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;전처리기
+    &lt;ul&gt;
+      &lt;li&gt;전처리기는 예약어를 제외한 토큰을 검사해서 데이터베이스에 실제로 데이터가 존재하는지, 객체에 사용자가 접근할 수 있는지(권한 등) 검증&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;옵티마이저
+    &lt;ul&gt;
+      &lt;li&gt;넘겨받은 파스 트리를 실행 계획으로 바꾸는 역할&lt;/li&gt;
+      &lt;li&gt;쿼리 재작성, 테이블 스캔 순서 결정, 사용할 인덱스 선택 등 최적의 실행 계획을 작성한다.&lt;/li&gt;
+      &lt;li&gt;실행 계획은 아래와 같이 바뀌는데 id 가 같은 실행 계획이 있다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JOIN&lt;/code&gt; 된다는 걸 의미한다.&lt;/li&gt;
+      &lt;li&gt;최적화 하는 방법은 비용 기반 최적화와 규칙 기반 최적화가 있는데, Mysql 에 존재하는 다양한 통계 정보를 활용해서 비용을 최대한 줄이는 방향의 최적화이고 규칙 기반 최적화는 동일한 sql 이면 동일한 실행 계획을 만드는 방향의 최적화이다.(순수함수가 떠오르게 하네)&lt;/li&gt;
+      &lt;li&gt;대부분의 RDBMS 는 비용기반 최적화이다.&lt;/li&gt;
+      &lt;li&gt;idselect_typetabletypekeyrowsextra1SIMPLEarticleindexPRIMARY5Using where1SIMPLEmemberseq_refPRIMARY1EMPTY&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;실행 엔진
+    &lt;ul&gt;
+      &lt;li&gt;이렇게 전달된 실행 계획을 토대로 스토리지 엔진과 통신을 해서 데이터를 읽어온다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;스토리지 엔진(InnoDB)
+    &lt;ul&gt;
+      &lt;li&gt;실행 엔진의 요청을 실제 디스크에서 처리하면서 데이터 읽기/쓰기 를 수행한다.&lt;/li&gt;
+      &lt;li&gt;스토리지 엔진은 MySQL 엔진과 다르게 여러 개를 동시에 사용할 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;그렇다면 InnoDB 는 어떤 구조를 가질까?&lt;/p&gt;
+
+&lt;h3 id=&quot;스토리지-엔진&quot;&gt;스토리지 엔진&lt;/h3&gt;
+
+&lt;h3 id=&quot;버퍼-풀&quot;&gt;버퍼 풀&lt;/h3&gt;
+
+&lt;p&gt;버퍼 풀은 메인 메모리의 한 영역으로 테이블과 인덱스 데이터를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;캐싱&lt;/code&gt; 해두는 공간이다.&lt;/p&gt;
+
+&lt;p&gt;말 그대로 디스크보다 읽기 쓰기가 압도적으로 빠른 메인 메모리에 데이터를 캐싱해두고 디스크 읽기/쓰기 전에 버퍼 풀을 먼저 확인하는 것이다.&lt;/p&gt;
+
+&lt;p&gt;버퍼 풀의 데이터의 저장 단위는 여러 행을 저장할 수 있는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Page&lt;/code&gt; 단위인데, 그 이유는 디스크의 데이터 저장 단위가 페이지이기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;버퍼 풀에서 페이지들은 링크드 리스트로 관리가 되는데, 이때 페이지들은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LRU(Least Recently Used) 에서 살짝 바뀐&lt;/code&gt; 알고리즘읉 통해 관리가 된다. 내가 알던 LRU 와 살짝 다른데, 어떤 부분이 다른지 한 번 살펴보자.&lt;/p&gt;
+
+&lt;h3 id=&quot;lru-알고리즘과-버퍼-풀&quot;&gt;LRU 알고리즘과 버퍼 풀&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.4/en/innodb-buffer-pool.html&quot;&gt;17.5.1 Buffer Pool&lt;/a&gt; (해당 mysql 공식 문서를 참조해서 작성했다)&lt;/p&gt;
+
+&lt;p&gt;버퍼 풀에서 페이지들은 얼마나 자주 사용되었느냐에 따라 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;New Subset&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Old Subset&lt;/code&gt;. 로 나뉘고 New Subset 과 Old Subset 이 맞닿아있는 포인트를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Middle Point&lt;/code&gt; 라고 한다.&lt;/p&gt;
+
+&lt;p&gt;원래 LRU 는 단순히 가장 오랫동안 사용하지 않은 페이지(tail 에 있는 페이지)를 제거하고, 가장 최근에 사용한 페이지를 head 에 넣는 알고리즘이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/4.png&quot; alt=&quot;4&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;하지만 InnoDB 의 LRU 는 살짝 다른데, 위의 그림에서 보면 버퍼 풀의 $\frac{5}{8}$ 을 New Sublist, $\frac{3}{8}$ 을 Olb Sublist 로 할당하고 New Sublist 의 tail 과 Old Sublist 의 Head 가 맞닿은 곳이 바로 Middle Point 이다.&lt;/p&gt;
+
+&lt;p&gt;이제 사용자가 특정 페이지를 읽게 되면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Old Sublist 의 Head&lt;/code&gt; 로 해당 페이지가 들어가고 Old Sublist 의 tail 에 해당하는 페이지는 삭제된다.
+이 시점에서 왜 New Sublist 의 Head 에 들어가는게 아니라, MidPoint 로 들어가는지 의문일 수 있다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;InnoDB 는 “처음 버퍼 풀에 등록된 페이지가 가장 최근의(중요한) 페이지라고 생각하기보다는, 첫 등록에는 아직까지 그닥 중요한 페이지가 아니다.” 라고 간주한다&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;페이지는 유저의 요청에 버퍼 풀에 올라올 수도 있고 아니면 InnoDB가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;예측(read-ahead)&lt;/code&gt;해서 미리 페이지를 preload 하는 경우에도 버퍼 풀에 올라올 수 있다. (사용자가 다음엔 이걸 읽겠지? 하고 미리 로드)&lt;/p&gt;
+
+&lt;p&gt;사용자의 요청에 의해 Old Sublist 에 있는 페이지를 읽게되면 해당 페이지를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;young&lt;/code&gt; 하게 만든다. 즉, 해당 페이지를 참조해서 유저에게 데이터를 주고, 바로&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;New Sublist 의 head&lt;/code&gt; 로 옮겨버린다.&lt;/p&gt;
+
+&lt;p&gt;그러나 InnoDB 의 read-ahead 에 의해 버퍼 풀에 올라온 페이지는 말 그대로 예측이기 때문에 유저가 참조하지 않을 수도 있다.&lt;/p&gt;
+
+&lt;p&gt;따라서 당연하게도 read-ahead 로 올라온 페이지는 유저에 의해 참조될 수도, 아니면 그대로 계속 순위기 밀려 제거될 수도 있다.&lt;/p&gt;
+
+&lt;p&gt;새로운 페이지가 등장하면 Old Sublist 들의 페이지는 전부 노화(사용 순위가 밀림)한다.&lt;/p&gt;
+
+&lt;p&gt;만약 Old Sublist 에 존재하는 페이지가 참조되면서 Sublist 의 Head 로 올라가게 되면, 이 페이지를 제외한 나머지 페이지들도 모두 노화한다.&lt;/p&gt;
+
+&lt;p&gt;그렇게 노화하다가 Old Sublist 의 tail 에 도달한 페이지는 제거된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;mysql-셋팅과-문제-해결&quot;&gt;MYSQL 셋팅과 문제 해결&lt;/h3&gt;
+
+&lt;p&gt;기존에 사용하던 ubuntu 24.04 가상머신을 그대로 활용했다. M1 맥 위에 설치한 가상머신이라서 aarch64 아키텍처이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;mysql-80xx-버전-설치하기&quot;&gt;MySQL 8.0.XX 버전 설치하기&lt;/h3&gt;
+
+&lt;p&gt;우선 APT 저장소에서 다운받을 수 있는 버전을 확인하고 가장 최신 버전으로 다운 받았다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;shell
+apt-cache policy mysql-server
+
+# mysql-server:
+#   Installed: 8.0.39-0ubuntu0.24.04.2
+#   Candidate: 8.0.39-0ubuntu0.24.04.2
+#   Version table:
+#  *** 8.0.39-0ubuntu0.24.04.2 500
+#         500 &amp;lt;http://ports.ubuntu.com/ubuntu-ports&amp;gt; noble-updates/main arm64 Packages
+#         100 /var/lib/dpkg/status
+#      8.0.39-0ubuntu0.24.04.1 500
+#         500 &amp;lt;http://ports.ubuntu.com/ubuntu-ports&amp;gt; noble-security/main arm64 Packages
+#      8.0.36-2ubuntu3 500
+#         500 &amp;lt;http://ports.ubuntu.com/ubuntu-ports&amp;gt; noble/main arm64 Packages
+
+apt install mysql-server=8.0.39-0ubuntu0.24.04.2
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.4/en/linux-installation.html&quot;&gt;linux-installation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.4/en/postinstallation.html&quot;&gt;post installation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 두 mysql 문서를 참조했다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For other installation methods, you must initialize the data directory manually.&lt;br /&gt;
+These include installation from generic binary and source distributions on Unix and Unix-like systems,&lt;br /&gt;
+and installation from a ZIP Archive package on Windows.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;만약 바이너리 파일이나 소스 파일 / 윈도우는 ZIP 으로 다운받았으면 &lt;a href=&quot;https://dev.mysql.com/doc/refman/8.4/en/data-directory-initialization.html#data-directory-initialization-procedure&quot;&gt;Data Directory 설정&lt;/a&gt;을 따로 해주어야 한다고 한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;mysql-셋팅&quot;&gt;MySQL 셋팅&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mysqld&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.4/en/mysqld.html&quot;&gt;mysqld&lt;/a&gt; 는 MySQL Server 로, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;싱글 멀티스레드 프로그램&lt;/code&gt; 이다. 추가적인 프로세스를 만들지 않는 멀티스레드 프로그램이라는 의미이다.&lt;/p&gt;
+
+&lt;p&gt;아마 다른 프로세스의 작명도 그러하듯이, mysqld 는 mysql daemon 이라는 의미일것이다. daemon 의 의미는 백그라운드에서 실행되는 프로세스를 의미한다.&lt;/p&gt;
+
+&lt;p&gt;mysqld(MySQL Server)는 데이터베이스와 테이블을 관리하는 MySQL data directory 에 접근하는 것을 담당한다. MySQL data directory 는 로그나 status file 같은 정보들이 저장되는 default location 이기도 하다.&lt;/p&gt;
+
+&lt;p&gt;mysqld(MySQL Server)는 클라이언트 프로그램으로부터의 네트워크 커넥션을 listen 하고 있다가 클라이언트를 대신해서 데이터베이스에 접근한다.&lt;/p&gt;
+
+&lt;p&gt;mysqld 는 운영체제에 따라 이름이 mysql 인 경우도 있다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mysqld_safe&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;mysqld_safe is the recommended way to start a mysqld server on Unix. mysqld_safe adds some safety features such as restarting the server when an error occurs and logging runtime information to an error log. A description of error logging is given later in this section.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;mysqld_safe 를 통해서 mysqld server 를 실행할 수 있지만 ubuntu 24.04 버전에서는 systemd 에 의해 mysqld 가 관리되므로 굳이 사용할 필요가 없다. 어떤 역할을 해주는지만 알고 넘어가면 될 것 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;‘systemd 로 mysqld managing’&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.4/en/using-systemd.html&quot;&gt;Managing MySQL Server with systemd&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;사실 apt 로 설치하면서 굳이 건들지 않아도 잘 실행되긴 한다. 그래도 추가적인 설정에 대해 궁금하면 읽어봐야 할 것 같다.&lt;/p&gt;
+
+&lt;p&gt;ubuntu 24.04 기준으로 systemctl 은 mysqld 실행 파일에 대한 서비스 이름을 ‘mysql’ 로 지정한다고 한다.&lt;/p&gt;
+
+&lt;p&gt;따라서 mysqld 가 잘 실행되었는지는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;systemctl status mysql&lt;/code&gt; 으로 확인할 수 있고 실행시키려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;systemctl start mysql&lt;/code&gt; 로 할 수 있다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;초기 MySQL 계정 셋팅&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.4/en/default-privileges.html&quot;&gt;Securing the Initial MySQL Account&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;초기 root 계정은 비밀번호를 가지고 있을 수도 있고, 아닐 수도 있다. 나의 경우에는 비밀번호가 없었는데 비밀번호가 있다면 위의 문서를 참고하면 될 것 같다.&lt;/p&gt;
+
+&lt;p&gt;비밀번호가 없을 경우에는 root 계정으로 들어가서 비밀번호를 설정하라고 한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;shell
+# mysql 로그인 전이므로 로그인해준다.
+$&amp;gt; mysql -u root --skip-password
+
+# mysql 로그인 후, mysql 프롬프트 내부
+mysql&amp;gt; ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;password-you-want&apos;;
+
+# 이후 로그인 하려면
+$&amp;gt; mysql -u root -p
+Enter password: (enter root password here)
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;가상머신에 mysql 을 설치하고, 외부에서 이 mysql 에 접근하는 방법이 tcp/ip 를 기준으로 2가지인데&lt;/p&gt;
+
+&lt;p&gt;하나는 직접 host:port 로 접근하는 것이고 두 번째로는 ssh 를 통해서 해당 host 에 접속해서 mysql 에 접근하는 것이다.&lt;/p&gt;
+
+&lt;p&gt;ssh 로 접근하게 되면 ssh 연결 자체가 암호화되기 때문에 안전하다는 장점이 있으나 데이터 전송 성능이 떨어진다.&lt;/p&gt;
+
+&lt;p&gt;직접 tcp 로 접근하게 되면 보안은 좀 떨어지지만 속도가 빠르다.&lt;/p&gt;
+
+&lt;p&gt;또한 직접 tcp로 접근하게 되면 mysql 에서 IP 를 허용해주어야 한다.&lt;/p&gt;
+
+&lt;p&gt;우선 hoeh 라는 새로운 계정을 만들어서 권한과 허용되는 IP대역을 부여해보자.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;shell
+# root 계정으로 로그인
+mysql -u root -p
+
+mysql&amp;gt; use mysql
+
+# hoeh@&apos;모든 ip 대역&apos; =&amp;gt; &apos;hoeh&apos;@&apos;%&apos;
+mysql&amp;gt; CREATE USER &apos;hoeh&apos;@&apos;%&apos; identified by &apos;password-you-want&apos;;
+# Query OK, 0 rows affected(0.00sec)
+
+# 모든 권한 부여
+mysql&amp;gt; GRANT ALL PRIVILEGES ON *.* to &apos;hoeh&apos;@&apos;%&apos;;
+
+# 권한 새로 고침
+mysql&amp;gt; flush privileges
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;타입-스크립트-mysql2-import-문제-해결&quot;&gt;타입 스크립트, MySQL2 Import 문제 해결&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/5.png&quot; alt=&quot;5&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import mysql from &apos;mysql2/promise&lt;/code&gt; 를 입력하니까 위 사진과 같은 오류가 발생했다.&lt;/p&gt;
+
+&lt;p&gt;분명 npm 으로 mysql2 도 설치를 했고 node_module 파일과 package.json 에도 mysql2 가 있는 것을 확인했는데도 해당 오류가 사라지지 않았다.&lt;/p&gt;
+
+&lt;p&gt;심지어 일단 실행을 시켜보니까 정상적으로 동작하기는 했다.&lt;/p&gt;
+
+&lt;p&gt;그래서 일단 어떤 오류인지 찾아보았다.&lt;/p&gt;
+
+&lt;h2 id=&quot;아키텍처&quot;&gt;아키텍처&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=wQFBgKl1PYw&quot;&gt;[10분 테코톡] 우디의 Flux Architecture&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Y5vOfv67h8A&quot;&gt;프론트엔드에서 MVC보다 더 많이 쓰이는 패턴은 ?&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;mvc-의-단점&quot;&gt;MVC 의 단점&lt;/h3&gt;
+
+&lt;p&gt;MVC 패턴을 사용하게 되면 프로젝트의 규모가 커짐에 따라 복잡성이 너무 커지게 되었는데,
+여러 컨트롤러들이 여러 개의 뷰를 참조하는 등의 거미줄 같이 얽히게 되기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;게다가 프론트엔드에 MVC 패턴을 그대로 가져다 쓰기는 살짝 애매했는데
+보통 MVC 에서 View 는 그냥 만들어지는 결과물에 불과하다. 컨트롤러가 입력을 받고, 모델에서 데이터를 가져와서 만드는 그런 결과에 불과하다.&lt;/p&gt;
+
+&lt;p&gt;그런데 프론트엔드에서의 view 는 단순한 결과물이라고 하기엔 조금 다르다.&lt;/p&gt;
+
+&lt;p&gt;프론트엔드의 view 는 수 많은 이벤트들이 발생을 하는, 뷰가 마치 컨트롤러처림 역할을 수행해야 하는 일이 발생한다.&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; 서버에서 html 을 전부 렌더링해서 주는 상황이라면 조금 다를 수 있을 것 같기도하고..&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; 이 경우에서는 서버에서 MVC 를 쓰기에 아주 적절해보이긴 한다.&lt;/p&gt;
+
+&lt;p&gt;게다가 프론트엔드에는 뷰가 매우 다양할 수 있고 모델도 마찬가지로 매우 많을 수 있다. 따라서 뷰와 모델간 복잡도가 매우 올라간다.&lt;/p&gt;
+
+&lt;p&gt;이를 해결하기 위해 MVC 패턴의 컨트롤러를 돌고오게 되면 컨트롤러에는 수 많은 비즈니스 로직이 들어가게 되고 컨트롤러의 복잡성이 너무 커지게 된다.&lt;/p&gt;
+
+&lt;p&gt;프론트엔드에서의 View 는 계층적인 구조를 가지는 것이 필요하다. 그도 그럴 것이 DOM 조작을 통해 View 를 계속 수정해나갈텐데 DOM 자체가 트리, 즉 계층 구조를 가지고 있다.&lt;/p&gt;
+
+&lt;p&gt;사용자의 요청이나 서버의 요청 혹은 SetTimeout 같은 타이머 등의 요청으로 View 는 재랜더링 되는 경우가 굉장히 많고 이렇게 View 를 제어하기 위해서는 계층 구조(DOM 구조) 를 활용하면서 재랜더링 하는 View 를 최소화해야한다.&lt;/p&gt;
+
+&lt;p&gt;-&amp;gt; 서버 사이드의 문제점?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;렌더링, 즉 DOM 을 조작하는 것은 프론트엔드에 있어서 가장 비싼 비용, 가장 느린 작업이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/6.png&quot; alt=&quot;6&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/7.png&quot; alt=&quot;7&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;과연 이러한 문제들을 MVC 가 잘 해결 할 수 있을까?&lt;/p&gt;
+
+&lt;p&gt;이 문제를 해결하기 위해 MVC 를 억지로 끼워넣을 필요는 없다.&lt;/p&gt;
+
+&lt;p&gt;그래서 프론트엔드에서 실제로 자주 사용되는 기술들은&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;데이터 바인딩&lt;/li&gt;
+  &lt;li&gt;MVVM&lt;/li&gt;
+  &lt;li&gt;Flux&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;정도라고 한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;데이터-바인딩&quot;&gt;데이터 바인딩&lt;/h3&gt;
+
+&lt;p&gt;데이터 바인딩은 상태 값과 그 값을 제어하는 요소와의 결합을 의미한다.&lt;/p&gt;
+
+&lt;p&gt;대표적으로 svelte 프레임워크에서 사용하는듯 한데, 양방향 바인딩을 이용해서 동시에 값이 변경되게 처리되도록 할 수도 있다.&lt;/p&gt;
+
+&lt;p&gt;Model 의 값이 변경되면 View 를 재랜더링 할 수도 있고 (단방향)&lt;/p&gt;
+
+&lt;p&gt;여기에 더해서 양방향 바인딩을 하면 View 요소의 변경을 감지해서 Model 을 업데이트 할 수도 있다.&lt;/p&gt;
+
+&lt;p&gt;svelte 에서는 내부적으로 eventListener 를 생성해서 양방향 바인딩(two-way data binding)을 한다고 한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;mvvm&quot;&gt;MVVM&lt;/h3&gt;
+
+&lt;p&gt;위에서 말한 bind 를 만들어주는 역할을 하는것이 MVVM 에서는 VM 이다.&lt;/p&gt;
+
+&lt;p&gt;VM은 뷰에서 쓰는 모델을 가지고 있다가,&lt;/p&gt;
+
+&lt;p&gt;뷰에서 변경사항이 생기면 뷰모델이 바뀌고, 뷰모델이 바뀌면 뷰를 재랜더링하는 방식이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/8.png&quot; alt=&quot;8&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;flux&quot;&gt;Flux&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;단방향 데이터 흐름을 통해 보다 예측가능하게 상태를 관리할 수 있는 클라이언트 사이드 웹 어플리케이션 아키텍쳐&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Flux 는 기본적으로 한 방향으로 흐름을 진행하려고 한다.&lt;/p&gt;
+
+&lt;p&gt;계층적인 구조를 가지는 뷰가, 모델과 서로 지속적으로 호출을 하면서 의존성과 복잡성이 올라가게 되는데 이 흐름을 쉽게 만들기 위해서&lt;/p&gt;
+
+&lt;p&gt;한 방향으로 만들려는 시도이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/9.png&quot; alt=&quot;9&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;action&quot;&gt;Action&lt;/h3&gt;
+
+&lt;p&gt;맨 왼쪽의 Action 은 사용자가 view 와 상호작용하면서 일어날 수도 있고, 타이머함수에 의해서 생길 수도 있고 서버에서 데이터를 받을 수도 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;dispatcher&quot;&gt;Dispatcher&lt;/h3&gt;
+
+&lt;p&gt;Action 은 그저 액션에 대한 정보를 담고 있는(ex. 액션 이름, 내용 등) JSON 같은 객체일 것이다.&lt;/p&gt;
+
+&lt;p&gt;따라서 정보를 가지고, 상태 저장소(store) 에 적절히 잘 전달해줄 객체인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dispatcher&lt;/code&gt; 가 필요하다.&lt;/p&gt;
+
+&lt;h3 id=&quot;store&quot;&gt;Store&lt;/h3&gt;
+
+&lt;p&gt;Store 는 어플리케이션의 상태가 저장되어 있는 전역 상태 저장소로 Dispatcher 에 의해 넘어온 액션을 통해서’만’ 값이 수정된다.&lt;/p&gt;
+
+&lt;p&gt;Store 는 스스로 상태를 변경하는 로직을 가지고 있기 때문에 Action 이나, Dispatcher 에 의해 변경 로직이 실행되는 것이 아니라 스스로 가지고 있는 변경 로직을 실행하는 것이다.&lt;/p&gt;
+
+&lt;p&gt;Store 는 어떠한 상태라도 저장할 수 있는 전역 상태 저장소로, 상태가 변경되면 View 에게 통지하게 된다. (event Emit)&lt;/p&gt;
+
+&lt;h3 id=&quot;view&quot;&gt;View&lt;/h3&gt;
+
+&lt;p&gt;View 는 관심 있는(구독 하고 있는) ‘어플리케이션의 상태’ 가 변경될 때마다 재렌더링 되는 컴포넌트다.&lt;/p&gt;
+
+&lt;p&gt;View 또한 재랜더링 하는 로직을 스스로 가지고 있고 store 가 변경됨에 따라 하위 컴포넌트에게 변경된 상태를 전달하기도 하므로, MVC 패턴 관점으로는 controller 의 역할도 겸한다고 볼 수 있다.
+그래서 Controller-View 라고 불리기도 한다.&lt;/p&gt;
+
+&lt;p&gt;View 에서 발생한 Action 은 다시 Dispatcher 에게 전달된다.&lt;/p&gt;
+
+&lt;p&gt;프론트엔드에는 규모가 커지면서 복잡한 View 들도 많이 등장했는데&lt;/p&gt;
+
+&lt;p&gt;이러한 문제점을 해결하고자 MVVM 패턴이 등장하게 되었다.&lt;/p&gt;
+
+&lt;h2 id=&quot;flux-아키텍쳐&quot;&gt;Flux 아키텍쳐&lt;/h2&gt;
+
+&lt;h3 id=&quot;왜-flux-를-선택했나&quot;&gt;왜 Flux 를 선택했나&lt;/h3&gt;
+
+&lt;p&gt;클라이언트 사이드 패턴을 공부해보면서, MVC 패턴을 그대로 사용하기 보다는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flux&lt;/code&gt; 패턴을 사용해보고 싶어서 학습 위주로 진행을 했습니다.&lt;/p&gt;
+
+&lt;p&gt;우선 MVC 패턴을 그대로 가져다 쓰기는 힘들다는 이야기를 듣고 조금 더 찾아보았습니다. MVC 패턴은 검색해보면 나오는 이미지가 다 다를 정도로 마치 코에 걸면 코걸이, 귀에 걸면 귀걸이인 것 처럼 MVC 패턴을 쓰기 위해 코드를 욱여넣는 것이 올바른 방법이 맞나? 라는 생각이 들었습니다.&lt;/p&gt;
+
+&lt;p&gt;그래서 MVVM, flux, 데이터 바인딩 등의 다양한 아키텍처를 찾아보고 어떤 방식이 좋을지를 고민해보는게 이번 주 학습의 첫 시작이였습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터 흐름을 단방향으로 가져가는 것이 일반적이다.&lt;/code&gt; 라는 이야기를 듣기도 했고, 이번 주 스터디그룹에서 이야기가 나왔던 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flux&lt;/code&gt; 패턴이 가장 흥미로워보였습니다.&lt;/p&gt;
+
+&lt;p&gt;그런데 제가 React 나 Redux 등 프론트엔드에 정말 무지해서 학습하는데 시간이 오래 걸릴 것 같아 이걸 학습하고 적용시켜보는게 맞는지 고민이 되었지만, 네부캠이 아니면 이런 기회가 없다고 생각해서 도전해보게 되었습니다.&lt;/p&gt;
+
+&lt;p&gt;여러가지 flux 자료들을 찾으면서 가장 많이 활용한 자료는 &lt;a href=&quot;https://github.com/facebookarchive/flux/blob/main/docs/Overview.ko-KR.md&quot;&gt;facebook-flux&lt;/a&gt; 이었는데 flux 자체가 페이스북에서 먼저 제안한 방식이기 때문에 해당 레포지토리의 소스를 한 번 읽어봐야겠다 라는 생각으로 읽어보았습니다.&lt;/p&gt;
+
+&lt;p&gt;다만 제가 참고한 facebook-flux 의 아이디어가 실제로 나온지는 9년이 넘은 것 같고 위의 레포는 아카이브에 들어가있는, 지금은 업데이트가 되지 않는 레포입니다. 아마 더 최신의 버전이 react 나 redux 등에 있지 않을까 싶습니다. 그래서 앞으로 설명드릴 내용은 위의 facebook-flux 레포를 기준이라는 것을 미리 말씀드리고 싶습니다.&lt;/p&gt;
+
+&lt;p&gt;또한 프론트 문외한이 이해한 내용이라 틀린 내용이 있을 수 있습니다&lt;/p&gt;
+
+&lt;p&gt;참고 자료&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/facebookarchive/flux/blob/main/docs/Overview.ko-KR.md&quot;&gt;facebook-flux-source&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://facebookarchive.github.io/flux/&quot;&gt;facebook-flux-docs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;flux-1&quot;&gt;Flux&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/10.png&quot; alt=&quot;10&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;flux 패턴의 핵심은 위의 그림에서와 같이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;단방향의 데이터 흐름&lt;/code&gt; 입니다.&lt;/p&gt;
+
+&lt;p&gt;위의 그림에서 가장 눈에 띄는 요소는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dispatcher&lt;/code&gt; , &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Store&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;View&lt;/code&gt; 입니다.&lt;/p&gt;
+
+&lt;p&gt;데이터의 흐름을 살펴보면 화살표가 시계방향으로만 이어져있을 뿐, 흐름이 역행하거나 단계를 건너뛰고 진행되는 일이 없습니다. 이러한 단순한 흐름 덕분에 코드의 흐름 자체를 이해하기가 쉬워지고 가독성을 얻을 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;데이터-흐름&quot;&gt;데이터 흐름&lt;/h3&gt;
+
+&lt;p&gt;그렇다면 어떻게 이런 단방향의 흐름을 설계했을까요?&lt;/p&gt;
+
+&lt;p&gt;flux 에서는 모든 Action(사용자의 인터랙션, 타이머 함수의 실행, 서버로부터 데이터 받기 등)은 Dispatcher 라는 마치 중앙집중허브에 전달됩니다. Dispatcher 는 이런 Action 들을 모든 Store 에게 전달을 해주고, Store 는 Action 을 기준으로 자신의 상태값을 갱신합니다. 그리고 갱신이 완료되면 ‘change’ 라는 이벤트를 emit 함으로써 View 가 새로운 상태값을 가지도록 만듭니다.&lt;/p&gt;
+
+&lt;p&gt;여기서 단방향의 흐름을 위해 Store 는 callback 함수를 Dispatcher 에 등록을 하게 되는데, callback 함수에는 Store 자신의 메소드를 적절히 잘 활용해서 상태값을 바꾸는 등의 역할을 수행합니다.&lt;/p&gt;
+
+&lt;p&gt;또한 Store 는 eventEmitter 를 활용해서 상태값이 갱신되면 ‘change’ 라는 이벤트를 emit 합니다. 이 emit 을 통해 View 는 상태값이 바뀌었음을 알게 되고 Store 에게 새로운 상태값을 받아와 재렌더링을 합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;dispatcher-1&quot;&gt;Dispatcher&lt;/h3&gt;
+
+&lt;p&gt;페이스북은 여기서 Dispatcher 의 역할이 pub-sub 구조와는 조금 다르다고 이야기 합니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Dispatcher는 등록된 callback에 데이터를 중계할 때 사용된다. 일반적인 pub-sub 시스템과는 다음 두 항목이 다르다:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 콜백은 이벤트를 개별적으로 구독하지 않는다. 모든 데이터 변동은 등록된 모든 콜백에 전달된다.
+- 콜백이 실행될 때 콜백의 전체나 일부를 중단할 수 있다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;첫 번째로 Store 의 콜백은 이벤트를 개별적으로 구독하지 않습니다. 즉 Dispatcher 에 들어오는 Action은 특정 Store 에게만 전달되는 것이 아니라 모든 Store 에게 전달됩니다. Store 는 Action 의 type 을 기준으로 자신이 필요로하는 Action 인지를 구별하여 작업을 진행합니다.&lt;/p&gt;
+
+&lt;p&gt;이러한 과정은 오버헤드를 불러올 것이라고 생각되는데, 그럼에도 이러한 방식을 선택한 이유를 생각해보자면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;흐름과 로직을 단순화&lt;/code&gt; 할 수 있다는 것이라고 생각합니다.&lt;/p&gt;
+
+&lt;p&gt;두 번쨰로는 콜백이 실행될 때 다른 콜백들을 중단(지연)시킬 수 있다는 것입니다. 이는 콜백 간의 순서를 보장할 수 있다는 이야기인데 facebook 에서 들었던 예시로 살펴보겠습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;javascript
+const flightDispatcher = new Dispatcher();
+
+// 어떤 국가를 선택했는지 계속 추적한다
+const CountryStore = {country: null};
+
+// 어느 도시를 선택했는지 계속 추적한다
+const CityStore = {city: null};
+
+// 선택된 도시의 기본 항공료를 계속 추적한다
+const FlightPriceStore = {price: null};
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위의 예시는 항공편 예약 서비스로, 나라를 선택하고 해당 나라의 도시를 선택하고, 그 도시의 기본 항공료를 추적하는 시스템이라고 보면 될 것 같습니다. 사용자가 새로운 나라와 새로운 도시를 선택했다면 ‘새로운 나라 선택 callback’ 이후에 ‘새로운 도시 선택 callback’ 이 진행되어야 하는, 일련의 순서가 존재하게 됩니다. 따라서 flux 에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;waitFor&lt;/code&gt; 이라는 메소드로 이를 구현했습니다.&lt;/p&gt;
+
+&lt;p&gt;다만 이번 TodoApp 에 있어서 waitFor 이 필요하지는 않다고 생각해서 실제로 미션을 위한 flux 를 설계할때는 waitFor 을 고려하지 않았습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;store-1&quot;&gt;Store&lt;/h3&gt;
+
+&lt;p&gt;Store 는 도메인별로 상태를 관리합니다. Store 는 자신의 callback 을 dispatcher 에 등록합니다. callback 은 action 을 파라미터로 받아서, switch 문을 활용하여 action 의 type 을 기준으로 여러 작업을 수행합니다.&lt;/p&gt;
+
+&lt;p&gt;facebook 에서는 이 switch 문을 포함하고 있는 함수를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reduce&lt;/code&gt; 라고 이름 지은 것 같습니다. 따라서 저도 Store 라는 클래스에 reduce 라는 추상 메소드를 선언하고 CardStore, ColumnStore 등이 이 reduce 함수를 구현하도록 진행했습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;javascript
+export default abstract class Store&amp;lt;TState&amp;gt; extends EventEmitter {
+  private readonly dispatcher = dispatcher;
+
+  protected state: TState;
+
+  protected constructor(state: TState) {
+    super();
+    this.state = state;
+    // this.setState(state);
+  }
+
+  ...
+
+  abstract reduce(action: Action): void;
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Store 는 아래와 같은 특징이 있습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cache data (데이터를 캐싱해둔다)&lt;/li&gt;
+  &lt;li&gt;Expose public getters to access data (never have public setters) (데이터에 접근하기 위한 Getter 를 노출시키지만, Setter 는 절대로 있어선 안된다)&lt;/li&gt;
+  &lt;li&gt;Respond to specific actions from the dispatcher (디스패처로부터 넘어온 특정 액션(관심있는 액션)에 응답한다)&lt;/li&gt;
+  &lt;li&gt;Always emit a change when their data changes (데이터의 변화가 있을 때 항상 ‘change’ 이벤트를 emit 한다)&lt;/li&gt;
+  &lt;li&gt;Only emit changes during a dispatch (디스패치 중에만 ‘change’ 이벤트를 emit 해야한다.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이중에서 마지막 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Only emit changes during a dispatch&lt;/code&gt; 가 살짝 의아할 수 있습니다.
+dispatch 중이라는 것은, 디스패쳐로부터 데이터가 넘어왔을 때를 의미합니다. 그때 적절한 함수를 통해서 데이터를 변경하고 ‘change’ 이벤트를 emit 할텐데 이 과정 말고 다른 추가적으로 ‘change’ 이벤트를 emit 하는 일이 없어야한다는 의미입니다.&lt;/p&gt;
+
+&lt;p&gt;이는 데이터 흐름의 일관성과 예측 가능성을 유지하고 비동기 작업이나 외부 이벤트로 인한 예기치 않은 상태 변경을 방지하기 위함입니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;view-1&quot;&gt;View&lt;/h3&gt;
+
+&lt;p&gt;마지막으로 가장 고민이 되는 View 인데 facebook flux 에서는 React 를 활용하여 View 를 만들고 재렌더링 하는 방법을 사용하고 있었습니다. 저는 react 를 잘 모르기도 하고 이번 미션에서 사용할 것도 아니였기 때문에 내부 동작을 비슷하게 가져와서 구현을 할 생각입니다. facebook-flux 에서도 Store 가 eventEmitter 를 활용하여 이벤트를 emit 하는것으로 보여서 비슷한 방식으로 View 에게 이벤트를 전달할 생각입니다.&lt;/p&gt;
+
+&lt;p&gt;별거 없는 코드지만 &lt;a href=&quot;https://github.com/hoeeeeeh/flux/tree/main/mini_flux&quot;&gt;mini-flux&lt;/a&gt; 에 flux 동작을 조금 따라해보는 코드를 올렸습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;스프린트-3주차-학습정리-merge-squash-merge-타입스크립트-유틸리티-타입&quot;&gt;스프린트 3주차 학습정리 (Merge, Squash Merge, 타입스크립트 유틸리티 타입)&lt;/h1&gt;
+
+&lt;h2 id=&quot;merge-전략&quot;&gt;Merge 전략&lt;/h2&gt;
+
+&lt;p&gt;이번에 프로젝트를 진행하면서, upstream 레포지토리를 fork 해와서 새로운 Feature 브랜치를 생성해서 작업을 했다.
+merge 가 되는 순서를 간략히 설명하면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Feature(기능 개발 브랜치) -&amp;gt; downstream 개인 브랜치 -&amp;gt; upstream 개인 브랜치&lt;/code&gt; 순서로 병합이 된다.&lt;/p&gt;
+
+&lt;p&gt;여기서 downstream 개인 브랜치 -&amp;gt; upstream 개인 브랜치 과정의 병합은 내가 하는 것이 아니라, 관리자 혹은 Github Action 봇이 하게 된다.&lt;/p&gt;
+
+&lt;p&gt;처음에는 아무 생각 없이 PR 을 올려두고 병합이 되기 전까지 계속 Feature 브랜치에서 작업을 했다. 그러고 나서 PR이 병합될 때
+문제없이 잘 병합되길래 앞으로도 문제가 생기지 않을 줄 알았다.&lt;/p&gt;
+
+&lt;p&gt;그러다가 여느 날과 마친가지로 PR 을 올려두고 Feature 브랜치에서 계속 작업을 하다가 병합이 된 후에, 추가로 작업한 내용을 upstream 개인 브랜치로 올리려고 했더니
+충돌이 발생했다. 분명 이전과 별 다를 것 없이 머지되었다고 생각했는데 왜 이번에는 충돌이 나는걸까? 에 대해 궁금증이 생겼고, 같은 팀 동료분께서 해답을 찾아 주셨다.&lt;/p&gt;
+
+&lt;p&gt;깃의 merge 에 대해서는 &lt;a href=&quot;https://hoeeeeeh.github.io/javascript/2024/07/31/day13.html#git-merge-git-rebase&quot;&gt;git merge 와 git rebase&lt;/a&gt; 에 대해서 이전에 작성을 했었는데, 여기서 작성하지 않았던 merge 가 하나 있다.&lt;/p&gt;
+
+&lt;p&gt;깃의 Merge 에는 일반 Merge, rebase, 그리고 squash merge 가 있다. 위의 학습 정리에서는 Merge 와 rebase 의 차이점을 중심으로 살펴봤었는데, 이번에는 일반 Merge 와 Squash merge 에 대해 살펴보려고 한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;merge-와-squash-merge&quot;&gt;Merge 와 Squash Merge&lt;/h3&gt;
+
+&lt;p&gt;Merge 는 기본적으로 Commit 이 몇 개가 쌓여있든 간에 그대로 병합시킨다. 다시 말해서 누적되어 있는 commit 이 그대로 들어와서 병합된다.&lt;/p&gt;
+
+&lt;p&gt;그렇기 때문에 커밋의 숫자가 많은 경우에는 커밋을 하나씩 읽고 흐름을 이해하는데 다소 힘들 수 있다.&lt;/p&gt;
+
+&lt;p&gt;반면에 Squash Merge 는 몇 개의 Commit 이 쌓여있든 간에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;새로운&lt;/code&gt; 하나의 커밋으로 만들어서 병합된다.&lt;/p&gt;
+
+&lt;p&gt;여기서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;새로운&lt;/code&gt; 하나의 커밋으로 만든다는 것이 중요하다.&lt;/p&gt;
+
+&lt;p&gt;1,2,3 Commit 에 해당하는 PR 을 올려두고, 계속 작업을 진행하면서 4,5,6 Commit 을 만들었다고 하자.&lt;/p&gt;
+
+&lt;p&gt;여기서 일반 머지를 하게 되면 1,2,3 커밋이 그대로 들어가면서 Commit 4 는 3을 기준으로 만들어진 커밋이기 때문에 커밋에 충돌이 생기지 않는다.&lt;/p&gt;
+
+&lt;p&gt;그러나 스쿼시 머지를 하게 되면 1,2,3 커밋이 하나로 합쳐져서 새로운 커밋(예를 들어 Commit 10)을 만들게 된다.&lt;/p&gt;
+
+&lt;p&gt;하지만 Git 은 Commit 1,2,3 이 하나로 합쳐진게 Commit 10이란걸 알지 못한다. 이렇게 되면 Git 은 Commit-4 와 Commit-10을 보고는 코드를 비교해보고
+충돌이 일어난다면 이때는 conflict 를 발생시킨다.
+(물론 Commit 10 과 Commit 4 간의 코드 충돌이 없다면 스쿼시 머지임에도 충돌이 나지 않을 것이다.)&lt;/p&gt;
+
+&lt;h2 id=&quot;typescript-유틸리티-타입&quot;&gt;Typescript 유틸리티 타입&lt;/h2&gt;
+
+&lt;p&gt;이번에 타입스크립트로 코드를 작성해보면서 필요한 interface 들을 미리 정의해놓고 사용을 했다.&lt;/p&gt;
+
+&lt;h3 id=&quot;partial&quot;&gt;Partial&lt;/h3&gt;
+
+&lt;p&gt;이렇게 선언한 Card 라는 타입은 title, content, id 라는 속성을 무조건 가져야한다.&lt;/p&gt;
+
+&lt;p&gt;이제 카드에 대한 수정 기능을 추가하면서 Card 타입의 일부분(title, content, id) 중에서 최소 1개, 최대 3개 전부 다 골라야 하는 상황이 생겼다.&lt;/p&gt;
+
+&lt;p&gt;수정을 한다고 하면 title 만 바꾸고 싶을 수도 있고, 전부 다 바꿀 수도 있기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;이럴 때는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Partial&lt;/code&gt; 을 사용하면 된다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Partial&amp;lt;Card&amp;gt;&lt;/code&gt; 라는 뜻은 속성을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;가질수도 있고 가지지 않을 수도 있다(옵셔널)&lt;/code&gt;는 뜻이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typescript
+interface Card {
+  title: string;
+  content: string;
+  id: string;
+}
+
+const partialCard_1 : Partial&amp;lt;Card&amp;gt; = { title : &apos;title&apos;} // OK
+const partialCard_2 : Partial&amp;lt;Card&amp;gt; = { title : &apos;title&apos;, id : &apos;id&apos;} // OK
+const partialCard_3 : Partial&amp;lt;Card&amp;gt; = { } // OK
+
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;required&quot;&gt;Required&lt;/h3&gt;
+
+&lt;p&gt;만약 속성들 ‘모두’가 필수적인 속성이 되기를 원한다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Required&lt;/code&gt; 를 사용하면 된다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typescript
+interface Card {
+  title: string;
+  content: string;
+  id?: string;
+}
+// id 는 옵셔널이다!
+
+const partialCard: Partial&amp;lt;Card&amp;gt; = { title: &quot;this-is-title&quot;, content: &apos;this-is-content&apos; }; // OK
+
+// id 가 없어서 안된다.
+const requiredPerson: Required&amp;lt;Person&amp;gt; = { title: &quot;this-is-title&quot;, content: &quot;this-is-content&quot; };
+
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;pick&quot;&gt;Pick&lt;/h3&gt;
+
+&lt;p&gt;그렇다면 이번에는 Card 의 속성을 콕 찝어서 선언하고 싶다면 어떻게 할까?&lt;/p&gt;
+
+&lt;p&gt;이럴 때는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pick&lt;/code&gt; 을 사용하면 된다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pick&amp;lt;Card, &apos;title&apos; | &apos;content&apos;&amp;gt;&lt;/code&gt; 은 Card 타입 중에서 title 과 content 를 콕 찝은 타입이다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typescript
+interface Card {
+  title: string;
+  content: string;
+  id: string;
+}
+
+// content 필요
+const pickCard_1: Pick&amp;lt;Card, &apos;title&apos; | &apos;content&apos;&amp;gt; = { title: &quot;this-is-title&quot; };
+
+// id 는 있을 수 없다.
+const pickCard_2: Pick&amp;lt;Card, &apos;title&apos; | &apos;content&apos;&amp;gt; = { title: &quot;this-is-title&quot;, id: &quot;my-id&quot; };
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;스프린트-4주차-학습정리virtual-dom-과-재렌더링&quot;&gt;스프린트 4주차 학습정리(Virtual DOM 과 재렌더링)&lt;/h1&gt;
+
+&lt;h2 id=&quot;재렌더링-방식&quot;&gt;재렌더링 방식&lt;/h2&gt;
+
+&lt;p&gt;바닐라 JS 로 flux 패턴과 Component 를 잘게 쪼개서 부모 컴포넌트에서 자식 컴포넌트로 props 를 전달하는 과정을 흉내내보면서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;재렌더링&lt;/code&gt; 에 대한 고민이 생겼다.&lt;/p&gt;
+
+&lt;p&gt;DOM 이 렌더링 되는 과정은 여기서 간단하게 볼 수 있다. &lt;a href=&quot;https://hoeeeeeh.github.io/javascript/2024/08/19/week01.html#dom-%EC%9D%98-%EB%A0%8C%EB%8D%94%EB%A7%81-%EA%B3%BC%EC%A0%95&quot;&gt;DOM 렌더링&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/11.png&quot; alt=&quot;11&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;위와 같이 포스트잇 1,2,3 이 있던 상황에서 맨 위에 포스트잇 4가 들어오게 된다면, 어떻게 해서 재렌더링을 최소화 시킬 수 있을까?&lt;/p&gt;
+
+&lt;p&gt;여기서 가장 좋은 방법은 역시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;포스트잇 4&lt;/code&gt; 만 추가하고 포스트잇 1,2,3 에 미치는 영향은 최소화 시키는 방법일 것이다.&lt;/p&gt;
+
+&lt;p&gt;우선 상황을 보면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;포스트잇 4&lt;/code&gt; 가 맨 위에 추가되면서 포스트잇 1,2,3 은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;화면 상 위치&lt;/code&gt; 가 바뀌었다. 물론 1,2,3 간의 순서가 바뀌지는 않았지만 한 칸 씩 내려앉게 되었다.&lt;/p&gt;
+
+&lt;p&gt;이런 경우에는 DOM 에서 layout 을 잡는 작업인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reflow&lt;/code&gt; 와 화면에 그리는 작업인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reflow&lt;/code&gt; 과정이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;포스트잇 4&lt;/code&gt; 에 일어난다.&lt;/p&gt;
+
+&lt;p&gt;그리고 이 reflow, repaint 작업은 DOM 조작 중에서 가장 비싼 작업들이다.&lt;/p&gt;
+
+&lt;p&gt;그렇다면 포스트잇 1,2,3 은 어떻게 될까?
+아쉽지만 포스트잇 1,2,3 간에는 순서가 바뀐 것이 없음에도 reflow 가 발생한다. 포스트잇 1,2,3 의 위치가 바뀌었기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;어떻게 해도 포스트잇 1,2,3 의 위치가 바뀌었기 때문에 브라우저에서 reflow 가 일어나야만 한다. 이렇게 하나의 카드만 새로 추가 되는 경우에는
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;insertBefore&lt;/code&gt; 메소드를 사용해서 그냥 끼워넣어도 성능에 큰 차이가 없을 수’도’ 있다.&lt;/p&gt;
+
+&lt;p&gt;다만 아래 처럼 여러 개의 카드가 동시에 추가 되는 경우를 한 번 생각해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/12.png&quot; alt=&quot;12&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;이 경우에 가장 쉽게 이 로직을 작성해보면&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;javascript
+// 새로운 카드들이 들어있는 배열
+newCards.forEach((newCard)=&amp;gt;{
+  ...
+  column.insertBefore(newCard, ...);
+  ...
+})
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이렇게 newCards 배열을 순회하면서 포스트잇 4를 추가하고, 그 뒤에 포스트잇 5까지 추가하는 로직이면 상당히 간단하게 구현할 수 있을 것 같다.&lt;/p&gt;
+
+&lt;p&gt;하지만 이런 방식은 정말 비효율적인 방식이다. 위에서 고민했던 것을 다시 생각해보면 DOM 에 비효율적인 reflow repaint 가 일어나는 것을 알 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-14-[네부캠_멤버십_스프린트]_1주차_~_7주차_정리.md/13.png&quot; alt=&quot;13&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;insertBefore&lt;/code&gt; 메소드는 실제로 DOM 의 재렌더링을 유발한다. 정확히 말하면 DOM 에 새로운 요소가 업데이트(insertBefore 가 요소를 업데이트) 될 때마다 재렌더링이 발생한다. 즉 한 번의 insertBefore 마다 한 번의 DOM 재렌더링이 발생한다.&lt;/p&gt;
+
+&lt;p&gt;실제로 카드를 2개를 동시에 추가하는 것 처럼 보일 수 있으나 이미지처럼 추가되는 카드의 수 만큼 insertBefore 가 발생하고, 그 만큼 reflow repaint 가 발생할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 비효율적으로 여러 번 발생하는 reflow repaint 를 최소화시키는 것이 이번 고민의 핵심이었다.&lt;/p&gt;
+
+&lt;h2 id=&quot;virtual-dom&quot;&gt;Virtual DOM&lt;/h2&gt;
+
+&lt;p&gt;그렇다면 어떻게 reflow repaint 를 최소화할 수 있을까? 이 고민은 완벽하게 해결하려면 상당히 복잡할 거라고 생각한다.&lt;/p&gt;
+
+&lt;p&gt;실제로 카드 하나만 추가할 때는 insertBefore 한 번 하는 것이 더 나은 경우일 수 도 있는 것처럼 경우에 따라서 최선의 해결책이 달라질 수 있기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;그렇다면 React 는 어떤 방식으로 재렌더링을 효율적으로 하고 있을까?&lt;/p&gt;
+
+&lt;p&gt;리액트는 Virtual DOM 과 Diff 알고리즘을 핵심으로 사용하고 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://junilhwang.github.io/TIL/Javascript/Design/Vanilla-JS-Virtual-DOM/#_4-diff-%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%80%E1%85%A9%E1%84%85%E1%85%B5%E1%84%8C%E1%85%B3%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%A8%E1%84%8B%E1%85%AD%E1%86%BC&quot;&gt;Vanilla Javascript 로 가상돔 만들기&lt;/a&gt;
+를 참고하면 더욱 더 이해가 빠를 것 같다.&lt;/p&gt;
+
+&lt;p&gt;브라우저가 HTML 을 파싱해서 만든 결과인 DOM 트리는 DOM 요소가 업데이트 될 때마다 (위에서 insertBefore 등으로 요소를 업데이트하는 등) 재렌더링 작업을 거치게 되고
+이때 reflow repaint 가 발생한다. 따라서 우리는 DOM 요소가 업데이트가 되어도 바로 재렌더링을 하는게 아니라 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;업데이트 되는 요소들을 모아서&lt;/code&gt; 재렌더링 해야한다.&lt;/p&gt;
+
+&lt;p&gt;그러기 위해서는 브라우저가 만드는 진짜 DOM 을 가지고는 할 수 없다. 따라서 우리는 DOM 과 매우 유사한 Virtual DOM 을 만들어서, Virtual DOM 에 변경사항을 전부 업데이트하고
+해당 부분만 Virtual DOM 으로 patch 할 것이다.&lt;/p&gt;
+
+&lt;p&gt;우리가 만든 카드 웹에서는 포스트잇 1,2,3 말고 더 많은 요소들이 DOM 에 존재할 것이다. 그렇지만 우리가 바꾸고 싶은 부분인 포스트잇 컬럼 부분만 보면 충분하기 때문에 Real DOM 전체를 본따서 만드는 것이 아니라
+포스트잇 컬럼 부분의 DOM 만 본따서 Virtual DOM 을 만들면 된다.&lt;/p&gt;
+
+&lt;p&gt;이후에 Diffing(비교) 알고리즘으로 변경된 포스트잇들을 업데이트하고 Real DOM 에서 Virtual DOM 에 해당하는 부분을 patch 하면 된다.&lt;/p&gt;
+
+&lt;p&gt;위의 블로그에서는 Real DOM 을 메모리에만 올려서 활용하는 방식으로 Virtual DOM 을 생성한다고 보면 될 것 같다.&lt;/p&gt;
+
+&lt;p&gt;그리고 비슷하게 메모리에만 올려서 활용할 수 있는 &lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/API/DocumentFragment&quot;&gt;DocumentFragment&lt;/a&gt; 를 활용해도 좋을 것 같다.&lt;/p&gt;
+
+&lt;p&gt;DocumentFragment 도 DOM 의 가벼운 버전으로, DocumentFragment 에 요소들이 업데이트 되어도 재렌더링이 되지 않는다.&lt;/p&gt;
+
+&lt;h2 id=&quot;diff-알고리즘&quot;&gt;Diff 알고리즘&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;원래 있던 카드가 없다 -&amp;gt; 삭제&lt;/li&gt;
+  &lt;li&gt;원래 없던 카드가 있다 -&amp;gt; 추가&lt;/li&gt;
+  &lt;li&gt;원래 있던 카드의 내용이 바뀌었다 -&amp;gt; 변경&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;여기서 3번의 경우는 살짝 복잡할 수 있다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;내용이 바뀌었는가?&lt;/code&gt; 를 비교하는 로직이 필요하기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;만약 카드 객체가 단순히 String 타입이라면? 문자열만 비교해보고 바뀌었는지 아닌지를 구분할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;그러나 카드 객체는 보통 여러 자식을 가지고 있는 태그일 것이므로, 모든 자식 태그들을 비교해서 같은지 같지 않은지 확인해야한다.&lt;/p&gt;
+
+&lt;h1 id=&quot;스프린트-5주차-학습정리환경변수&quot;&gt;스프린트 5주차 학습정리(환경변수)&lt;/h1&gt;
+
+&lt;h2 id=&quot;환경변수&quot;&gt;환경변수&lt;/h2&gt;
+
+&lt;p&gt;리눅스를 다뤄볼때면 늘 나오는 키워드인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;export&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt; 까지 완벽하게 이해하고 사용하지는 못했던 것 같다.&lt;/p&gt;
+
+&lt;p&gt;이번 기회에 확실하게 짚고 넘어가보자&lt;/p&gt;
+
+&lt;p&gt;우선 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;환경변수&lt;/code&gt; 라는 말은 무엇일까?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;환경 변수(Environment Variables) 는 시스템의 전역 설정 으로 프로그램이나 명령어가 실행될 때 참고하는 설정 정보를 담고 있는 변수이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;그런데 조금 아래에서 보겠지만 전역 설정이라는 것 치고는 전역이 아닌 것 같은 일이 발생한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;export&quot;&gt;export&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Export&lt;/code&gt; 키워드는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;현재 셸&lt;/code&gt;에서 환경 변수에 등록하는 키워드이다. 아래의 경우 NAME 이라는 변수에는 hoeh 값이 들어있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;shell
+
+# nameScript.sh
+...
+export NAME=hoeh
+echo $NAME
+...
+
+$ ./nameScript.sh
+# hoeh
+
+$ echo $NAME
+# hoeh 가 출력될까?
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;우선 nameScript 라는 스크립트 파일에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;export NAME=hoeh&lt;/code&gt; 라고 작성한 뒤에 echo 명렁어로 NAME 을 출력하는 스크립트를 작성해보자.&lt;/p&gt;
+
+&lt;p&gt;이후에 nameScript 를 실행해보면 hoeh 라는 문자열이 잘 출력된다. 이는 NAME 이라는 환경변수에 hoeh 라는 값이 잘 들어가있음을 알려준다.&lt;/p&gt;
+
+&lt;p&gt;그런데 스크립트 실행 후에 따로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo $NAME&lt;/code&gt; 을 실행해보면 hoeh 가 출력될까?&lt;/p&gt;
+
+&lt;p&gt;사실 hoeh 가 아니라 아무것도 출력되지 않는다.&lt;/p&gt;
+
+&lt;p&gt;분명 nameScript 를 실행했을때는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo $NAME&lt;/code&gt; 에서 hoeh 가 정상적으로 출력되었는데 왜 echo $NAME 을 따로 실행하니까 출력되지 않는걸까?&lt;/p&gt;
+
+&lt;p&gt;이유는 자식 프로세스와 export 의 범위를 알아야한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;쉘 스크립트를 실행하면 현재 프로세스가 아닌 자식 프로세스를 fork 해서, 자식 프로세스에서 nameScript 스크립트가 실행된다.&lt;/li&gt;
+  &lt;li&gt;export 는 실행된 프로세스와 그 자식 프로세스에게만 전파된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이 두 가지의 이유를 조합해보면, &lt;a href=&quot;http://namescript.sh/&quot;&gt;nameScript.sh&lt;/a&gt; 를 실행할 때 자식 프로세스(B) 를 만들어서 해당 스크립트의 내용이 실행되기 때문에,
+B 에서 export 를 실행한 것이 되므로 B 와 B 의 자식들은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NAME&lt;/code&gt; 이라는 환경 변수를 사용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;그러나 B 의 부모 프로세스, 즉 우리가 입력하고 있는 프로세스에서는 NAME 이라는 환경 변수가 없다.&lt;/p&gt;
+
+&lt;p&gt;그렇다면 자식 프로세스의 환경 변수를 부모 프로세스로 역전파(?) 시키는 방법이 필요할 것 같은데 그런 방법은 따로 없다.&lt;/p&gt;
+
+&lt;h2 id=&quot;source&quot;&gt;source&lt;/h2&gt;
+
+&lt;p&gt;그렇다면 자식 프로세스에서 일어난 환경 변수 설정을 부모 프로세스가 알게하는 방법이 있을까?&lt;/p&gt;
+
+&lt;p&gt;프로세스는 스레드와 다르게 ‘독립성’ 이 강조된다. 자식 프로세스를 만들 때, 환경 변수를 복사해서 만들기 때문에 자식 프로세스에 영향이 있을 뿐, 부모 프로세스에게 영향을 끼치면 안된다.&lt;/p&gt;
+
+&lt;p&gt;따라서 우리는 부모 프로세스가 환경변수 설정을 적용되지 못하게 하는 원인을 제거해버릴 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source&lt;/code&gt; 명령어는 스크립트 파일을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;현재 셸&lt;/code&gt; 에서 실행한다. 즉 자식 프로세스를 만들지 않고 부모 프로세스에서 바로 환경 변수를 설정하기 때문에 현재 셸에 환경변수 설정이 적용된다.&lt;/p&gt;
+
+&lt;h1 id=&quot;스프린트-7주차-학습정리db-인덱싱-로컬-모듈&quot;&gt;스프린트 7주차 학습정리(DB 인덱싱, 로컬 모듈)&lt;/h1&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>[&quot;hoeeeeeh&quot;]</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="개념 정리" />
+      
+
+      
+        <summary type="html">스프린트 1주차 학습정리</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
