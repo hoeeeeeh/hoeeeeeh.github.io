@@ -552,6 +552,99 @@ bubbleUp(index) {
 
 </code></pre></div></div>
 
+<h1 id="추가">추가</h1>
+
+<h2 id="comparator">Comparator</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
+    constructor(comparator) {
+        if(comparator) this.comparator = comparator;
+        else this.comparator = (a, b) =&gt; a - b;
+    }
+
+</code></pre></div></div>
+
+<p>우선순위 큐에 어떤 타입의 비교 연산을 해야할지 모르기 때문에, comparator 도 받을 수 있도록 하면 더 좋다.</p>
+
+<p>이렇게 Comparator 를 추가 했을 때, bubbleUp 과 bubbleDown 의 비교 로직을 comparator 로 하면 된다.</p>
+
+<h1 id="자바스크립트-코드">자바스크립트 코드</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
+class PriorityQueue {
+    heap = [];
+    constructor(comparator) {
+        if(comparator) this.comparator = comparator;
+        else this.comparator = (a, b) =&gt; a - b;
+    }
+
+    enqueue(value){
+        const index = this.heap.push(value) - 1;
+        this.bubbleUp(index);
+    }
+
+    dequeue(){
+        if(this.heap.length === 0) return undefined;
+        const smallest = this.heap[0];
+        const last = this.heap.pop();
+        if(this.heap.length &gt; 0){
+            this.heap[0] = last;
+            this.bubbleDown(0);
+        }
+        return smallest;
+
+    }
+
+    peek(){
+        return this.heap[0];
+    }
+
+    get length(){
+        return this.heap.length;
+    }
+
+    bubbleUp(_index){
+        let index = _index;
+        while(index &gt; 0){
+            const parentIdx = Math.floor((index - 1) / 2);
+            if(this.comparator(this.heap[parentIdx], this.heap[index]) &lt;= 0) break;
+            this.swap(index, parentIdx);
+            index = parentIdx;
+        }
+    }
+
+    bubbleDown(_index){
+        let index = _index;
+        while(index &lt; this.heap.length){
+            let smallestIndex = index;
+            const leftChildIndex = 2 * index + 1;
+            const rightChildIndex = 2 * index + 2;
+
+            if(leftChildIndex &lt; this.heap.length &amp;&amp; this.comparator(this.heap[smallestIndex], this.heap[leftChildIndex]) &gt; 0) {
+                smallestIndex = leftChildIndex;
+            }
+            if(rightChildIndex &lt; this.heap.length &amp;&amp; this.comparator(this.heap[smallestIndex], this.heap[rightChildIndex]) &gt; 0) {
+                smallestIndex = rightChildIndex;
+            }
+
+            if(smallestIndex === index) break;
+
+            this.swap(index, smallestIndex);
+            index = smallestIndex;
+        }
+
+    }
+
+		// 위에서 봤던 swap 코드중에서 임시 배열을 만드는 것을 하고싶지 않을 때는 아래와 같이 작성하면 된다.
+    swap(i, j){
+        const store = this.heap[i];
+        this.heap[i] = this.heap[j];
+        this.heap[j] = store;
+    }
+}
+
+</code></pre></div></div>
+
 
             </div>
         </section>
@@ -792,7 +885,7 @@ bubbleUp(index) {
         <!-- Table of Contents Sidebar -->
         <aside class="toc" id="toc-sidebar">
             <nav>
-                <ul><li><a href="#heap">Heap</a></li><li><a href="#우선-순위-큐">우선 순위 큐</a><ul><li><a href="#bubbleup">bubbleUp</a></li><li><a href="#bubbledown">bubbleDown</a></li><li><a href="#enqueue-dequeue">enqueue, dequeue</a></li></ul></li></ul>
+                <ul><li><a href="#heap">Heap</a></li><li><a href="#우선-순위-큐">우선 순위 큐</a><ul><li><a href="#bubbleup">bubbleUp</a></li><li><a href="#bubbledown">bubbleDown</a></li><li><a href="#enqueue-dequeue">enqueue, dequeue</a></li></ul></li><li><a href="#추가">추가</a><ul><li><a href="#comparator">Comparator</a></li></ul></li><li><a href="#자바스크립트-코드">자바스크립트 코드</a></li></ul>
 
             </nav>
         </aside>
