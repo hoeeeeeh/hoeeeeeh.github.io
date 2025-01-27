@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://hoeeeeeh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" /><updated>2025-01-27T05:41:50+00:00</updated><id>https://hoeeeeeh.github.io/feed.xml</id><title type="html">hoeeeeeh</title><subtitle>HOEH 개발 블로그</subtitle><entry><title type="html">상호 배타적 집합 (Union-Find)</title><link href="https://hoeeeeeh.github.io/%EC%83%81%ED%98%B8_%EB%B0%B0%ED%83%80%EC%A0%81_%EC%A7%91%ED%95%A9_(Union-Find)" rel="alternate" type="text/html" title="상호 배타적 집합 (Union-Find)" /><published>2025-01-26T07:18:00+00:00</published><updated>2025-01-26T07:18:00+00:00</updated><id>https://hoeeeeeh.github.io/%EC%83%81%ED%98%B8_%EB%B0%B0%ED%83%80%EC%A0%81_%EC%A7%91%ED%95%A9_(Union-Find)</id><content type="html" xml:base="https://hoeeeeeh.github.io/%EC%83%81%ED%98%B8_%EB%B0%B0%ED%83%80%EC%A0%81_%EC%A7%91%ED%95%A9_(Union-Find)">&lt;p&gt;상호 배타적이라는 것은, 공통 원소가 없는 것이다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://hoeeeeeh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" /><updated>2025-01-27T07:53:50+00:00</updated><id>https://hoeeeeeh.github.io/feed.xml</id><title type="html">hoeeeeeh</title><subtitle>HOEH 개발 블로그</subtitle><entry><title type="html">상호 배타적 집합 (Union-Find)</title><link href="https://hoeeeeeh.github.io/%EC%83%81%ED%98%B8_%EB%B0%B0%ED%83%80%EC%A0%81_%EC%A7%91%ED%95%A9_(Union-Find)" rel="alternate" type="text/html" title="상호 배타적 집합 (Union-Find)" /><published>2025-01-26T07:18:00+00:00</published><updated>2025-01-26T07:18:00+00:00</updated><id>https://hoeeeeeh.github.io/%EC%83%81%ED%98%B8_%EB%B0%B0%ED%83%80%EC%A0%81_%EC%A7%91%ED%95%A9_(Union-Find)</id><content type="html" xml:base="https://hoeeeeeh.github.io/%EC%83%81%ED%98%B8_%EB%B0%B0%ED%83%80%EC%A0%81_%EC%A7%91%ED%95%A9_(Union-Find)">&lt;p&gt;상호 배타적이라는 것은, 공통 원소가 없는 것이다.&lt;/p&gt;
 
 &lt;p&gt;그렇다면 상호 배타적 집합이라는 것은 공통 원소가 없은 부분 집합으로 이루어진 집합이다.&lt;/p&gt;
 
@@ -215,7 +215,230 @@ class UnionFind {
 }
 
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>[&quot;hoeeeeeh&quot;]</name></author><category term="[&quot;CS&quot;]" /><category term="[&quot;CS&quot;]" /><category term="CS" /><category term="Algorithm" /><summary type="html">상호 배타적이라는 것은, 공통 원소가 없는 것이다.</summary></entry><entry><title type="html">정점간의 최단 거리 구하기 (다익스트라, 벨만 포드, 플로이드)</title><link href="https://hoeeeeeh.github.io/%EC%A0%95%EC%A0%90%EA%B0%84%EC%9D%98_%EC%B5%9C%EB%8B%A8_%EA%B1%B0%EB%A6%AC_%EA%B5%AC%ED%95%98%EA%B8%B0_(%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC,_%EB%B2%A8%EB%A7%8C_%ED%8F%AC%EB%93%9C,_%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C)" rel="alternate" type="text/html" title="정점간의 최단 거리 구하기 (다익스트라, 벨만 포드, 플로이드)" /><published>2025-01-16T02:20:00+00:00</published><updated>2025-01-16T02:20:00+00:00</updated><id>https://hoeeeeeh.github.io/%EC%A0%95%EC%A0%90%EA%B0%84%EC%9D%98_%EC%B5%9C%EB%8B%A8_%EA%B1%B0%EB%A6%AC_%EA%B5%AC%ED%95%98%EA%B8%B0_(%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC,_%EB%B2%A8%EB%A7%8C_%ED%8F%AC%EB%93%9C,_%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C)</id><content type="html" xml:base="https://hoeeeeeh.github.io/%EC%A0%95%EC%A0%90%EA%B0%84%EC%9D%98_%EC%B5%9C%EB%8B%A8_%EA%B1%B0%EB%A6%AC_%EA%B5%AC%ED%95%98%EA%B8%B0_(%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC,_%EB%B2%A8%EB%A7%8C_%ED%8F%AC%EB%93%9C,_%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C)">&lt;p&gt;정점간의 최단 거리를 구하는 알고리즘들에 대해서 한 번 알아보자.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>[&quot;hoeeeeeh&quot;]</name></author><category term="[&quot;CS&quot;]" /><category term="[&quot;CS&quot;]" /><category term="CS" /><category term="Algorithm" /><summary type="html">상호 배타적이라는 것은, 공통 원소가 없는 것이다.</summary></entry><entry><title type="html">스패닝 트리</title><link href="https://hoeeeeeh.github.io/%EC%8A%A4%ED%8C%A8%EB%8B%9D_%ED%8A%B8%EB%A6%AC" rel="alternate" type="text/html" title="스패닝 트리" /><published>2025-01-20T02:16:00+00:00</published><updated>2025-01-20T02:16:00+00:00</updated><id>https://hoeeeeeh.github.io/%EC%8A%A4%ED%8C%A8%EB%8B%9D_%ED%8A%B8%EB%A6%AC</id><content type="html" xml:base="https://hoeeeeeh.github.io/%EC%8A%A4%ED%8C%A8%EB%8B%9D_%ED%8A%B8%EB%A6%AC">&lt;h1 id=&quot;스패닝-트리&quot;&gt;스패닝 트리&lt;/h1&gt;
+
+&lt;p&gt;어떤 무향 그래프의 스패닝 트리는 원래 그래프의 정점 전부와 간선의 부분 집합으로 구성된 부분 그래프이다.&lt;/p&gt;
+
+&lt;p&gt;스패닝 트리에 포함된 간선들은 정점들을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;트리&lt;/code&gt; 형태로 전부 연결해야하는데, 이는 사이클이 없고 정점들이 꼭 부모-자식 관계로 연결될 필요는 없다는걸 의미한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/0.png&quot; alt=&quot;0&quot; /&gt;&lt;em&gt;예시 그래프&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 예시 그래프에서 스패닝 트리를 그려보자. 스패닝 트리는 유일하지 않을 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/1.png&quot; alt=&quot;1&quot; /&gt;_올바른 스패닝 트리 1 _&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/2.png&quot; alt=&quot;2&quot; /&gt;&lt;em&gt;올바른 스패닝 트리 2&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;스패닝 트리는 모든 정점이 연결되어 있거나, 사이클이 있으면 안된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/3.png&quot; alt=&quot;3&quot; /&gt;&lt;em&gt;잘못된 스패닝 트리 1 (모든 정점이 연결되어 있지 않음)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/4.png&quot; alt=&quot;4&quot; /&gt;&lt;em&gt;잘못된 스패닝 트리 2 (모든 정점이 연결되어 있지만 사이클이 존재)&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;최소-스패닝-트리&quot;&gt;최소 스패닝 트리&lt;/h1&gt;
+
+&lt;p&gt;가중치가 있는 그래프에서, 스패닝 트리 중 가중치의 합이 가장 작은 트리를 최소 스패닝 트리라고 한다.&lt;/p&gt;
+
+&lt;p&gt;최소 스패닝 트리를 찾는 알고리즘에는 크게 두 가지가 존재한다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;크루스칼&lt;/li&gt;
+  &lt;li&gt;프림&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;두 알고리즘은 모두 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;간선이 하나도 없는 상태&lt;/code&gt; 에서 시작해 하나씩 트리에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;가중치가 가장 작은 간선&lt;/code&gt;을 추가해 가는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;그리디 알고리즘&lt;/code&gt; 으로, 접근 방법이 달라보이지만 같은 방법으로 증명할 수 있다는 특징도 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;크루스칼-알고리즘&quot;&gt;크루스칼 알고리즘&lt;/h2&gt;
+
+&lt;p&gt;크루스칼의 기본적인 아이디어는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;가중치가 작은 간선이 최소 스패닝 트리에 포함될 가능성이 높다&lt;/code&gt; 이다.&lt;/p&gt;
+
+&lt;p&gt;그래서&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;모든 간선의 가중치를 오름차순으로 정렬한다&lt;/li&gt;
+  &lt;li&gt;가중치가 작은 순서대로 스패닝 트리에 추가한다.&lt;/li&gt;
+  &lt;li&gt;단, 스패닝 트리에 사이클이 생기지 않도록 한다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이런 방식으로 모든 간선을 한 번씩 검사하고 나면 크루스칼 알고리즘은 종료된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;알고리즘-동작-방식&quot;&gt;알고리즘 동작 방식&lt;/h3&gt;
+
+&lt;p&gt;이제 예시를 들어, 한 번 직접 진행해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/5.png&quot; alt=&quot;5&quot; /&gt;&lt;em&gt;크루스칼 알고리즘의 예시 1&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;우선 가중치들을 정렬하면 [1, 2, 3, 4, 5, 6, 7, 9] 가 될 것이다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;가중치가 가장 작은 A - C (1) 을 선택해보자.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;처음 뽑는 간선이다보니 당연히 사이클은 그려지지 않을 것이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/6.png&quot; alt=&quot;6&quot; /&gt;&lt;em&gt;가중치가 1인 A - C 선택&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;두 번째로 작은 E - F (2) 를 선택하자.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/7.png&quot; alt=&quot;7&quot; /&gt;&lt;em&gt;가중치가 2인 E - F 산텍&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;마찬가지로, C - D (3) 과 A - B (4) 를 선택해보자&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/8.png&quot; alt=&quot;8&quot; /&gt;&lt;em&gt;가중치가 3인 C - D, 가중치가 4인 A - B 선택&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;이제 남은 간선중에 가중치가 가장 작은 B - C (5) 를 선택하려고 보니, A - B - C 간의 사이클이 발생한다.
+마찬가지로 그 다음 가중치가 작은 B - D (6) 을 선택하면 A - B - D -C 간의 사이클이 발생한다.&lt;/li&gt;
+  &lt;li&gt;사이클이 생기지 않는 선에서 가장 작은 가중치를 갖는 D - F (7) 을 연결한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/9.png&quot; alt=&quot;9&quot; /&gt;&lt;em&gt;가중치가 7인 D - F 선택&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;C - E 도 마찬가지로 사이클이 생기기 때문에 선택하지 않는다.&lt;/li&gt;
+  &lt;li&gt;모든 간선에 대해 검사를 완료했으므로 종료한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;사이클-검사-방법&quot;&gt;사이클 검사 방법&lt;/h3&gt;
+
+&lt;p&gt;알고리즘 동작 방식을 봤을 때, 딱히 어려울 게 없어 보이는 단순한 방식으로 보인다.&lt;/p&gt;
+
+&lt;p&gt;다만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;사이클이 생기는지&lt;/code&gt; 확인하는 작업을 어떻게 하는지를 고민해봐야 할 것 같다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;DFS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;결국 스패닝 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;트리&lt;/code&gt; 이므로 트리에 간선을 추가한 뒤에, 이 간선의 역방향 간선이 존재하는지를 DFS 로 탐색하면 어떨까?&lt;/p&gt;
+
+&lt;p&gt;예를 들어 A - B (4) 를 스패닝 트리에 추가하고 모든 간선마다 DFS 를 수행한다.&lt;/p&gt;
+
+&lt;p&gt;방문 기록을 저장해두면서 DFS 를 타고가다가, 이미 방문했던 곳을 방문한다면 사이클이 생긴 것이다.&lt;/p&gt;
+
+&lt;p&gt;이 과정을 간선을 추가할 때 마다 진행하면 된다.&lt;/p&gt;
+
+&lt;p&gt;이 방법은 구현하기에 매우 간단하겠지만 시간 복잡도를 생각해봤을 때, DFS 의 시간복잡도인 O(V+E) 에 E 를 곱한, O(E^2) 가 된다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Union-Find&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;두 정점을 잇는 간선에서, 이 간선이 사이클을 만들어내는지 확인하려면 두 정점이 같은 그룹에 있는지 확인하면 된다. 그리고 같은 그룹이 아니라면, 간선을 추가하면서 같은 그룹으로 만들어주는 작업을 반복하면 사이클 검사를 쉽게 할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이러한 자료구조를 만족하는 Union-Find 를 활용하면 쉽게 사이클을 검사할 수 있을 것 같다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/10.png&quot; alt=&quot;10&quot; /&gt;&lt;em&gt;Union-Find 사이클 탐색 예시&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;예를 들어, 가중치가 1인 A - C 를 검사해보자.&lt;/p&gt;
+
+&lt;p&gt;초기화단계에서는 A부터 F까지 어디에도 연결되지 않은 상태이므로, 당연히 자기 자신을 부모노드로 가진 채 초기화되어있을 것이다.&lt;/p&gt;
+
+&lt;p&gt;그렇기 때문에 A 와 C 는 같은 집합에 존재하지 않기 때문에 사이클이 생기지 않는다고 확신할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이후에 C 의 부모 노드를 A 로 바꾸면서 같은 집합으로 만들어준다.&lt;/p&gt;
+
+&lt;p&gt;이어서 E - F (2) 도 Union 하고 나서 C - D(3) 를 보자.&lt;/p&gt;
+
+&lt;p&gt;C 의 부모노드는 이미 A 이고, D 의 부모노드는 자신(D) 이다.&lt;/p&gt;
+
+&lt;p&gt;둘이 같은 집합이 아니므로 D의 부모노드를 A로 바꾼다.&lt;/p&gt;
+
+&lt;p&gt;A - B 도 마찬가지로, B의 부모노드가 A 로 바뀐다.&lt;/p&gt;
+
+&lt;p&gt;이제 가중치가 5인 B - C 를 추가할지 말지 결정해야한다.&lt;/p&gt;
+
+&lt;p&gt;B와 C의 루트노드를 살펴보니 전부 다 A 인 것을 알 수 있다.&lt;/p&gt;
+
+&lt;p&gt;따라서 사이클이 생길 수 있는 간선이므로 추가하지 않는다.&lt;/p&gt;
+
+&lt;h3 id=&quot;시간-복잡도&quot;&gt;시간 복잡도&lt;/h3&gt;
+
+&lt;p&gt;Union-Find 연산은 현실적으로 매우 짧은 시간(상수 시간)으로 봐도 되기 때문에 실제 트리를 만드는 for 문의 시간 복잡도는 O(E) 라고 봐도 좋다.&lt;/p&gt;
+
+&lt;p&gt;간선 리스트의 정렬에 걸리는 시간은 O(ElogE) 이기 때문에 O(ElogE) 가 전체 시간 복잡도가 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;증명&quot;&gt;증명&lt;/h3&gt;
+
+&lt;p&gt;크루스칼 알고리즘은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;각 간선을 그래프에 추가할 때, 뒤에 오는 간선들에 대한 고려는 전혀 하지 않으므로&lt;/code&gt; 탐욕적 알고리즘으로 분류할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;따라서,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;탐욕적 선택 속성은 우리가 내리는 탐욕적인 선택으로 인해 손해를 볼 일이 없음을 증명해야한다.&lt;/li&gt;
+  &lt;li&gt;항상 최적의 선택만을 내려도 전체 문제의 최적해를 얻을 수 있어야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이렇게 두 가지의 증명을 함으로서 크루스칼 알고리즘의 정당성을 증명할 수 있다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;가장 짧은 간선을 선택해도 손해를 볼 일이 없다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이 증명은 귀류법으로 할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;크루스칼 알고리즘이 선택한 간선 루트가 올바르지 않다고 가정을 해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/11.png&quot; alt=&quot;11&quot; /&gt;&lt;em&gt;예시 그래프&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;크루스칼 알고리즘은 A → B → C → D → F → E 를 최선으로 골랐는데, 실제로는 A → B → C → E → F → D 였다고 가정해보자.&lt;/p&gt;
+
+&lt;p&gt;크루스칼은 C - D 간선을 선택했지만 실제로는 C - D 간선이 아니라 C - E 간선을 선택해야 최소 스패닝 트리라는 것이다.&lt;/p&gt;
+
+&lt;p&gt;크루스칼은 항상 가중치의 최솟값부터 선택해나간다. 따라서 C - D 의 가중치가 C - E 보다 작기 때문에 크루스칼 알고리즘이 C - D 를 선택했을 것이다.&lt;/p&gt;
+
+&lt;p&gt;그렇다면 만약에 C - E 간선을 제거하고, C - D 간선을 연결하면 어떻게 될까? 이 또한 스패닝 트리가 되는 것을 알 수 있다. 따라서 가중치가 더 작은 간선을 선택해서 스패닝트리를 만들 수 있으므로, 처음의 A → B → C → E → F → D 가 최소 스패닝 트리라는 가정에서 모순 된다.&lt;/p&gt;
+
+&lt;p&gt;일반화를 시키자면, 실제 최소 스패닝트리 T 에 속하지 않으면서 크루스칼 알고리즘이 선택한 간선을 (u, v) 라고 하자. T 또한 스패닝 트리이므로 u 와 v 는 어떤 식으로든 연결이 되어 있을 것이다. 크루스칼 알고리즘은 최솟값부터 선택해나가므로 T에는 존재하지만 크루스칼이 선택하지 않은 간선 (a, b) 는 (u, v) 보다 무조건 가중치가 같거나 높을 수 밖에 없다. (a, b) 가 (u, v) 보다 가중치가 낮았다면 크루스칼은 (u, v) 가 아니라 (a, b) 를 선택했을 것이다.&lt;/p&gt;
+
+&lt;p&gt;이제 T 에서 u 와 v 를 잇는 경로 상의 어떠한 간선 하나를 제거하고, (u, v) 간선을 선택해보자. 이 때 간선 하나를 없앴지만 (u, v) 간선이 생겼으므로 스패닝 트리가 유지됨을 알 수 있고, 같거나 더 짧은 간선을 선택하면서 스패닝트리를 유지할 수 있으므로 T가 최소 스패닝 트리라는 가정에 모순이 생긴다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;항상 최적의 선택(남은 간선 중에, 사이클이 생기지 않는 가장 짧은 간선을 선택)만을 내려도 전체 문제의 최적해를 얻을 수 있어야 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이는, 매 단계마다 선택되는 간선이 항상 최적의 부분 문제 해를 만족한다는 점에서 최적 부분 구조가 성립함을 쉽게 알 수 있다.&lt;/p&gt;
+
+&lt;p&gt;매 단계마다 선택하는 가장 짧은 간선은, 그 간선이 만드는 그래프 자체를 가장 짧은 경로로 갈 수 있게 한다. 따라서 항상 최적의 부분 문제 해를 만족하고 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;프림-알고리즘&quot;&gt;프림 알고리즘&lt;/h2&gt;
+
+&lt;p&gt;크루스칼 알고리즘은 어느 간선이든 최솟값이면 선택하지만 프림 알고리즘은 현재 만들어진 트리에 이어진 간선만을 선택해나가면서 스패닝 트리를 만들게 된다.&lt;/p&gt;
+
+&lt;p&gt;프림 알고리즘도 트리에 이어진 간선 중에서 최솟값을 선택하기 때문에 크루스칼 알고리즘과 비슷하기도 하다.&lt;/p&gt;
+
+&lt;p&gt;그런데 이런 과정을 어딘가에서 많이 본 것 같다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;정점을 추가하면서, 정점에 연결된 간선 중에서 가장 짧은 간선을 선택해나가는 방식&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이 방식은 다익스트라 알고리즘과 상당히 유사해보인다.&lt;/p&gt;
+
+&lt;h3 id=&quot;알고리즘-동작-방식-1&quot;&gt;알고리즘 동작 방식&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/12.png&quot; alt=&quot;12&quot; /&gt;&lt;em&gt;프림 알고리즘 예시 1&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 그래프로 동작 방식을 한 번 살펴보자. 시작점은 A 라고 해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/13.png&quot; alt=&quot;13&quot; /&gt;&lt;em&gt;A - C 간선, 정점 C 추가&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/14.png&quot; alt=&quot;14&quot; /&gt;&lt;em&gt;C - D 간선, 정점 D 추가&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/15.png&quot; alt=&quot;15&quot; /&gt;&lt;em&gt;A - B 간선, 정점 B 추가&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/16.png&quot; alt=&quot;16&quot; /&gt;&lt;em&gt;D - F 간선, 정점 F 추가&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 왜, 더 짧은 간선인 B - C(5), B - D(6) 을 선택하지 않았냐면 이미 정점 리스트에 들어가있는 C 와 D 를 잇는 간선이기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/17.png&quot; alt=&quot;17&quot; /&gt;&lt;em&gt;E - F 간선, 정점 E 추가&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;증명-1&quot;&gt;증명&lt;/h3&gt;
+
+&lt;p&gt;프림 알고리즘은 크루스칼 알고리즘과 동일하게 간선의 최솟값을 사용하므로 증명이 크루스칼 알고리즘과 똑같다.&lt;/p&gt;</content><author><name>[&quot;hoeeeeeh&quot;]</name></author><category term="[&quot;CS&quot;]" /><category term="[&quot;CS&quot;]" /><category term="CS" /><category term="Algorithm" /><summary type="html">스패닝 트리</summary></entry><entry><title type="html">정점간의 최단 거리 구하기 (다익스트라, 벨만 포드, 플로이드)</title><link href="https://hoeeeeeh.github.io/%EC%A0%95%EC%A0%90%EA%B0%84%EC%9D%98_%EC%B5%9C%EB%8B%A8_%EA%B1%B0%EB%A6%AC_%EA%B5%AC%ED%95%98%EA%B8%B0_(%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC,_%EB%B2%A8%EB%A7%8C_%ED%8F%AC%EB%93%9C,_%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C)" rel="alternate" type="text/html" title="정점간의 최단 거리 구하기 (다익스트라, 벨만 포드, 플로이드)" /><published>2025-01-16T02:20:00+00:00</published><updated>2025-01-16T02:20:00+00:00</updated><id>https://hoeeeeeh.github.io/%EC%A0%95%EC%A0%90%EA%B0%84%EC%9D%98_%EC%B5%9C%EB%8B%A8_%EA%B1%B0%EB%A6%AC_%EA%B5%AC%ED%95%98%EA%B8%B0_(%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC,_%EB%B2%A8%EB%A7%8C_%ED%8F%AC%EB%93%9C,_%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C)</id><content type="html" xml:base="https://hoeeeeeh.github.io/%EC%A0%95%EC%A0%90%EA%B0%84%EC%9D%98_%EC%B5%9C%EB%8B%A8_%EA%B1%B0%EB%A6%AC_%EA%B5%AC%ED%95%98%EA%B8%B0_(%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC,_%EB%B2%A8%EB%A7%8C_%ED%8F%AC%EB%93%9C,_%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C)">&lt;p&gt;정점간의 최단 거리를 구하는 알고리즘들에 대해서 한 번 알아보자.&lt;/p&gt;
 
 &lt;h1 id=&quot;다익스트라&quot;&gt;다익스트라&lt;/h1&gt;
 
@@ -1820,71 +2043,4 @@ Layer 계층에서는 middleware 를 실행하기 전에 &lt;code class=&quot;la
 
 &lt;h3 id=&quot;express-에서는-request-의-dto-를-직접-검사해줘야한다&quot;&gt;Express 에서는 Request 의 DTO 를 직접 검사해줘야한다&lt;/h3&gt;
 
-&lt;h2 id=&quot;zod-를-활용해보자&quot;&gt;ZOD 를 활용해보자&lt;/h2&gt;</content><author><name>[&quot;hoeeeeeh&quot;]</name></author><category term="[&quot;Project&quot;]" /><category term="[&quot;Project&quot;]" /><category term="Project" /><category term="JavaScript" /><category term="TypeScript" /><summary type="html">ts/js 로 express 따라 만들기</summary></entry><entry><title type="html">Gateway, 사설망, CIDR</title><link href="https://hoeeeeeh.github.io/Gateway,_%EC%82%AC%EC%84%A4%EB%A7%9D,_CIDR" rel="alternate" type="text/html" title="Gateway, 사설망, CIDR" /><published>2025-01-14T02:40:00+00:00</published><updated>2025-01-14T02:40:00+00:00</updated><id>https://hoeeeeeh.github.io/Gateway,_%EC%82%AC%EC%84%A4%EB%A7%9D,_CIDR</id><content type="html" xml:base="https://hoeeeeeh.github.io/Gateway,_%EC%82%AC%EC%84%A4%EB%A7%9D,_CIDR">&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=kYiQGpPVnyI&quot;&gt;IP 주소를 묶는 방법, CIDR란?&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;network-gateway-사설망-cidr&quot;&gt;[Network] Gateway, 사설망, CIDR&lt;/h1&gt;
-
-&lt;h2 id=&quot;ipv4&quot;&gt;IPv4&lt;/h2&gt;
-
-&lt;p&gt;우선 IPv4 는 총 32 비트의 숫자로 구성 되어 있다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;XXX.XXX.XXX.XXX 각각 8비트씩 -&amp;gt; 2^32개!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이 중에서 일부 ip가 특수한 목적으로 선점되어 있다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;사설 ip, 루프백 ip, 멀티캐스트 ip, 0.0.0.0(현 주소), 브로드캐스트 ip…&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;실제로 사용할 수 있는 ip 는 2^32 보다 적다
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;예전에는 모든 기기에 하나씩 ip 를 할당해도 여유로웠겠지만, 기기들이 늘어난 요새는 매우 힘들다.&lt;/p&gt;
-
-&lt;p&gt;따라서 사설망(private network)이 필요로 해졌다.&lt;/p&gt;
-
-&lt;h2 id=&quot;사설망private-network&quot;&gt;사설망(private network)&lt;/h2&gt;
-
-&lt;p&gt;여러대의 기기를 하나의 사설망으로 묶고, 중복되지 않도록 사설 ip를 할당해준다.&lt;/p&gt;
-
-&lt;p&gt;이때 외부와 통신하기 위해서는 public ip 를 가지고 있는 장비가 필요한데, 이것이 Gateway 이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;gateway&quot;&gt;Gateway&lt;/h2&gt;
-
-&lt;p&gt;게이트웨이는 다른 대역으로 라우팅을 해줄 수 있는, 주로 L3 스위치급 이상의 장비이다.&lt;/p&gt;
-
-&lt;p&gt;가장 많이 보이는 것은 역시 어느 집에서나 볼 수 있는 공유기다. 사설망에 있는 장비들이 외부와 통신하려고 할 때, Gateway 를 거쳐서 통신하게 되는데 Gateway 는 public ip 를 하나 할당받고, NAT(Network Address Translation) 기능을 사용하여 내부 네트워크에서 오는 여러 요청을 public IP 주소를 사용하여 외부로 전송하고, 외부에서 돌아오는 응답을 올바른 내부 장치로 전달한다. 만약 사설망의 여러 장비가 같은 목적지의 같은 포트로 통신을 하려고 한다면 게이트웨이는 NAT 테이블을 활용하여 각각의 내부 소스 IP 주소와 포트 번호를 기반으로 이 요청들을 기억하고 구분한다. 외부로 나갈 때는 일반적으로 변형된 소스 포트를 사용하여, 응답이 돌아올 때 원래의 내부 IP 주소와 포트로 정확히 매핑한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;예를 들어 A 컴퓨터(192.168.0.2)가 (168.126.63.1, 443포트)에, B 컴퓨터(192.168.0.3)가 다음(168.126.63.1, 80포트)에 동시에 접근한다고 하자.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;A와 B의 목적지 ip는 동일하지만 포트가 다르기 때문에 443포트와 80포트로 A/B 의 요청을 구분할 수 있다.
-
-
-하지만 만약 A와 B 모두 443포트와 통신하려고 한다면 어떻게 될까?
-
-
-443포트에서 오는 응답을 A에게 전달해야할지, B에게 전달해야할지 구분해야 하기 때문에 Gateway는 A가 보낸 요청을 4430, B가 보낸 요청을 4431 포트로 변경해서 NAT 테이블에 저장한다. 이제 게이트웨이는 4430 포트로 응답이 돌아오는지, 4431 포트로 응답이 돌아오는지에 따라 A,B 컴퓨터에 알맞게 응답을 돌려줄 수 있다.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;cidrclassless-inter-domain-routing&quot;&gt;CIDR(Classless Inter Domain Routing)&lt;/h2&gt;
-
-&lt;p&gt;CIDR는 여러 개의 사설망을 구축하기 위해 망을 나누는 방법이다. 여기서 왜 Classless 라는 단어가 사용되었냐 하면, 옛날에는 A/B/C/D 클래스를 이용해서 망을 나눴기 때문이다. CIDR 을 쓰면 ABCD 클래스를 포함해서 더 다양하게 망을 나눌 수 있기 때문에 굳이 클래스라는 단어로 표기하기 않아도 되기 때문이다.&lt;/p&gt;
-
-&lt;p&gt;CIDR의 기본적인 표기법은 192.168.0.0/24 처럼, A.B.C.D/E 와 형식이다. 그렇다면 이런 형식은 어떻게 해석할 수 있을까?&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;192.168.0.0/24&lt;/code&gt; 라는 예시로 살펴보면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/24&lt;/code&gt; 의 뜻은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;앞에서부터 24비트 이후에 오는 비트들을 사용할 수 있다&lt;/code&gt; 라는 뜻이다. 조금 더 풀어서 설명하자면&lt;/p&gt;
-
-&lt;p&gt;우선 A.B.C.D 를 각각 옥텟(=8비트, 1바이트)이라고 부르며 192.168.0.0을 8비트로 변환해서 써보면,&lt;/p&gt;
-
-&lt;p&gt;11000000.10101000.00000000.00000000 일것이다. 맨 왼쪽부터 24비트 이후에 오는 비트들을 사용할 수 있다 라는 의미는, 3번째 옥텟 이후 4번째 옥텟부터 전부 사용할 수 있다는 의미이다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;1번옥텟(8비트).2번옥텟(8비트).3번옥텟(8비트) «여기서부터 24비트 이후!» .4번옥텟(8비트)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;즉 4번째 옥텟을 전부 이용하면 2^8을 전부 다 사용할 수 있다는 의미고 0~255 까지 전부 사용할 수 있다.
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;192.168.0.0/24 =&amp;gt; 192.168.0.0 ~ 192.168.0.255&lt;/code&gt; 까지를 나타낸 것이다.&lt;/p&gt;</content><author><name>[&quot;hoeeeeeh&quot;]</name></author><category term="[&quot;CS&quot;]" /><category term="[&quot;CS&quot;]" /><category term="CS" /><category term="Network" /><summary type="html">IP 주소를 묶는 방법, CIDR란?</summary></entry></feed>
+&lt;h2 id=&quot;zod-를-활용해보자&quot;&gt;ZOD 를 활용해보자&lt;/h2&gt;</content><author><name>[&quot;hoeeeeeh&quot;]</name></author><category term="[&quot;Project&quot;]" /><category term="[&quot;Project&quot;]" /><category term="Project" /><category term="JavaScript" /><category term="TypeScript" /><summary type="html">ts/js 로 express 따라 만들기</summary></entry></feed>
