@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://hoeeeeeh.github.io/tag/linux/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" />
-  <updated>2025-01-27T07:53:50+00:00</updated>
+  <updated>2025-01-29T07:45:42+00:00</updated>
   <id>https://hoeeeeeh.github.io/tag/linux/feed.xml</id>
 
   
@@ -30,6 +30,286 @@
   
   
 
+  
+    <entry>
+      <title type="html">리눅스 컨테이너</title>
+      <link href="https://hoeeeeeh.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4_%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88" rel="alternate" type="text/html" title="리눅스 컨테이너" />
+      <published>2025-01-27T03:16:00+00:00</published>
+      <updated>2025-01-27T03:16:00+00:00</updated>
+      <id>https://hoeeeeeh.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4_%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88</id>
+      <content type="html" xml:base="https://hoeeeeeh.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4_%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88">&lt;p&gt;도커 등의 컨테이너 기술을 사용하면서, 리눅스의 어떤 명령어들로 이런 컨테이너 기술이 동작할 수 있는지 문득 궁금해졌다.&lt;/p&gt;
+
+&lt;h1 id=&quot;linux-namespace&quot;&gt;Linux Namespace&lt;/h1&gt;
+
+&lt;p&gt;리눅스 네임스페이스는 리눅스 커널에서 제공하는 기능으로, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프로세스가 시스템의 특정 리소스를 독립적으로 볼 수 있도록 격리하는 매커니즘&lt;/code&gt; 이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/0.png&quot; alt=&quot;0&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;이렇게 두 개의 마운트 네임스페이스 A, B 를 생성했을 때, 각자의 작업이 서로에게 영향을 끼치지 않는다.&lt;/p&gt;
+
+&lt;p&gt;따라서 A 네임스페이스에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/test&lt;/code&gt; 를 만들었어도, B 네임스페이스에서는 /test 에 접근 할 수 없다.&lt;/p&gt;
+
+&lt;h2 id=&quot;unshare&quot;&gt;unshare&lt;/h2&gt;
+
+&lt;p&gt;마운트 네임스페이스를 직접 생성하려면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unshare --mount {실행파일}&lt;/code&gt; 을 통해서 생성할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이 명령어를 통해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unshare&lt;/code&gt; 이라는 시스템콜이 {실행파일} 인자 (→ CLONE_NEWNS 파라미터)와 함께 사용된다.&lt;/p&gt;
+
+&lt;p&gt;unshare 명령을 사용한 프로세스가 부모 프로세스가 되고, 자식 프로세스를 생성 할 때 마운트 네임스페이스를 생성하게 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/1.png&quot; alt=&quot;1&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 부모 프로세스가 가지고 있던 마운트 포인트가 자식 프로세스에게 그대로 복사가 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/2.png&quot; alt=&quot;2&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;proc&quot;&gt;proc&lt;/h3&gt;
+
+&lt;p&gt;마운트 네임스페이스를 직접 생성해보자.&lt;/p&gt;
+
+&lt;p&gt;마운트 네임스페이스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/proc&lt;/code&gt; 디렉토리에 존재한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;proc 디렉토리는 시스템의 프로세스 및 스레드에 대한 상태 정보를 포함한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;proc 파일 시스템은 시스템에 있는 각 활성 프로세스 및 스레드의 상태에 대한 액세스를 제공한다.&lt;/p&gt;
+
+&lt;p&gt;proc 디렉토리 내부를 보게 되면 프로세스 아이디로 이루어진 폴더들과 여러가지 정보(cpuinfo, meminfo, devices…) 등이 있는걸 볼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/3.png&quot; alt=&quot;3&quot; /&gt;&lt;em&gt;ls /proc&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;현재 사용하고 있는 Shell 의 프로세스 아이디를 찾아서 /proc 에서 확인해보자.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+echo $$
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위의 명령어를 통해 프로세스 아이디를 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이제 찾아낸 프로세스 아이디를 proc 에서 확인해보면,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/4.png&quot; alt=&quot;4&quot; /&gt;&lt;em&gt;ls /proc/{PID} 혹은 ls/proc/$$&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;이런식으로 많은 것들이 들어있다.&lt;/p&gt;
+
+&lt;p&gt;여기서 이 프로세스의 마운트 네임스페이스 번호를 확인해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/5.png&quot; alt=&quot;5&quot; /&gt;&lt;em&gt;프로세스의 마운트 네임스페이스&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/proc/$$/ns/mnt&lt;/code&gt; 로 프로세스의 마운트 네임스페이스를 확인할 수 있는데, 이는 symbolic link 라서 readlink 명령어를 통해서 symbolic link 의 값을 읽어보자.&lt;/p&gt;
+
+&lt;h3 id=&quot;unshare-mount&quot;&gt;unshare —mount&lt;/h3&gt;
+
+&lt;p&gt;4026531841 이 현재 프로세스의 pid 인걸 기억해두고 새로운 shell 창을 하나 더 만들어보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/6.png&quot; alt=&quot;6&quot; /&gt;&lt;em&gt;shell 2개&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;사진이 조금 이상해보일 수 있지만 쉘 창을 왼쪽과 오른쪽에 띄워놓은 상태이다.&lt;/p&gt;
+
+&lt;p&gt;두 shell 창의 마운트 네임스페이스를 보면 같은 걸 알 수 있는데, 기본적으로 shell 창을 열든 ssh를 통해서 접속하든 새로운 마운트 네임스페이스를 만들지는 않는다.&lt;/p&gt;
+
+&lt;p&gt;이제 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo unshare --mount /bin/sh&lt;/code&gt; 명령어를 통해서 오른쪽에 새로운 마운트 네임스페이스를 만들어보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/7.png&quot; alt=&quot;7&quot; /&gt;&lt;em&gt;새로운 마운트 네임스페이스 생성&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;만약 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--mount&lt;/code&gt; 옵션을 주지 않으면, 새로운 마운트 네임스페이스를 만들지 않는다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/8.png&quot; alt=&quot;8&quot; /&gt;&lt;em&gt;—mount 옵션 없이 unshare&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;왼쪽과 오른쪽 쉘의 mount namespace 가 같은 것을 알 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;findmnt--a&quot;&gt;findmnt -A&lt;/h3&gt;
+
+&lt;p&gt;다시 새로운 마운트 네임스페이스로 넘어와서, —mount 옵션을 주면서 새로운 마운트 네임스페이스를 생성하면 부모 네임스페이스로부터 마운트 포인트를 복사해서 자식 네임스페이스로 전달한다는 걸 확인해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/9.png&quot; alt=&quot;9&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;findmnt - A&lt;/code&gt; 옵션을 통해 마운트 포인트를 전부 확인할 수 있는데, 출력 순서가 조금 뒤바뀌었지만 값은 전부 동일하다.&lt;/p&gt;
+
+&lt;h3 id=&quot;자식-네임스페이스와-부모-네임스페이스는-서로-영향을-미치지-않는다&quot;&gt;자식 네임스페이스와 부모 네임스페이스는 서로 영향을 미치지 않는다.&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/10.png&quot; alt=&quot;10&quot; /&gt;&lt;em&gt;부모 프로세스에서 마운트 포인트 만들기&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;이제 부모 마운트 네임스페이스에서 새롭게 마운트를 했을 때, 자식 마운트 네임스페이스에 영향을 미치는지 확인해보자.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+sudo mount -t tmpfs tmpfs /tmp/mount_test
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 위의 명령어를 통해 새로운 마운트 포인트를 하나 만들어볼건데, /tmp/mount_test 라는 디렉토리에 tmpfs 타입을 마운트 한다.&lt;/p&gt;
+
+&lt;p&gt;여기서 tmpfs 는 임시 파일 시스템을 의미하는데, RAM을 기반으로 하는 가상 파일 시스템이다.&lt;/p&gt;
+
+&lt;p&gt;RAM 은 휘발되기 때문에 시스템을 종료하면 당연히 다 없어진다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;df -h&lt;/code&gt; 를 통해 마운트가 되었는지도 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;df 명령어는 disk free 의 약자로, 파일 시스템의 디스크 사용량을 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;-h 옵션은 human-readable, 즉 사람이 읽기 쉽게 포매팅 해준다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+hoeh@hoeeeeeh-server:/tmp$ df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+tmpfs                              391M  1.4M  389M   1% /run
+efivarfs                           256K   27K  230K  11% /sys/firmware/efi/efivars
+/dev/mapper/ubuntu--vg-ubuntu--lv   30G  7.9G   21G  28% /
+tmpfs                              2.0G     0  2.0G   0% /dev/shm
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+/dev/vda2                          2.0G  190M  1.6G  11% /boot
+/dev/vda1                          1.1G  6.4M  1.1G   1% /boot/efi
+tmpfs                              391M   12K  391M   1% /run/user/1000
+tmpfs                              2.0G     0  2.0G   0% /tmp/mount_test
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;findmnt -A&lt;/code&gt; 를 통해서도 확인해볼 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+hoeh@hoeeeeeh-server:/tmp$ findmnt -A | grep /tmp/mount_test
+└─/tmp/mount_test              tmpfs                             tmpfs       rw,relatime,inode64
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 부모 네임스페이스에서는 tmpfs 를 새롭게 마운트했는데, 자식 네임스페이스에서 이를 확인할 수 있는지 살펴보자.&lt;/p&gt;
+
+&lt;p&gt;아래는 자식 네임스페이스에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;df -h&lt;/code&gt; 를 한 결과이다.&lt;/p&gt;
+
+&lt;p&gt;살펴보면 /tmp/mount_test 의 마운트 포인트는 없다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+# df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+/dev/mapper/ubuntu--vg-ubuntu--lv   30G  7.9G   21G  28% /
+tmpfs                              2.0G     0  2.0G   0% /dev/shm
+tmpfs                              391M  1.4M  389M   1% /run
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+tmpfs                              391M   12K  391M   1% /run/user/1000
+efivarfs                           256K   27K  230K  11% /sys/firmware/efi/efivars
+/dev/vda2                          2.0G  190M  1.6G  11% /boot
+/dev/vda1                          1.1G  6.4M  1.1G   1% /boot/efi
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;마찬가지로 부모 네임스페이스에서 mount_test 를 언마운트해도 자식 네임스페이스에 영향을 끼치지 않는다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+hoeh@hoeeeeeh-server:/tmp$ sudo umount /tmp/mount_test
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(이름이 umount 인 이유는 검색해보니 초기 유닉스 시스템에서는 명령어의 길이 제한을 6글자 이하로 하는 경우가 많았기 때문이라고 한다.)&lt;/p&gt;
+
+&lt;p&gt;이처럼 mount namespace 를 활용하면 각 컨테이너마다 독립된 파일 시스템을 만들 수 있다. 이는 도커같은 컨테이너 기술에서 핵심 축을 담당하고 있다.&lt;/p&gt;
+
+&lt;p&gt;심지어 루트 디렉토리도 리눅스 시스템이 부팅될 때, 커널이 루트 파일 시스템(/) 을 마운트하는 것이다.&lt;/p&gt;
+
+&lt;h1 id=&quot;chroot&quot;&gt;chroot&lt;/h1&gt;
+
+&lt;p&gt;chroot 는 change root 의 약자로, 유닉스 운영 체제에서 현재 실행 중인 프로세스와 자식 프로세스 그룹에서 루트 디렉토리를 변경하는 작업이다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 루트 디렉토리가 변경된 환경에서 실행되는 프로그램은 지정된 디렉토리 트리 밖의 파일들의 이름을 지정할 수 없다.&lt;/p&gt;
+
+&lt;p&gt;chroot 환경을 사용하려면, 커널 가상 파일 시스템과 구성 파일 또한 호스트에서 chroot 로 마운트 혹은 복사가 되어야 한다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 아래와 같은 디렉토리 구조에서, chroot 를 통해 루트 디렉토리를 변경할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/11.png&quot; alt=&quot;11&quot; /&gt;&lt;em&gt;chroot 로 루트 디렉토리 변경&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;만약 왼쪽과 같은 구조에서 Nginx 를 실행시키면 어떻게 될까?&lt;/p&gt;
+
+&lt;p&gt;만약 아무런 설정도 하지 않았다면 당연히 환경변수에 따라 /usr/sbin/nginx, /usr/bin/nginx 등에서 nginx 실행 파일을 찾기 시작할 것이다. 여기서도 마찬가지로 /lib 를 찾지, /test/lib 를 찾지는 않는다. 따라서 환경 변수를 따로 지정해주어야 할 것이다.&lt;/p&gt;
+
+&lt;p&gt;하지만 우리가 컨테이너를 쓰는 이유는 하나의 nginx 를 모든 컨테이너에서 사용하기 위함이 아니라(물론 이런 경우도 있을수도 있지만 보통은), nginx 가 필요한 컨테이너만큼 새로운 nginx 를 설치하기 위함이지 않을까?&lt;/p&gt;
+
+&lt;p&gt;각 컨테이너마다 nginx 의 설정도 다르게 하고 싶은 등의 이유로 nginx 를 컨테이너마다 다 넣어놨더니, 컨테이너의 루트 디렉토리가 호스트의 루트 디렉토리라서 실행을 할 수가 없다.&lt;/p&gt;
+
+&lt;p&gt;그렇다면 각 컨테이너마다 루트 디렉토리를 변경함으로써 오른쪽 그림의 형태로 바꾸어준다면 모든 컨테이너마다 각자 자신의 /etc/nginx 를 참조하면 각기 다른 Nginx 를 실행할 수 있지 않을까?&lt;/p&gt;
+
+&lt;p&gt;따라서 위의 unshare 를 설명하면서 사용했던 옵선에, chroot 도 붙여보자.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+unshare --mount chroot test /bin/bash
+# unshare --mount chroot {directory} /bin/bash
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;취약점&quot;&gt;취약점&lt;/h2&gt;
+
+&lt;p&gt;chroot 는 루트 디렉토리를 바꿈으로써 독립적인 환경을 제공해줄 것 같지만, 사실 그렇지는 않다.&lt;/p&gt;
+
+&lt;p&gt;눈에 보이는 루트 디렉토리를 변경해주는 일을 하지만, 호스트에서 동작하는 프로세스를 kill 하거나 디렉토리를 타고 올라가서 chroot 로 제한한 루트 디렉토리를 벗어나서 탐색할 수도 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+# chroot 내부에서 실행
+mkdir /escape
+mount --bind / /escape  # 호스트 루트 파일 시스템을 다시 마운트
+ls /escape              # chroot 외부 파일 시스템에 접근 가능
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이렇게 취약점이 발생하는 이유는 chroot 가 root 경로와 현재 작업 경로를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;상대경로&lt;/code&gt; 로 바꾸기 때문이다.&lt;/p&gt;
+
+&lt;h1 id=&quot;pivot_root&quot;&gt;pivot_root&lt;/h1&gt;
+
+&lt;p&gt;chroot 의 취약점을 개선하기 위해 pivot_root 를 사용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;chroot 는 root 등을 상대경로로 바꾸었다면, pivot_root 는 기존의 루트 디렉토리를 백업해서 다른 경로로 바꿔버리고 원하는 디렉토리를 루트로 바꿔버린다.&lt;/p&gt;
+
+&lt;p&gt;다시 말해서 루트 파일 시스템을 스왑한다.&lt;/p&gt;
+
+&lt;h1 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=CIvwIplZS1U&quot;&gt;https://www.youtube.com/watch?v=CIvwIplZS1U&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=OYM8OGKlufY&quot;&gt;https://www.youtube.com/watch?v=OYM8OGKlufY&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;proc&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ibm.com/docs/ko/aix/7.3?topic=files-proc-file&quot;&gt;https://www.ibm.com/docs/ko/aix/7.3?topic=files-proc-file&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;chroot&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/Chroot&quot;&gt;https://ko.wikipedia.org/wiki/Chroot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;readlink&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/readlink.1.html&quot;&gt;https://man7.org/linux/man-pages/man1/readlink.1.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>[&quot;hoeeeeeh&quot;]</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Linux" />
+      
+
+      
+        <summary type="html">도커 등의 컨테이너 기술을 사용하면서, 리눅스의 어떤 명령어들로 이런 컨테이너 기술이 동작할 수 있는지 문득 궁금해졌다.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">[Linux] Ubuntu unexpected operator</title>

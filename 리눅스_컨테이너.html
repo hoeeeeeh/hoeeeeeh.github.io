@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Highlight.js 초기화 -->
+    <script>
+        document.querySelectorAll('pre code').forEach((block) => {
+            // 아래 둘 중 하나를 선택
+                hljs.highlightBlock(block); // 이전 방식
+
+        });
+    </script>
+    <style>.hljs { background: none; }</style>
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <!--    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>-->
+
+    <!-- Prism.js 기본 라이브러리 먼저 로드 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+    });</script>
+
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>리눅스 컨테이너</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="HOEH 개발 블로그" />
+<link rel="shortcut icon" href="https://hoeeeeeh.github.io//assets/images/favicon.png" type="image/png" />
+<link rel="canonical" href="https://hoeeeeeh.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4_%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="hoeeeeeh" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="리눅스 컨테이너" />
+    <meta property="og:description" content="도커 등의 컨테이너 기술을 사용하면서, 리눅스의 어떤 명령어들로 이런 컨테이너 기술이 동작할 수 있는지 문득 궁금해졌다. Linux Namespace 리눅스 네임스페이스는 리눅스 커널에서 제공하는 기능으로, 프로세스가 시스템의 특정 리소스를 독립적으로 볼 수 있도록 격리하는 매커니즘 이다. image.png 이렇게 두 개의 마운트 네임스페이스 A, B 를 생성했을 때, 각자의 작업이 서로에게 영향을" />
+    <meta property="og:url" content="https://hoeeeeeh.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4_%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88" />
+    <meta property="og:image" content="https://hoeeeeeh.github.io/assets/images/cover/linux.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/ghost" />
+    <meta property="article:author" content="https://www.facebook.com/ghost" />
+    <meta property="article:published_time" content="2025-01-27T03:16:00+00:00" />
+    <meta property="article:modified_time" content="2025-01-27T03:16:00+00:00" />
+    <meta property="article:tag" content="Linux" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="리눅스 컨테이너" />
+    <meta name="twitter:description" content="도커 등의 컨테이너 기술을 사용하면서, 리눅스의 어떤 명령어들로 이런 컨테이너 기술이 동작할 수 있는지 문득 궁금해졌다. Linux Namespace 리눅스 네임스페이스는 리눅스 커널에서 제공하는 기능으로, 프로세스가 시스템의 특정 리소스를 독립적으로 볼 수 있도록 격리하는 매커니즘 이다. image.png 이렇게 두 개의 마운트 네임스페이스 A, B 를 생성했을 때, 각자의 작업이 서로에게 영향을" />
+    <meta name="twitter:url" content="https://hoeeeeeh.github.io/" />
+    <meta name="twitter:image" content="https://hoeeeeeh.github.io/assets/images/cover/linux.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="hoeeeeeh" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Linux" />
+    <meta name="twitter:site" content="@tryghost" />
+    <meta name="twitter:creator" content="@tryghost" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "hoeeeeeh",
+        "logo": "https://hoeeeeeh.github.io/assets/images/blog-icon.png"
+    },
+    "url": "https://hoeeeeeh.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4_%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://hoeeeeeh.github.io/assets/images/cover/linux.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://hoeeeeeh.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4_%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88"
+    },
+    "description": "도커 등의 컨테이너 기술을 사용하면서, 리눅스의 어떤 명령어들로 이런 컨테이너 기술이 동작할 수 있는지 문득 궁금해졌다. Linux Namespace 리눅스 네임스페이스는 리눅스 커널에서 제공하는 기능으로, 프로세스가 시스템의 특정 리소스를 독립적으로 볼 수 있도록 격리하는 매커니즘 이다. image.png 이렇게 두 개의 마운트 네임스페이스 A, B 를 생성했을 때, 각자의 작업이 서로에게 영향을"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="리눅스 컨테이너" href="/feed.xml" />
+
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('toc-toggle').addEventListener('click', function() {
+            document.getElementById('toc-sidebar').classList.toggle('active');
+        });
+
+        document.querySelectorAll('.toc ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const targetPosition = target.getBoundingClientRect().top + window.scrollY; // 정확한 절대 위치
+                window.scrollTo({
+                    top: targetPosition - 60, // 네비게이션 바 고려
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const tocContainer = document.querySelector('.toc'); // 목차 컨테이너
+        const links = document.querySelectorAll('.toc a'); // 목차의 링크
+        const sections = Array.from(links).map(link =>
+            document.querySelector(link.getAttribute('href'))
+        );
+
+        // 쓰로틀링 함수 정의
+        const throttle = (callback, limit) => {
+            let waiting = false;
+            return (...args) => {
+                if (!waiting) {
+                    callback(...args);
+                    waiting = true;
+                    setTimeout(() => (waiting = false), limit);
+                }
+            };
+        };
+
+        // 디바운싱 함수 정의
+        const debounce = (callback, delay) => {
+            let timeout;
+            return (...args) => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => callback(...args), delay);
+            };
+        };
+
+        // 목차 업데이트 함수
+        const updateToc = () => {
+            const scrollPosition = window.scrollY + 60; // 상단 바 높이 고려
+
+            sections.forEach((section, index) => {
+                const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+                const sectionBottom = sectionTop + section.offsetHeight;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    // 기존 active 제거
+                    links.forEach(link => link.classList.remove('active'));
+
+                    // 현재 active 추가
+                    const activeLink = links[index];
+                    activeLink.classList.add('active');
+
+                    // 목차 컨테이너 스크롤
+                    tocContainer.scrollTo({
+                        top: activeLink.offsetTop - tocContainer.offsetHeight / 2,
+                        behavior: 'smooth',
+                    });
+                }
+            });
+        };
+
+        // 쓰로틀링 및 디바운싱 적용
+        const optimizedScrollHandler = throttle(updateToc, 100); // 100ms마다 실행 제한
+        const debouncedResizeHandler = debounce(updateToc, 50); // 리사이즈 후 200ms 후 실행
+
+        // 스크롤 및 리사이즈 이벤트
+        window.addEventListener('scroll', optimizedScrollHandler);
+        window.addEventListener('resize', debouncedResizeHandler); // 창 크기 변경 시 위치 보정
+
+    });
+
+
+</script>
+
+
+<style>
+    /* 기본적으로 사이드바 숨기기 */
+
+    html {
+        scroll-padding-top: 60px;
+    }
+
+    .toc {
+        position: fixed;
+        top: 0;
+        right: -240px; /* 사이드바 기본 위치 */
+        width: 240px;
+        height: 70vh;
+        background-color: transparent;
+        overflow-y: auto;
+        padding: 2rem;
+        transition: right 0.3s ease-in-out;
+        margin-top: 60px;
+    }
+
+    .toc-toggle {
+        border-radius: 25px;
+    }
+
+    .toc a.active {
+        color: #e6369b; /* 활성화된 목차 색깔 */
+        font-weight: bold;
+    }
+
+    /* 사이드바가 활성화되면 보이도록 */
+    .toc.active {
+        right: 0;
+    }
+
+    /* 목차 목록 스타일 */
+    .toc ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .toc ul li {
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        font-size: 98%;
+    }
+
+    .toc ul li a {
+        text-decoration: none;
+        color: #858181;
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    .toc ul li a:hover {
+        color: #007bff;
+    }
+
+    /* 버튼 스타일 */
+    .toc-toggle {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .toc-toggle:hover {
+        background-color: #0056b3;
+    }
+
+</style>
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://hoeeeeeh.github.io/"><img src="/assets/images/blog-icon.png" alt="hoeeeeeh" /></a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="https://github.com/hoeeeeeh">GitHub</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <li>
+            <script src="https://hoeeeeeh.github.io/assets/js/lunr.js" charset="utf-8"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="포스트 검색"/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="https://hoeeeeeh.github.io/assets/js/lunrsearchengine.js" charset="utf-8"></script>
+
+        </li>
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-linux post ">
+        <header class="post-full-header">
+            <section class="post-full-meta">
+                <time class="post-full-meta-date" datetime="27 January 2025">27 January 2025</time>
+                
+                <span class="date-divider">/</span>
+                
+                
+                <a href='/tag/linux/'>LINUX</a>
+                
+                
+                
+            </section>
+            <h1 class="post-full-title">리눅스 컨테이너</h1>
+        </header>
+
+        
+        <figure class="post-full-image" style="background-image: url(/assets/images/cover/linux.png)">
+        </figure>
+        
+
+        <section class="post-full-content">
+            <div class="kg-card-markdown">
+                <p>도커 등의 컨테이너 기술을 사용하면서, 리눅스의 어떤 명령어들로 이런 컨테이너 기술이 동작할 수 있는지 문득 궁금해졌다.</p>
+
+<h1 id="linux-namespace">Linux Namespace</h1>
+
+<p>리눅스 네임스페이스는 리눅스 커널에서 제공하는 기능으로, <code class="language-plaintext highlighter-rouge">프로세스가 시스템의 특정 리소스를 독립적으로 볼 수 있도록 격리하는 매커니즘</code> 이다.</p>
+
+<p><img src="/upload/2025-01-27-리눅스_컨테이너.md/0.png" alt="0" /><em>image.png</em></p>
+
+<p>이렇게 두 개의 마운트 네임스페이스 A, B 를 생성했을 때, 각자의 작업이 서로에게 영향을 끼치지 않는다.</p>
+
+<p>따라서 A 네임스페이스에서 <code class="language-plaintext highlighter-rouge">/test</code> 를 만들었어도, B 네임스페이스에서는 /test 에 접근 할 수 없다.</p>
+
+<h2 id="unshare">unshare</h2>
+
+<p>마운트 네임스페이스를 직접 생성하려면, <code class="language-plaintext highlighter-rouge">unshare --mount {실행파일}</code> 을 통해서 생성할 수 있다.</p>
+
+<p>이 명령어를 통해서 <code class="language-plaintext highlighter-rouge">unshare</code> 이라는 시스템콜이 {실행파일} 인자 (→ CLONE_NEWNS 파라미터)와 함께 사용된다.</p>
+
+<p>unshare 명령을 사용한 프로세스가 부모 프로세스가 되고, 자식 프로세스를 생성 할 때 마운트 네임스페이스를 생성하게 된다.</p>
+
+<p><img src="/upload/2025-01-27-리눅스_컨테이너.md/1.png" alt="1" /><em>image.png</em></p>
+
+<p>여기서 부모 프로세스가 가지고 있던 마운트 포인트가 자식 프로세스에게 그대로 복사가 된다.</p>
+
+<p><img src="/upload/2025-01-27-리눅스_컨테이너.md/2.png" alt="2" /><em>image.png</em></p>
+
+<h3 id="proc">proc</h3>
+
+<p>마운트 네임스페이스를 직접 생성해보자.</p>
+
+<p>마운트 네임스페이스는 <code class="language-plaintext highlighter-rouge">/proc</code> 디렉토리에 존재한다.</p>
+
+<blockquote>
+  <p>proc 디렉토리는 시스템의 프로세스 및 스레드에 대한 상태 정보를 포함한다.</p>
+</blockquote>
+
+<p>proc 파일 시스템은 시스템에 있는 각 활성 프로세스 및 스레드의 상태에 대한 액세스를 제공한다.</p>
+
+<p>proc 디렉토리 내부를 보게 되면 프로세스 아이디로 이루어진 폴더들과 여러가지 정보(cpuinfo, meminfo, devices…) 등이 있는걸 볼 수 있다.</p>
+
+<p><img src="/upload/2025-01-27-리눅스_컨테이너.md/3.png" alt="3" /><em>ls /proc</em></p>
+
+<p>현재 사용하고 있는 Shell 의 프로세스 아이디를 찾아서 /proc 에서 확인해보자.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash
+echo $$
+
+</code></pre></div></div>
+
+<p>위의 명령어를 통해 프로세스 아이디를 확인할 수 있다.</p>
+
+<p>이제 찾아낸 프로세스 아이디를 proc 에서 확인해보면,</p>
+
+<p><img src="/upload/2025-01-27-리눅스_컨테이너.md/4.png" alt="4" /><em>ls /proc/{PID} 혹은 ls/proc/$$</em></p>
+
+<p>이런식으로 많은 것들이 들어있다.</p>
+
+<p>여기서 이 프로세스의 마운트 네임스페이스 번호를 확인해보자.</p>
+
+<p><img src="/upload/2025-01-27-리눅스_컨테이너.md/5.png" alt="5" /><em>프로세스의 마운트 네임스페이스</em></p>
+
+<p><code class="language-plaintext highlighter-rouge">/proc/$$/ns/mnt</code> 로 프로세스의 마운트 네임스페이스를 확인할 수 있는데, 이는 symbolic link 라서 readlink 명령어를 통해서 symbolic link 의 값을 읽어보자.</p>
+
+<h3 id="unshare-mount">unshare —mount</h3>
+
+<p>4026531841 이 현재 프로세스의 pid 인걸 기억해두고 새로운 shell 창을 하나 더 만들어보자.</p>
+
+<p><img src="/upload/2025-01-27-리눅스_컨테이너.md/6.png" alt="6" /><em>shell 2개</em></p>
+
+<p>사진이 조금 이상해보일 수 있지만 쉘 창을 왼쪽과 오른쪽에 띄워놓은 상태이다.</p>
+
+<p>두 shell 창의 마운트 네임스페이스를 보면 같은 걸 알 수 있는데, 기본적으로 shell 창을 열든 ssh를 통해서 접속하든 새로운 마운트 네임스페이스를 만들지는 않는다.</p>
+
+<p>이제 <code class="language-plaintext highlighter-rouge">sudo unshare --mount /bin/sh</code> 명령어를 통해서 오른쪽에 새로운 마운트 네임스페이스를 만들어보자.</p>
+
+<p><img src="/upload/2025-01-27-리눅스_컨테이너.md/7.png" alt="7" /><em>새로운 마운트 네임스페이스 생성</em></p>
+
+<p>만약 <code class="language-plaintext highlighter-rouge">--mount</code> 옵션을 주지 않으면, 새로운 마운트 네임스페이스를 만들지 않는다.</p>
+
+<p><img src="/upload/2025-01-27-리눅스_컨테이너.md/8.png" alt="8" /><em>—mount 옵션 없이 unshare</em></p>
+
+<p>왼쪽과 오른쪽 쉘의 mount namespace 가 같은 것을 알 수 있다.</p>
+
+<h3 id="findmnt--a">findmnt -A</h3>
+
+<p>다시 새로운 마운트 네임스페이스로 넘어와서, —mount 옵션을 주면서 새로운 마운트 네임스페이스를 생성하면 부모 네임스페이스로부터 마운트 포인트를 복사해서 자식 네임스페이스로 전달한다는 걸 확인해보자.</p>
+
+<p><img src="/upload/2025-01-27-리눅스_컨테이너.md/9.png" alt="9" /><em>image.png</em></p>
+
+<p><code class="language-plaintext highlighter-rouge">findmnt - A</code> 옵션을 통해 마운트 포인트를 전부 확인할 수 있는데, 출력 순서가 조금 뒤바뀌었지만 값은 전부 동일하다.</p>
+
+<h3 id="자식-네임스페이스와-부모-네임스페이스는-서로-영향을-미치지-않는다">자식 네임스페이스와 부모 네임스페이스는 서로 영향을 미치지 않는다.</h3>
+
+<p><img src="/upload/2025-01-27-리눅스_컨테이너.md/10.png" alt="10" /><em>부모 프로세스에서 마운트 포인트 만들기</em></p>
+
+<p>이제 부모 마운트 네임스페이스에서 새롭게 마운트를 했을 때, 자식 마운트 네임스페이스에 영향을 미치는지 확인해보자.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash
+sudo mount -t tmpfs tmpfs /tmp/mount_test
+
+</code></pre></div></div>
+
+<p>이제 위의 명령어를 통해 새로운 마운트 포인트를 하나 만들어볼건데, /tmp/mount_test 라는 디렉토리에 tmpfs 타입을 마운트 한다.</p>
+
+<p>여기서 tmpfs 는 임시 파일 시스템을 의미하는데, RAM을 기반으로 하는 가상 파일 시스템이다.</p>
+
+<p>RAM 은 휘발되기 때문에 시스템을 종료하면 당연히 다 없어진다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">df -h</code> 를 통해 마운트가 되었는지도 확인할 수 있다.</p>
+
+<p>df 명령어는 disk free 의 약자로, 파일 시스템의 디스크 사용량을 확인할 수 있다.</p>
+
+<p>-h 옵션은 human-readable, 즉 사람이 읽기 쉽게 포매팅 해준다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash
+hoeh@hoeeeeeh-server:/tmp$ df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+tmpfs                              391M  1.4M  389M   1% /run
+efivarfs                           256K   27K  230K  11% /sys/firmware/efi/efivars
+/dev/mapper/ubuntu--vg-ubuntu--lv   30G  7.9G   21G  28% /
+tmpfs                              2.0G     0  2.0G   0% /dev/shm
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+/dev/vda2                          2.0G  190M  1.6G  11% /boot
+/dev/vda1                          1.1G  6.4M  1.1G   1% /boot/efi
+tmpfs                              391M   12K  391M   1% /run/user/1000
+tmpfs                              2.0G     0  2.0G   0% /tmp/mount_test
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">findmnt -A</code> 를 통해서도 확인해볼 수 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash
+hoeh@hoeeeeeh-server:/tmp$ findmnt -A | grep /tmp/mount_test
+└─/tmp/mount_test              tmpfs                             tmpfs       rw,relatime,inode64
+
+</code></pre></div></div>
+
+<p>이제 부모 네임스페이스에서는 tmpfs 를 새롭게 마운트했는데, 자식 네임스페이스에서 이를 확인할 수 있는지 살펴보자.</p>
+
+<p>아래는 자식 네임스페이스에서 <code class="language-plaintext highlighter-rouge">df -h</code> 를 한 결과이다.</p>
+
+<p>살펴보면 /tmp/mount_test 의 마운트 포인트는 없다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash
+# df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+/dev/mapper/ubuntu--vg-ubuntu--lv   30G  7.9G   21G  28% /
+tmpfs                              2.0G     0  2.0G   0% /dev/shm
+tmpfs                              391M  1.4M  389M   1% /run
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+tmpfs                              391M   12K  391M   1% /run/user/1000
+efivarfs                           256K   27K  230K  11% /sys/firmware/efi/efivars
+/dev/vda2                          2.0G  190M  1.6G  11% /boot
+/dev/vda1                          1.1G  6.4M  1.1G   1% /boot/efi
+
+</code></pre></div></div>
+
+<p>마찬가지로 부모 네임스페이스에서 mount_test 를 언마운트해도 자식 네임스페이스에 영향을 끼치지 않는다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash
+hoeh@hoeeeeeh-server:/tmp$ sudo umount /tmp/mount_test
+
+</code></pre></div></div>
+
+<p>(이름이 umount 인 이유는 검색해보니 초기 유닉스 시스템에서는 명령어의 길이 제한을 6글자 이하로 하는 경우가 많았기 때문이라고 한다.)</p>
+
+<p>이처럼 mount namespace 를 활용하면 각 컨테이너마다 독립된 파일 시스템을 만들 수 있다. 이는 도커같은 컨테이너 기술에서 핵심 축을 담당하고 있다.</p>
+
+<p>심지어 루트 디렉토리도 리눅스 시스템이 부팅될 때, 커널이 루트 파일 시스템(/) 을 마운트하는 것이다.</p>
+
+<h1 id="chroot">chroot</h1>
+
+<p>chroot 는 change root 의 약자로, 유닉스 운영 체제에서 현재 실행 중인 프로세스와 자식 프로세스 그룹에서 루트 디렉토리를 변경하는 작업이다.</p>
+
+<p>이렇게 루트 디렉토리가 변경된 환경에서 실행되는 프로그램은 지정된 디렉토리 트리 밖의 파일들의 이름을 지정할 수 없다.</p>
+
+<p>chroot 환경을 사용하려면, 커널 가상 파일 시스템과 구성 파일 또한 호스트에서 chroot 로 마운트 혹은 복사가 되어야 한다.</p>
+
+<p>예를 들어 아래와 같은 디렉토리 구조에서, chroot 를 통해 루트 디렉토리를 변경할 수 있다.</p>
+
+<p><img src="/upload/2025-01-27-리눅스_컨테이너.md/11.png" alt="11" /><em>chroot 로 루트 디렉토리 변경</em></p>
+
+<p>만약 왼쪽과 같은 구조에서 Nginx 를 실행시키면 어떻게 될까?</p>
+
+<p>만약 아무런 설정도 하지 않았다면 당연히 환경변수에 따라 /usr/sbin/nginx, /usr/bin/nginx 등에서 nginx 실행 파일을 찾기 시작할 것이다. 여기서도 마찬가지로 /lib 를 찾지, /test/lib 를 찾지는 않는다. 따라서 환경 변수를 따로 지정해주어야 할 것이다.</p>
+
+<p>하지만 우리가 컨테이너를 쓰는 이유는 하나의 nginx 를 모든 컨테이너에서 사용하기 위함이 아니라(물론 이런 경우도 있을수도 있지만 보통은), nginx 가 필요한 컨테이너만큼 새로운 nginx 를 설치하기 위함이지 않을까?</p>
+
+<p>각 컨테이너마다 nginx 의 설정도 다르게 하고 싶은 등의 이유로 nginx 를 컨테이너마다 다 넣어놨더니, 컨테이너의 루트 디렉토리가 호스트의 루트 디렉토리라서 실행을 할 수가 없다.</p>
+
+<p>그렇다면 각 컨테이너마다 루트 디렉토리를 변경함으로써 오른쪽 그림의 형태로 바꾸어준다면 모든 컨테이너마다 각자 자신의 /etc/nginx 를 참조하면 각기 다른 Nginx 를 실행할 수 있지 않을까?</p>
+
+<p>따라서 위의 unshare 를 설명하면서 사용했던 옵선에, chroot 도 붙여보자.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash
+unshare --mount chroot test /bin/bash
+# unshare --mount chroot {directory} /bin/bash
+
+</code></pre></div></div>
+
+<h2 id="취약점">취약점</h2>
+
+<p>chroot 는 루트 디렉토리를 바꿈으로써 독립적인 환경을 제공해줄 것 같지만, 사실 그렇지는 않다.</p>
+
+<p>눈에 보이는 루트 디렉토리를 변경해주는 일을 하지만, 호스트에서 동작하는 프로세스를 kill 하거나 디렉토리를 타고 올라가서 chroot 로 제한한 루트 디렉토리를 벗어나서 탐색할 수도 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash
+# chroot 내부에서 실행
+mkdir /escape
+mount --bind / /escape  # 호스트 루트 파일 시스템을 다시 마운트
+ls /escape              # chroot 외부 파일 시스템에 접근 가능
+
+</code></pre></div></div>
+
+<p>이렇게 취약점이 발생하는 이유는 chroot 가 root 경로와 현재 작업 경로를 <code class="language-plaintext highlighter-rouge">상대경로</code> 로 바꾸기 때문이다.</p>
+
+<h1 id="pivot_root">pivot_root</h1>
+
+<p>chroot 의 취약점을 개선하기 위해 pivot_root 를 사용할 수 있다.</p>
+
+<p>chroot 는 root 등을 상대경로로 바꾸었다면, pivot_root 는 기존의 루트 디렉토리를 백업해서 다른 경로로 바꿔버리고 원하는 디렉토리를 루트로 바꿔버린다.</p>
+
+<p>다시 말해서 루트 파일 시스템을 스왑한다.</p>
+
+<h1 id="참고-자료">참고 자료</h1>
+
+<p><a href="https://www.youtube.com/watch?v=CIvwIplZS1U">https://www.youtube.com/watch?v=CIvwIplZS1U</a></p>
+
+<p><a href="https://www.youtube.com/watch?v=OYM8OGKlufY">https://www.youtube.com/watch?v=OYM8OGKlufY</a></p>
+
+<p>proc</p>
+
+<ul>
+  <li><a href="https://www.ibm.com/docs/ko/aix/7.3?topic=files-proc-file">https://www.ibm.com/docs/ko/aix/7.3?topic=files-proc-file</a></li>
+</ul>
+
+<p>chroot</p>
+
+<ul>
+  <li><a href="https://ko.wikipedia.org/wiki/Chroot">https://ko.wikipedia.org/wiki/Chroot</a></li>
+</ul>
+
+<p>readlink</p>
+
+<ul>
+  <li><a href="https://man7.org/linux/man-pages/man1/readlink.1.html">https://man7.org/linux/man-pages/man1/readlink.1.html</a></li>
+</ul>
+
+            </div>
+        </section>
+
+        <!-- Email subscribe form at the bottom of the page -->
+        
+        <section class="subscribe-form">
+            <h3 class="subscribe-form-title">Subscribe to hoeeeeeh</h3>
+            <p>Get the latest posts delivered right to your inbox</p>
+            <form method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+    </div>
+    <button class="" type="submit" disabled><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+        </section>
+        
+
+        <footer class="post-full-footer">
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+            
+            
+            
+            <!-- /author  -->
+        </footer>
+
+        <!-- If you use Disqus comments, just uncomment this block.
+        The only thing you need to change is "test-apkdzgmqhj" - which
+        should be replaced with your own Disqus site-id. -->
+        
+
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+            
+            
+            
+            
+            <article class="read-next-card"
+                     
+                     style="background-image: url(/assets/images/blog-cover.jpg)"
+                     
+            >
+                <header class="read-next-card-header">
+                    <small class="read-next-card-header-sitetitle">&mdash; hoeeeeeh &mdash;</small>
+                    
+                    <h3 class="read-next-card-header-title"><a href="/tag/linux/">Linux</a></h3>
+                    
+                </header>
+                <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                <div class="read-next-card-content">
+                    <ul>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a href="/Linux-_Ubuntu_unexpected_operator">[Linux] Ubuntu unexpected operator</a></li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a href="/Linux-_CS_%EC%A7%80%EC%8B%9D">[Linux] CS 지식</a></li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a href="/Kuploy_Project-_Kuploy_History">[Kuploy Project] Kuploy History</a></li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </ul>
+                </div>
+                <footer class="read-next-card-footer">
+                    <a href="/tag/linux/">
+                    
+                    See all 4 posts  →
+                    
+                    </a>
+                </footer>
+            </article>
+            
+            
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://hoeeeeeh.github.io/">
+            
+                <img src="/assets/images/favicon.png" alt="hoeeeeeh icon" />
+            
+            <span>hoeeeeeh</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">리눅스 컨테이너</div>
+    <div class="floating-header-share">
+        <!-- Sidebar Toggle Button -->
+        <button class="toc-toggle" id="toc-toggle">☰ 목차</button>
+
+        <!-- Table of Contents Sidebar -->
+        <aside class="toc" id="toc-sidebar">
+            <nav>
+                <ul><li><a href="#linux-namespace">Linux Namespace</a><ul><li><a href="#unshare">unshare</a><ul><li><a href="#proc">proc</a></li><li><a href="#unshare-mount">unshare —mount</a></li><li><a href="#findmnt--a">findmnt -A</a></li><li><a href="#자식-네임스페이스와-부모-네임스페이스는-서로-영향을-미치지-않는다">자식 네임스페이스와 부모 네임스페이스는 서로 영향을 미치지 않는다.</a></li></ul></li></ul></li><li><a href="#chroot">chroot</a><ul><li><a href="#취약점">취약점</a></li></ul></li><li><a href="#pivot_root">pivot_root</a></li><li><a href="#참고-자료">참고 자료</a></li></ul>
+
+            </nav>
+        </aside>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+<!-- /post -->
+
+<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://hoeeeeeh.github.io/">hoeeeeeh</a> &copy; 2025</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    <a href="https://facebook.com/ghost" target="_blank" rel="noopener">Facebook</a>
+                    <a href="https://twitter.com/tryghost" target="_blank" rel="noopener">Twitter</a>
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+        <div id="subscribe" class="subscribe-overlay">
+            <a class="subscribe-overlay-close" href="#"></a>
+            <div class="subscribe-overlay-content">
+                
+                    <img class="subscribe-overlay-logo" src="/assets/images/blog-icon.png" alt="hoeeeeeh" />
+                
+                <h1 class="subscribe-overlay-title">Subscribe to hoeeeeeh</h1>
+                <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
+                <form method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  /><input class="location" type="hidden" name="location"  /><input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" type="email" name="email"  placeholder="youremail@example.com" />
+    </div>
+    <button class="" type="submit" disabled><span>Subscribe</span></button>
+    <script type="text/javascript">(function(g,h,o,s,t){h[o]('.location')[s]=h[o]('.location')[s] || g.location.href;h[o]('.referrer')[s]=h[o]('.referrer')[s] || h.referrer;})(window,document,'querySelector','value');</script>
+</form>
+
+            </div>
+        </div>
+    
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-69281367-1', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://hoeeeeeh.github.io/author/hoeeeeeh/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" />
-  <updated>2025-01-27T07:53:50+00:00</updated>
+  <updated>2025-01-29T07:45:42+00:00</updated>
   <id>https://hoeeeeeh.github.io/author/hoeeeeeh/feed.xml</id>
 
   
@@ -30,6 +30,286 @@
   
   
 
+  
+    <entry>
+      <title type="html">리눅스 컨테이너</title>
+      <link href="https://hoeeeeeh.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4_%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88" rel="alternate" type="text/html" title="리눅스 컨테이너" />
+      <published>2025-01-27T03:16:00+00:00</published>
+      <updated>2025-01-27T03:16:00+00:00</updated>
+      <id>https://hoeeeeeh.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4_%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88</id>
+      <content type="html" xml:base="https://hoeeeeeh.github.io/%EB%A6%AC%EB%88%85%EC%8A%A4_%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88">&lt;p&gt;도커 등의 컨테이너 기술을 사용하면서, 리눅스의 어떤 명령어들로 이런 컨테이너 기술이 동작할 수 있는지 문득 궁금해졌다.&lt;/p&gt;
+
+&lt;h1 id=&quot;linux-namespace&quot;&gt;Linux Namespace&lt;/h1&gt;
+
+&lt;p&gt;리눅스 네임스페이스는 리눅스 커널에서 제공하는 기능으로, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프로세스가 시스템의 특정 리소스를 독립적으로 볼 수 있도록 격리하는 매커니즘&lt;/code&gt; 이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/0.png&quot; alt=&quot;0&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;이렇게 두 개의 마운트 네임스페이스 A, B 를 생성했을 때, 각자의 작업이 서로에게 영향을 끼치지 않는다.&lt;/p&gt;
+
+&lt;p&gt;따라서 A 네임스페이스에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/test&lt;/code&gt; 를 만들었어도, B 네임스페이스에서는 /test 에 접근 할 수 없다.&lt;/p&gt;
+
+&lt;h2 id=&quot;unshare&quot;&gt;unshare&lt;/h2&gt;
+
+&lt;p&gt;마운트 네임스페이스를 직접 생성하려면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unshare --mount {실행파일}&lt;/code&gt; 을 통해서 생성할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이 명령어를 통해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unshare&lt;/code&gt; 이라는 시스템콜이 {실행파일} 인자 (→ CLONE_NEWNS 파라미터)와 함께 사용된다.&lt;/p&gt;
+
+&lt;p&gt;unshare 명령을 사용한 프로세스가 부모 프로세스가 되고, 자식 프로세스를 생성 할 때 마운트 네임스페이스를 생성하게 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/1.png&quot; alt=&quot;1&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 부모 프로세스가 가지고 있던 마운트 포인트가 자식 프로세스에게 그대로 복사가 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/2.png&quot; alt=&quot;2&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;proc&quot;&gt;proc&lt;/h3&gt;
+
+&lt;p&gt;마운트 네임스페이스를 직접 생성해보자.&lt;/p&gt;
+
+&lt;p&gt;마운트 네임스페이스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/proc&lt;/code&gt; 디렉토리에 존재한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;proc 디렉토리는 시스템의 프로세스 및 스레드에 대한 상태 정보를 포함한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;proc 파일 시스템은 시스템에 있는 각 활성 프로세스 및 스레드의 상태에 대한 액세스를 제공한다.&lt;/p&gt;
+
+&lt;p&gt;proc 디렉토리 내부를 보게 되면 프로세스 아이디로 이루어진 폴더들과 여러가지 정보(cpuinfo, meminfo, devices…) 등이 있는걸 볼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/3.png&quot; alt=&quot;3&quot; /&gt;&lt;em&gt;ls /proc&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;현재 사용하고 있는 Shell 의 프로세스 아이디를 찾아서 /proc 에서 확인해보자.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+echo $$
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위의 명령어를 통해 프로세스 아이디를 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;이제 찾아낸 프로세스 아이디를 proc 에서 확인해보면,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/4.png&quot; alt=&quot;4&quot; /&gt;&lt;em&gt;ls /proc/{PID} 혹은 ls/proc/$$&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;이런식으로 많은 것들이 들어있다.&lt;/p&gt;
+
+&lt;p&gt;여기서 이 프로세스의 마운트 네임스페이스 번호를 확인해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/5.png&quot; alt=&quot;5&quot; /&gt;&lt;em&gt;프로세스의 마운트 네임스페이스&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/proc/$$/ns/mnt&lt;/code&gt; 로 프로세스의 마운트 네임스페이스를 확인할 수 있는데, 이는 symbolic link 라서 readlink 명령어를 통해서 symbolic link 의 값을 읽어보자.&lt;/p&gt;
+
+&lt;h3 id=&quot;unshare-mount&quot;&gt;unshare —mount&lt;/h3&gt;
+
+&lt;p&gt;4026531841 이 현재 프로세스의 pid 인걸 기억해두고 새로운 shell 창을 하나 더 만들어보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/6.png&quot; alt=&quot;6&quot; /&gt;&lt;em&gt;shell 2개&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;사진이 조금 이상해보일 수 있지만 쉘 창을 왼쪽과 오른쪽에 띄워놓은 상태이다.&lt;/p&gt;
+
+&lt;p&gt;두 shell 창의 마운트 네임스페이스를 보면 같은 걸 알 수 있는데, 기본적으로 shell 창을 열든 ssh를 통해서 접속하든 새로운 마운트 네임스페이스를 만들지는 않는다.&lt;/p&gt;
+
+&lt;p&gt;이제 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo unshare --mount /bin/sh&lt;/code&gt; 명령어를 통해서 오른쪽에 새로운 마운트 네임스페이스를 만들어보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/7.png&quot; alt=&quot;7&quot; /&gt;&lt;em&gt;새로운 마운트 네임스페이스 생성&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;만약 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--mount&lt;/code&gt; 옵션을 주지 않으면, 새로운 마운트 네임스페이스를 만들지 않는다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/8.png&quot; alt=&quot;8&quot; /&gt;&lt;em&gt;—mount 옵션 없이 unshare&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;왼쪽과 오른쪽 쉘의 mount namespace 가 같은 것을 알 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;findmnt--a&quot;&gt;findmnt -A&lt;/h3&gt;
+
+&lt;p&gt;다시 새로운 마운트 네임스페이스로 넘어와서, —mount 옵션을 주면서 새로운 마운트 네임스페이스를 생성하면 부모 네임스페이스로부터 마운트 포인트를 복사해서 자식 네임스페이스로 전달한다는 걸 확인해보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/9.png&quot; alt=&quot;9&quot; /&gt;&lt;em&gt;image.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;findmnt - A&lt;/code&gt; 옵션을 통해 마운트 포인트를 전부 확인할 수 있는데, 출력 순서가 조금 뒤바뀌었지만 값은 전부 동일하다.&lt;/p&gt;
+
+&lt;h3 id=&quot;자식-네임스페이스와-부모-네임스페이스는-서로-영향을-미치지-않는다&quot;&gt;자식 네임스페이스와 부모 네임스페이스는 서로 영향을 미치지 않는다.&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/10.png&quot; alt=&quot;10&quot; /&gt;&lt;em&gt;부모 프로세스에서 마운트 포인트 만들기&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;이제 부모 마운트 네임스페이스에서 새롭게 마운트를 했을 때, 자식 마운트 네임스페이스에 영향을 미치는지 확인해보자.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+sudo mount -t tmpfs tmpfs /tmp/mount_test
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 위의 명령어를 통해 새로운 마운트 포인트를 하나 만들어볼건데, /tmp/mount_test 라는 디렉토리에 tmpfs 타입을 마운트 한다.&lt;/p&gt;
+
+&lt;p&gt;여기서 tmpfs 는 임시 파일 시스템을 의미하는데, RAM을 기반으로 하는 가상 파일 시스템이다.&lt;/p&gt;
+
+&lt;p&gt;RAM 은 휘발되기 때문에 시스템을 종료하면 당연히 다 없어진다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;df -h&lt;/code&gt; 를 통해 마운트가 되었는지도 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;df 명령어는 disk free 의 약자로, 파일 시스템의 디스크 사용량을 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;-h 옵션은 human-readable, 즉 사람이 읽기 쉽게 포매팅 해준다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+hoeh@hoeeeeeh-server:/tmp$ df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+tmpfs                              391M  1.4M  389M   1% /run
+efivarfs                           256K   27K  230K  11% /sys/firmware/efi/efivars
+/dev/mapper/ubuntu--vg-ubuntu--lv   30G  7.9G   21G  28% /
+tmpfs                              2.0G     0  2.0G   0% /dev/shm
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+/dev/vda2                          2.0G  190M  1.6G  11% /boot
+/dev/vda1                          1.1G  6.4M  1.1G   1% /boot/efi
+tmpfs                              391M   12K  391M   1% /run/user/1000
+tmpfs                              2.0G     0  2.0G   0% /tmp/mount_test
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;findmnt -A&lt;/code&gt; 를 통해서도 확인해볼 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+hoeh@hoeeeeeh-server:/tmp$ findmnt -A | grep /tmp/mount_test
+└─/tmp/mount_test              tmpfs                             tmpfs       rw,relatime,inode64
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 부모 네임스페이스에서는 tmpfs 를 새롭게 마운트했는데, 자식 네임스페이스에서 이를 확인할 수 있는지 살펴보자.&lt;/p&gt;
+
+&lt;p&gt;아래는 자식 네임스페이스에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;df -h&lt;/code&gt; 를 한 결과이다.&lt;/p&gt;
+
+&lt;p&gt;살펴보면 /tmp/mount_test 의 마운트 포인트는 없다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+# df -h
+Filesystem                         Size  Used Avail Use% Mounted on
+/dev/mapper/ubuntu--vg-ubuntu--lv   30G  7.9G   21G  28% /
+tmpfs                              2.0G     0  2.0G   0% /dev/shm
+tmpfs                              391M  1.4M  389M   1% /run
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+tmpfs                              391M   12K  391M   1% /run/user/1000
+efivarfs                           256K   27K  230K  11% /sys/firmware/efi/efivars
+/dev/vda2                          2.0G  190M  1.6G  11% /boot
+/dev/vda1                          1.1G  6.4M  1.1G   1% /boot/efi
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;마찬가지로 부모 네임스페이스에서 mount_test 를 언마운트해도 자식 네임스페이스에 영향을 끼치지 않는다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+hoeh@hoeeeeeh-server:/tmp$ sudo umount /tmp/mount_test
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(이름이 umount 인 이유는 검색해보니 초기 유닉스 시스템에서는 명령어의 길이 제한을 6글자 이하로 하는 경우가 많았기 때문이라고 한다.)&lt;/p&gt;
+
+&lt;p&gt;이처럼 mount namespace 를 활용하면 각 컨테이너마다 독립된 파일 시스템을 만들 수 있다. 이는 도커같은 컨테이너 기술에서 핵심 축을 담당하고 있다.&lt;/p&gt;
+
+&lt;p&gt;심지어 루트 디렉토리도 리눅스 시스템이 부팅될 때, 커널이 루트 파일 시스템(/) 을 마운트하는 것이다.&lt;/p&gt;
+
+&lt;h1 id=&quot;chroot&quot;&gt;chroot&lt;/h1&gt;
+
+&lt;p&gt;chroot 는 change root 의 약자로, 유닉스 운영 체제에서 현재 실행 중인 프로세스와 자식 프로세스 그룹에서 루트 디렉토리를 변경하는 작업이다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 루트 디렉토리가 변경된 환경에서 실행되는 프로그램은 지정된 디렉토리 트리 밖의 파일들의 이름을 지정할 수 없다.&lt;/p&gt;
+
+&lt;p&gt;chroot 환경을 사용하려면, 커널 가상 파일 시스템과 구성 파일 또한 호스트에서 chroot 로 마운트 혹은 복사가 되어야 한다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 아래와 같은 디렉토리 구조에서, chroot 를 통해 루트 디렉토리를 변경할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-01-27-리눅스_컨테이너.md/11.png&quot; alt=&quot;11&quot; /&gt;&lt;em&gt;chroot 로 루트 디렉토리 변경&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;만약 왼쪽과 같은 구조에서 Nginx 를 실행시키면 어떻게 될까?&lt;/p&gt;
+
+&lt;p&gt;만약 아무런 설정도 하지 않았다면 당연히 환경변수에 따라 /usr/sbin/nginx, /usr/bin/nginx 등에서 nginx 실행 파일을 찾기 시작할 것이다. 여기서도 마찬가지로 /lib 를 찾지, /test/lib 를 찾지는 않는다. 따라서 환경 변수를 따로 지정해주어야 할 것이다.&lt;/p&gt;
+
+&lt;p&gt;하지만 우리가 컨테이너를 쓰는 이유는 하나의 nginx 를 모든 컨테이너에서 사용하기 위함이 아니라(물론 이런 경우도 있을수도 있지만 보통은), nginx 가 필요한 컨테이너만큼 새로운 nginx 를 설치하기 위함이지 않을까?&lt;/p&gt;
+
+&lt;p&gt;각 컨테이너마다 nginx 의 설정도 다르게 하고 싶은 등의 이유로 nginx 를 컨테이너마다 다 넣어놨더니, 컨테이너의 루트 디렉토리가 호스트의 루트 디렉토리라서 실행을 할 수가 없다.&lt;/p&gt;
+
+&lt;p&gt;그렇다면 각 컨테이너마다 루트 디렉토리를 변경함으로써 오른쪽 그림의 형태로 바꾸어준다면 모든 컨테이너마다 각자 자신의 /etc/nginx 를 참조하면 각기 다른 Nginx 를 실행할 수 있지 않을까?&lt;/p&gt;
+
+&lt;p&gt;따라서 위의 unshare 를 설명하면서 사용했던 옵선에, chroot 도 붙여보자.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+unshare --mount chroot test /bin/bash
+# unshare --mount chroot {directory} /bin/bash
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;취약점&quot;&gt;취약점&lt;/h2&gt;
+
+&lt;p&gt;chroot 는 루트 디렉토리를 바꿈으로써 독립적인 환경을 제공해줄 것 같지만, 사실 그렇지는 않다.&lt;/p&gt;
+
+&lt;p&gt;눈에 보이는 루트 디렉토리를 변경해주는 일을 하지만, 호스트에서 동작하는 프로세스를 kill 하거나 디렉토리를 타고 올라가서 chroot 로 제한한 루트 디렉토리를 벗어나서 탐색할 수도 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash
+# chroot 내부에서 실행
+mkdir /escape
+mount --bind / /escape  # 호스트 루트 파일 시스템을 다시 마운트
+ls /escape              # chroot 외부 파일 시스템에 접근 가능
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이렇게 취약점이 발생하는 이유는 chroot 가 root 경로와 현재 작업 경로를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;상대경로&lt;/code&gt; 로 바꾸기 때문이다.&lt;/p&gt;
+
+&lt;h1 id=&quot;pivot_root&quot;&gt;pivot_root&lt;/h1&gt;
+
+&lt;p&gt;chroot 의 취약점을 개선하기 위해 pivot_root 를 사용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;chroot 는 root 등을 상대경로로 바꾸었다면, pivot_root 는 기존의 루트 디렉토리를 백업해서 다른 경로로 바꿔버리고 원하는 디렉토리를 루트로 바꿔버린다.&lt;/p&gt;
+
+&lt;p&gt;다시 말해서 루트 파일 시스템을 스왑한다.&lt;/p&gt;
+
+&lt;h1 id=&quot;참고-자료&quot;&gt;참고 자료&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=CIvwIplZS1U&quot;&gt;https://www.youtube.com/watch?v=CIvwIplZS1U&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=OYM8OGKlufY&quot;&gt;https://www.youtube.com/watch?v=OYM8OGKlufY&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;proc&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ibm.com/docs/ko/aix/7.3?topic=files-proc-file&quot;&gt;https://www.ibm.com/docs/ko/aix/7.3?topic=files-proc-file&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;chroot&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/Chroot&quot;&gt;https://ko.wikipedia.org/wiki/Chroot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;readlink&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://man7.org/linux/man-pages/man1/readlink.1.html&quot;&gt;https://man7.org/linux/man-pages/man1/readlink.1.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>[&quot;hoeeeeeh&quot;]</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Linux" />
+      
+
+      
+        <summary type="html">도커 등의 컨테이너 기술을 사용하면서, 리눅스의 어떤 명령어들로 이런 컨테이너 기술이 동작할 수 있는지 문득 궁금해졌다.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">상호 배타적 집합 (Union-Find)</title>
@@ -2109,313 +2389,6 @@ class CatService {}
 
       
         <summary type="html">Dependency Injection ( Angular 공식 문서 )</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Express.js 따라 만들기</title>
-      <link href="https://hoeeeeeh.github.io/Express.js_%EB%94%B0%EB%9D%BC_%EB%A7%8C%EB%93%A4%EA%B8%B0" rel="alternate" type="text/html" title="Express.js 따라 만들기" />
-      <published>2025-01-14T02:40:00+00:00</published>
-      <updated>2025-01-14T02:40:00+00:00</updated>
-      <id>https://hoeeeeeh.github.io/Express.js_%EB%94%B0%EB%9D%BC_%EB%A7%8C%EB%93%A4%EA%B8%B0</id>
-      <content type="html" xml:base="https://hoeeeeeh.github.io/Express.js_%EB%94%B0%EB%9D%BC_%EB%A7%8C%EB%93%A4%EA%B8%B0">&lt;p&gt;ts/js 로 express 따라 만들기&lt;/p&gt;
-
-&lt;h1 id=&quot;tsjs-로-express-따라-만들기&quot;&gt;ts/js 로 express 따라 만들기&lt;/h1&gt;
-
-&lt;p&gt;node 로 웹 서버를 만들때부터 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;express&lt;/code&gt; 를 자주 사용했었는데 express 의 내부 동작은 잘 알지 못한채로 그저 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.use&lt;/code&gt; 를 사용했던 것 같다.&lt;/p&gt;
-
-&lt;p&gt;그래서 이번 기회에 express 를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;socket&lt;/code&gt; 으로 구현해보려고 한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;http-모듈이-아니라-왜-socket-을-사용해야할까&quot;&gt;http 모듈이 아니라 왜 socket 을 사용해야할까?&lt;/h2&gt;
-
-&lt;p&gt;일단 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;웹 서버&lt;/code&gt; 라는걸 생각해보면 당연히 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http&lt;/code&gt; 모듈을 사용하는 것이 편하다.&lt;/p&gt;
-
-&lt;p&gt;소켓으로 구현한다고 해도 클라이언트가 http 프로토콜로 보낸다면 웹 서버에서도 소켓을 http 모듈처럼 사용해야할 것이다.&lt;/p&gt;
-
-&lt;p&gt;그럼에도 socket 으로 구현해보면 좋은 이유는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;결국 http 통신도 소켓 통신&lt;/code&gt; 이라는 것이다.&lt;/p&gt;
-
-&lt;p&gt;node 의 &lt;a href=&quot;https://nodejs.org/api/http.html#class-httpserver&quot;&gt;http 모듈&lt;/a&gt;에서 서버를 생성할 때, 결국 &lt;a href=&quot;https://nodejs.org/api/net.html#class-netserver&quot;&gt;소켓 모듈&lt;/a&gt; 을 상속받아서 사용한다.&lt;/p&gt;
-
-&lt;p&gt;소켓 모듈은 &lt;a href=&quot;https://nodejs.org/api/events.html#class-eventemitter&quot;&gt;EventEmitter&lt;/a&gt; 모듈을 상속받는데, 데이터가 들어오거나 소켓 연결이 생성되거나 끊어졌을 때 등의 이벤트가 발생하게끔 만들어졌기 때문이다.&lt;/p&gt;
-
-&lt;p&gt;그래서 소켓을 활용한다는것은 node.js 개발자로서 가장 아래까지 내려가볼 수 있는 기회라고 생각한다.&lt;/p&gt;
-
-&lt;p&gt;추후에는 handshake 과정까지 만들어보고싶다.&lt;/p&gt;
-
-&lt;p&gt;그래도 추후에 꼭 네트워크 공부는 추가로 하자..&lt;/p&gt;
-
-&lt;h2 id=&quot;socket-으로-listen&quot;&gt;Socket 으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Listen&lt;/code&gt;&lt;/h2&gt;
-
-&lt;p&gt;Socket 으로 Express 를 구현하기로 했으니 당연하게도 socket 을 활용해서 서버를 만들어야한다.&lt;/p&gt;
-
-&lt;p&gt;이는 위에서 언급했던 node 의 &lt;a href=&quot;https://nodejs.org/api/net.html#class-netserver&quot;&gt;net.server&lt;/a&gt; 를 활용하면 된다.&lt;/p&gt;
-
-&lt;p&gt;여기서 우리가 만들 Express 가 net.server 를 상속받을지, 아니면 net.Server 객체를 그냥 사용할지에 대해서 고민을 할 수 있는데
-net.Server 를 상속받는다는 것은 net.Server 의 메소드를 오버라이딩 한다든지, 추가 메소드를 만드는 등의 작업이 있을 경우 유효하다고 생각한다.&lt;/p&gt;
-
-&lt;p&gt;우리의 커스텀 Express 에서는 net.Server 의 메소드들을 사용할 것이지, 추가로 메소드를 생성/변경 등을 하지 않을 것 같아서 상속 받지는 않을 예정이다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typescript
-import net from &apos;net&apos;;
-
-class Express {
-
-  listen(port: number, callback: () =&amp;gt; void) {
-
-    const server = net.createServer((socket) =&amp;gt; {
-      socket.on(&apos;data&apos;, (data) =&amp;gt; {
-        /*
-            ...
-            TODO: socket 으로 넘어온 Request 를 Express 에서 쓸 수 있도록 파싱
-            ...
-        */
-      });
-    });
-
-    server.listen(port, () =&amp;gt; {
-      callback();
-    });
-
-  }
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;net.CreateServer 를 통해서 tcp 연결을 만들고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; 이벤트가 발생했을 때 데이터들을 가지고 우리가 사용하기 편하도록 파싱하는 과정을 거치면 될 것 같다.&lt;/p&gt;
-
-&lt;h3 id=&quot;-socket-은-stream-이다&quot;&gt;🤔 socket 은 stream 이다!&lt;/h3&gt;
-
-&lt;p&gt;여기서 생각해보면 좋을 점은 socket 은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Stream&lt;/code&gt; 을 활용한다.&lt;/p&gt;
-
-&lt;p&gt;node 의 &lt;a href=&quot;https://nodejs.org/api/net.html#class-netsocket&quot;&gt;net.Socket&lt;/a&gt; 은 &lt;a href=&quot;https://nodejs.org/api/stream.html#class-streamduplex&quot;&gt;stream.Duplex&lt;/a&gt; 를 상속받아서 사용하고 있다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Stream 에 대한 정리는 여기서 볼 수 있다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;즉, 클라이언트가 보낸 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;모든 데이터&lt;/code&gt; 가 수신될 때까지 기다리는게 아니라 stream 으로 (순차적으로) 데이터가 들어오면 그 즉시 버퍼에 쌓이고
-버퍼에 데이터가 일정량 이상 쌓일 때마다 chunk 단위로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; 이벤트가 발생한다.&lt;/p&gt;
-
-&lt;p&gt;(보통은 버퍼가 넘치기 전에, 혹은 데이터가 전부 다 들어왔을 때 ‘data’ 이벤트가 발생한다.)&lt;/p&gt;
-
-&lt;p&gt;다시 말해서 들어오는 데이터가 크다면 데이터가 나누어져서 들어올 수 있다 ( === 한 번의 통신에 여러 번의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; 이벤트가 발생할 수 있다) 는 이야기이다.&lt;/p&gt;
-
-&lt;p&gt;따라서 buffer 의 크기보다 큰 데이터를 클라이언트에서 보냈다면, 여러 번의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; 이벤트가 발생할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;실시간으로 데이터를 처리해야하는(ex. 유튜브 같은 영상 스트림) 경우에는 들어오는 데이터마다 처리를 해주면 된다.&lt;/p&gt;
-
-&lt;p&gt;반면에 용량이 매우 큰 이미지/동영상 파일은 모든 chunk 들을 다 합쳐서 하나로 만들어야할 것이다.&lt;/p&gt;
-
-&lt;p&gt;이에 대한 처리까지 있으면 좋을 것 같다!&lt;/p&gt;
-
-&lt;h2 id=&quot;소켓-통신을-http-통신-처럼&quot;&gt;소켓 통신을 http 통신 처럼&lt;/h2&gt;
-
-&lt;p&gt;http 모듈을 사용한다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;소켓 통신으로 들어오는 Request&lt;/code&gt; 를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Express 의 Request&lt;/code&gt; 처럼 바꿔줄 필요가 있다.&lt;/p&gt;
-
-&lt;p&gt;예를 들어 socket 으로 들어온 HTTP Request 는 아래처럼 들어올 것이다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typescript
-GET /favicon.ico HTTP/1.1
-Host: localhost:3000
-Connection: keep-alive
-sec-ch-ua-platform: &quot;macOS&quot;
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36
-sec-ch-ua: &quot;Chromium&quot;;v=&quot;129&quot;, &quot;Not=A?Brand&quot;;v=&quot;8&quot;
-DNT: 1
-sec-ch-ua-mobile: ?0
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Sec-Fetch-Site: same-origin
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Dest: image
-Referer: &amp;lt;http://localhost:3000/index.html&amp;gt;
-Accept-Encoding: gzip, deflate, br, zstd
-Accept-Language: ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
-Cookie: sid=1234; coo=11
-
-helloworld this is a body
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이렇게 하나의 거대한 문자열을 잘 파싱해서 우리의 express 에서 쓰기 편하도록 쉽게 만드는 작업이 필요하다.&lt;/p&gt;
-
-&lt;p&gt;파싱의 큰 기준은 두 가지 이다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Header 와 Body 는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\\r\\n\\r\\n&lt;/code&gt; 으로 구분된다.&lt;/li&gt;
-  &lt;li&gt;Header 끼리는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\\r\\n&lt;/code&gt; 으로 구분된다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;맨 윗 줄을 보면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GET /favicon.ico HTTP/1.1&lt;/code&gt; 이라고 나오는데&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Method&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;url&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Protocol&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Version&lt;/code&gt; 으로 구분해주어 아래 처럼 하나의 객체로 만들어주자.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typescript
-class ExpressRequest {
-  headers?: Header;
-
-  body: string | object = &apos;&apos;;
-
-  method?: string;
-
-  // 전체 url
-  url?: string;
-
-  protocol?: string;
-
-  version?: string;
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;-url-의-query-부분이나-params-부분도-처리하자&quot;&gt;🤔 url 의 Query 부분이나 Params 부분도 처리하자&lt;/h3&gt;
-
-&lt;h3 id=&quot;params&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Params&lt;/code&gt;&lt;/h3&gt;
-
-&lt;p&gt;실제로 express 를 써보면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.use(&apos;/card/:username/:cardId, ...)&lt;/code&gt; 와 같이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt; 를 사용하는 것을 볼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;사용자가 Request 를 보낼 때는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/card/hoeh/3?columnId=5&amp;amp;columnName=today&lt;/code&gt; 같이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?&lt;/code&gt; 문자 이후에 있는 query 도 있을 수 있다.&lt;/p&gt;
-
-&lt;p&gt;그렇다면 위에서 파싱한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;url&lt;/code&gt; 부분에서 query, param 부분도 분리해주면 좋을 것 같다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typescript
-class ExpressRequest {
-  headers?: Header;
-
-  body: string | object = &apos;&apos;;
-
-  method?: string;
-
-  // 전체 url
-  url?: string;
-
-  protocol?: string;
-
-  version?: string;
-
-  // 여기까지가 SocketRequest
-
-  // /user/:id 에서 id
-  params: object = {};
-
-  // /search?keyword=naver { keyword : naver }
-  query: object = {};
-
-  // /user?id=123 에서 /user
-  path?: string;
-}
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이런 식으로, url 로 부터 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;params&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;query&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;path&lt;/code&gt; 까지 파싱해서 Request 에 넣어주도록 하자.&lt;/p&gt;
-
-&lt;p&gt;파싱할 때는 node 의 &lt;a href=&quot;https://nodejs.org/api/querystring.html&quot;&gt;querystring&lt;/a&gt; 모듈과 &lt;a href=&quot;https://www.npmjs.com/package/path-to-regexp&quot;&gt;path-to-regexp&lt;/a&gt; 을 활용해보자.&lt;/p&gt;
-
-&lt;h2 id=&quot;appuse&quot;&gt;app.use()&lt;/h2&gt;
-
-&lt;p&gt;app.use 는 무엇을 하는 메소드일까? express 를 사용할 때면 이런식으로 사용했던 것 같다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typescript
-app.use(&apos;/card&apos;, (req, res, next) =&amp;gt; {
-  // ...
-  res.send(&apos;helloworld&apos;);
-});
-
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/card&lt;/code&gt; 의 url 로 들어온 요청에 대해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(req, res, next) =&amp;gt; {}&lt;/code&gt; 에 해당하는 함수를 실행하는 것 같은데 그렇다면
-이 함수는 무슨 함수일까?&lt;/p&gt;
-
-&lt;h3 id=&quot;middleware-layer-router&quot;&gt;Middleware, Layer, Router&lt;/h3&gt;
-
-&lt;p&gt;express 에서는 이런 함수를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;middleware&lt;/code&gt; 라고 부른다. 미들웨어는 말 그대로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;중간에 끼어있는&lt;/code&gt; 함수로 보면 된다.&lt;/p&gt;
-
-&lt;p&gt;Request 를 받아서, Response 를 보내기 전의 중간 처리 과정을 하는 함수를 전부 middleware 라고 부른다.&lt;/p&gt;
-
-&lt;p&gt;그러면 express 는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;개발자가 middleware 를 등록해서 모든 요청마다 url 을 검사해서, url 조건을 충족하면 등록된 middleware 를 실행한다&lt;/code&gt; 의 흐름으로 진행하는구나!&lt;/p&gt;
-
-&lt;p&gt;라고 간단하게 생각했는데 여기서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Layer&lt;/code&gt; 와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Router&lt;/code&gt; 의 개념이 또 등장한다.&lt;/p&gt;
-
-&lt;p&gt;Layer 가 무엇인지 보니, middleware 를 한 번 감싸주는 계층이다.&lt;/p&gt;
-
-&lt;p&gt;엥? Layer 로 굳이 감싸는 이유가 뭐야? 라고 생각이 들었는데 여러가지 이유가 있다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Method, Url 검사&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;middleware 가 실행되기 전에 사용자가 등록한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/card&lt;/code&gt; url 과 들어온 Request 의 url 을 비교해야 한다.&lt;/p&gt;
-
-&lt;p&gt;또한 특정 메소드의 요청에만 미들웨어를 실행되게 등록했다면 Method 비교도 해야할 것이다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;에러 처리&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;사용자가 등록한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(req, res, next) =&amp;gt; {}&lt;/code&gt; 함수에서 에러를 처리하려면, 미들웨어 안에서 try, catch 를 작성해야하는데 그렇다면 모든 미들웨어에 try, catch 가 있어야 한다.&lt;/p&gt;
-
-&lt;p&gt;실제 express 에서는 만약 에러가 발생하면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;next(err)&lt;/code&gt; 의 방법으로 다음 미들웨어로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;err&lt;/code&gt; 를 넘긴다.
-Layer 계층에서는 middleware 를 실행하기 전에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;err&lt;/code&gt; 가 넘어왔는지 확인하고, 넘어왔다면 에러가 발생했다고 판단해서 에러를 처리할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;즉 Layer 계층에서 전역적으로 에러를 처리해줄 수 있다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;같은 Url, Method 에 여러 개의 미들웨어 등록&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;말 그대로 여러 개의 미들웨어가 등록된다면 이를 관리하는 계층이 필요할 수 밖에 없다.&lt;/p&gt;
-
-&lt;h3 id=&quot;-layer-안에서-next&quot;&gt;🤔 Layer 안에서 next&lt;/h3&gt;
-
-&lt;h3 id=&quot;-middleware-가-비동기일-경우에-에러-핸들링&quot;&gt;🤔 Middleware 가 비동기일 경우에 에러 핸들링&lt;/h3&gt;
-
-&lt;h2 id=&quot;response-객체로-socketwrite&quot;&gt;Response 객체로 socket.write&lt;/h2&gt;
-
-&lt;h3 id=&quot;-response-에-header-와-body-를-따로-write-하기&quot;&gt;🤔 Response 에 Header 와 Body 를 따로 write 하기&lt;/h3&gt;
-
-&lt;h2 id=&quot;커스텀-express-를-활용해서-웹-서버-코드-작성&quot;&gt;커스텀 express 를 활용해서 웹 서버 코드 작성&lt;/h2&gt;
-
-&lt;h3 id=&quot;만들어둔-express-를-로컬-모듈로-바꿔보자&quot;&gt;만들어둔 express 를 로컬 모듈로 바꿔보자&lt;/h3&gt;
-
-&lt;h2 id=&quot;타입스크립트-타입을-위한-dts-만들기&quot;&gt;타입스크립트 타입을 위한 d.ts 만들기&lt;/h2&gt;
-
-&lt;p&gt;만약 자바스크립트로 http, express 코드를 작성하고 실제 app 은 타입스크립트로 작성한다면&lt;/p&gt;
-
-&lt;p&gt;http, express 에 타입을 명시해주는 d.ts 가 필요하다.&lt;/p&gt;
-
-&lt;h3 id=&quot;express-에서는-request-의-dto-를-직접-검사해줘야한다&quot;&gt;Express 에서는 Request 의 DTO 를 직접 검사해줘야한다&lt;/h3&gt;
-
-&lt;h2 id=&quot;zod-를-활용해보자&quot;&gt;ZOD 를 활용해보자&lt;/h2&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>[&quot;hoeeeeeh&quot;]</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="JavaScript" />
-      
-        <category term="TypeScript" />
-      
-
-      
-        <summary type="html">ts/js 로 express 따라 만들기</summary>
       
 
       
