@@ -43,7 +43,7 @@
 
 
 
-    <title>우선순위 큐</title>
+    <title>JS TS 로 Queue 구현</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -66,26 +66,26 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="HOEH 개발 블로그" />
 <link rel="shortcut icon" href="https://hoeeeeeh.github.io//assets/images/favicon.png" type="image/png" />
-<link rel="canonical" href="https://hoeeeeeh.github.io/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84_%ED%81%90" />
+<link rel="canonical" href="https://hoeeeeeh.github.io/JS_TS_%EB%A1%9C_Queue_%EA%B5%AC%ED%98%84" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="hoeeeeeh" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="우선순위 큐" />
-    <meta property="og:description" content="이번에 네이버 부스트 캠프 베이직 과정을 진행하면서 자바스크립트를 쓰게 되었는데, 평소에는 파이썬을 자주 사용했었기 때문에 자바스크립트로 파이썬을 대체해보려고 노력했다. 다만 파이썬에는 여러가지 자료구조와 함수들이 잘 구현되어 있는데 자바스크립트를 써보니까 우선순위 큐가 내장 라이브러리에 없었다! 이번 기회에 자바스크립트 공부 겸 힙과 우선순위 큐에 대해 다시 복습하고 직접 구현해보려고 한다. Heap 우선" />
-    <meta property="og:url" content="https://hoeeeeeh.github.io/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84_%ED%81%90" />
-    <meta property="og:image" content="https://hoeeeeeh.github.io/assets/images/cover/algorithm.png" />
+    <meta property="og:title" content="JS TS 로 Queue 구현" />
+    <meta property="og:description" content="Object(or Map) 을 활용한 Queue javascript class ObjectQueue { item = {}; start = 0; end = 0; constructor() {} enqueue(value){ this.item[this.end] = value; this.end += 1; return this.end - 1; } // 큐가 비어 있을 때는 undefined, 그렇지 않은 경우 0 번째 원소를 반환 dequeue(){ if(this.isEmpty()) return undefined; const" />
+    <meta property="og:url" content="https://hoeeeeeh.github.io/JS_TS_%EB%A1%9C_Queue_%EA%B5%AC%ED%98%84" />
+    <meta property="og:image" content="https://hoeeeeeh.github.io/assets/images/cover/linux.png" />
     <meta property="article:publisher" content="https://www.facebook.com/ghost" />
     <meta property="article:author" content="https://www.facebook.com/ghost" />
-    <meta property="article:published_time" content="2025-01-14T02:11:00+00:00" />
-    <meta property="article:modified_time" content="2025-01-14T02:11:00+00:00" />
+    <meta property="article:published_time" content="2025-01-31T07:42:00+00:00" />
+    <meta property="article:modified_time" content="2025-01-31T07:42:00+00:00" />
     <meta property="article:tag" content="Algorithm" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="우선순위 큐" />
-    <meta name="twitter:description" content="이번에 네이버 부스트 캠프 베이직 과정을 진행하면서 자바스크립트를 쓰게 되었는데, 평소에는 파이썬을 자주 사용했었기 때문에 자바스크립트로 파이썬을 대체해보려고 노력했다. 다만 파이썬에는 여러가지 자료구조와 함수들이 잘 구현되어 있는데 자바스크립트를 써보니까 우선순위 큐가 내장 라이브러리에 없었다! 이번 기회에 자바스크립트 공부 겸 힙과 우선순위 큐에 대해 다시 복습하고 직접 구현해보려고 한다. Heap 우선" />
+    <meta name="twitter:title" content="JS TS 로 Queue 구현" />
+    <meta name="twitter:description" content="Object(or Map) 을 활용한 Queue javascript class ObjectQueue { item = {}; start = 0; end = 0; constructor() {} enqueue(value){ this.item[this.end] = value; this.end += 1; return this.end - 1; } // 큐가 비어 있을 때는 undefined, 그렇지 않은 경우 0 번째 원소를 반환 dequeue(){ if(this.isEmpty()) return undefined; const" />
     <meta name="twitter:url" content="https://hoeeeeeh.github.io/" />
-    <meta name="twitter:image" content="https://hoeeeeeh.github.io/assets/images/cover/algorithm.png" />
+    <meta name="twitter:image" content="https://hoeeeeeh.github.io/assets/images/cover/linux.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="hoeeeeeh" />
     <meta name="twitter:label2" content="Filed under" />
@@ -104,18 +104,18 @@
         "name": "hoeeeeeh",
         "logo": "https://hoeeeeeh.github.io/assets/images/blog-icon.png"
     },
-    "url": "https://hoeeeeeh.github.io/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84_%ED%81%90",
+    "url": "https://hoeeeeeh.github.io/JS_TS_%EB%A1%9C_Queue_%EA%B5%AC%ED%98%84",
     "image": {
         "@type": "ImageObject",
-        "url": "https://hoeeeeeh.github.io/assets/images/cover/algorithm.png",
+        "url": "https://hoeeeeeh.github.io/assets/images/cover/linux.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://hoeeeeeh.github.io/%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84_%ED%81%90"
+        "@id": "https://hoeeeeeh.github.io/JS_TS_%EB%A1%9C_Queue_%EA%B5%AC%ED%98%84"
     },
-    "description": "이번에 네이버 부스트 캠프 베이직 과정을 진행하면서 자바스크립트를 쓰게 되었는데, 평소에는 파이썬을 자주 사용했었기 때문에 자바스크립트로 파이썬을 대체해보려고 노력했다. 다만 파이썬에는 여러가지 자료구조와 함수들이 잘 구현되어 있는데 자바스크립트를 써보니까 우선순위 큐가 내장 라이브러리에 없었다! 이번 기회에 자바스크립트 공부 겸 힙과 우선순위 큐에 대해 다시 복습하고 직접 구현해보려고 한다. Heap 우선"
+    "description": "Object(or Map) 을 활용한 Queue javascript class ObjectQueue { item = {}; start = 0; end = 0; constructor() {} enqueue(value){ this.item[this.end] = value; this.end += 1; return this.end - 1; } // 큐가 비어 있을 때는 undefined, 그렇지 않은 경우 0 번째 원소를 반환 dequeue(){ if(this.isEmpty()) return undefined; const"
 }
     </script>
 
@@ -128,7 +128,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="우선순위 큐" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="JS TS 로 Queue 구현" href="/feed.xml" />
 
 
 </head>
@@ -356,292 +356,360 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-algorithm post ">
+        <article class="post-full  tag-algorithm tag-javascript tag-typescript post ">
         <header class="post-full-header">
             <section class="post-full-meta">
-                <time class="post-full-meta-date" datetime="14 January 2025">14 January 2025</time>
+                <time class="post-full-meta-date" datetime="31 January 2025">31 January 2025</time>
                 
                 <span class="date-divider">/</span>
                 
                 
-                <a href='/tag/algorithm/'>ALGORITHM</a>
+                <a href='/tag/algorithm/'>ALGORITHM</a>,
+                
+                
+                
+                <a href='/tag/javascript/'>JAVASCRIPT</a>,
+                
+                
+                
+                <a href='/tag/typescript/'>TYPESCRIPT</a>
                 
                 
                 
             </section>
-            <h1 class="post-full-title">우선순위 큐</h1>
+            <h1 class="post-full-title">JS TS 로 Queue 구현</h1>
         </header>
 
         
-        <figure class="post-full-image" style="background-image: url(/assets/images/cover/algorithm.png)">
+        <figure class="post-full-image" style="background-image: url(/assets/images/cover/linux.png)">
         </figure>
         
 
         <section class="post-full-content">
             <div class="kg-card-markdown">
-                <p>이번에 네이버 부스트 캠프 베이직 과정을 진행하면서 자바스크립트를 쓰게 되었는데, 평소에는 파이썬을 자주 사용했었기 때문에 자바스크립트로 파이썬을 대체해보려고 노력했다.</p>
-
-<p>다만 파이썬에는 여러가지 자료구조와 함수들이 잘 구현되어 있는데 자바스크립트를 써보니까 우선순위 큐가 내장 라이브러리에 없었다!</p>
-
-<p>이번 기회에 자바스크립트 공부 겸 힙과 우선순위 큐에 대해 다시 복습하고 직접 구현해보려고 한다.</p>
-
-<h1 id="heap">Heap</h1>
-
-<p>우선 순위 큐는 힙 자료구조를 사용하기 때문에 힙이 무엇인지 알고 있어야 한다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">힙(Heap)</code> 는 <code class="language-plaintext highlighter-rouge">최댓값 혹은 최솟값을 빠르게 찾아내는 연산을 위해</code> 설계된 <code class="language-plaintext highlighter-rouge">완전 이진 트리</code> 자료구조이다.</p>
-
-<p>최댓값을 빠르게 찾고 부모노드의 키 값이 자식 노드의 키 값보다 항상 큰 힙을 최대 힙, 최솟값을 빠르게 찾고 부모노드의 키 값이 자식 노드의 키 값보다 항상 작은 힙을 최소 힙이라고 부른다.</p>
-
-<p>우선 순위 큐에서도 작을 수록 우선순위가 높은지, 클 수록 우선순위가 높은지에 따라 최대 힙, 최소 힙을 적절히 사용해야 한다.</p>
-
-<p>보통 최소 힙 라이브러리가 내장되어 있기 때문에, 만약 클 수록 우선순위가 높다면 데이터 전체에 -1 을 곱하는 등의 처리를 통해 최소 힙을 최대 힙처럼 사용할 수도 있다.</p>
-
-<h1 id="우선-순위-큐">우선 순위 큐</h1>
-
-<p>그렇다면 우선 순위 큐는 어떤 식으로 구현되어 있을까?</p>
-
-<p>최소 힙과 최대 힙은 거의 유사하기도 하고, 위에서 말한 것처럼 활용할 수도 있기 때문에 최소 힙 우선순위 큐를 한 번 살펴보려고 한다.</p>
+                <h1 id="objector-map-을-활용한-queue">Object(or Map) 을 활용한 Queue</h1>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
-class PriorityQueue {
-  constructor() {
-    this.heap = []; // 데이터를 담을 배열
-  }
+class ObjectQueue {
+    item = {};
+    start = 0;
+    end = 0;
 
-  enqueue(value) {
-    // 1. 힙 자료구조에 value 를 넣고
-    // 2. value 가 알맞은 자리를 찾아갈 수 있도록 한다. -&gt; 아래의 bubbleUp 함수를 사용할 예정
-  }
-
-  dequeue() {
-    // 1. 힙 자료구조의 루트 노드에 해당하는 값을 임시로 저장해두고
-    // (pop 이 아님! pop(0)은 O(n) 의 시간복잡도를 가지기 떄문에 힙 자료구조를 사용하는 의미가 없어짐
-    // 2. 맨 마지막 리프 노드에 해당하는 값을 루트 노드에 저장하고,
-    // 3. 해당 루트 노드의 값이 알맞은 자리를 찾아갈 수 있도록 한다. -&gt; 아래의 bubbleDown 함수를 사용할 예정
-  }
-
-  peek() {
-    // 루트 노드를 pop 하는 것이 목적이 아닌, 그저 루트 노드를 참조하고자 할 때
-    return this.heap.length &gt; 0 ? this.heap[0] : null;
-  }
-
-  bubbleUp(index) {
-    // index 번 째에 해당하는 노드의 값보다 작은 값이 있다면, index 노드를 위로 올려보내야 한다.
-  }
-
-  bubbleDown(index) {
-    // index 번 째에 해당하는 노드의 값보다 큰 값이 있다면, index 노드를 아래로 내려보내야 한다.
-  }
-
-  swap(i, j) {
-    // i, j 값 스왑
-    [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
-  }
-}
-
-
-</code></pre></div></div>
-
-<p>함수를 구현하기 전에 간략한 설명과 함께 하나씩 구현해보자.</p>
-
-<h2 id="bubbleup">bubbleUp</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
-bubbleUp(index) {
-  // index 번 째에 해당하는 노드의 값보다 작은 값이 있다면, index 노드를 위로 올려보내야 한다.
-    while (index &gt; 0) {
-    const parentIndex = Math.floor((index - 1) / 2); // index 노드의 부모 노드 구하기.
-    if (this.heap[parentIndex] &lt;= this.heap[index]) break; // 최소 힙이므로 부모노드는 항상 자식 노드보다 작거나 같다!
-
-    this.swap(index, parentIndex); // index 랑 부모노드랑 스왑
-    index = parentIndex; // 부모노드로 올라간 index 부터 반복
-  }
-}
-
-
-</code></pre></div></div>
-
-<p>자식노드(index) 와 부모노드를 비교하는 bubbleUp 함수.</p>
-
-<p>bubbleUp 함수는 우리가 버블정렬을 하는 것 처럼, 두 값을 비교해서 위치를 바꾸는 함수이다.
-최소 힙을 구현하려고 하므로 부모노드는 항상 자식 노드보다 작거나 같아야 한다.</p>
-
-<p>부모노드의 값을 구하는 방법은 <code class="language-plaintext highlighter-rouge">Math.floor((index - 1) / 2)</code> 인데</p>
-
-<blockquote>
-  <p>부모노드(0) -&gt; 자식 노드(1, 2)</p>
-</blockquote>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>부모노드(1) -&gt; 자식 노드(3, 4)
-
-
-부모노드(n) -&gt; 자식 노드(2n + 1, 2n + 2) 임을 알 수 있다.
-
-
-따라서 자식 노드가 +1, +2(왼쪽, 오른쪽) 중에 어떤 쪽인지에 상관없이 부모노드를 구하는 방법이 위의 방법인 것이다.
-</code></pre></div></div>
-
-<h2 id="bubbledown">bubbleDown</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
-  bubbleDown(index) {
-    // index 번 째에 해당하는 노드의 값보다 큰 값이 있다면, index 노드를 아래로 내려보내야 한다.
-    while (true) {
-      const leftChildIndex = 2 * index + 1; // 왼쪽 자식 노드
-      const rightChildIndex = 2 * index + 2; // 오른쪽 자식 노드
-      let smallestIndex = index; // 부모노드, 왼쪽 자식노드, 오른쪽 자식 노드 중에 가장 작은 값을 저장할 변수
-
-      if (leftChildIndex &lt; this.heap.length &amp;&amp; this.heap[leftChildIndex] &lt; this.heap[smallestIndex]) {
-        // 만약 부모노드보다 왼쪽 자식 노드가 작다면 smallestIndex 를 왼쪽 자식 노드로 변경
-        smallestIndex = leftChildIndex;
-      }
-
-      if (rightChildIndex &lt; this.heap.length &amp;&amp; this.heap[rightChildIndex] &lt; this.heap[smallestIndex]) {
-        // 만약 위의 if 문에서 왼쪽 자식 노드가 작았다면 smallestIndex 는 왼쪽 자식 노드,
-        // 아니라면 부모 노드
-        // 똑같이 오른쪽 자식 노드랑 비교
-        smallestIndex = rightChildIndex;
-      }
-      // 만약 가장 작은 노드가 부모 노드라면 최소 힙의 조건을 만족하므로 break
-      if (smallestIndex === index) break;
-
-      // 자식 노드 중에 더 작은 노드(smallestIndex) 와 부모노드를 스왑
-      this.swap(index, smallestIndex);
-
-      //더 작은 노드의 위치에 index 노드를 두고 반복
-      index = smallestIndex;
-    }
-  }
-
-
-</code></pre></div></div>
-
-<p>bubbleDown 도 bubbleUp 와는 반대로 내려오는 것이기 때문에,</p>
-
-<p>index에 해당하는 노드가 제자리를 찾을 때까지 자식 노드와의 비교를 반복한다.</p>
-
-<h2 id="enqueue-dequeue">enqueue, dequeue</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
-  enqueue(value) {
-    // 1. 힙 자료구조에 value 를 넣고
-    this.heap.push(value);
-    // 2. value 가 알맞은 자리를 찾아갈 수 있도록 한다. -&gt; 아래의 bubbleUp 함수를 사용할 예정
-    this.bubbleUp(this.heap.length - 1);
-  }
-
-  dequeue() {
-    if (this.heap.length === 0) return null;
-
-    // 1. 힙 자료구조의 루트 노드(0번째 Index)에 해당하는 값을 임시로 저장해두고
-    // (pop 이 아님! pop(0)은 O(n) 의 시간복잡도를 가지기 떄문에 힙 자료구조를 사용하는 의미가 없어짐
-    const min = this.heap[0];
-    // 2. 맨 마지막 리프 노드에 해당하는 값을 루트 노드에 저장하고,
-    const last = this.heap.pop();
-    if (this.heap.length &gt; 0) {
-      this.heap[0] = last;
-
-      // 3. 해당 루트 노드의 값이 알맞은 자리를 찾아갈 수 있도록 한다. -&gt; bubbleDown
-      this.bubbleDown(0);
-    }
-
-    return min;
-  }
-
-
-</code></pre></div></div>
-
-<h1 id="추가">추가</h1>
-
-<h2 id="comparator">Comparator</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
-    constructor(comparator) {
-        if(comparator) this.comparator = comparator;
-        else this.comparator = (a, b) =&gt; a - b;
-    }
-
-</code></pre></div></div>
-
-<p>우선순위 큐에 어떤 타입의 비교 연산을 해야할지 모르기 때문에, comparator 도 받을 수 있도록 하면 더 좋다.</p>
-
-<p>이렇게 Comparator 를 추가 했을 때, bubbleUp 과 bubbleDown 의 비교 로직을 comparator 로 하면 된다.</p>
-
-<h1 id="자바스크립트-코드">자바스크립트 코드</h1>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
-class PriorityQueue {
-    heap = [];
-    constructor(comparator) {
-        if(comparator) this.comparator = comparator;
-        else this.comparator = (a, b) =&gt; a - b;
-    }
+    constructor() {}
 
     enqueue(value){
-        const index = this.heap.push(value) - 1;
-        this.bubbleUp(index);
+        this.item[this.end] = value;
+        this.end += 1;
+        return this.end - 1;
     }
-
+    
+     // 큐가 비어 있을 때는 undefined, 그렇지 않은 경우 0 번째 원소를 반환
     dequeue(){
-        if(this.heap.length === 0) return undefined;
-        const smallest = this.heap[0];
-        const last = this.heap.pop();
-        if(this.heap.length &gt; 0){
-            this.heap[0] = last;
-            this.bubbleDown(0);
+        if(this.isEmpty()) return undefined;
+        const value = this.item[this.start];
+        delete this.item[this.start];
+        this.start += 1;
+        return value;
+    }
+
+    isEmpty(){
+        if(this.start === this.end) {
+            this.start = 0;
+            this.end = 0;
+            return true;
         }
-        return smallest;
-
-    }
-
-    peek(){
-        return this.heap[0];
-    }
-
-    get length(){
-        return this.heap.length;
-    }
-
-    bubbleUp(_index){
-        let index = _index;
-        while(index &gt; 0){
-            const parentIdx = Math.floor((index - 1) / 2);
-            if(this.comparator(this.heap[parentIdx], this.heap[index]) &lt;= 0) break;
-            this.swap(index, parentIdx);
-            index = parentIdx;
-        }
-    }
-
-    bubbleDown(_index){
-        let index = _index;
-        while(index &lt; this.heap.length){
-            let smallestIndex = index;
-            const leftChildIndex = 2 * index + 1;
-            const rightChildIndex = 2 * index + 2;
-
-            if(leftChildIndex &lt; this.heap.length &amp;&amp; this.comparator(this.heap[smallestIndex], this.heap[leftChildIndex]) &gt; 0) {
-                smallestIndex = leftChildIndex;
-            }
-            if(rightChildIndex &lt; this.heap.length &amp;&amp; this.comparator(this.heap[smallestIndex], this.heap[rightChildIndex]) &gt; 0) {
-                smallestIndex = rightChildIndex;
-            }
-
-            if(smallestIndex === index) break;
-
-            this.swap(index, smallestIndex);
-            index = smallestIndex;
-        }
-
-    }
-
-		// 위에서 봤던 swap 코드중에서 임시 배열을 만드는 것을 하고싶지 않을 때는 아래와 같이 작성하면 된다.
-    swap(i, j){
-        const store = this.heap[i];
-        this.heap[i] = this.heap[j];
-        this.heap[j] = store;
+        return false;
     }
 }
+
+</code></pre></div></div>
+
+<p>Object 나 Map 을 활용해서 key-value 형식으로 저장한다.</p>
+
+<p>다만 Object, Map 이 사용하는 메모리가 다른 방법에 비해 많아, 메모리 효율은 다소 떨어질 수 있다.</p>
+
+<h1 id="linkedlist-를-활용한-queue">LinkedList 를 활용한 Queue</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
+class Node {
+    value = null;
+    next = null
+    constructor(value) {
+        this.value = value;
+    }
+}
+
+class LinkedListQueue {
+    front = null;
+    rear = null;
+    length = 0;
+
+    enqueue(value){
+        const newNode = new Node(value);
+        // rear 가 null 인, 초기 상황일 때
+        if(!this.rear) {
+            this.front = this.rear = newNode;
+        } else {
+            // 현재 맨 마지막 노드의 다음 노드를 newNode 로 지정하고, newNode 를 마지막 노드로 지정
+            this.rear.next = newNode;
+            this.rear = newNode;
+        }
+        this.length += 1;
+    }
+
+    dequeue() {
+        if(!this.front) {
+            return undefined;
+        }
+        const value = this.front.value;
+        this.front = this.front.next;
+
+        // 하나를 dequeue 하고 Queue 에 아무것도 없을 때
+        if(!this.front) {
+            this.rear = null;
+        }
+        this.length -= 1;
+
+        return value;
+    }
+}
+
+</code></pre></div></div>
+
+<h1 id="원형-큐">원형 큐</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>typescript
+class CircularQueue&lt;T&gt; {
+    private readonly items: (T | null)[];
+    private readonly capacity: number;
+    private front: number;
+    private rear: number;
+    private size: number;
+
+    constructor(capacity: number = 8) {
+        this.capacity = capacity;
+        this.items = new Array(capacity).fill(null);
+        this.front = 0;
+        this.rear = 0;
+        this.size = 0;
+    }
+
+    enqueue(value: T) {
+        if (this.isFull()) return false;
+        this.items[this.rear] = value;
+
+        // 여기서 만약 capacity 를 넘어가면, 0부터 시작해서 front 까지 다시 사용
+        this.rear = (this.rear + 1) % this.capacity;
+        this.size++;
+        return true;
+    }
+
+    dequeue() {
+        if (this.isEmpty()) return undefined;
+        const value = this.items[this.front];
+        this.items[this.front] = null;
+        
+         // 여기서 만약 capacity 를 넘어가면, 0부터 시작해서 rear 까지 다시 사용
+        this.front = (this.front + 1) % this.capacity; 
+        this.size--;
+        return value;
+    }
+
+    isEmpty() {
+        return this.size === 0;
+    }
+
+    isFull() {
+        return this.size === this.capacity;
+    }
+}
+
+
+</code></pre></div></div>
+
+<p>원형 큐는 고정 사이즈를 정하고, 고정 사이즈만큼의 배열을 순환하면서 사용할 수 있다.</p>
+
+<p>여기서 만약 배열이 꽉 찼는데도 enqueue 가 일어나면 문제가 된다. 배열에 이미 값이 존재하는데 그 위에 덮어쓰게 되기 때문이다.</p>
+
+<p>따라서 원형큐가 가득 찼으면 배열을 그 순간에 늘리거나 해야한다.</p>
+
+<p>이 과정에서 기존 배열을 복사해야해서 시간이 많이 소요된다.</p>
+
+<p>이렇게 보면 원형큐는 dequeue 보다 enqueue 가 월등히 많은 경우, 썩 좋지 못할 것 같다.</p>
+
+<h1 id="원형-덱deque-double-ended-queue">원형 덱(deque, Double Ended Queue)</h1>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>typescript
+class CircularDeque&lt;T&gt; {
+    private items: (T | null)[];
+    private capacity: number;
+    private front: number;
+    private rear: number;
+    private size: number;
+
+    constructor(capacity: number = 8) {
+        this.capacity = capacity;
+        this.items = new Array(capacity).fill(null);
+        this.front = 0;
+        this.rear = 0;
+        this.size = 0;
+    }
+
+    enqueueFront(value: T) {
+        if (this.isFull()) this.resize();
+        this.front = (this.front - 1 + this.capacity) % this.capacity;
+        this.items[this.front] = value;
+        this.size++;
+    }
+
+    enqueueBack(value: T) {
+        if (this.isFull()) this.resize();
+        this.items[this.rear] = value;
+        this.rear = (this.rear + 1) % this.capacity;
+        this.size++;
+    }
+
+    dequeueFront() {
+        if (this.isEmpty()) return undefined;
+        const value = this.items[this.front];
+        this.items[this.front] = null;
+        this.front = (this.front + 1) % this.capacity;
+        this.size--;
+        return value as T;
+    }
+
+    dequeueBack() {
+        if (this.isEmpty()) return undefined;
+        this.rear = (this.rear - 1 + this.capacity) % this.capacity;
+        const value = this.items[this.rear];
+        this.items[this.rear] = null;
+        this.size--;
+        return value as T;
+    }
+
+    peekFront() {
+        return this.isEmpty() ? undefined : (this.items[this.front]);
+    }
+
+
+    peekBack() {
+        return this.isEmpty() ? undefined : (this.items[(this.rear - 1 + this.capacity) % this.capacity]);
+    }
+
+    isEmpty() {
+        return this.size === 0;
+    }
+
+    isFull() {
+        return this.size === this.capacity;
+    }
+
+    getSize() {
+        return this.size;
+    }
+
+    private resize() {
+        const newCapacity = this.capacity * 2;
+        const newItems = new Array(newCapacity).fill(null);
+
+        for (let i = 0; i &lt; this.size; i++) {
+            newItems[i] = this.items[(this.front + i) % this.capacity];
+        }
+
+        this.items = newItems;
+        this.capacity = newCapacity;
+        this.front = 0;
+        this.rear = this.size;
+    }
+}
+
+
+</code></pre></div></div>
+
+<p>원형 큐와 큰 차이는 없다.</p>
+
+<p>여기서 원형 큐나, 원형 데크나 resize 부분을 알아둬야한다.</p>
+
+<h2 id="resize">Resize</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>typescript
+    private resize() {
+        const newCapacity = this.capacity * 2;
+        const newItems = new Array(newCapacity).fill(null);
+
+        for (let i = 0; i &lt; this.size; i++) {
+            newItems[i] = this.items[(this.front + i) % this.capacity];
+        }
+
+        this.items = newItems;
+        this.capacity = newCapacity;
+        this.front = 0;
+        this.rear = this.size;
+    }
+
+</code></pre></div></div>
+
+<p>resize 부분을 보면 capacity 를 2배(혹은 원하는 만큼) 늘리고나서</p>
+
+<p>for 문 내부에서 아이템을 복제 및 정렬을 한다.</p>
+
+<p>언뜻 생각해보면 capacity 만 2배로 복제해도 되지 않을까 싶지만 기존 배열의 순서를 정렬해서 새로운 배열에 적용해야만 한다.</p>
+
+<p>예시를 들어서 살펴보면,</p>
+
+<h3 id="기존-상태-1234-덱에-삽입">기존 상태 (1,2,3,4 덱에 삽입)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>typescript
+Index:      0      1      2      3
+Items:    [ 1  ] [ 2  ] [ 3  ] [ 4  ]  
+Front → index 0
+Rear  → index 0 (다음 삽입 위치)
+
+</code></pre></div></div>
+
+<h3 id="1-2-dequeue">1, 2 dequeue</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>typescript
+Index:      0      1      2      3
+Items:    [ X  ] [ X  ] [ 3  ] [ 4  ]  
+Front → index 2
+Rear  → index 0 (다음 삽입 위치)
+
+</code></pre></div></div>
+
+<h3 id="5-6-enqueue">5, 6 enqueue</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>typescript
+Index:      0      1      2      3
+Items:    [ 5  ] [ 6  ] [ 3  ] [ 4  ]  
+Front → index 2
+Rear  → index 2 (가득 참)
+
+</code></pre></div></div>
+
+<h3 id="7-enqueue-resize-실행">7 enqueue (Resize 실행)</h3>
+
+<p>단순히 Capacity 만 늘리는 경우(잘못된 경우)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>typescript
+	Index:      0      1      2      3      4      5      6      7
+	Items:    [ 5  ] [ 6  ] [ 3  ] [ 4  ] [ X  ] [ X  ] [ X  ] [ X  ]
+	Front → index 2
+	Rear  → index 4
+	
+</code></pre></div></div>
+
+<p>3 → 4→ 5→ 6 순서가 아니라, 5 → 6 → 3→ 4 가 되어버린다.</p>
+
+<p>따라서 3,4,5,6 순서로 정렬시켜주는 과정이 필요</p>
+
+<p>resize 및 정렬 과정(올바른 경우)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>typescript
+Index:      0      1      2      3      4      5      6      7
+Items:    [ 3  ] [ 4  ] [ 5  ] [ 6  ] [ X  ] [ X  ] [ X  ] [ X  ]
+Front → index 0
+Rear  → index 4
 
 </code></pre></div></div>
 
@@ -725,11 +793,6 @@ class PriorityQueue {
                         
                         
                         
-                        <li><a href="/JS_TS_%EB%A1%9C_Queue_%EA%B5%AC%ED%98%84">JS TS 로 Queue 구현</a></li>
-                        
-                        
-                        
-                        
                         
                         
                         
@@ -741,6 +804,11 @@ class PriorityQueue {
                         
                         
                         
+                        
+                        
+                        
+                        
+                        <li><a href="/%EC%8A%A4%ED%8C%A8%EB%8B%9D_%ED%8A%B8%EB%A6%AC">스패닝 트리</a></li>
                         
                         
                         
@@ -909,7 +977,7 @@ class PriorityQueue {
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">우선순위 큐</div>
+    <div class="floating-header-title">JS TS 로 Queue 구현</div>
     <div class="floating-header-share">
         <!-- Sidebar Toggle Button -->
         <button class="toc-toggle" id="toc-toggle">☰ 목차</button>
@@ -917,7 +985,7 @@ class PriorityQueue {
         <!-- Table of Contents Sidebar -->
         <aside class="toc" id="toc-sidebar">
             <nav>
-                <ul><li><a href="#heap">Heap</a></li><li><a href="#우선-순위-큐">우선 순위 큐</a><ul><li><a href="#bubbleup">bubbleUp</a></li><li><a href="#bubbledown">bubbleDown</a></li><li><a href="#enqueue-dequeue">enqueue, dequeue</a></li></ul></li><li><a href="#추가">추가</a><ul><li><a href="#comparator">Comparator</a></li></ul></li><li><a href="#자바스크립트-코드">자바스크립트 코드</a></li></ul>
+                <ul><li><a href="#objector-map-을-활용한-queue">Object(or Map) 을 활용한 Queue</a></li><li><a href="#linkedlist-를-활용한-queue">LinkedList 를 활용한 Queue</a></li><li><a href="#원형-큐">원형 큐</a></li><li><a href="#원형-덱deque-double-ended-queue">원형 덱(deque, Double Ended Queue)</a><ul><li><a href="#resize">Resize</a><ul><li><a href="#기존-상태-1234-덱에-삽입">기존 상태 (1,2,3,4 덱에 삽입)</a></li><li><a href="#1-2-dequeue">1, 2 dequeue</a></li><li><a href="#5-6-enqueue">5, 6 enqueue</a></li><li><a href="#7-enqueue-resize-실행">7 enqueue (Resize 실행)</a></li></ul></li></ul></li></ul>
 
             </nav>
         </aside>

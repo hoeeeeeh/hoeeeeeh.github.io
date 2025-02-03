@@ -23,6 +23,21 @@
     
       
       <item>
+        <title>JS TS 로 Queue 구현</title>
+        
+          <description>&lt;h1 id=&quot;objector-map-을-활용한-queue&quot;&gt;Object(or Map) 을 활용한 Queue&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Fri, 31 Jan 2025 07:42:00 +0000</pubDate>
+        <link>
+        https://hoeeeeeh.github.io/JS_TS_%EB%A1%9C_Queue_%EA%B5%AC%ED%98%84</link>
+        <guid isPermaLink="true">https://hoeeeeeh.github.io/JS_TS_%EB%A1%9C_Queue_%EA%B5%AC%ED%98%84</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>리눅스 컨테이너</title>
         
           <description>&lt;p&gt;도커 등의 컨테이너 기술을 사용하면서, 리눅스의 어떤 명령어들로 이런 컨테이너 기술이 동작할 수 있는지 문득 궁금해졌다.&lt;/p&gt;
