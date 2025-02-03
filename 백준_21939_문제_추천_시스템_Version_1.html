@@ -43,7 +43,7 @@
 
 
 
-    <title>[네부캠 챌린지] 2주차 회고</title>
+    <title>백준 21939 문제 추천 시스템 Version 1</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -66,30 +66,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="HOEH 개발 블로그" />
 <link rel="shortcut icon" href="https://hoeeeeeh.github.io//assets/images/favicon.png" type="image/png" />
-<link rel="canonical" href="https://hoeeeeeh.github.io/%EB%84%A4%EB%B6%80%EC%BA%A0_%EC%B1%8C%EB%A6%B0%EC%A7%80-_2%EC%A3%BC%EC%B0%A8_%ED%9A%8C%EA%B3%A0" />
+<link rel="canonical" href="https://hoeeeeeh.github.io/%EB%B0%B1%EC%A4%80_21939_%EB%AC%B8%EC%A0%9C_%EC%B6%94%EC%B2%9C_%EC%8B%9C%EC%8A%A4%ED%85%9C_Version_1" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="hoeeeeeh" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="[네부캠 챌린지] 2주차 회고" />
-    <meta property="og:description" content="2주 차 회고 챌린지 과정을 진행한 지 벌써 2주가 흘렀다. 나는 1주 차보다 더 나아졌을까? 생활 패턴 일단 1주 차에 비해서 생활방식이 크게 개선된 것 같지는 않다. 1주 차 때도 미션을 완전하게 완성한 적이 거의 없어서 매번 새벽까지 하다가 잤는데, 2주 차 때도 역시 미션을 놓지 못해서 새벽까지 진행했던 것" />
-    <meta property="og:url" content="https://hoeeeeeh.github.io/%EB%84%A4%EB%B6%80%EC%BA%A0_%EC%B1%8C%EB%A6%B0%EC%A7%80-_2%EC%A3%BC%EC%B0%A8_%ED%9A%8C%EA%B3%A0" />
-    <meta property="og:image" content="https://hoeeeeeh.github.io/assets/images/cover/naver_boostcamp_challenge.png" />
+    <meta property="og:title" content="백준 21939 문제 추천 시스템 Version 1" />
+    <meta property="og:description" content="문제 추천 시스템 Version 1 recommend(x) : x 가 1이면 난이도 가장 높은 문제를 우선순위 큐에서 출력, x 가 -1 이면 난이도가 가장 쉬운 문제를 출력. → 우선 순위큐를 minHeap, maxHeap 두 개를 써야겠다! add(P, L) : 문제 번호가 P, 난이도가 L 인 문제를 추가 → 2개의 우선순위 큐에 전부" />
+    <meta property="og:url" content="https://hoeeeeeh.github.io/%EB%B0%B1%EC%A4%80_21939_%EB%AC%B8%EC%A0%9C_%EC%B6%94%EC%B2%9C_%EC%8B%9C%EC%8A%A4%ED%85%9C_Version_1" />
+    <meta property="og:image" content="https://hoeeeeeh.github.io/assets/images/cover/algorithm.png" />
     <meta property="article:publisher" content="https://www.facebook.com/ghost" />
     <meta property="article:author" content="https://www.facebook.com/ghost" />
-    <meta property="article:published_time" content="2025-01-14T02:40:00+00:00" />
-    <meta property="article:modified_time" content="2025-01-14T02:40:00+00:00" />
-    <meta property="article:tag" content="Review" />
+    <meta property="article:published_time" content="2025-02-03T08:07:00+00:00" />
+    <meta property="article:modified_time" content="2025-02-03T08:07:00+00:00" />
+    <meta property="article:tag" content="Algorithm" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="[네부캠 챌린지] 2주차 회고" />
-    <meta name="twitter:description" content="2주 차 회고 챌린지 과정을 진행한 지 벌써 2주가 흘렀다. 나는 1주 차보다 더 나아졌을까? 생활 패턴 일단 1주 차에 비해서 생활방식이 크게 개선된 것 같지는 않다. 1주 차 때도 미션을 완전하게 완성한 적이 거의 없어서 매번 새벽까지 하다가 잤는데, 2주 차 때도 역시 미션을 놓지 못해서 새벽까지 진행했던 것" />
+    <meta name="twitter:title" content="백준 21939 문제 추천 시스템 Version 1" />
+    <meta name="twitter:description" content="문제 추천 시스템 Version 1 recommend(x) : x 가 1이면 난이도 가장 높은 문제를 우선순위 큐에서 출력, x 가 -1 이면 난이도가 가장 쉬운 문제를 출력. → 우선 순위큐를 minHeap, maxHeap 두 개를 써야겠다! add(P, L) : 문제 번호가 P, 난이도가 L 인 문제를 추가 → 2개의 우선순위 큐에 전부" />
     <meta name="twitter:url" content="https://hoeeeeeh.github.io/" />
-    <meta name="twitter:image" content="https://hoeeeeeh.github.io/assets/images/cover/naver_boostcamp_challenge.png" />
+    <meta name="twitter:image" content="https://hoeeeeeh.github.io/assets/images/cover/algorithm.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="hoeeeeeh" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Review" />
+    <meta name="twitter:data2" content="Algorithm" />
     <meta name="twitter:site" content="@tryghost" />
     <meta name="twitter:creator" content="@tryghost" />
     <meta property="og:image:width" content="1400" />
@@ -104,18 +104,18 @@
         "name": "hoeeeeeh",
         "logo": "https://hoeeeeeh.github.io/assets/images/blog-icon.png"
     },
-    "url": "https://hoeeeeeh.github.io/%EB%84%A4%EB%B6%80%EC%BA%A0_%EC%B1%8C%EB%A6%B0%EC%A7%80-_2%EC%A3%BC%EC%B0%A8_%ED%9A%8C%EA%B3%A0",
+    "url": "https://hoeeeeeh.github.io/%EB%B0%B1%EC%A4%80_21939_%EB%AC%B8%EC%A0%9C_%EC%B6%94%EC%B2%9C_%EC%8B%9C%EC%8A%A4%ED%85%9C_Version_1",
     "image": {
         "@type": "ImageObject",
-        "url": "https://hoeeeeeh.github.io/assets/images/cover/naver_boostcamp_challenge.png",
+        "url": "https://hoeeeeeh.github.io/assets/images/cover/algorithm.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://hoeeeeeh.github.io/%EB%84%A4%EB%B6%80%EC%BA%A0_%EC%B1%8C%EB%A6%B0%EC%A7%80-_2%EC%A3%BC%EC%B0%A8_%ED%9A%8C%EA%B3%A0"
+        "@id": "https://hoeeeeeh.github.io/%EB%B0%B1%EC%A4%80_21939_%EB%AC%B8%EC%A0%9C_%EC%B6%94%EC%B2%9C_%EC%8B%9C%EC%8A%A4%ED%85%9C_Version_1"
     },
-    "description": "2주 차 회고 챌린지 과정을 진행한 지 벌써 2주가 흘렀다. 나는 1주 차보다 더 나아졌을까? 생활 패턴 일단 1주 차에 비해서 생활방식이 크게 개선된 것 같지는 않다. 1주 차 때도 미션을 완전하게 완성한 적이 거의 없어서 매번 새벽까지 하다가 잤는데, 2주 차 때도 역시 미션을 놓지 못해서 새벽까지 진행했던 것"
+    "description": "문제 추천 시스템 Version 1 recommend(x) : x 가 1이면 난이도 가장 높은 문제를 우선순위 큐에서 출력, x 가 -1 이면 난이도가 가장 쉬운 문제를 출력. → 우선 순위큐를 minHeap, maxHeap 두 개를 써야겠다! add(P, L) : 문제 번호가 P, 난이도가 L 인 문제를 추가 → 2개의 우선순위 큐에 전부"
 }
     </script>
 
@@ -128,7 +128,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="[네부캠 챌린지] 2주차 회고" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="백준 21939 문제 추천 시스템 Version 1" href="/feed.xml" />
 
 
 </head>
@@ -356,65 +356,297 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-review post ">
+        <article class="post-full  tag-algorithm tag-javascript post ">
         <header class="post-full-header">
             <section class="post-full-meta">
-                <time class="post-full-meta-date" datetime="14 January 2025">14 January 2025</time>
+                <time class="post-full-meta-date" datetime=" 3 February 2025"> 3 February 2025</time>
                 
                 <span class="date-divider">/</span>
                 
                 
-                <a href='/tag/review/'>REVIEW</a>
+                <a href='/tag/algorithm/'>ALGORITHM</a>,
+                
+                
+                
+                <a href='/tag/javascript/'>JAVASCRIPT</a>
                 
                 
                 
             </section>
-            <h1 class="post-full-title">[네부캠 챌린지] 2주차 회고</h1>
+            <h1 class="post-full-title">백준 21939 문제 추천 시스템 Version 1</h1>
         </header>
 
         
-        <figure class="post-full-image" style="background-image: url(/assets/images/cover/naver_boostcamp_challenge.png)">
+        <figure class="post-full-image" style="background-image: url(/assets/images/cover/algorithm.png)">
         </figure>
         
 
         <section class="post-full-content">
             <div class="kg-card-markdown">
-                <h1 id="2주-차-회고">2주 차 회고</h1>
+                <p><img src="/upload/2025-02-03-백준_21939_문제_추천_시스템_Version_1.md/0.png" alt="0" /><em>문제 추천 시스템 Version 1</em></p>
 
-<p>챌린지 과정을 진행한 지 벌써 2주가 흘렀다. 나는 1주 차보다 더 나아졌을까?</p>
+<ul>
+  <li>
+    <p>recommend(x) : x 가 1이면 난이도 가장 높은 문제를 우선순위 큐에서 출력, x 가 -1 이면 난이도가 가장 쉬운 문제를 출력.</p>
 
-<h2 id="생활-패턴">생활 패턴</h2>
+    <p>→ 우선 순위큐를 minHeap, maxHeap 두 개를 써야겠다!</p>
+  </li>
+  <li>
+    <p>add(P, L) : 문제 번호가 P, 난이도가 L 인 문제를 추가</p>
 
-<p>일단 1주 차에 비해서 생활방식이 크게 개선된 것 같지는 않다.</p>
+    <p>→ 2개의 우선순위 큐에 전부 넣어야한다.</p>
+  </li>
+  <li>
+    <p>solved(P) : 문제 번호가 P인 문제를 풀었다는 의미이므로, recommend 를 할 때 풀었던 문제는 추천하지 않도록 어딘가에 저장해두어야 함.</p>
+  </li>
+</ul>
 
-<p>1주 차 때도 미션을 완전하게 완성한 적이 거의 없어서 매번 새벽까지 하다가 잤는데, 2주 차 때도 역시 미션을 놓지 못해서 새벽까지 진행했던 것 같다.</p>
+<p>이 문제는 우선순위 큐와 Map 혹은 Object 를 쓰면 쉽게 풀리는 문제다.</p>
 
-<p>1주 차를 끝내면서 2주 차에는 컨디션 관리까지 해내리라 마음먹었었는데 2주 차까지 해본 결과, 3주 차 4주 차에서도 컨디션 관리는 <code class="language-plaintext highlighter-rouge">포기</code>하는 게 나을 것 같다.</p>
+<p>문제가 Solved 되면 Map 혹은 Object 에 기억해뒀다가, recommend 명령어에 의해서 문제를 추천할 때 Solved 된 문제라면 다음 Min (혹은 Max) Heap 에서 하나를 더 꺼내면 된다.</p>
 
-<h2 id="학습">학습</h2>
+<p>그래서 문제 난이도가 그렇게 높게 잡히지는 않았는데 문제는 <code class="language-plaintext highlighter-rouge">javascript 에 우선순위 큐가 없다</code>는 점이다.</p>
 
-<p>1주 차 때는 학습하는 시간이 적었다. 그때는 오로지 구현을 해야 한다 라는 생각만 했었고 실제로 문제를 읽은 뒤에 학습보다는, 구현하면서 모르는 것이 나오면 그제야 잠깐 찾고 다시 구현하는 방식으로 미션을 진행했었다. 그러다 보니 구현하면서 헤매는 일도 많았고 오히려 진행이 더딘 경우도 많았다.</p>
+<p>추가로 PriorityQueue 의 heap 을 일반 배열이 아닌 Queue 를 직접 구현했는데, 문제를 풀면서 heap 에 직접 shift 를 해야하는 경우가 필요하다고 착각했다.  dequeue 를 여러 번 하면 되는 일이었는데.</p>
 
-<p>1주 차를 회고하며 느낀 점은 어떤 게 올바른 진행 방식인지는 몰라도, 1주 차 때 했던 방식이 잘못되었다는 것은 확실하다는 것이었다.
-2주차때는 미션을 보고 바로 구현에 뛰어들기보다는 배경지식을 먼저 학습하려고 시도했다. 그렇지만 여전히 목표는 ‘구현’ 이었다보니 학습 후 바로 구현으로 뛰어들었고, 시간이 남으면 학습정리를 하자! 라는 생각이었다.</p>
+<p>자바스크립트는 배열의 shift 가 O(1) 이 아닌 O(n) 이다보니, shift 를 하려면 Queue 를 직접 구현해야해서 사용하면서도 일반 배열처럼 사용할 수 있는 방법을 고민하면서 풀었다.</p>
 
-<p>사실 이 방법이 완전히 틀린 방식인가? 를 생각했을때는 잘 모르겠다. 구현과 학습정리 중에서 어떤 것이 우선시 되어야 하는가? 는 여전히 잘 모르겠고 학습정리는 다음에 시간이 또 생길 수 있지 않을까? 라는 안일한 생각도 좀 많이 했던 것 같다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
+class Queue {
+    get(index){
+        return this.items[index + this.head];
+    }
 
-<p>그래서 3주차에는 학습 후, 구현과 학습정리를 왔다갔다 반복하면서 진행해보려고 한다. 2주차와 3주차의 방식 중, 어떤 것이 더 나은지 확인해보고 4주차를 진행할 것이다.</p>
+    set(index,  value){
+        this.items[index + this.head] = value;
+    }
+}
 
-<h2 id="여전히-어렵다">여전히 어렵다</h2>
+</code></pre></div></div>
 
-<p>1주차는 그래도 초반에는 어느정도 알고 있던 지식들을 사용하는 미션이 나왔었다.</p>
+<p>Queue 에 배열처럼 index 만으로 접근하고 싶었는데 내가 만든 Queue 는 head 와 tail 로 이동하기 때문에 head 로 인덱스의 값을 보정해야했다.</p>
 
-<p>2주차는 정말 내가 알던 지식에서 많이 벗어난 것들도 많았다. 덕분에 학습 시간도 매우 길어졌지만 개발자가 왜 평생 배우는 직업인지 깨닫게 되었다.</p>
+<p>덕분에 모든 자료구조를 다 직접 짜면서 하다보니 코드가 엄청나게 길어졌다.</p>
 
-<p>프로그래밍은 진짜 다양한 방식과 방법이 있구나라고 생각하게 만드는 한 주였다.</p>
+<p>아래는 삽질한 코드이다..</p>
 
-<h2 id="결론">결론</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
+class Problem {
+    constructor(num, level) {
+        this.num = num;
+        this.level = level;
+    }
+}
 
-<p>아무말이나 하는 감자에서 말하는 방법을 배운 감자쯤으로 진화했다.</p>
+class PriorityQueue {
+    heap = new Queue();
 
-<p>다음주는 말을 이해하고 내뱉을 줄 아는 감자로 진화해야겠다.</p>
+    constructor(comparator) {
+        if(comparator) this.comparator = comparator.bind(this);
+        else this.comparator = (a, b) =&gt; this.heap.get(a) - this.heap.get(b);
+    }
+
+    enqueue(value){
+        const heapLength = this.heap.push(value);
+        this.bubbleUp(heapLength - 1);
+    }
+
+    peek(){
+        return this.heap.get(0);
+    }
+
+    dequeue(){
+        if(this.isEmpty()) return undefined;
+
+        const root = this.heap.get(0);
+        const leap = this.heap.pop();
+        if(this.isEmpty()) return root;
+        this.heap.set(0, leap);
+        this.bubbleDown(0);
+
+        return root;
+    }
+
+    bubbleUp(index_){
+        let index = index_;
+        while(index &gt; 0) {
+            const parentIndex = Math.floor((index - 1) / 2);
+            if(this.comparator(index, parentIndex) &gt;= 0) break;
+            this.swap(index, parentIndex);
+            index = parentIndex;
+        }
+        return index;
+    }
+
+    bubbleDown(index_){
+        let index = index_;
+        let smallestIndex = index;
+        while(smallestIndex &lt; this.heap.length){
+
+            const leftChildIndex = 2 * index + 1;
+            const rightChildIndex = 2 * index + 2;
+
+            if(leftChildIndex &lt; this.heap.length &amp;&amp; this.comparator(leftChildIndex, smallestIndex) &lt; 0){
+                smallestIndex = leftChildIndex;
+            }
+            if(rightChildIndex &lt; this.heap.length &amp;&amp; this.comparator(rightChildIndex, smallestIndex) &lt; 0){
+                smallestIndex = rightChildIndex;
+            }
+
+            if(smallestIndex === index) break;
+            this.swap(index, smallestIndex);
+            index = smallestIndex;
+        }
+        return index;
+    }
+
+    isEmpty(){
+        return this.heap.length === 0;
+    }
+
+    swap(i, j){
+        const restore = this.heap.get(i);
+        this.heap.set(i, this.heap.get(j));
+        this.heap.set(j, restore);
+    }
+}
+
+class Queue {
+    items = {}
+    head = 0;
+    tail = 0;
+
+    get length(){
+        return this.tail - this.head;
+    }
+
+    get(index){
+        return this.items[index + this.head];
+    }
+
+    set(index,  value){
+        this.items[index + this.head] = value;
+    }
+
+    constructor() {}
+
+    push(value){
+        this.items[this.tail] = value;
+        this.tail += 1;
+        return this.length;
+    }
+
+    pop(){
+        if(this.isEmpty()) return undefined;
+        const leaf = this.items[this.tail - 1];
+        delete this.items[this.tail - 1];
+
+        if(!this.isEmpty()) this.tail -= 1;
+        return leaf;
+    }
+
+    isEmpty(){
+        if(this.head !== this.tail) return false
+
+        this.head = this.tail = 0;
+        return true
+
+    }
+}
+
+class ProblemPriorityQueue extends PriorityQueue {
+    solvedProblems = {}
+    constructor(comparator) {
+        super(comparator);
+    }
+    solved(index){
+        this.solvedProblems[index] = true;
+    }
+
+    peek(){
+        this.removeSolvedProblem();
+        return super.peek();
+    }
+
+    removeSolvedProblem(){
+        let peek = super.peek();
+        while(peek.num in this.solvedProblems){
+            super.dequeue();
+            delete this.solvedProblems[peek.num];
+            peek = super.peek();
+        }
+    }
+}
+
+function minComparator(a, b){
+    if(this.heap.get(a).level !== this.heap.get(b).level) return this.heap.get(a).level - this.heap.get(b).level;
+    return this.heap.get(a).num - this.heap.get(b).num;
+}
+
+function maxComparator(a, b){
+    if(this.heap.get(a).level !== this.heap.get(b).level) return this.heap.get(b).level - this.heap.get(a).level;
+    return this.heap.get(b).num - this.heap.get(a).num;
+}
+
+function add(P, L){
+    minPPQ.enqueue(new Problem(P, L));
+    maxPPQ.enqueue(new Problem(P, L));
+}
+
+function solved(P) {
+    minPPQ.solved(P);
+    maxPPQ.solved(P);
+}
+
+function recommend(x){
+    if(x === -1) {
+        return minPPQ.peek().num;
+    } else {
+        return maxPPQ.peek().num;
+    }
+}
+
+const readline = require("readline");
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+let N = -1;
+let M = -1;
+let count = -1;
+let answer = [];
+const minPPQ = new ProblemPriorityQueue(minComparator);
+const maxPPQ = new ProblemPriorityQueue(maxComparator);
+
+rl.on("line", (line) =&gt; {
+    if(N === -1){
+        N = parseInt(line);
+        count = N;
+    } else if (count &gt; 0) {
+        const [num, level] = line.split(' ').map((n) =&gt; parseInt(n))
+        add(num, level);
+        count -= 1;
+    } else {
+        if(M === -1) M = parseInt(line);
+        else {
+            const [cmd, num1, num2] = line.split(' ');
+            if (cmd === 'recommend') {
+                const log = recommend(parseInt(num1));
+                answer.push(log);
+            } else if (cmd === 'solved') {
+                solved(parseInt(num1));
+            } else {
+                add(parseInt(num1), parseInt(num2))
+            }
+        }
+    }
+}).on("close", () =&gt; {
+    console.log(answer.join('\n'));
+})
+
+
+</code></pre></div></div>
 
 
             </div>
@@ -474,7 +706,7 @@ into the {body} of the default.hbs template -->
                 <header class="read-next-card-header">
                     <small class="read-next-card-header-sitetitle">&mdash; hoeeeeeh &mdash;</small>
                     
-                    <h3 class="read-next-card-header-title"><a href="/tag/review/">Review</a></h3>
+                    <h3 class="read-next-card-header-title"><a href="/tag/algorithm/">Algorithm</a></h3>
                     
                 </header>
                 <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
@@ -493,6 +725,25 @@ into the {body} of the default.hbs template -->
                         
                         
                         
+                        <li><a href="/%EC%83%81%ED%98%B8_%EB%B0%B0%ED%83%80%EC%A0%81_%EC%A7%91%ED%95%A9_(Union-Find)">상호 배타적 집합 (Union-Find)</a></li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a href="/%EC%8A%A4%ED%8C%A8%EB%8B%9D_%ED%8A%B8%EB%A6%AC">스패닝 트리</a></li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a href="/%EC%A0%95%EC%A0%90%EA%B0%84%EC%9D%98_%EC%B5%9C%EB%8B%A8_%EA%B1%B0%EB%A6%AC_%EA%B5%AC%ED%95%98%EA%B8%B0_(%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC,_%EB%B2%A8%EB%A7%8C_%ED%8F%AC%EB%93%9C,_%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C)">정점간의 최단 거리 구하기 (다익스트라, 벨만 포드, 플로이드)</a></li>
                         
                         
                         
@@ -507,31 +758,12 @@ into the {body} of the default.hbs template -->
                         
                         
                         
-                        <li><a href="/%EB%84%A4%EB%B6%80%EC%BA%A0_%EC%B1%8C%EB%A6%B0%EC%A7%80-_%EC%B1%8C%EB%A6%B0%EC%A7%80_%EC%B5%9C%EC%A2%85_%ED%9A%8C%EA%B3%A0">[네부캠 챌린지] 챌린지 최종 회고</a></li>
                         
                         
                         
                         
                         
                         
-                        
-                        
-                        
-                        
-                        <li><a href="/%EB%84%A4%EB%B6%80%EC%BA%A0_%EC%B1%8C%EB%A6%B0%EC%A7%80-_3%EC%A3%BC%EC%B0%A8_%ED%9A%8C%EA%B3%A0">[네부캠 챌린지] 3주차 회고</a></li>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <li><a href="/%EB%84%A4%EB%B6%80%EC%BA%A0_%EC%B1%8C%EB%A6%B0%EC%A7%80-_1%EC%A3%BC%EC%B0%A8_%ED%9A%8C%EA%B3%A0">[네부캠 챌린지] 1주차 회고</a></li>
                         
                         
                         
@@ -649,7 +881,7 @@ into the {body} of the default.hbs template -->
                     </ul>
                 </div>
                 <footer class="read-next-card-footer">
-                    <a href="/tag/review/">
+                    <a href="/tag/algorithm/">
                     
                     See all 5 posts  →
                     
@@ -673,7 +905,7 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">[네부캠 챌린지] 2주차 회고</div>
+    <div class="floating-header-title">백준 21939 문제 추천 시스템 Version 1</div>
     <div class="floating-header-share">
         <!-- Sidebar Toggle Button -->
         <button class="toc-toggle" id="toc-toggle">☰ 목차</button>
@@ -681,7 +913,7 @@ into the {body} of the default.hbs template -->
         <!-- Table of Contents Sidebar -->
         <aside class="toc" id="toc-sidebar">
             <nav>
-                <ul><li><a href="#2주-차-회고">2주 차 회고</a><ul><li><a href="#생활-패턴">생활 패턴</a></li><li><a href="#학습">학습</a></li><li><a href="#여전히-어렵다">여전히 어렵다</a></li><li><a href="#결론">결론</a></li></ul></li></ul>
+                
 
             </nav>
         </aside>
