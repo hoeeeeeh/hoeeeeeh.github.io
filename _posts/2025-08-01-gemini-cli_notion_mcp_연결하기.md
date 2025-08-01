@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover: "assets/images/cover/notion.png"
+cover: "assets/images/cover/blog.png"
 navigation: True
 title: "gemini-cli notion mcp 연결하기"
 date: 2025-08-01 10:25:00
@@ -50,11 +50,5 @@ typescript
 [https://github.com/google-gemini/gemini-cli/issues/1481](https://github.com/google-gemini/gemini-cli/issues/1481)
 
 
-genai 의 버전을 1.9.0 으로 올리면 해결된다..!
-
-
-> npx [https://github.com/google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli)
-
-
-로 버전을 업그레이드 해주자.
+그래서 결국 gemini 버전을 업그레이드 해주면 잘 된다..
 
