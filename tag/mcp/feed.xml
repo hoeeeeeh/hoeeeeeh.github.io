@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://hoeeeeeh.github.io/tag/mcp/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" />
-  <updated>2025-08-01T10:47:56+00:00</updated>
+  <updated>2025-08-01T10:53:01+00:00</updated>
   <id>https://hoeeeeeh.github.io/tag/mcp/feed.xml</id>
 
   
@@ -65,13 +65,7 @@
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/google-gemini/gemini-cli/issues/1481&quot;&gt;https://github.com/google-gemini/gemini-cli/issues/1481&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;genai 의 버전을 1.9.0 으로 올리면 해결된다..!&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;npx &lt;a href=&quot;https://github.com/google-gemini/gemini-cli&quot;&gt;https://github.com/google-gemini/gemini-cli&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;로 버전을 업그레이드 해주자.&lt;/p&gt;</content>
+&lt;p&gt;그래서 결국 gemini 버전을 업그레이드 해주면 잘 된다..&lt;/p&gt;</content>
 
       
       
