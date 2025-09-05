@@ -23,6 +23,21 @@
     
       
       <item>
+        <title>내 큐는 왜 느릴까</title>
+        
+          <description>&lt;p&gt;자바스크립트는 내장되어있는 큐가 없다보니 코딩테스트에서 시간 복잡도를 빠르게 하려면 큐를 직접 구현해야한다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 05 Sep 2025 07:50:00 +0000</pubDate>
+        <link>
+        https://hoeeeeeh.github.io/%EB%82%B4_%ED%81%90%EB%8A%94_%EC%99%9C_%EB%8A%90%EB%A6%B4%EA%B9%8C</link>
+        <guid isPermaLink="true">https://hoeeeeeh.github.io/%EB%82%B4_%ED%81%90%EB%8A%94_%EC%99%9C_%EB%8A%90%EB%A6%B4%EA%B9%8C</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>gemini-cli notion mcp 연결하기</title>
         
           <description>&lt;p&gt;프로젝트의 루트에 간단하게 .gemini/settings.json 에 아래와 같이 코드를 작성하면 notion mcp 가 추가되어야 한다.&lt;/p&gt;
