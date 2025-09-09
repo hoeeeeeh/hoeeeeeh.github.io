@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://hoeeeeeh.github.io/tag/javascript/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" />
-  <updated>2025-09-09T10:19:12+00:00</updated>
+  <updated>2025-09-09T10:42:13+00:00</updated>
   <id>https://hoeeeeeh.github.io/tag/javascript/feed.xml</id>
 
   
@@ -268,7 +268,7 @@ x.a = &quot;foo&quot;;
 
 &lt;p&gt;아래에서 볼, 객체가 가지는 원소의 타입에 맞게 최적화된다. (= Elements Kind 에 맞게 최적화)&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;[https://source.chromium.org/chromium/v8/v8.git/+/ec37390b2ba2b4051f46f153a8cc179ed4656f5d:src/elements-kind.h;l=14](https://source.chromium.org/chromium/v8/v8.git/+/ec37390b2ba2b4051f46f153a8cc179ed4656f5d:src/elements-kind.h;l=14)&quot;&gt;전체 Elements Kind&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://source.chromium.org/chromium/v8/v8.git/+/ec37390b2ba2b4051f46f153a8cc179ed4656f5d:src/elements-kind.h;l=14&quot;&gt;전체 Elements Kind&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;타입이-달라지면&quot;&gt;타입이 달라지면&lt;/h3&gt;
 
