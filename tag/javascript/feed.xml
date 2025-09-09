@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://hoeeeeeh.github.io/tag/javascript/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" />
-  <updated>2025-09-06T09:53:29+00:00</updated>
+  <updated>2025-09-09T10:19:12+00:00</updated>
   <id>https://hoeeeeeh.github.io/tag/javascript/feed.xml</id>
 
   
@@ -49,12 +49,7 @@
 
 &lt;p&gt;간단하게 items 라는 객체에서 left, right 인덱스를 통해 바로 접근할 수 있도록 하는 것이다.&lt;/p&gt;
 
-&lt;details&gt;
-&lt;summary&gt;구현&lt;/summary&gt;
-
-
-```
-javascript
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;javascript
 class Queue {
     left = 0;
     right = 0;
@@ -121,11 +116,7 @@ class Queue {
     }
 }
 
-```
-
-
-
-&lt;/details&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;dequeue-delete&quot;&gt;Dequeue, delete&lt;/h2&gt;
 
@@ -271,9 +262,13 @@ x.a = &quot;foo&quot;;
 
 &lt;p&gt;여기서 딕셔너리 모드로 전환되는 일반적인 방법이 바로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delete&lt;/code&gt; 이다. delete 를 사용하는 경우 V8 은 이 객체가 고정된 구조(모노모픽처럼) 라고 생각하기 보단 동적으로 사용된다고 판단하여 딕셔너리 모드로 들어가게 된다. 결국 여기서 고려해볼수 있는 점은, 속도와 메모리효율의 트레이드오프이다. delete 를 사용하는 대신 null 이나 undefined 로 바꿈으로써 딕셔너리 모드로 전환되는 것을 막을 수 있지만 그만큼 메모리는 지속적으로 사용될 것이다.&lt;/p&gt;
 
-&lt;h2 id=&quot;그렇다면-배열은&quot;&gt;그렇다면 배열은?&lt;/h2&gt;
+&lt;h2 id=&quot;elements-kind&quot;&gt;Elements Kind&lt;/h2&gt;
 
 &lt;p&gt;자바스크립트에서 배열도 사실 그냥 객체이다. arr[0] 은 키가 0 인 프로퍼티일 뿐이다. 하지만 V8 은 배열에 대해서 조금 더 특별하게 최적화 한다. 정확히는 배열이라고 전부 다 동일하게 최적화하는건 아니고, 규칙성에 맞게 최적화를 한다.&lt;/p&gt;
+
+&lt;p&gt;아래에서 볼, 객체가 가지는 원소의 타입에 맞게 최적화된다. (= Elements Kind 에 맞게 최적화)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;[https://source.chromium.org/chromium/v8/v8.git/+/ec37390b2ba2b4051f46f153a8cc179ed4656f5d:src/elements-kind.h;l=14](https://source.chromium.org/chromium/v8/v8.git/+/ec37390b2ba2b4051f46f153a8cc179ed4656f5d:src/elements-kind.h;l=14)&quot;&gt;전체 Elements Kind&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;타입이-달라지면&quot;&gt;타입이 달라지면&lt;/h3&gt;
 
@@ -320,7 +315,142 @@ array[9] = 1; // array[5] until array[8] are now holes
   &lt;p&gt;Array.prototype.fill 를 통해서 모든 홀을 채우면, PACKED 로 돌아갈 수 있다고 한다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;hole 이 생기게 되면, V8 은 매번 hole 이 있는지 여부를 체크해야하는 로직이 최적화에 포함되고, hole 인지 구분하기 위해 상위 프로토타입까지 거슬러 올라가기때문에 PACKED 보다 최적화가 비효율적이다.&lt;/p&gt;</content>
+&lt;p&gt;hole 이 생기게 되면, V8 은 매번 hole 이 있는지 여부를 체크해야하는 로직이 최적화에 포함되고, hole 인지 구분하기 위해 상위 프로토타입까지 거슬러 올라가기때문에 PACKED 보다 최적화가 비효율적이다.&lt;/p&gt;
+
+&lt;h1 id=&quot;더-나은-큐를-만들기&quot;&gt;더 나은 큐를 만들기&lt;/h1&gt;
+
+&lt;p&gt;기존의 큐 방식을 살펴보자.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;javascript
+// 기존 방식(최적화가 잘 되지 않음)
+let queue = {};
+let head = 0, tail = 0;
+function enqueue(x) {
+  queue[tail++] = x;
+}
+function dequeue() {
+  if (tail &amp;gt; head) {
+    let x = queue[head];
+    delete queue[head++];
+    return x;
+  }
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;처음에는 queue 안에서 0, 1, 2… 같은 순서로 인덱스가 증가하기 때문에 객체가 배열처럼 동작한다.&lt;/p&gt;
+
+&lt;p&gt;따라서 SMI(Small Integer) elements kind 로 최적화 된다.&lt;/p&gt;
+
+&lt;p&gt;그러나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delete&lt;/code&gt; 를 하게 되면 0부터 hole 이 생기게 된다. 따라서 PACKED → HOLEY 로 최적화 효율이 다소 안좋아지게 된다.&lt;/p&gt;
+
+&lt;p&gt;그러다가 delete 를 많이 하다보면 head 와 tail 의 숫자는 매우 큰 반면 실제로 객체에 저장된 값은 몇 개 없을 수도 있다. 다시 말해, offset 을 통해서 접근하려고 보니까 앞에 hole 이 너무 많아서 매우 큰 offset 을 통해서 접근해야 하는 것이다.&lt;/p&gt;
+
+&lt;p&gt;이럴 때는 V8 이 배열처럼 최적화하는 것은 비효율적이라고 판단해 딕셔너리 모드로 전환해버릴 수 있다. 이렇게 되면 히든 클래스와 offset 을 사용할 수도 없게 되고, 인라인 캐시 입장에서는 매번 offset 을 통해서 접근했는데, 딕셔너리 모드로 전환되다보니 캐싱된 값이 달라지므로 인라인 캐시도 유지할 수 없다.&lt;/p&gt;
+
+&lt;p&gt;이제부터는 최적화 로직은 거의 사용하지 못하게 되므로 속도가 느려진다.&lt;/p&gt;
+
+&lt;h3 id=&quot;delete-를-안쓰는-방법&quot;&gt;Delete 를 안쓰는 방법&lt;/h3&gt;
+
+&lt;p&gt;delete 를 안쓰면서 메모리 효율도 높일 수 있는 방법은 뭐가 있을까?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;원형 큐(고정 크기)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;javascript
+// 원형 큐
+const capacity = 1024;
+let queueArr = new Array(capacity);
+let head = 0, tail = 0;
+
+function enqueue(x) {
+  if ((tail + 1) % capacity === head) throw Error(&quot;queue full&quot;);
+  queueArr[tail] = x;
+  tail = (tail + 1) % capacity;
+}
+
+function dequeue() {
+  if (head === tail) return undefined; 
+  const x = queueArr[head];
+  queueArr[head] = undefined;
+  head = (head + 1) % capacity;
+  return x;
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위의 코드와 같은 원형 큐를 한 번 살펴보자.&lt;/p&gt;
+
+&lt;p&gt;고정된 크기의 원형 큐를 한 번 보면, hole 이 생기지 않고 index 도 0부터 쌓이기 때문에 PACKED_SMI 를 유지할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;지금처럼 고정된 큐의 경우에는 리사이징을 할 수 없기 때문에, 리사이징까지 고려하면 아래와 같이 생각해볼 수 있을 것 같다.&lt;/p&gt;
+
+&lt;p&gt;대신 아무래도 동적인 크기가 가능해지기 때문에 완전히 모노모픽을 유지하기는 힘들고, 미리 capacity 를 크게 잡아둔다거나 하는 방식으로 너무 빈번한 리사이징이 일어나지 않도록 크기를 잘 잡는게 중요할 것 같다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;javascript
+class Queue {
+  constructor(initialCapacity = 16) {
+    this.capacity = initialCapacity;
+    this.queue = new Array(this.capacity);
+    this.head = 0;
+    this.tail = 0;
+    this.size = 0;
+  }
+
+  enqueue(x) {
+    if (this.size === this.capacity) {
+      this._grow();
+    }
+    this.queue[this.tail] = x;
+    this.tail = (this.tail + 1) % this.capacity;
+    this.size++;
+  }
+
+  dequeue() {
+    if (this.size === 0) return undefined;
+    const x = this.queue[this.head];
+    this.queue[this.head] = undefined; // 슬롯 정리 (GC-friendly)
+    this.head = (this.head + 1) % this.capacity;
+    this.size--;
+
+    if (this.capacity &amp;gt; 16 &amp;amp;&amp;amp; this.size &amp;lt;= this.capacity / 4) {
+      this._shrink();
+    }
+    return x;
+  }
+
+  peek() {
+    return this.size === 0 ? undefined : this.queue[this.head];
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  _grow() {
+    const newCapacity = this.capacity * 2;
+    this._resize(newCapacity);
+  }
+
+  _shrink() {
+    const newCapacity = Math.floor(this.capacity / 2);
+    this._resize(newCapacity);
+  }
+
+  _resize(newCapacity) {
+    const newQueue = new Array(newCapacity);
+    for (let i = 0; i &amp;lt; this.size; i++) {
+      newQueue[i] = this.queue[(this.head + i) % this.capacity];
+    }
+    this.queue = newQueue;
+    this.capacity = newCapacity;
+    this.head = 0;
+    this.tail = this.size;
+  }
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
 
       
       
