@@ -11,11 +11,77 @@
 
     <!-- Highlight.js 초기화 -->
     <script>
-        document.querySelectorAll('pre code').forEach((block) => {
-            // 아래 둘 중 하나를 선택
-                hljs.highlightBlock(block); // 이전 방식
+        (function () {
+            function normalizeFenceLanguage(block) {
+                var text = block.textContent || '';
+                if (!text) return;
+                var lines = text.split('\n');
+                if (!lines.length) return;
+                var firstLine = (lines[0] || '').trim().toLowerCase();
+                if (!firstLine) return;
 
-        });
+                var aliasMap = {
+                    ts: 'typescript',
+                    typescript: 'typescript',
+                    js: 'javascript',
+                    javascript: 'javascript',
+                    sh: 'bash',
+                    zsh: 'bash',
+                    bash: 'bash',
+                    yml: 'yaml',
+                    yaml: 'yaml',
+                    py: 'python',
+                    python: 'python',
+                    rb: 'ruby',
+                    ruby: 'ruby',
+                    c: 'c',
+                    cpp: 'cpp',
+                    cplusplus: 'cpp',
+                    cs: 'csharp',
+                    csharp: 'csharp',
+                    go: 'go',
+                    golang: 'go',
+                    rs: 'rust',
+                    rust: 'rust',
+                    java: 'java',
+                    kotlin: 'kotlin',
+                    swift: 'swift',
+                    php: 'php',
+                    html: 'xml',
+                    xml: 'xml',
+                    json: 'json',
+                    css: 'css',
+                    scss: 'scss',
+                    less: 'less',
+                    sql: 'sql',
+                    dockerfile: 'dockerfile',
+                    makefile: 'makefile',
+                    diff: 'diff',
+                    bashrc: 'bash',
+                    zshrc: 'bash'
+                };
+
+                var known = new Set(Object.keys(aliasMap));
+                var lang = aliasMap[firstLine] || (known.has(firstLine) ? firstLine : null);
+                if (!lang) return;
+
+                // 언어명이 첫 줄에 있으면 제거하고 language- 클래스 부여
+                block.textContent = lines.slice(1).join('\n');
+                block.classList.add('language-' + lang);
+            }
+
+            window.__applyLanguageHeader = function () {
+                var blocks = document.querySelectorAll('pre code');
+                Array.prototype.forEach.call(blocks, function (block) {
+                    if (!/\blanguage-/.test(block.className)) {
+                        normalizeFenceLanguage(block);
+                    }
+                    if (window.hljs && typeof hljs.highlightBlock === 'function') {
+                        hljs.highlightBlock(block);
+                    }
+                });
+            };
+        })();
     </script>
     <style>.hljs { background: none; }</style>
 
@@ -32,9 +98,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
     <script>$(document).ready(function() {
-        $('pre code').each(function(i, block) {
-            hljs.highlightBlock(block);
-        });
+        if (window.__applyLanguageHeader) {
+            window.__applyLanguageHeader();
+        }
     });</script>
 
 
