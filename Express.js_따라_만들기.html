@@ -103,6 +103,12 @@
         })();
     </script>
     <style>.hljs { background: none; }</style>
+    <style>
+        /* Rouge 기본 테마가 배경을 어둡게 만드는 문제를 무력화 */
+        .highlighter-rouge .highlight pre { background: none !important; }
+        .highlighter-rouge .highlight pre,
+        .highlighter-rouge .highlight code { color: inherit !important; }
+    </style>
 
     <!-- jQuery + Fitvids, which makes all video embeds responsive -->
     <script
@@ -117,9 +123,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
     <script>$(document).ready(function() {
-        if (window.__applyLanguageHeader) {
-            window.__applyLanguageHeader();
-        }
+        (function () {
+            // pre만 있고 code가 없는 경우까지 포함해서 처리
+            function collectBlocks() {
+                var result = [];
+                var pres = document.querySelectorAll('pre');
+                Array.prototype.forEach.call(pres, function (pre) {
+                    var code = pre.querySelector('code');
+                    result.push(code || pre);
+                });
+                return result;
+            }
+            if (window.__applyLanguageHeader) {
+                window.__applyLanguageHeader();
+            }
+            // 하이라이트 누락 케이스를 한 번 더 커버
+            var blocks = collectBlocks();
+            Array.prototype.forEach.call(blocks, function (block) {
+                if (window.hljs && typeof hljs.highlightBlock === 'function') {
+                    hljs.highlightBlock(block);
+                }
+            });
+        })();
     });</script>
 
 
