@@ -8,6 +8,13 @@
     <!-- highlight.js -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <!-- 필요한 언어 모듈(typescript 등) 추가 로드 -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
 
     <!-- Highlight.js 초기화 -->
     <script>
@@ -23,8 +30,10 @@
                 var aliasMap = {
                     ts: 'typescript',
                     typescript: 'typescript',
+                    tsx: 'typescript',
                     js: 'javascript',
                     javascript: 'javascript',
+                    jsx: 'javascript',
                     sh: 'bash',
                     zsh: 'bash',
                     bash: 'bash',
@@ -67,13 +76,23 @@
 
                 // 언어명이 첫 줄에 있으면 제거하고 language- 클래스 부여
                 block.textContent = lines.slice(1).join('\n');
+                // 기존 language-* / highlighter-rouge 제거
+                var classes = Array.prototype.slice.call(block.classList);
+                classes.forEach(function (cls) {
+                    if (/^language-/.test(cls) || cls === 'highlighter-rouge') {
+                        block.classList.remove(cls);
+                    }
+                });
                 block.classList.add('language-' + lang);
             }
 
             window.__applyLanguageHeader = function () {
                 var blocks = document.querySelectorAll('pre code');
                 Array.prototype.forEach.call(blocks, function (block) {
-                    if (!/\blanguage-/.test(block.className)) {
+                    var hasLanguage = /\blanguage-/.test(block.className);
+                    var isPlaintext = /\blanguage-(plain|plaintext|text)\b/.test(block.className);
+                    // plaintext이거나 언어 미지정이면 첫 줄 언어 감지 시도
+                    if (!hasLanguage || isPlaintext) {
                         normalizeFenceLanguage(block);
                     }
                     if (window.hljs && typeof hljs.highlightBlock === 'function') {
