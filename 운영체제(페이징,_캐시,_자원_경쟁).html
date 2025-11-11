@@ -84,6 +84,21 @@
                     }
                 });
                 block.classList.add('language-' + lang);
+                // 상위 래퍼(.highlighter-rouge)에 붙은 language-plaintext도 교체
+                try {
+                    if (block.closest) {
+                        var wrapper = block.closest('.highlighter-rouge');
+                        if (wrapper) {
+                            var wrapperClasses = Array.prototype.slice.call(wrapper.classList);
+                            wrapperClasses.forEach(function (wcls) {
+                                if (/^language-/.test(wcls)) {
+                                    wrapper.classList.remove(wcls);
+                                }
+                            });
+                            wrapper.classList.add('language-' + lang);
+                        }
+                    }
+                } catch (e) {}
                 return lang;
             }
 
