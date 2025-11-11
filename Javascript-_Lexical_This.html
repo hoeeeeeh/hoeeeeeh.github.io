@@ -72,7 +72,7 @@
 
                 var known = new Set(Object.keys(aliasMap));
                 var lang = aliasMap[firstLine] || (known.has(firstLine) ? firstLine : null);
-                if (!lang) return;
+                if (!lang) return null;
 
                 // 언어명이 첫 줄에 있으면 제거하고 language- 클래스 부여
                 block.textContent = lines.slice(1).join('\n');
@@ -84,6 +84,7 @@
                     }
                 });
                 block.classList.add('language-' + lang);
+                return lang;
             }
 
             window.__applyLanguageHeader = function () {
@@ -91,12 +92,29 @@
                 Array.prototype.forEach.call(blocks, function (block) {
                     var hasLanguage = /\blanguage-/.test(block.className);
                     var isPlaintext = /\blanguage-(plain|plaintext|text)\b/.test(block.className);
-                    // plaintext이거나 언어 미지정이면 첫 줄 언어 감지 시도
-                    if (!hasLanguage || isPlaintext) {
-                        normalizeFenceLanguage(block);
+                    var lang = null;
+                    if (hasLanguage && !isPlaintext) {
+                        var m = block.className.match(/\blanguage-([a-z0-9+-]+)/i);
+                        lang = m && m[1] ? m[1].toLowerCase() : null;
+                    } else {
+                        // plaintext이거나 언어 미지정이면 첫 줄 언어 감지 시도
+                        lang = normalizeFenceLanguage(block);
                     }
-                    if (window.hljs && typeof hljs.highlightBlock === 'function') {
-                        hljs.highlightBlock(block);
+                    if (window.hljs) {
+                        try {
+                            if (lang && typeof hljs.highlight === 'function') {
+                                var source = block.textContent || '';
+                                var result = hljs.highlight(lang, source, true);
+                                block.innerHTML = result.value;
+                                block.classList.add('hljs');
+                            } else if (typeof hljs.highlightBlock === 'function') {
+                                hljs.highlightBlock(block);
+                            }
+                        } catch (e) {
+                            if (typeof hljs.highlightBlock === 'function') {
+                                hljs.highlightBlock(block);
+                            }
+                        }
                     }
                 });
             };
@@ -113,9 +131,7 @@
     <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
     <!--    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>-->
 
-    <!-- Prism.js 기본 라이브러리 먼저 로드 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <!-- Prism.js 제거: highlight.js만 사용 -->
     <script>$(document).ready(function() {
         function runHighlight() {
             // pre만 있고 code가 없는 경우까지 포함해서 처리
