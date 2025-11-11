@@ -102,13 +102,7 @@
             };
         })();
     </script>
-    <style>.hljs { background: none; }</style>
-    <style>
-        /* Rouge 기본 테마가 배경을 어둡게 만드는 문제를 무력화 */
-        .highlighter-rouge .highlight pre { background: none !important; }
-        .highlighter-rouge .highlight pre,
-        .highlighter-rouge .highlight code { color: inherit !important; }
-    </style>
+    <!-- 기본 테마 배경과 색상은 CDN CSS에 맡깁니다 (이전 무력화 스타일 제거) -->
 
     <!-- jQuery + Fitvids, which makes all video embeds responsive -->
     <script
@@ -123,7 +117,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
     <script>$(document).ready(function() {
-        (function () {
+        function runHighlight() {
             // pre만 있고 code가 없는 경우까지 포함해서 처리
             function collectBlocks() {
                 var result = [];
@@ -137,14 +131,16 @@
             if (window.__applyLanguageHeader) {
                 window.__applyLanguageHeader();
             }
-            // 하이라이트 누락 케이스를 한 번 더 커버
             var blocks = collectBlocks();
             Array.prototype.forEach.call(blocks, function (block) {
                 if (window.hljs && typeof hljs.highlightBlock === 'function') {
                     hljs.highlightBlock(block);
                 }
             });
-        })();
+        }
+        runHighlight();
+        // 일부 환경에서 ready 이후 주입되는 콘텐츠를 커버하기 위해 load에도 한 번 더
+        window.addEventListener('load', runHighlight);
     });</script>
 
 
