@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- highlight.js -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <!-- 필요한 언어 모듈(typescript 등) 추가 로드 -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/typescript.min.js"></script>
@@ -24,7 +23,14 @@
                 if (!text) return;
                 var lines = text.split('\n');
                 if (!lines.length) return;
-                var firstLine = (lines[0] || '').trim().toLowerCase();
+                // 첫 줄이 비어있는 경우를 대비해 앞쪽 공백 줄 스킵
+                var langLineIndex = -1;
+                for (var i = 0; i < Math.min(lines.length, 5); i++) {
+                    var maybe = (lines[i] || '').trim();
+                    if (maybe) { langLineIndex = i; break; }
+                }
+                if (langLineIndex === -1) return;
+                var firstLine = (lines[langLineIndex] || '').trim().toLowerCase();
                 if (!firstLine) return;
 
                 var aliasMap = {
@@ -75,7 +81,8 @@
                 if (!lang) return null;
 
                 // 언어명이 첫 줄에 있으면 제거하고 language- 클래스 부여
-                block.textContent = lines.slice(1).join('\n');
+                lines.splice(langLineIndex, 1);
+                block.textContent = lines.join('\n');
                 // 기존 language-* / highlighter-rouge 제거
                 var classes = Array.prototype.slice.call(block.classList);
                 classes.forEach(function (cls) {
@@ -122,19 +129,33 @@
                                 var result = hljs.highlight(lang, source, true);
                                 block.innerHTML = result.value;
                                 block.classList.add('hljs');
-                            } else if (typeof hljs.highlightBlock === 'function') {
-                                hljs.highlightBlock(block);
+                            } else if (typeof hljs.highlightAuto === 'function') {
+                                var src = block.textContent || '';
+                                var auto = hljs.highlightAuto(src, ['javascript','typescript','python','java']);
+                                block.innerHTML = auto.value;
+                                block.classList.add('hljs');
+                                // lang 추론 결과를 wrapper/pre에도 반영
+                                var detected = auto.language || '';
+                                if (detected) {
+                                    block.className = block.className.replace(/\blanguage-[^\s]+/g, '').trim();
+                                    block.classList.add('language-' + detected);
+                                }
                             }
                         } catch (e) {
-                            if (typeof hljs.highlightBlock === 'function') {
-                                hljs.highlightBlock(block);
-                            }
+                            // 실패 시 블록 하이라이트로 폴백
+                            if (typeof hljs.highlightBlock === 'function') hljs.highlightBlock(block);
                         }
                     }
                     // post-process: unwrap <code> to avoid theme rule ".post-full-content pre code * { color: inherit }"
                     try {
                         var parentPre = block.parentElement && block.parentElement.tagName === 'PRE' ? block.parentElement : null;
                         if (parentPre) {
+                            // 기존 언어/루즈/커피스크립트 및 축약 토큰(cs, http) 클래스 제거
+                            Array.prototype.slice.call(parentPre.classList).forEach(function (cls) {
+                                if (cls === 'highlighter-rouge' || cls === 'coffeescript' || cls === 'cs' || cls === 'http' || /^language-/.test(cls)) {
+                                    parentPre.classList.remove(cls);
+                                }
+                            });
                             parentPre.classList.add('hljs');
                             parentPre.innerHTML = block.innerHTML;
                         }
@@ -196,6 +217,8 @@
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
     <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+    <!-- highlight.js theme CSS를 사이트 CSS 이후에 로드하여 색상 우선순위 확보 -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
 
     <!--[if IE]>
         <style>
