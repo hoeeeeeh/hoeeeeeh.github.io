@@ -131,6 +131,14 @@
                             }
                         }
                     }
+                    // post-process: unwrap <code> to avoid theme rule ".post-full-content pre code * { color: inherit }"
+                    try {
+                        var parentPre = block.parentElement && block.parentElement.tagName === 'PRE' ? block.parentElement : null;
+                        if (parentPre) {
+                            parentPre.classList.add('hljs');
+                            parentPre.innerHTML = block.innerHTML;
+                        }
+                    } catch (e) {}
                 });
             };
         })();
