@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://hoeeeeeh.github.io/tag/javascript/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" />
-  <updated>2025-11-24T07:01:09+00:00</updated>
+  <updated>2025-12-13T13:15:32+00:00</updated>
   <id>https://hoeeeeeh.github.io/tag/javascript/feed.xml</id>
 
   
@@ -30,6 +30,111 @@
   
   
 
+  
+    <entry>
+      <title type="html">원시 타입과 객체</title>
+      <link href="https://hoeeeeeh.github.io/%EC%9B%90%EC%8B%9C_%ED%83%80%EC%9E%85%EA%B3%BC_%EA%B0%9D%EC%B2%B4" rel="alternate" type="text/html" title="원시 타입과 객체" />
+      <published>2025-12-13T06:00:00+00:00</published>
+      <updated>2025-12-13T06:00:00+00:00</updated>
+      <id>https://hoeeeeeh.github.io/%EC%9B%90%EC%8B%9C_%ED%83%80%EC%9E%85%EA%B3%BC_%EA%B0%9D%EC%B2%B4</id>
+      <content type="html" xml:base="https://hoeeeeeh.github.io/%EC%9B%90%EC%8B%9C_%ED%83%80%EC%9E%85%EA%B3%BC_%EA%B0%9D%EC%B2%B4">&lt;h1 id=&quot;원시-타입-primitive-type-과-객체object-의-비교&quot;&gt;원시 타입 (Primitive Type) 과 객체(Object) 의 비교&lt;/h1&gt;
+
+&lt;p&gt;자바스크립트는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;객체&lt;/code&gt; 기반의 프로그래밍 언어이고, 사실상 자바스크립트를 구성하는 대부분이 객체이다.&lt;/p&gt;
+
+&lt;p&gt;함수도 객체이고 배열도 사실 객체이다. typeof arr 을 했을 때도 Object 라는 결과를 볼 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typescript
+console.log(typeof []); // object
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;원시 타입은 ‘단 하나의 값’ 만 나타내지만 ‘객체 타입’ 은 다양한 타입의 값(원시 값 또는 다른 객체)을 하나의 단위로 구성한 복합적인 자료구조이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;원시 타입에는 number, string, boolean, null, undefined, symbol, bigint가 있고, 이 타입들은 모두 불변이다. 즉, 값을 직접 수정할 수 없다. 예를 들어, 문자열에서 일부 문자를 바꾸는 연산을 해도 기존 문자열이 바뀌는 게 아니라 새로운 문자열이 만들어진다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typescript
+let s = &apos;abc&apos;;
+s += &apos;z&apos;; 
+// 여기서 단순히 s 의 마지막에 z 가 붙어서 abcz 가 되는 것이 아니라, 
+// abcz 라는 문자열이 새로 만들어지고 그것이 s 에 할당된다.
+
+let sCopy = s;
+// s 의 메모리 주소가 sCopy 에 할당되는 것이 아니라, s 의 값이 복사되어 sCopy 에 할당된다.
+
+sCopy = &apos;xyz&apos;;
+
+console.log(s, sCopy); // &apos;abcz&apos;, &apos;xyz&apos;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;객체 타입은 object, array, function 처럼 참조 타입이다. 변수에는 객체 그 자체가 아니라 객체가 있는 메모리 주소가 들어간다. 그래서 객체를 다른 변수에 대입하면 값이 복사되는 게 아니라 같은 객체를 가리키는 참조가 복사된다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typescript
+let sArr = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];
+sArr.push(&apos;z&apos;);
+console.log(sArr.join(&apos;&apos;));
+// sArr 의 맨 뒤 요소로 z 가 들어오고, join 연산 결과로 abcz 가 된다. 
+
+let sArrCopy = sArr;
+// sArr 의 참조가 sArrCopy 에 할당된다.
+
+sArrCopy[0] = &apos;x&apos;;
+
+console.log(sArr, sArrCopy); // 둘 다 [&apos;x&apos;, &apos;b&apos;, &apos;c&apos;, &apos;z&apos;];
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;비교 연산에서도 차이가 난다. 원시 타입은 === 비교 시 값 자체를 비교하지만, 객체는 참조 주소를 비교한다. 내용이 똑같은 객체 리터럴 두 개를 만들어도 서로 다른 객체이기 때문에 === 결과는 false가 된다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;typescript
+const s1 = &apos;abc&apos;;
+const s2 = &apos;abc&apos;;
+
+console.log(s1 === s2); // true
+
+const arr1 = [1, 2, 3];
+const arr2 = [1, 2, 3];
+
+console.log(arr1 === arr2); // false
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;메모리 관점에서도 다르다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;원시 타입은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스택 영역&lt;/code&gt;에 값이 직접 저장되고,&lt;/li&gt;
+  &lt;li&gt;객체는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;힙 영역&lt;/code&gt;에 실제 데이터가 있고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스택 영역&lt;/code&gt; 에는 그 힙 주소만 저장된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;그래서 객체는 크기가 크고 생명 주기가 길어질수록 가비지 컬렉션 비용도 커진다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>[&quot;hoeeeeeh&quot;]</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="JavaScript" />
+      
+
+      
+        <summary type="html">원시 타입 (Primitive Type) 과 객체(Object) 의 비교</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">내 큐는 왜 느릴까</title>

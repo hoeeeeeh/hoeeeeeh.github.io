@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>원시 타입과 객체</title>
+        
+          <description>&lt;h1 id=&quot;원시-타입-primitive-type-과-객체object-의-비교&quot;&gt;원시 타입 (Primitive Type) 과 객체(Object) 의 비교&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Sat, 13 Dec 2025 06:00:00 +0000</pubDate>
+        <link>
+        https://hoeeeeeh.github.io/%EC%9B%90%EC%8B%9C_%ED%83%80%EC%9E%85%EA%B3%BC_%EA%B0%9D%EC%B2%B4</link>
+        <guid isPermaLink="true">https://hoeeeeeh.github.io/%EC%9B%90%EC%8B%9C_%ED%83%80%EC%9E%85%EA%B3%BC_%EA%B0%9D%EC%B2%B4</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>내 큐는 왜 느릴까</title>
         
           <description>&lt;p&gt;자바스크립트는 내장되어있는 큐가 없다보니 코딩테스트에서 시간 복잡도를 빠르게 하려면 큐를 직접 구현해야한다.&lt;/p&gt;
