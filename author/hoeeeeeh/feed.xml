@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://hoeeeeeh.github.io/author/hoeeeeeh/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" />
-  <updated>2025-12-13T13:16:12+00:00</updated>
+  <updated>2025-12-13T13:35:11+00:00</updated>
   <id>https://hoeeeeeh.github.io/author/hoeeeeeh/feed.xml</id>
 
   
@@ -99,16 +99,7 @@ const arr2 = [1, 2, 3];
 
 console.log(arr1 === arr2); // false
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;메모리 관점에서도 다르다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;원시 타입은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스택 영역&lt;/code&gt;에 값이 직접 저장되고,&lt;/li&gt;
-  &lt;li&gt;객체는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;힙 영역&lt;/code&gt;에 실제 데이터가 있고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스택 영역&lt;/code&gt; 에는 그 힙 주소만 저장된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;그래서 객체는 크기가 크고 생명 주기가 길어질수록 가비지 컬렉션 비용도 커진다.&lt;/p&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
 
       
       
