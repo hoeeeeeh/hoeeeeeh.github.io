@@ -266,3 +266,159 @@ outer → inner → innerF, innerG
 
 ![1](/upload/2025-12-14-JS_Closure.md/1.png)_85101.png_
 
+
+## Context 가 생기는 추가 규칙들
+
+- `eval`을 직접 호출하거나 `with` 문을 사용하는 경우, 이를 포함하는 모든 스코프의 모든 변수는 Context에 할당된다.
+- non-strict 함수에서 `arguments` 객체를 참조하면, 파라미터들이 Context에 할당된다.
+
+
+```
+javascript
+function f(a) {  // a is context allocated
+  var x = 10;  // x is context allocated
+  function g(b) {  // b is context allocated
+    var y = 10;  // y is context allocated
+    function h(c) {  // c is context allocated
+      with (obj) {
+        z = c;
+      }
+    }
+    h(b);
+  }
+  g(a);
+}
+
+function k(x, y) {  // x and y are context allocated
+  return arguments[0] + arguments[1];
+}
+
+function sk(x, y) {  // x and y are not context allocated
+  "use strict";
+  return arguments[0] * arguments[1];
+}
+
+```
+
+
+
+## ‘Context’ vs ‘Instance Field’
+
+
+
+```
+javascript
+// Classic Object
+function ClassicObject() {
+  this.x = 10;
+}
+ClassicObject.prototype.getX = function () {
+  return this.x; // (1)
+};
+
+
+// Closure Object
+function ClosureObject() {
+  var x = 10;
+  return {
+    getX: function () {
+      return x; // (2)
+    }
+  };
+}
+
+
+
+var classic_object = new ClassicObject();
+var closure_object = new ClosureObject();
+
+// 이제 컴파일과 최적화를 유도하기 위해 루프를 돌린다.
+for (var i = 0; i < 1e5; i++) classic_object.getX();
+for (var i = 0; i < 1e5; i++) closure_object.getX();
+
+```
+
+
+
+ClassicObject 는 우리가 Class 를 쓰는 방식과 동일하다. getX 는 this.x 를 반환하기만 하므로 굉장히 예측 가능한 형태이다. 따라서 [Hidden Class 와 Inline Cache](https://hoeeeeeh.github.io/%EB%82%B4_%ED%81%90%EB%8A%94_%EC%99%9C_%EB%8A%90%EB%A6%B4%EA%B9%8C) 를 활용한 최적화가 이루어질 것이다.
+
+
+ClosureObject 는 x 를 반환하는 방식에 Closure 를 이용했다.
+
+
+> 아래에서 등장할 eax, edx, ecx, esi 등은 전부 CPU 레지스터 이름이다.  
+> 다만, 그 이름이 특별한 의미를 가지는 건 아니고 어떻게 쓰이는지가 의미가 있다.  
+> 예를 들어, ebp는 “현재 함수 스택 프레임의 기준점(프레임 포인터)” 이고 “receiver는 edx”, “property key는 ecx”, “current context는 esi”, “return/result는 eax” 정도로 쓰이는구나! 정도로만 받아들이면 될 것 같다.
+
+
+### Classic Object
+
+
+예상대로, 인스턴스 필드 로드 (1)은 비최적화 컴파일러에 의해 **인라인 캐시 호출**로 컴파일된다.
+
+
+> 비최적화 컴파일러 → 아직 실행 초기다보니, 최적화되지 못했다는 의미!
+
+
+
+```
+javascript
+mov eax, [ebp+0x8]     ;; 스택에서 this를 로드
+mov edx, eax           ;; receiver를 edx에 둠
+mov ecx, "x"           ;; 프로퍼티 이름을 ecx에 둠
+call LoadIC_Initialize ;; IC 스텁 호출
+
+```
+
+
+
+인스턴스 필드 로드를 많이 하게 되면, 다음과 같이 Inline Cache 호출은 아래의 Stub 처럼 패치(최적화)된다.
+
+
+> Stub : 자주 쓰는 일을 빠르게 처리하려고, 미리 만들어 놓는 아주 작은 머신코드 조각
+
+
+
+```
+javascript
+test_b dl, 0x1              ;; receiver가 smi가 아닌 객체인지 확인
+jz miss                     ;; 아니면 miss로 이동
+cmp [edx-1], 0x2bb0ece1     ;; 객체의 hidden class 확인
+jnz miss                    ;; 아니면 miss로 이동
+mov eax, [edx+0xb]          ;; IC 히트, 고정 오프셋으로 필드 로드
+ret
+miss:
+jmp LoadIC_Miss             ;; miss 처리 위해 런타임으로 점프
+
+```
+
+
+
+### Closure Object
+
+
+Closure 은 비최적화 컴파일러조차도 Classic Object 에 비해 훨씬 간단한 코드를 생성한다.
+
+
+
+```
+javascript
+mov eax, esi            ;; 컨텍스트를 eax로 이동
+mov eax, [eax + 0x17]   ;; 컨텍스트의 고정 오프셋에서 변수 로드
+
+```
+
+
+
+여기서 눈여겨볼 점은, 
+
+
+첫째, V8은 현재 컨텍스트를 가리키기 위해 **전용 레지스터** **`esi`**를 사용한다. 프레임이나 클로저 객체에서 다시 로드할 필요를 피하기 위해서다.
+
+
+둘째, 컴파일러는 컴파일 시점에 변수를 **고정 인덱스**로 해석할 수 있었기 때문에, 지연 바인딩도 없고, 룩업 오버헤드도 없으며, 인라인 캐시를 개입시킬 필요도 없다.
+
+
+> 왜 Closure Object 는 고정 인덱스로 해석할 수 있고, Classic Object 는 고정 인덱스로 해석할 수 없는가?  
+> → Closure Object 는 렉시컬 스코프 안의 지역 변수에 대한 캡처가 가능하다. 반면, Classic Object 는 구조가 계속 바뀔 수 있다. (Object 에 프로퍼티가 변할 수 있기 때문)
+
