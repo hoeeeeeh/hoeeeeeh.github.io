@@ -85,6 +85,12 @@ V8은 정확히 이렇게 수행한다 :
 >   
 > V8은 스코프에 진입할 때 Context를 만들고, 클로저가 참조하는 변수는 Context 슬롯에 들어간다. 그러면 핫 루프 안에서 그 변수를 사용할 때, TurboFan은 그 변수를 단순한 로컬 변수처럼 레지스터에 올려둘 수가 없다. 매 반복마다 “Context → 슬롯 → 값”을 따라가서 메모리에서 load 해야 하고, 값이 바뀌면 다시 store 해야 한다.
 
+
+그래서, 테스트를 해보려고 했는데 간단한 테스트에서는 오히려 Closure 를 사용할때가 성능이 더 좋았다..!
+
+
+이유는 아래에서 더 자세히 설명되어있다.
+
 <details markdown="1">
 <summary>간단한 테스트</summary>
 
@@ -348,7 +354,7 @@ ClosureObject 는 x 를 반환하는 방식에 Closure 를 이용했다.
 
 > 아래에서 등장할 eax, edx, ecx, esi 등은 전부 CPU 레지스터 이름이다.  
 > 다만, 그 이름이 특별한 의미를 가지는 건 아니고 어떻게 쓰이는지가 의미가 있다.  
-> 예를 들어, ebp는 “현재 함수 스택 프레임의 기준점(프레임 포인터)” 이고 “receiver는 edx”, “property key는 ecx”, “current context는 esi”, “return/result는 eax” 정도로 쓰이는구나! 정도로만 받아들이면 될 것 같다.
+> 예를 들어, ebp는 “현재 함수 스택 프레임의 기준점(프레임 포인터)” 이고 “receiver는 edx”, “property key는 ecx”, “current context는 esi”, “return/result는 eax” 로 쓰이는구나! 정도로만 받아들이면 될 것 같다.
 
 
 ### Classic Object
@@ -394,6 +400,159 @@ jmp LoadIC_Miss             ;; miss 처리 위해 런타임으로 점프
 
 
 
+최적화된 코드를 보면, 인스턴스 필드를 load 하는 것은 꽤나 복잡해진다.
+
+
+
+```
+assembly
+;;; @11: gap.
+mov eax,[ebp+0x8] ;; this 가져오기
+;;; @12: check-non-smi.
+test eax,0x1 ;; smi(숫자 같은 원시값) 인지 아닌지 체크
+jz 0x3080a00a        ;; deoptimization bailout 1
+;;; @14: check-maps.
+cmp [eax-1],0x2bb0ece1
+jnz 0x3080a014       ;; deoptimization bailout 2
+;;; @16: load-named-field.
+mov eax,[eax+0xb]
+;;; @18: return.
+mov esp,ebp
+pop ebp
+ret 0x4
+
+```
+
+
+
+> 여기서 `;;; @N:` 주석은 Crankshaft의 저수준 IR(lithium)에 있는 명령을 가리킨다.
+
+
+어떤 수행을 하는지 간단하게 다이어그램으로 표현하면
+
+
+
+```
+javascript
+[Start]
+  |
+  v
+this 로드 (eax = this)
+  |
+  v
+check-non-smi: eax가 Smi(원시값)인지 가드 (객체가 아니라 원시값이면 프로퍼티 읽으면 안됨!)
+  |Yes ----------------------> [DEOPT] (비최적화 코드로 되돌아감)
+  |
+  No
+  |
+  v
+check-maps: eax의 hidden class(map)가 예상값인지 가드
+(예상했던 hidden class 가 아니라면 고정 오프셋 쓰면 안됨!)
+  |No -----------------------> [DEOPT]
+  |
+  Yes
+  |
+  v
+load-named-field: eax = *(eax + offset_of_x)
+  |
+  v
+return eax
+
+```
+
+
+
+> 가드 : check-non-smi, check-maps (최적화된 경로를 써도 되는지 체크하는 것!)
+
+
+Crankshaft는 특정 객체 타입에 맞게 로드 지점을 특수화하고, 가드가 실패할 경우 디옵트마이즈하여 비최적화 코드로 전환하도록 한다. 본질적으로 Crankshaft는 IC 스텁을 인라인하고, 이를 개별 연산(비-smi 검사, 히든 클래스 검사, 필드 로드)으로 분해한 뒤, 느린 경로(miss)를 디옵트마이즈로 우회시킨다고 볼 수 있다.
+
+
+프로퍼티가 여러 개 생길 경우, 가드와 함수 실행부를 분리할 수 있다.
+예를 들어, 아래와 같이 프로퍼티가 하나 더 생겼다고 하자.
+
+
+
+```
+javascript
+functionClassicObject() {
+	this.x =10;
+	this.y =20;
+}
+
+ClassicObject.prototype.getSum = function () {
+	returnthis.x +this.y;
+};
+
+```
+
+
+
+비최적화된 `getSum`은 IC 세 개(각 프로퍼티 로드용 두 개와 `+` 연산용 하나)를 가지지만, 최적화된 버전은 훨씬 더 간결하다.
+
+
+
+```
+assembly
+;;; @11: gap.
+mov eax,[ebp+0x8]
+;;; @12: check-non-smi.
+test eax,0x1
+jz 0x5950a00a
+;;; @14: check-maps.
+cmp [eax-1],0x24f0ed01
+jnz 0x5950a014
+;;; @16: load-named-field.
+mov ecx,[eax+0xb]
+	;;; @18: load-named-field.
+mov edx,[eax+0xf]
+
+```
+
+
+
+두 개의 `check-non-smi`, 두 개의 `check-maps`를 남기는 대신, 컴파일러는 공통 부분을 제거해 중복 가드를 없앴다.
+
+
+x 를 로드할 수 있었다면, y 에 굳이 가드를 한 번 더 할 이유가 없다는 의미이다.
+
+
+
+```
+javascript
+[Start]
+  |
+  v
+this 로드 (eax = this)
+  |
+  v
+check-non-smi (this가 객체인가?)
+  |Fail ---------------------> [DEOPT]
+  |
+  Pass
+  |
+  v
+check-maps (this의 map이 예상한 구조인가?)
+  |Fail ---------------------> [DEOPT]
+  |
+  Pass
+  |
+  v
+x 로드 (ecx = *(eax + offset_of_x))
+  |
+  v
+y 로드 (edx = *(eax + offset_of_y))
+  |
+  v
+(+ 연산 수행: ecx + edx)
+  |
+  v
+return
+
+```
+
+
+
 ### Closure Object
 
 
@@ -420,5 +579,11 @@ mov eax, [eax + 0x17]   ;; 컨텍스트의 고정 오프셋에서 변수 로드
 
 
 > 왜 Closure Object 는 고정 인덱스로 해석할 수 있고, Classic Object 는 고정 인덱스로 해석할 수 없는가?  
-> → Closure Object 는 렉시컬 스코프 안의 지역 변수에 대한 캡처가 가능하다. 반면, Classic Object 는 구조가 계속 바뀔 수 있다. (Object 에 프로퍼티가 변할 수 있기 때문)
+> → Closure Object 는 렉시컬 스코프 안의 지역 변수에 대한 캡처가 가능하다. 반면, Classic Object 는 런타임에 구조가 계속 바뀔 수 있다. (Object 에 프로퍼티가 변할 수 있기 때문)
+
+
+Closure Object 의 컨텍스트 슬롯을 읽는 최적화 코드는 사실 비최적화와 크게 차이가 없다. 그냥 고정 오프셋 읽는 코드가 끝이기 때문.
+
+
+## 그래서 왜? 클로저 기반이 고전적인(Classic Object) OOP 보다 성능이 느려지는가
 
