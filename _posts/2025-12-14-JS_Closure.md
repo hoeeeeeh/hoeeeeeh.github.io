@@ -18,6 +18,9 @@ categories:
 [https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html](https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html)
 
 
+> 이 글은 2014년 정도에 쓰여진 글이라서 이때 당시 동작하던 방식과, 현재 동작 방식과는 차이가 있을 것 같습니다. Closure 와 Classic Object 의 고전적인 동작 방식에 대해서 이해하는 정도로만 읽어보면 좋을 것 같습니다. (v8 의 crankshaft 는 2017년부터 사용되지 않고 있습니다)
+
+
 # Closure
 
 
@@ -89,7 +92,7 @@ V8은 정확히 이렇게 수행한다 :
 그래서, 테스트를 해보려고 했는데 간단한 테스트에서는 오히려 Closure 를 사용할때가 성능이 더 좋았다..!
 
 
-이유는 아래에서 더 자세히 설명되어있다.
+이유는 아래에서 더 자세히 설명되어있다. 
 
 <details markdown="1">
 <summary>간단한 테스트</summary>
@@ -368,7 +371,7 @@ ClosureObject 는 x 를 반환하는 방식에 Closure 를 이용했다.
 
 
 ```
-javascript
+assembly
 mov eax, [ebp+0x8]     ;; 스택에서 this를 로드
 mov edx, eax           ;; receiver를 edx에 둠
 mov ecx, "x"           ;; 프로퍼티 이름을 ecx에 둠
@@ -386,7 +389,7 @@ call LoadIC_Initialize ;; IC 스텁 호출
 
 
 ```
-javascript
+assembly
 test_b dl, 0x1              ;; receiver가 smi가 아닌 객체인지 확인
 jz miss                     ;; 아니면 miss로 이동
 cmp [edx-1], 0x2bb0ece1     ;; 객체의 hidden class 확인
@@ -433,7 +436,7 @@ ret 0x4
 
 
 ```
-javascript
+assembly
 [Start]
   |
   v
@@ -519,7 +522,7 @@ x 를 로드할 수 있었다면, y 에 굳이 가드를 한 번 더 할 이유�
 
 
 ```
-javascript
+assembly
 [Start]
   |
   v
@@ -585,5 +588,171 @@ mov eax, [eax + 0x17]   ;; 컨텍스트의 고정 오프셋에서 변수 로드
 Closure Object 의 컨텍스트 슬롯을 읽는 최적화 코드는 사실 비최적화와 크게 차이가 없다. 그냥 고정 오프셋 읽는 코드가 끝이기 때문.
 
 
-## 그래서 왜? 클로저 기반이 고전적인(Classic Object) OOP 보다 성능이 느려지는가
+## 그래서 왜? 클로저 기반(Closure Object)이 고전적인(Classic Object) OOP 보다 성능이 느려지는가
+
+
+> 이 글은 2014년 정도에 쓰여진 글이라서 이때 당시 동작하던 방식과, 현재 동작 방식과는 차이가 있을 것 같습니다. Closure 와 Classic Object 의 고전적인 동작 방식에 대해서 이해하는 정도로만 읽어보면 좋을 것 같습니다.
+
+
+위처럼 간단한 예제가 아닌, 조금 더 OOP스러운 예제를 살펴보자.
+
+
+
+```
+javascript
+// Classic Object
+function ClassicObject() {
+  this.x = 10;
+  this.y = 20;
+}
+ClassicObject.prototype.getSum = function () {
+  return this.getX() + this.getY();
+};
+ClassicObject.prototype.getX = function () { return this.x; };
+ClassicObject.prototype.getY = function () { return this.y; };
+
+
+// Closure Object
+function ClosureObject() {
+  var x = 10;
+  var y = 10;
+  function getX() { return x; }
+  function getY() { return y; }
+  return {
+    getSum: function () {
+      return getX() + getY();
+    }
+  };
+}
+
+var classic_object = new ClassicObject();
+var closure_object = new ClosureObject();
+
+for (var i = 0; i < 1e5; i++) classic_object.getSum();
+for (var i = 0; i < 1e5; i++) closure_object.getSum();
+
+
+```
+
+
+
+두 Object 모두, x + y 를 수행하는 메서드 getSum , getX, getY 를 가진 간단한 객체이다.
+
+
+### Classic Object
+
+
+이제 Classic Object.prototype.getSum 의 최적화된 코드를 살펴 보자.
+
+
+
+```
+assembly
+;;; @11: gap.
+mov eax,[ebp+0x8]
+;;; @12: check-non-smi.
+test eax,0x1
+jz 0x2b20a00a
+;;; @14: check-maps.
+cmp [eax-1],0x5380ed01
+jnz 0x2b20a014
+;;; @16: check-prototype-maps.
+mov ecx,[0x5400a694]
+cmp [ecx-1],0x5380ece1
+jnz 0x2b20a01e
+;;; @18: load-named-field.
+mov ecx,[eax+0xb]
+;;; @24: load-named-field.
+mov edx,[eax+0xf]
+
+
+```
+
+
+
+최적화된 코드를 보면, 위에서 프로퍼티가 한 개였을 때의 최적화 코드와 큰 차이가 없다.
+
+
+다만 getX, getY 를 하지 않고 `check-prototype-maps` 라는 특이한 가드가 하나 생겼다. Crankshaft 는 getSum 을 최적화하면서, 두 호출(getX, getY) 를 인라인해서 호출 자체를 없애버렸다. 즉, 함수 호출로 점프하는게 아니라 그냥 함수 본문(return x, return y) 를 호출 위치에 써버리자. 라는 최적화이다.
+
+
+그럴 수 있는 이유는, return x 와 return y 는 굉장히 예측 가능하게, 그냥 x 와 y 를 반환하는 것 밖에 없기 때문이다.( === monomorphic 하다)
+
+
+또한, check-prototype-maps 도 이를 위해서 존재하는 가드이다.
+getX, getY 는 prototype 에 붙어있으니까, 프로토타입의 hidden class 도 검사해서, 예상했던 히든 클래스가 맞는지 체크하는 가드인 것이다.
+
+
+결론적으로 Classic Object 에서는 최적화가 비교적 공격적으로 가능하다는 것이다.
+
+
+### Closure Object
+
+
+
+```
+assembly
+;;; @12: load-context-slot.
+mov ecx,[eax+0x1f]     ;; getX 로드
+;;; @14: global-object.
+mov edx,[eax+0x13]
+;;; @16: global-receiver.
+mov edx,[edx+0x13]
+;;; @18: check-function.
+cmp ecx,[0x5400a714]
+jnz 0x2b20a00a
+;;; @20: constant-t.
+mov ecx,[0x5400a71c]
+;;; @22: load-context-slot.
+mov edx,[ecx+0x17]     ;; x 로드
+;;; @28: load-context-slot.
+mov eax,[eax+0x23]     ;; getY
+;;; @30: check-function.
+cmp eax,[0x5400a724]
+jnz 0x2b20a014
+;;; @32: constant-t.
+mov ecx,[0x5400a72c]
+;;; @34: load-context-slot.
+mov eax,[ecx+0x1b]     ;; y 로드
+
+
+```
+
+
+
+최적화 컴파일러는 Classic Object 에 비해 공격적으로 최적화하지 못한다. (Crankshaft 기준)
+
+
+getSum, getX, getY 는 같은 context 를 공유하지만, 실제로 수행하는 동작은 매번 context 를 load 한다.
+
+
+또한 Crankshaft 는 정적 정보보다 타입 피드백에 더 의존했는데, 예를 들어 ClosureObject 를 두 개 만든다고 가정해보자.
+
+
+
+```
+javascript
+var classic_objects = [new ClassicObject(), new ClassicObject()];
+var closure_objects = [new ClosureObject(), new ClosureObject()];
+
+for (var i = 0; i < 1e5; i++) classic_objects[i % 2].getSum();
+for (var i = 0; i < 1e5; i++) closure_objects[i % 2].getSum();
+
+```
+
+
+
+ClassicObject 의 최적화 코드는 바뀌지 않는 반면, ClosureObject 의 getSum 최적화 코드는 더욱 품질이 떨어진다.
+
+
+정적 정보(이미 쓰여진 코드)를 기준으로 getSum 은 변화하지 않는(monomorphic) 다는 것을 알 수 있지만 Crankshaft 는 런타임에 타입 피드백에 더 의존한다.
+
+
+V8 은 같은 함수 리터럴에서 만들어진 모든 클로저에 대해서 비최적화 코드를 공유한다. 동시에, 인라인 캐시와 타입 피드백 수집 구조도 이 비최적화 코드에 붙어 있다. 그 결과 타입 피드백이 공유되고 섞이게 된다.
+
+
+두 ClosureObject 는 같은 방식으로 생성되었기 때문에 같은 Hidden Class 를 가질 것이다. 하지만, getX getY 호출 시점에서는 호출 대상의 정체성을 수집한다. 여기서 문제가 발생하는데, 두 개의 Object 가 호출할 수 있다는 점에서 monomorphic 이 깨지고 megamorphic 호출이 된다.
+
+
+![2](/upload/2025-12-14-JS_Closure.md/2.png)_20622.png_
 
