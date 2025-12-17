@@ -606,11 +606,9 @@ JSFunction 내부에 Context 를 가리키는 포인터가 존재하는 상태�
 </blockquote>
 
 <details>
-<summary>간단한 테스트</summary>
+  <summary>간단한 테스트</summary>
 
-
-```
-javascript
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
 let cnt = 0;
 
 function count(c) {
@@ -641,21 +639,16 @@ while(f() &lt; 1e5) {
 	// do something
 }
 
-```
+</code></pre></div>  </div>
 
-
-
-정말 간단하게 위의 두 코드에 대한 실행시간 차이를 재봤더니 차이가 없거나 오히려 클로저가 더 빠른 경우가 있다. V8 엔진의 최적화가 잘 되어서 이정도로는 차이를 크게 벌릴 수 없나보다.
-
+  <p>정말 간단하게 위의 두 코드에 대한 실행시간 차이를 재봤더니 차이가 없거나 오히려 클로저가 더 빠른 경우가 있다. V8 엔진의 최적화가 잘 되어서 이정도로는 차이를 크게 벌릴 수 없나보다.</p>
 
 </details>
 
 <details>
-<summary>복잡한 테스트</summary>
+  <summary>복잡한 테스트</summary>
 
-
-```
-javascript
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javascript
 'use strict';
 const { performance } = require('perf_hooks');
 
@@ -727,12 +720,9 @@ bench('closure(context)', closureRunner);
 // local: 573.22 ms
 // closure(context): 692.98 ms
 
-```
+</code></pre></div>  </div>
 
-
-
-루프를 돌고 sink 에 값을 저장해둠으로써 ‘이 루프는 쓸모없는 루프가 아니라 sink 를 위한 루프구나’ 라고 TurboFan 이 생각하도록 만든다. 
-
+  <p>루프를 돌고 sink 에 값을 저장해둠으로써 ‘이 루프는 쓸모없는 루프가 아니라 sink 를 위한 루프구나’ 라고 TurboFan 이 생각하도록 만든다.</p>
 
 </details>
 
