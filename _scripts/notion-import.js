@@ -188,9 +188,10 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
                         console.log(error);
                     });
 
-                let res;
-                if (p1 === "") res = "";
-                else res = `_${p1}_`;
+                // Caption 처리: 캡션이 있을 때만 표시하고, 파일명처럼 보이는 값은 숨김
+                const caption = (p1 || "").trim();
+                const looksLikeFilename = /\.(png|jpe?g|gif|webp|svg|bmp|tiff)$/i.test(caption);
+                const res = caption && !looksLikeFilename ? `_${caption}_` : "";
 
                 return `![${index++}](/${filename})${res}`;
             }
