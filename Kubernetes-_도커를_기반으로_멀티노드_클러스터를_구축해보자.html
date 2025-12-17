@@ -14,6 +14,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+    <!-- Assembly (x86/ARM) -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/x86asm.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/armasm.min.js"></script>
 
     <!-- Highlight.js 초기화 -->
     <script>
@@ -40,6 +43,13 @@
                     js: 'javascript',
                     javascript: 'javascript',
                     jsx: 'javascript',
+                    asm: 'x86asm',
+                    assembly: 'x86asm',
+                    x86: 'x86asm',
+                    x86asm: 'x86asm',
+                    nasm: 'x86asm',
+                    arm: 'armasm',
+                    armasm: 'armasm',
                     sh: 'bash',
                     zsh: 'bash',
                     bash: 'bash',
@@ -131,7 +141,7 @@
                                 block.classList.add('hljs');
                             } else if (typeof hljs.highlightAuto === 'function') {
                                 var src = block.textContent || '';
-                                var auto = hljs.highlightAuto(src, ['javascript','typescript','python','java']);
+                                var auto = hljs.highlightAuto(src, ['javascript','typescript','python','java','x86asm','armasm']);
                                 block.innerHTML = auto.value;
                                 block.classList.add('hljs');
                                 // lang 추론 결과를 wrapper/pre에도 반영
@@ -194,9 +204,9 @@
             var blocks = collectBlocks();
             Array.prototype.forEach.call(blocks, function (block) {
                 if (window.hljs && typeof hljs.highlightBlock === 'function') {
-                    hljs.highlightBlock(block);
+            hljs.highlightBlock(block);
                 }
-            });
+        });
         }
         runHighlight();
         // 일부 환경에서 ready 이후 주입되는 콘텐츠를 커버하기 위해 load에도 한 번 더
