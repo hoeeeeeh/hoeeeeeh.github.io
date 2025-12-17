@@ -23,6 +23,21 @@
     
       
       <item>
+        <title>Grokking V8 closures for fun (and profit) - 2014</title>
+        
+          <description>&lt;p&gt;&lt;a href=&quot;https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html&quot;&gt;https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 14 Dec 2025 05:58:00 +0000</pubDate>
+        <link>
+        https://hoeeeeeh.github.io/Grokking_V8_closures_for_fun_(and_profit)_-_2014</link>
+        <guid isPermaLink="true">https://hoeeeeeh.github.io/Grokking_V8_closures_for_fun_(and_profit)_-_2014</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>원시 타입과 객체</title>
         
           <description>&lt;h1 id=&quot;원시-타입-primitive-type-과-객체object-의-비교&quot;&gt;원시 타입 (Primitive Type) 과 객체(Object) 의 비교&lt;/h1&gt;
