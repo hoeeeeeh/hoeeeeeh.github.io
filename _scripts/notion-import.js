@@ -36,6 +36,17 @@ function replaceTitleOutsideRawBlocks(body) {
     return body;
 }
 
+/**
+ * Ensure Markdown inside <details> is parsed by Kramdown.
+ * It adds markdown="1" to any <details> tag that doesn't already have it.
+ */
+function ensureDetailsMarkdown(body) {
+    // Add markdown="1" to <details ...> when missing
+    return body.replace(/<details(?![^>]*\bmarkdown=)([^>]*)>/g, function (match, attrs) {
+        return `<details markdown="1"${attrs}>`;
+    });
+}
+
 // passing notion client to the option
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
@@ -150,6 +161,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
         }
         body = escapeCodeBlock(body);
         body = replaceTitleOutsideRawBlocks(body);
+        body = ensureDetailsMarkdown(body);
 
 
         let index = 0;

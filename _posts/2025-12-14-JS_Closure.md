@@ -85,7 +85,7 @@ V8은 정확히 이렇게 수행한다 :
 >   
 > V8은 스코프에 진입할 때 Context를 만들고, 클로저가 참조하는 변수는 Context 슬롯에 들어간다. 그러면 핫 루프 안에서 그 변수를 사용할 때, TurboFan은 그 변수를 단순한 로컬 변수처럼 레지스터에 올려둘 수가 없다. 매 반복마다 “Context → 슬롯 → 값”을 따라가서 메모리에서 load 해야 하고, 값이 바뀌면 다시 store 해야 한다.
 
-<details>
+<details markdown="1">
 <summary>간단한 테스트</summary>
 
 
@@ -130,7 +130,7 @@ while(f() < 1e5) {
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>복잡한 테스트</summary>
 
 
