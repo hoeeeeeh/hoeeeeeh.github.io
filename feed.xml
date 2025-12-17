@@ -1,4 +1,236 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://hoeeeeeh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" /><updated>2025-12-13T13:35:11+00:00</updated><id>https://hoeeeeeh.github.io/feed.xml</id><title type="html">hoeeeeeh</title><subtitle>HOEH 개발 블로그</subtitle><entry><title type="html">원시 타입과 객체</title><link href="https://hoeeeeeh.github.io/%EC%9B%90%EC%8B%9C_%ED%83%80%EC%9E%85%EA%B3%BC_%EA%B0%9D%EC%B2%B4" rel="alternate" type="text/html" title="원시 타입과 객체" /><published>2025-12-13T06:00:00+00:00</published><updated>2025-12-13T06:00:00+00:00</updated><id>https://hoeeeeeh.github.io/%EC%9B%90%EC%8B%9C_%ED%83%80%EC%9E%85%EA%B3%BC_%EA%B0%9D%EC%B2%B4</id><content type="html" xml:base="https://hoeeeeeh.github.io/%EC%9B%90%EC%8B%9C_%ED%83%80%EC%9E%85%EA%B3%BC_%EA%B0%9D%EC%B2%B4">&lt;h1 id=&quot;원시-타입-primitive-type-과-객체object-의-비교&quot;&gt;원시 타입 (Primitive Type) 과 객체(Object) 의 비교&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://hoeeeeeh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hoeeeeeh.github.io/" rel="alternate" type="text/html" /><updated>2025-12-17T05:28:58+00:00</updated><id>https://hoeeeeeh.github.io/feed.xml</id><title type="html">hoeeeeeh</title><subtitle>HOEH 개발 블로그</subtitle><entry><title type="html">JS Closure</title><link href="https://hoeeeeeh.github.io/JS_Closure" rel="alternate" type="text/html" title="JS Closure" /><published>2025-12-14T05:58:00+00:00</published><updated>2025-12-14T05:58:00+00:00</updated><id>https://hoeeeeeh.github.io/JS_Closure</id><content type="html" xml:base="https://hoeeeeeh.github.io/JS_Closure">&lt;p&gt;&lt;a href=&quot;https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html?utm_source=chatgpt.com&quot;&gt;https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html?utm_source=chatgpt.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;closure&quot;&gt;Closure&lt;/h1&gt;
+
+&lt;h2 id=&quot;lexical-environment&quot;&gt;Lexical Environment&lt;/h2&gt;
+
+&lt;p&gt;자바스크립트를 사용한다면, 모든 함수가 변수를 값으로 해석하기 위해 &lt;strong&gt;렉시컬 환경(lexical environment)&lt;/strong&gt; 을 가지고 있다는 사실을 알고 있을 것이다. 말은 추상적으로 들리지만 실제로는 매우 단순하다.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;javascript
+function makeF() { 
+	var x = 11; 
+	var y = 22; 
+	return function (what) { 
+		switch (what) { 
+			case &quot;x&quot;: 
+				return x; 
+				
+			case &quot;y&quot;: 
+				return y; 
+		} 
+	} 
+} 
+
+var f = makeF(); 
+f(&quot;x&quot;);
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;함수 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;f&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt;를 보관할 저장소가 필요하다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;makeF&lt;/code&gt;의 실행 컨텍스트는 이미 사라졌기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-12-14-JS_Closure.md/0.png&quot; alt=&quot;0&quot; /&gt;&lt;em&gt;73900.png&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;V8은 정확히 이렇게 수행한다 :&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Context&lt;/code&gt;라고 불리는 객체를 하나 생성하고, 이것을 클로저에 붙인다(이 클로저는 내부적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JSFunction&lt;/code&gt; 클래스의 인스턴스로 표현된다).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;너무 추상적인 것 같아서 이해를 바탕으로 다시 써보면, Context 라는 객체를 하나 생성하고 JSFunction 이 Context 를 참조할 수 있도록 연결한다. 라고 이해할 수 있을 것 같다.&lt;/p&gt;
+
+  &lt;p&gt;다시 말해서, 함수(JSFunction) 가 Context 를 들고 있는 상태를 클로저(JSFunction + Context) 라고 부른다.&lt;br /&gt;
+JSFunction 내부에 Context 를 가리키는 포인터가 존재하는 상태가 클로저이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이후에 이 캡쳐된 변수들(여기서는 x, y) 를 앞으로 컨텍스트 변수라고 지칭하겠다.&lt;/p&gt;
+
+&lt;p&gt;여기서 이제 중요한 점이 몇 가지 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;context-생성-시점&quot;&gt;Context 생성 시점&lt;/h2&gt;
+
+&lt;p&gt;첫째로, V8은 클로저가 만들어질 때가 아니라 &lt;strong&gt;스코프에 진입할 때&lt;/strong&gt; Context를 생성한다. 이 사실은 핫 루프 안에서 클로저가 참조하는 변수를 다룰 때 매우 중요하다. 최적화 컴파일러는 이런 변수를 레지스터에 둘 수 없고, 매번 메모리 load/store가 발생한다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;‘핫 루프’는 직관적으로 설명하면 ‘짧은 시간안에 매우 많이 실행되는 루프’ 정도로 생각할 수 있다. 여기서 왜 핫 루프가 중요하냐면, 핫 루프처럼 매우 자주 사용되는 경우, 인터프리터인 Ignition 이 ‘이 루프는 굉장히 많이 사용되는구나. 이걸 매번 실행하기보다는 최적화해야겠다’ 라고 생각하고 TurboFan 에게 최적화 컴파일을 하도록 한다.&lt;br /&gt;
+이렇게 최적화를 하게 되면 변수를 참조할 때, 매번 메모리에서 load 하지 않고 레지스터에서 빠르게 가져올 수 있다. 하지만 Context 는 클로저가 만들어질때가 아니라 스코프에 진입할 때 만들어진다.&lt;/p&gt;
+
+  &lt;p&gt;V8은 스코프에 진입할 때 Context를 만들고, 클로저가 참조하는 변수는 Context 슬롯에 들어간다. 그러면 핫 루프 안에서 그 변수를 사용할 때, TurboFan은 그 변수를 단순한 로컬 변수처럼 레지스터에 올려둘 수가 없다. 매 반복마다 “Context → 슬롯 → 값”을 따라가서 메모리에서 load 해야 하고, 값이 바뀌면 다시 store 해야 한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;details&gt;
+&lt;summary&gt;간단한 테스트&lt;/summary&gt;
+
+
+```
+javascript
+let cnt = 0;
+
+function count(c) {
+	return c + 1;
+}
+
+while(cnt &amp;lt; 1e5) {
+	cnt = count(cnt);
+	// do something
+}
+
+// --------------------
+
+function c() {
+	let cnt = 0;
+	function count() {
+		cnt += 1;
+		
+		return cnt;
+	}
+	
+	return count;
+}
+
+let f = c();
+
+while(f() &amp;lt; 1e5) {
+	// do something
+}
+
+```
+
+
+
+정말 간단하게 위의 두 코드에 대한 실행시간 차이를 재봤더니 차이가 없거나 오히려 클로저가 더 빠른 경우가 있다. V8 엔진의 최적화가 잘 되어서 이정도로는 차이를 크게 벌릴 수 없나보다.
+
+
+&lt;/details&gt;
+
+&lt;details&gt;
+&lt;summary&gt;복잡한 테스트&lt;/summary&gt;
+
+
+```
+javascript
+&apos;use strict&apos;;
+const { performance } = require(&apos;perf_hooks&apos;);
+
+const WARMUP = 5_000_000;
+const ITER = 50_000_000;
+
+let sink = 0; // 루프에서 생성되는 값이 사라지지 않게끔 잡아두는 변수. 
+
+function bench(name, fn) {
+  fn(WARMUP); // warmup
+  let best = Infinity;
+  for (let r = 0; r &amp;lt; 7; r++) {
+    const t0 = performance.now();
+    fn(ITER);
+    const t1 = performance.now();
+    best = Math.min(best, t1 - t0);
+  }
+  console.log(`${name}: ${best.toFixed(2)} ms`);
+}
+
+/**
+ * 1) local: 루프 안 변수들이 &quot;로컬&quot; (V8이 레지스터로 잡기 쉬움)
+ */
+function localRunner(n) {
+  let a = 1, b = 2, c = 3, d = 4, e = 5, f = 6, g = 7, h = 8;
+
+  for (let i = 0; i &amp;lt; n; i++) {
+    a = (a + b) | 0;
+    b = (b + c) | 0;
+    c = (c + d) | 0;
+    d = (d + e) | 0;
+    e = (e + f) | 0;
+    f = (f + g) | 0;
+    g = (g + h) | 0;
+    h = (h + a) | 0;
+
+    sink = (sink + (a ^ h)) | 0;
+  }
+}
+
+/**
+ * 2) closure: a~h가 &quot;외부 스코프 변수&quot;라서 Context 슬롯에 들어갈 가능성이 높음
+ */
+function makeClosureRunner() {
+  let a = 1, b = 2, c = 3, d = 4, e = 5, f = 6, g = 7, h = 8;
+
+  return function closureRunner(n) {
+    for (let i = 0; i &amp;lt; n; i++) {
+      a = (a + b) | 0;
+      b = (b + c) | 0;
+      c = (c + d) | 0;
+      d = (d + e) | 0;
+      e = (e + f) | 0;
+      f = (f + g) | 0;
+      g = (g + h) | 0;
+      h = (h + a) | 0;
+
+      sink = (sink + (a ^ h)) | 0;
+    }
+  };
+}
+
+const closureRunner = makeClosureRunner();
+
+bench(&apos;local&apos;, localRunner);
+bench(&apos;closure(context)&apos;, closureRunner);
+
+
+// local: 573.22 ms
+// closure(context): 692.98 ms
+
+```
+
+
+
+루프를 돌고 sink 에 값을 저장해둠으로써 ‘이 루프는 쓸모없는 루프가 아니라 sink 를 위한 루프구나’ 라고 TurboFan 이 생각하도록 만든다. 
+
+
+&lt;/details&gt;
+
+&lt;h2 id=&quot;스코프&quot;&gt;스코프&lt;/h2&gt;
+
+&lt;p&gt;둘째로, Context는 스코프에 진입하는 순간 &lt;strong&gt;즉시 생성&lt;/strong&gt;되고, 그 스코프에서 만들어진 모든 클로저가 &lt;strong&gt;공유&lt;/strong&gt;한다. 그리고 이 스코프가 또 다른 클로저 안에 있다면, Context는 부모 Context를 가리키는 포인터를 가진다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이 구조는 메모리 누수를 유발할 수 있다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;javascript
+function outer() {
+  var x = HUGE;  // huge object
+  function inner() {
+    var y = GIANT;  // giant object :-)
+
+    use(x);  // usage of x cause it to be allocated to the context
+
+    function innerF() {
+      use(y);  // usage of y causes it to be allocated to the context
+    }
+
+    function innerG() {
+      /* use nothing */
+    }
+
+    return innerG;
+  }
+
+  return inner();
+}
+
+var o = outer();  // o will retain HUGE and GIANT.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;outer → inner → innerF, innerG&lt;/p&gt;
+
+&lt;p&gt;이 코드에서 innerG 가 실제로 사용하는건 없다. HUGE 도 GIANT 도 innerG 가 사용하지 않는다. 하지만 o 는 HUGE 와 GIANT 를 유지시킨다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;innerG 와 innerF 는 Context 를 공유하기 때문에 GIANT 를 유지한다.&lt;/li&gt;
+  &lt;li&gt;innerG 의 부모, inner 의 Context 를 통해 HUGE 가 유지된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/upload/2025-12-14-JS_Closure.md/1.png&quot; alt=&quot;1&quot; /&gt;&lt;em&gt;85101.png&lt;/em&gt;&lt;/p&gt;</content><author><name>[&quot;hoeeeeeh&quot;]</name></author><category term="[&quot;CS&quot;, &quot;Programming&quot;]" /><category term="[&quot;CS&quot;, &quot;Programming&quot;]" /><category term="CS" /><category term="Programming" /><category term="JavaScript" /><summary type="html">https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html?utm_source=chatgpt.com</summary></entry><entry><title type="html">원시 타입과 객체</title><link href="https://hoeeeeeh.github.io/%EC%9B%90%EC%8B%9C_%ED%83%80%EC%9E%85%EA%B3%BC_%EA%B0%9D%EC%B2%B4" rel="alternate" type="text/html" title="원시 타입과 객체" /><published>2025-12-13T06:00:00+00:00</published><updated>2025-12-13T06:00:00+00:00</updated><id>https://hoeeeeeh.github.io/%EC%9B%90%EC%8B%9C_%ED%83%80%EC%9E%85%EA%B3%BC_%EA%B0%9D%EC%B2%B4</id><content type="html" xml:base="https://hoeeeeeh.github.io/%EC%9B%90%EC%8B%9C_%ED%83%80%EC%9E%85%EA%B3%BC_%EA%B0%9D%EC%B2%B4">&lt;h1 id=&quot;원시-타입-primitive-type-과-객체object-의-비교&quot;&gt;원시 타입 (Primitive Type) 과 객체(Object) 의 비교&lt;/h1&gt;
 
 &lt;p&gt;자바스크립트는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;객체&lt;/code&gt; 기반의 프로그래밍 언어이고, 사실상 자바스크립트를 구성하는 대부분이 객체이다.&lt;/p&gt;
 
@@ -2126,227 +2358,4 @@ class UnionFind {
 }
 
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>[&quot;hoeeeeeh&quot;]</name></author><category term="[&quot;CS&quot;]" /><category term="[&quot;CS&quot;]" /><category term="CS" /><category term="Algorithm" /><summary type="html">상호 배타적이라는 것은, 공통 원소가 없는 것이다.</summary></entry><entry><title type="html">스패닝 트리</title><link href="https://hoeeeeeh.github.io/%EC%8A%A4%ED%8C%A8%EB%8B%9D_%ED%8A%B8%EB%A6%AC" rel="alternate" type="text/html" title="스패닝 트리" /><published>2025-01-20T02:16:00+00:00</published><updated>2025-01-20T02:16:00+00:00</updated><id>https://hoeeeeeh.github.io/%EC%8A%A4%ED%8C%A8%EB%8B%9D_%ED%8A%B8%EB%A6%AC</id><content type="html" xml:base="https://hoeeeeeh.github.io/%EC%8A%A4%ED%8C%A8%EB%8B%9D_%ED%8A%B8%EB%A6%AC">&lt;h1 id=&quot;스패닝-트리&quot;&gt;스패닝 트리&lt;/h1&gt;
-
-&lt;p&gt;어떤 무향 그래프의 스패닝 트리는 원래 그래프의 정점 전부와 간선의 부분 집합으로 구성된 부분 그래프이다.&lt;/p&gt;
-
-&lt;p&gt;스패닝 트리에 포함된 간선들은 정점들을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;트리&lt;/code&gt; 형태로 전부 연결해야하는데, 이는 사이클이 없고 정점들이 꼭 부모-자식 관계로 연결될 필요는 없다는걸 의미한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/0.png&quot; alt=&quot;0&quot; /&gt;&lt;em&gt;예시 그래프&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;위의 예시 그래프에서 스패닝 트리를 그려보자. 스패닝 트리는 유일하지 않을 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/1.png&quot; alt=&quot;1&quot; /&gt;_올바른 스패닝 트리 1 _&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/2.png&quot; alt=&quot;2&quot; /&gt;&lt;em&gt;올바른 스패닝 트리 2&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;스패닝 트리는 모든 정점이 연결되어 있거나, 사이클이 있으면 안된다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/3.png&quot; alt=&quot;3&quot; /&gt;&lt;em&gt;잘못된 스패닝 트리 1 (모든 정점이 연결되어 있지 않음)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/4.png&quot; alt=&quot;4&quot; /&gt;&lt;em&gt;잘못된 스패닝 트리 2 (모든 정점이 연결되어 있지만 사이클이 존재)&lt;/em&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;최소-스패닝-트리&quot;&gt;최소 스패닝 트리&lt;/h1&gt;
-
-&lt;p&gt;가중치가 있는 그래프에서, 스패닝 트리 중 가중치의 합이 가장 작은 트리를 최소 스패닝 트리라고 한다.&lt;/p&gt;
-
-&lt;p&gt;최소 스패닝 트리를 찾는 알고리즘에는 크게 두 가지가 존재한다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;크루스칼&lt;/li&gt;
-  &lt;li&gt;프림&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;두 알고리즘은 모두 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;간선이 하나도 없는 상태&lt;/code&gt; 에서 시작해 하나씩 트리에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;가중치가 가장 작은 간선&lt;/code&gt;을 추가해 가는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;그리디 알고리즘&lt;/code&gt; 으로, 접근 방법이 달라보이지만 같은 방법으로 증명할 수 있다는 특징도 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;크루스칼-알고리즘&quot;&gt;크루스칼 알고리즘&lt;/h2&gt;
-
-&lt;p&gt;크루스칼의 기본적인 아이디어는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;가중치가 작은 간선이 최소 스패닝 트리에 포함될 가능성이 높다&lt;/code&gt; 이다.&lt;/p&gt;
-
-&lt;p&gt;그래서&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;모든 간선의 가중치를 오름차순으로 정렬한다&lt;/li&gt;
-  &lt;li&gt;가중치가 작은 순서대로 스패닝 트리에 추가한다.&lt;/li&gt;
-  &lt;li&gt;단, 스패닝 트리에 사이클이 생기지 않도록 한다&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;이런 방식으로 모든 간선을 한 번씩 검사하고 나면 크루스칼 알고리즘은 종료된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;알고리즘-동작-방식&quot;&gt;알고리즘 동작 방식&lt;/h3&gt;
-
-&lt;p&gt;이제 예시를 들어, 한 번 직접 진행해보자.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/5.png&quot; alt=&quot;5&quot; /&gt;&lt;em&gt;크루스칼 알고리즘의 예시 1&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;우선 가중치들을 정렬하면 [1, 2, 3, 4, 5, 6, 7, 9] 가 될 것이다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;가중치가 가장 작은 A - C (1) 을 선택해보자.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;처음 뽑는 간선이다보니 당연히 사이클은 그려지지 않을 것이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/6.png&quot; alt=&quot;6&quot; /&gt;&lt;em&gt;가중치가 1인 A - C 선택&lt;/em&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;두 번째로 작은 E - F (2) 를 선택하자.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/7.png&quot; alt=&quot;7&quot; /&gt;&lt;em&gt;가중치가 2인 E - F 산텍&lt;/em&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;마찬가지로, C - D (3) 과 A - B (4) 를 선택해보자&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/8.png&quot; alt=&quot;8&quot; /&gt;&lt;em&gt;가중치가 3인 C - D, 가중치가 4인 A - B 선택&lt;/em&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;이제 남은 간선중에 가중치가 가장 작은 B - C (5) 를 선택하려고 보니, A - B - C 간의 사이클이 발생한다.
-마찬가지로 그 다음 가중치가 작은 B - D (6) 을 선택하면 A - B - D -C 간의 사이클이 발생한다.&lt;/li&gt;
-  &lt;li&gt;사이클이 생기지 않는 선에서 가장 작은 가중치를 갖는 D - F (7) 을 연결한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/9.png&quot; alt=&quot;9&quot; /&gt;&lt;em&gt;가중치가 7인 D - F 선택&lt;/em&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;C - E 도 마찬가지로 사이클이 생기기 때문에 선택하지 않는다.&lt;/li&gt;
-  &lt;li&gt;모든 간선에 대해 검사를 완료했으므로 종료한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;사이클-검사-방법&quot;&gt;사이클 검사 방법&lt;/h3&gt;
-
-&lt;p&gt;알고리즘 동작 방식을 봤을 때, 딱히 어려울 게 없어 보이는 단순한 방식으로 보인다.&lt;/p&gt;
-
-&lt;p&gt;다만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;사이클이 생기는지&lt;/code&gt; 확인하는 작업을 어떻게 하는지를 고민해봐야 할 것 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;DFS&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;결국 스패닝 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;트리&lt;/code&gt; 이므로 트리에 간선을 추가한 뒤에, 이 간선의 역방향 간선이 존재하는지를 DFS 로 탐색하면 어떨까?&lt;/p&gt;
-
-&lt;p&gt;예를 들어 A - B (4) 를 스패닝 트리에 추가하고 모든 간선마다 DFS 를 수행한다.&lt;/p&gt;
-
-&lt;p&gt;방문 기록을 저장해두면서 DFS 를 타고가다가, 이미 방문했던 곳을 방문한다면 사이클이 생긴 것이다.&lt;/p&gt;
-
-&lt;p&gt;이 과정을 간선을 추가할 때 마다 진행하면 된다.&lt;/p&gt;
-
-&lt;p&gt;이 방법은 구현하기에 매우 간단하겠지만 시간 복잡도를 생각해봤을 때, DFS 의 시간복잡도인 O(V+E) 에 E 를 곱한, O(E^2) 가 된다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Union-Find&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;두 정점을 잇는 간선에서, 이 간선이 사이클을 만들어내는지 확인하려면 두 정점이 같은 그룹에 있는지 확인하면 된다. 그리고 같은 그룹이 아니라면, 간선을 추가하면서 같은 그룹으로 만들어주는 작업을 반복하면 사이클 검사를 쉽게 할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이러한 자료구조를 만족하는 Union-Find 를 활용하면 쉽게 사이클을 검사할 수 있을 것 같다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/10.png&quot; alt=&quot;10&quot; /&gt;&lt;em&gt;Union-Find 사이클 탐색 예시&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;예를 들어, 가중치가 1인 A - C 를 검사해보자.&lt;/p&gt;
-
-&lt;p&gt;초기화단계에서는 A부터 F까지 어디에도 연결되지 않은 상태이므로, 당연히 자기 자신을 부모노드로 가진 채 초기화되어있을 것이다.&lt;/p&gt;
-
-&lt;p&gt;그렇기 때문에 A 와 C 는 같은 집합에 존재하지 않기 때문에 사이클이 생기지 않는다고 확신할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;이후에 C 의 부모 노드를 A 로 바꾸면서 같은 집합으로 만들어준다.&lt;/p&gt;
-
-&lt;p&gt;이어서 E - F (2) 도 Union 하고 나서 C - D(3) 를 보자.&lt;/p&gt;
-
-&lt;p&gt;C 의 부모노드는 이미 A 이고, D 의 부모노드는 자신(D) 이다.&lt;/p&gt;
-
-&lt;p&gt;둘이 같은 집합이 아니므로 D의 부모노드를 A로 바꾼다.&lt;/p&gt;
-
-&lt;p&gt;A - B 도 마찬가지로, B의 부모노드가 A 로 바뀐다.&lt;/p&gt;
-
-&lt;p&gt;이제 가중치가 5인 B - C 를 추가할지 말지 결정해야한다.&lt;/p&gt;
-
-&lt;p&gt;B와 C의 루트노드를 살펴보니 전부 다 A 인 것을 알 수 있다.&lt;/p&gt;
-
-&lt;p&gt;따라서 사이클이 생길 수 있는 간선이므로 추가하지 않는다.&lt;/p&gt;
-
-&lt;h3 id=&quot;시간-복잡도&quot;&gt;시간 복잡도&lt;/h3&gt;
-
-&lt;p&gt;Union-Find 연산은 현실적으로 매우 짧은 시간(상수 시간)으로 봐도 되기 때문에 실제 트리를 만드는 for 문의 시간 복잡도는 O(E) 라고 봐도 좋다.&lt;/p&gt;
-
-&lt;p&gt;간선 리스트의 정렬에 걸리는 시간은 O(ElogE) 이기 때문에 O(ElogE) 가 전체 시간 복잡도가 된다.&lt;/p&gt;
-
-&lt;h3 id=&quot;증명&quot;&gt;증명&lt;/h3&gt;
-
-&lt;p&gt;크루스칼 알고리즘은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;각 간선을 그래프에 추가할 때, 뒤에 오는 간선들에 대한 고려는 전혀 하지 않으므로&lt;/code&gt; 탐욕적 알고리즘으로 분류할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;따라서,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;탐욕적 선택 속성은 우리가 내리는 탐욕적인 선택으로 인해 손해를 볼 일이 없음을 증명해야한다.&lt;/li&gt;
-  &lt;li&gt;항상 최적의 선택만을 내려도 전체 문제의 최적해를 얻을 수 있어야 한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이렇게 두 가지의 증명을 함으로서 크루스칼 알고리즘의 정당성을 증명할 수 있다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;가장 짧은 간선을 선택해도 손해를 볼 일이 없다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;이 증명은 귀류법으로 할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;크루스칼 알고리즘이 선택한 간선 루트가 올바르지 않다고 가정을 해보자.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/11.png&quot; alt=&quot;11&quot; /&gt;&lt;em&gt;예시 그래프&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;크루스칼 알고리즘은 A → B → C → D → F → E 를 최선으로 골랐는데, 실제로는 A → B → C → E → F → D 였다고 가정해보자.&lt;/p&gt;
-
-&lt;p&gt;크루스칼은 C - D 간선을 선택했지만 실제로는 C - D 간선이 아니라 C - E 간선을 선택해야 최소 스패닝 트리라는 것이다.&lt;/p&gt;
-
-&lt;p&gt;크루스칼은 항상 가중치의 최솟값부터 선택해나간다. 따라서 C - D 의 가중치가 C - E 보다 작기 때문에 크루스칼 알고리즘이 C - D 를 선택했을 것이다.&lt;/p&gt;
-
-&lt;p&gt;그렇다면 만약에 C - E 간선을 제거하고, C - D 간선을 연결하면 어떻게 될까? 이 또한 스패닝 트리가 되는 것을 알 수 있다. 따라서 가중치가 더 작은 간선을 선택해서 스패닝트리를 만들 수 있으므로, 처음의 A → B → C → E → F → D 가 최소 스패닝 트리라는 가정에서 모순 된다.&lt;/p&gt;
-
-&lt;p&gt;일반화를 시키자면, 실제 최소 스패닝트리 T 에 속하지 않으면서 크루스칼 알고리즘이 선택한 간선을 (u, v) 라고 하자. T 또한 스패닝 트리이므로 u 와 v 는 어떤 식으로든 연결이 되어 있을 것이다. 크루스칼 알고리즘은 최솟값부터 선택해나가므로 T에는 존재하지만 크루스칼이 선택하지 않은 간선 (a, b) 는 (u, v) 보다 무조건 가중치가 같거나 높을 수 밖에 없다. (a, b) 가 (u, v) 보다 가중치가 낮았다면 크루스칼은 (u, v) 가 아니라 (a, b) 를 선택했을 것이다.&lt;/p&gt;
-
-&lt;p&gt;이제 T 에서 u 와 v 를 잇는 경로 상의 어떠한 간선 하나를 제거하고, (u, v) 간선을 선택해보자. 이 때 간선 하나를 없앴지만 (u, v) 간선이 생겼으므로 스패닝 트리가 유지됨을 알 수 있고, 같거나 더 짧은 간선을 선택하면서 스패닝트리를 유지할 수 있으므로 T가 최소 스패닝 트리라는 가정에 모순이 생긴다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;항상 최적의 선택(남은 간선 중에, 사이클이 생기지 않는 가장 짧은 간선을 선택)만을 내려도 전체 문제의 최적해를 얻을 수 있어야 한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;이는, 매 단계마다 선택되는 간선이 항상 최적의 부분 문제 해를 만족한다는 점에서 최적 부분 구조가 성립함을 쉽게 알 수 있다.&lt;/p&gt;
-
-&lt;p&gt;매 단계마다 선택하는 가장 짧은 간선은, 그 간선이 만드는 그래프 자체를 가장 짧은 경로로 갈 수 있게 한다. 따라서 항상 최적의 부분 문제 해를 만족하고 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;프림-알고리즘&quot;&gt;프림 알고리즘&lt;/h2&gt;
-
-&lt;p&gt;크루스칼 알고리즘은 어느 간선이든 최솟값이면 선택하지만 프림 알고리즘은 현재 만들어진 트리에 이어진 간선만을 선택해나가면서 스패닝 트리를 만들게 된다.&lt;/p&gt;
-
-&lt;p&gt;프림 알고리즘도 트리에 이어진 간선 중에서 최솟값을 선택하기 때문에 크루스칼 알고리즘과 비슷하기도 하다.&lt;/p&gt;
-
-&lt;p&gt;그런데 이런 과정을 어딘가에서 많이 본 것 같다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;정점을 추가하면서, 정점에 연결된 간선 중에서 가장 짧은 간선을 선택해나가는 방식&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이 방식은 다익스트라 알고리즘과 상당히 유사해보인다.&lt;/p&gt;
-
-&lt;h3 id=&quot;알고리즘-동작-방식-1&quot;&gt;알고리즘 동작 방식&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/12.png&quot; alt=&quot;12&quot; /&gt;&lt;em&gt;프림 알고리즘 예시 1&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;위의 그래프로 동작 방식을 한 번 살펴보자. 시작점은 A 라고 해보자.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/13.png&quot; alt=&quot;13&quot; /&gt;&lt;em&gt;A - C 간선, 정점 C 추가&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/14.png&quot; alt=&quot;14&quot; /&gt;&lt;em&gt;C - D 간선, 정점 D 추가&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/15.png&quot; alt=&quot;15&quot; /&gt;&lt;em&gt;A - B 간선, 정점 B 추가&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/16.png&quot; alt=&quot;16&quot; /&gt;&lt;em&gt;D - F 간선, 정점 F 추가&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;여기서 왜, 더 짧은 간선인 B - C(5), B - D(6) 을 선택하지 않았냐면 이미 정점 리스트에 들어가있는 C 와 D 를 잇는 간선이기 때문이다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/upload/2025-01-20-스패닝_트리.md/17.png&quot; alt=&quot;17&quot; /&gt;&lt;em&gt;E - F 간선, 정점 E 추가&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;증명-1&quot;&gt;증명&lt;/h3&gt;
-
-&lt;p&gt;프림 알고리즘은 크루스칼 알고리즘과 동일하게 간선의 최솟값을 사용하므로 증명이 크루스칼 알고리즘과 똑같다.&lt;/p&gt;</content><author><name>[&quot;hoeeeeeh&quot;]</name></author><category term="[&quot;CS&quot;]" /><category term="[&quot;CS&quot;]" /><category term="CS" /><category term="Algorithm" /><summary type="html">스패닝 트리</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>[&quot;hoeeeeeh&quot;]</name></author><category term="[&quot;CS&quot;]" /><category term="[&quot;CS&quot;]" /><category term="CS" /><category term="Algorithm" /><summary type="html">상호 배타적이라는 것은, 공통 원소가 없는 것이다.</summary></entry></feed>
