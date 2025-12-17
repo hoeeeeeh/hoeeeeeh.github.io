@@ -15,7 +15,7 @@ categories:
     - [CS, Programming, ]
 ---
 
-[https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html?utm_source=chatgpt.com](https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html?utm_source=chatgpt.com)
+[https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html](https://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html)
 
 
 # Closure
